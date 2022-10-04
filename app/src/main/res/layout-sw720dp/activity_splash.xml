@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.Splash"
+    android:background="@color/white">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/seeds_logo"
+        android:contentDescription="Image"
+        android:id="@+id/splash_image"/>
+
+
+    <TextView
+        android:id="@+id/splash_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/splash_image"
+        android:layout_marginTop="10dp"
+        android:text="@string/splash_text"
+        android:textAlignment="center"
+        android:textColor="@color/light_blue_900"
+        android:textSize="21sp"
+        android:textStyle="bold" />
+
+    <ProgressBar
+        android:id="@+id/splash_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/splash_text"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:indeterminate="true"
+        android:backgroundTintMode="src_atop"
+        android:backgroundTint="@color/seed_light_blue" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/splas_web"
+        android:textAlignment="center"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:textColor="@color/seed_light_blue"
+        android:layout_marginBottom="20dp"/>
+</RelativeLayout>

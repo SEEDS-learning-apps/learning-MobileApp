@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scroll"
+    tools:context=".Activities.acivity.Pic_mataching">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:id="@+id/activy_heading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:padding="10dp"
+            android:text="@string/activity2_heading"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/activy_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/activy_heading"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:paddingLeft="2dp"
+            android:paddingTop="5dp"
+            android:paddingRight="2dp"
+            android:text="@string/activity2_instructions" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:id="@+id/seprator"
+            android:background="@color/seed_dark_blue"
+            android:layout_below="@+id/activy_text"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/activy1_ans"
+            android:layout_below="@+id/seprator"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/ans1">
+
+                <TextView
+                    android:id="@+id/ans1HEAD"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="1: Disorientation"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ans1TXT"
+                    android:layout_below="@+id/ans1HEAD"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="a :This stage involves the disintegration of almost everything familiar. The individual is overwhelmed by the requirements of the new culture and bombarded by stimuli in the new environment."
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/ans1"
+                android:layout_marginTop="10dp"
+                android:id="@+id/ans2">
+
+                <TextView
+                    android:id="@+id/ans2HEAD"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="2: Shock"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ans2TXT"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/ans2HEAD"
+                    android:text="b: Avoid assumptions, suspend judgement and look for the complexity in other groups."
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ans2"
+                android:layout_marginTop="10dp"
+                android:id="@+id/ans3">
+
+                <TextView
+                    android:id="@+id/ans3HEAD"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="3: Adaptation"
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/ans3TXT"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/ans3HEAD"
+                    android:text="c: Identify potential barriers to communication and pay attention to the specific situation (age? Goal? Common interests? Potential results of the interaction?)
+                    " android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ans3"
+                android:id="@+id/ans4">
+
+                <TextView
+                    android:id="@+id/ans4HEAD"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="4: Adjustment"
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/ans4TXT"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/ans4HEAD"
+                    android:text="d: Recognize why culture exists, what it looks like and how it is transmitted."
+                    android:textSize="16sp" />
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/picans_heading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/activy1_ans"
+            android:clickable="false"
+            android:padding="10dp"
+            android:textAllCaps="false"
+            android:text="@string/match_pic_heading" />
+
+        <RelativeLayout
+            android:id="@+id/activy1_queStatements"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/picans_heading"
+            android:layout_alignParentBottom="true"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <LinearLayout
+                android:id="@+id/st1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_border">
+
+                <ImageView
+                    android:id="@+id/st1TXT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/seeds_logo"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="15dp"
+                    android:layout_marginLeft="10dp">
+
+
+                    <TextView
+                        android:id="@+id/picans1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/firstspn"
+
+                        android:text="Actually, I am beginning to like this." />
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_below="@+id/picans1"
+                    android:layout_height="wrap_content"
+                        android:id="@+id/firstspn">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/st1Sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:inputType="none"
+                        android:padding="2dp"
+                        android:text="Choose an answer" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/st2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/st1"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:background="@drawable/custom_border"
+                android:layout_marginTop="15dp">
+
+
+                <ImageView
+                    android:id="@+id/st2TXT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/seeds_logo" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="15dp"
+                    android:layout_marginLeft="10dp">
+
+
+                    <TextView
+                        android:id="@+id/picans2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/secondspn"
+                        android:text="Actually, I am beginning to like this." />
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="wrap_content"
+                        android:layout_below="@+id/picans2"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/secondspn">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/st2Sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_weight="1"
+                            android:inputType="none"
+                            android:padding="2dp"
+                            android:text="Choose an answer" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/st3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/st2"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/custom_border">
+
+                <ImageView
+                    android:id="@+id/st3TXT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/seeds_logo" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="15dp"
+                    android:layout_marginLeft="10dp">
+
+
+                    <TextView
+                        android:id="@+id/picans3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/thirdspn"
+                        android:text="Actually, I am beginning to like this." />
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="wrap_content"
+                        android:layout_below="@+id/picans3"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/thirdspn">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/st3Sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_weight="1"
+                            android:inputType="none"
+                            android:padding="2dp"
+                            android:text="Choose an answer" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </RelativeLayout>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/st4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/st3"
+                android:orientation="horizontal"
+                android:background="@drawable/custom_border"
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:id="@+id/st4TXT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/seeds_logo" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="15dp"
+                    android:layout_marginLeft="10dp">
+
+
+                    <TextView
+                        android:id="@+id/picans4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/secondspn"
+                        android:text="Actually, I am beginning to like this." />
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="wrap_content"
+                        android:layout_below="@+id/picans4"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/fourthspn">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/st4Sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_weight="1"
+                            android:inputType="none"
+                            android:padding="2dp"
+                            android:text="Choose an answer" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+
+
+
+
+    </RelativeLayout>
+
+</ScrollView>

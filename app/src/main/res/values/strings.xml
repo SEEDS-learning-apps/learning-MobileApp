@@ -1,0 +1,120 @@
+<resources>
+    <string name="app_name">Seeds Chat &amp; Learn</string>
+    <string name="mcq" translatable="false">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
+    <string name="title_activity_login" translatable="false">LoginActivity</string>
+    <string name="prompt_email" translatable="false">Email</string>
+    <string name="prompt_password" translatable="false">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password" translatable="false">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="dummy_button" translatable="false">Dummy Button</string>
+    <string name="dummy_content" translatable="false">DUMMY\nCONTENT</string>
+    <string name="title_activity_splash" translatable="false">splash</string>
+    <string name="splash_text">Learning is for everyone</string>
+    <string name="splas_web" translatable="false">www.seeds.com</string>
+    <string name="create_password">type any password</string>
+    <string name="Register_btn">Register</string>
+    <string name="username_register">Type any username of your choice</string>
+    <string name="lang_drop_down_label">Languages</string>
+    <string name="lang_drop_down_text">Select language</string>
+    <string name="register_account">Create an account?</string>
+    <string name="Setting_Feedback">Feedback</string>
+    <string name="Setting_Contact">Contact us</string>
+    <string name="Setting_Terms_of_use">Terms of use</string>
+    <string name="settings_powerd_by" translatable="false">Powered by seeds</string>
+    <string name="Setting_logout">Sign Out</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="mcq_positive_feedback" translatable="false">Results</string>
+    <string name="mcq_positive_congratulations">Congratulations</string>
+    <string name="loading">Loading...!!</string>
+    <string name="Mcq_Activity" translatable="false">Mcq Activity</string>
+    <string name="activity1_heading" translatable="false"> Match these statements to following answers.</string>
+    <string name="activity1_instructions" translatable="false">"One of the models for intercultural competence (Bennett) can be applied as a simple checklist of four steps, trying to move away from ethnocentrism towards an understanding some of the ways in which other cultures are similar to and different from our own. We emphasize adapting behavior in response to differing cultural contexts and reconciling cultural differences in order to learn or create value from cross-cultural interactions. "</string>
+    <string name="activity1_queHeading" translatable="false">Four steps to intercultural awareness</string>
+    <string name="activity2_heading" translatable="false">Activity 2: What´s the comment about?</string>
+    <string name="activity2_instructions" translatable="false">The adjustment to an unfamiliar situation or culture can be hard. There is some time of uncertainty and, in some cases, anxiety. We need to deal with ambiguity and new norms, ways to communicate/ behave. Some people go through similar phases during that time of adjustment. Can you connect these people´s comment to the description of the stage they´re at?</string>
+    <string name="match_pic_heading" translatable="false">Match the above statements with the pictures</string>
+    <string name="age_drop_down_text">Your age</string>
+    <string name="select_language">Select language</string>
+    <string name="select_age">Select age</string>
+    <string name="Login">Login</string>
+    <string name="Username">Username</string>
+    <string name="accessCode">Do you have an access code?</string>
+    <string name="accessCode_Dialog_text">Enter access code</string>
+    <string name="accessCodehere">code here</string>
+    <string name="Done">Done</string>
+    <string name="messageEdittext_hint">Type a message...</string>
+    <string name="sendBTN_txt">Send</string>
+    <string name="Next">Next</string>
+    <string name="Setting_changelanguage">Interface language</string>
+    <string name="mainpage_ex_heading">Exercises</string>
+    <string name="mainpage_settings_heading">Settings</string>
+    <string name="Accountlogin">Account login</string>
+    <string name="mcqfeedbacktitletext" translatable="false">Feedback</string>
+    <string name="loremipsum" translatable="false">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</string>
+    <string name="ok">Ok</string>
+    <string name="True_false">True false</string>
+    <string name="Grade">Grade</string>
+    <string name="AccountRegister">Account Register</string>
+    <string name="Returntochat">Return to chat</string>
+    <string name="Exercises">Exercises</string>
+    <string name="Download">Download</string>
+    <string name="no_downloads_available">No downloads available!!</string>
+    <string name="openEnded">Open Ended</string>
+    <string name="Select_material_language">Select material language</string>
+    <string name="Setting_changeMateriallanguage">Material Language</string>
+    <string name="Downloaded_Materials">Downloaded Materials</string>
+    <string name="MyProfile">My profile</string>
+    <string name="Already_have_an_account">Already have an account?</string>
+    <string name="True">True</string>
+    <string name="False">False</string>
+    <string name="German">German</string>
+    <string name="Spanish">Spanish</string>
+    <string name="English">English</string>
+    <string name="Greek">Greek</string>
+    <string name="Choose_an_answer">Choose an answer</string>
+    <string name="your_score">Your score:</string>
+    <string name="Setting_Contact_us_dialog_title">Contact team</string>
+    <string name="close">close</string>
+    <string name="contact_team_text">You can contact us using our email: seeds.members@listserv.dfn.de</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="Languages">
+        <item>German</item>
+        <item>Spanish</item>
+        <item>Greek</item>
+        <item>English</item>
+    </string-array>
+
+    <string-array name="Countries">
+        <item>Germany</item>
+        <item>Great Britain</item>
+        <item>Spain</item>
+        <item>Greece</item>
+    </string-array>
+
+    <string-array name="ageGroup">
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+    </string-array>
+
+    <string-array name="grades">
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+
+    </string-array>
+
+</resources>

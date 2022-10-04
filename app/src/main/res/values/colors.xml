@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#1436df</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="colorPrimary">#1979BE</color>
+    <color name="colorPrimaryDark">#202C53</color>
+    <color name="colorAccent">#f0f2f7</color>
+    <color name="editTextHint">#a5a5a5</color>
+    <color name="editTextColor">#ccdceb</color>
+
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="seed_light_blue">#1979BE</color>
+    <color name="seed_dark_blue">#202C53</color>
+    <color name="seed_light">#004a9f</color>
+
+    <color name="score_color">#FFD6D2D2</color>
+    <color name="settings_background">#003938</color>
+
+
+</resources>

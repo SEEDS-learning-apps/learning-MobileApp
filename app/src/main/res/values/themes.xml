@@ -1,0 +1,29 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Chat_Bot" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+<!--        <item name="colorPrimary">@color/purple_500</item>-->
+<!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
+<!--        <item name="colorOnPrimary">@color/white</item>-->
+
+        <item name="colorPrimary">@color/seed_light_blue</item>
+        <item name="colorPrimaryVariant">@color/seed_dark_blue</item>
+<!--        <item name="colorOnPrimary">@color/black</item>-->
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/seed_light_blue</item>
+        <item name="colorSecondaryVariant">@color/seed_dark_blue</item>
+<!--        <item name="colorOnSecondary">@color/black</item>-->
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.Holo.NoActionBar.Fullscreen" parent="Theme.Chat_Bot">
+
+    </style>
+
+    <style name="ThemeOverlay.Chat_Bot.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+    </style>
+</resources>

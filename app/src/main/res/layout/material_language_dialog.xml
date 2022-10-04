@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:paddingRight="20dp"
+    android:paddingLeft="20dp"
+    android:paddingBottom="20dp"
+    android:background="@color/seed_light_blue"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/mcqResults_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Setting_changeMateriallanguage"
+        android:textSize="20sp"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="25sp" />
+
+    <Button
+        android:id="@+id/btn_german"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/white"
+        android:text="@string/German"
+        android:backgroundTint="@color/seed_dark_blue"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/btn_spanish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/white"
+        android:text="@string/Spanish"
+        android:backgroundTint="@color/seed_dark_blue"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/btn_english"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/white"
+        android:text="@string/English"
+        android:backgroundTint="@color/seed_dark_blue"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/btn_greek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/white"
+        android:text="@string/Greek"
+        android:backgroundTint="@color/seed_dark_blue"
+        android:textColor="@color/white" />
+
+
+    <Button
+        android:id="@+id/code_return_to_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Done"
+        android:textSize="16sp"
+        android:backgroundTint="@color/seed_dark_blue"
+        android:textColor="@color/score_color" />
+
+
+
+
+</LinearLayout>

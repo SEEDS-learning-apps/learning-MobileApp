@@ -1,0 +1,30 @@
+<resources>
+
+    <style name="Widget.Theme.Chat_Bot.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
+<!--        <item name="android:background">@color/black_overlay</item>-->
+    </style>
+
+    <style name="Theme.AppCompat.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/seed_light_blue</item>
+        <item name="colorPrimaryVariant">@color/seed_dark_blue</item>
+<!--        <item name="colorOnPrimary">@color/black</item>-->
+    </style>
+
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/rounded_corner</item>
+    </style>
+
+    <style name="Tablayout">Tablayout
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="text">Tablayout
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="messageStyle">Tablayout
+        <item name="android:textSize">20sp</item>
+    </style>
+</resources>

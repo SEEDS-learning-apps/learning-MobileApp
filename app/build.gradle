@@ -1,0 +1,121 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk 31
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+
+    defaultConfig {
+        applicationId "com.seeds.chat_bot"
+        minSdk 23
+        targetSdk 30
+        versionCode 4
+        versionName "1.3"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    lintOptions{
+        checkReleaseBuilds false
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'androidx.annotation:annotation:1.2.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+
+    // For control over item selection of both touch and mouse driven selection
+    implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
+
+    //Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9'
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+
+    //retrofit
+    implementation('com.squareup.retrofit2:retrofit:2.9.0')
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    //ViewModel and livedata
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+
+    //Library to change the language
+    implementation "com.github.YarikSOffice:lingver:1.3.0"
+
+    //Lottie Animation
+    implementation 'com.airbnb.android:lottie:3.4.0'
+
+    //Country picker
+    implementation 'com.github.ekimual:country-picker-x:1.0.0'
+
+    implementation 'com.google.code.gson:gson:2.9.0'
+
+
+        implementation("androidx.compose.ui:ui:1.1.1")
+        // Tooling support (Previews, etc.)
+        implementation("androidx.compose.ui:ui-tooling:1.1.1")
+        // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+        implementation("androidx.compose.foundation:foundation:1.1.1")
+        // Material Design
+        implementation("androidx.compose.material:material:1.1.1")
+        // Material design icons
+        implementation("androidx.compose.material:material-icons-core:1.1.1")
+        implementation("androidx.compose.material:material-icons-extended:1.1.1")
+        // Integration with observables
+        implementation("androidx.compose.runtime:runtime-livedata:1.1.1")
+        implementation("androidx.compose.runtime:runtime-rxjava2:1.1.1")
+
+        // UI Tests
+        androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.1")
+
+
+    implementation 'com.google.android.material:material:1.6.1'
+
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //Room Database
+    // Room components
+    implementation "androidx.room:room-runtime:2.4.3"
+    kapt "androidx.room:room-compiler:2.4.3"
+    implementation "androidx.room:room-ktx:2.4.3"
+    androidTestImplementation "androidx.room:room-testing:2.4.3"
+
+
+
+
+
+}
