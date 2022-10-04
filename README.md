@@ -1,4 +1,4 @@
-# Seeds learnign app
+# Seeds learning app
 ## Min SDK 23
 ## Architecture
 - MVVM
