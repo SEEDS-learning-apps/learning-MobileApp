@@ -4,20 +4,20 @@
     <string name="mcq" translatable="false">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
     <string name="title_activity_login" translatable="false">LoginActivity</string>
     <string name="prompt_email" translatable="false">Email</string>
-    <string name="prompt_password" translatable="false">Password</string>
+    <string name="prompt_password" translatable="false">Κωδικός σύνδεσης</string>
     <string name="action_sign_in">Σύνδεση ή εγγραφή</string>
     <string name="action_sign_in_short">Σύνδεση</string>
     <string name="welcome">Καλώς ήρθες</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password" translatable="false">Password must be >5 characters</string>
+    <string name="invalid_username">Λάθος όνομα χρήστη</string>
+    <string name="invalid_password" translatable="false">Ο κωδικός σύνδεσης πρέπει να έχει >5 χαρακτήρες</string>
     <string name="login_failed">Η σύνδεση απέτυχε</string>
     <string name="dummy_button" translatable="false">Dummy Button</string>
     <string name="dummy_content" translatable="false">DUMMY\nCONTENT</string>
     <string name="title_activity_splash" translatable="false">splash</string>
-    <string name="splash_text">Learning is for everyone</string>
+    <string name="splash_text">Η μάθηση είναι για όλες και όλους</string>
     <string name="splas_web" translatable="false">www.seeds.com</string>
-    <string name="create_password">type any password</string>
-    <string name="Register_btn">Εγγραφή Λογαριασμού</string>
+    <string name="create_password">Επιλέξτε κωδικό</string>
+    <string name="Register_btn">Εγγραφή</string>
     <string name="username_register">Διάλεξε όνομα χρήστη</string>
     <string name="lang_drop_down_label">γλώσσες</string>
     <string name="lang_drop_down_text">Επιλογή γλώσσας</string>
@@ -27,24 +27,24 @@
     <string name="Setting_Terms_of_use">Όροι Χρήσης</string>
     <string name="settings_powerd_by" translatable="false">Powered by seeds</string>
     <string name="Setting_logout">Αποσύνδεση</string>
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="mcq_positive_feedback" translatable="false">Results</string>
+    <string name="hello_blank_fragment" translatable="false">Γειά σου blank fragment</string>
+    <string name="mcq_positive_feedback" translatable="false">Αποτελέσματα</string>
     <string name="mcq_positive_congratulations">Συγχαρητήρια</string>
     <string name="loading" translatable="false">Loading...!!</string>
     <string name="Mcq_Activity" translatable="false">Mcq Activity</string>
-    <string name="activity1_heading" translatable="false">Activity 1. Match these pieces of advice to the four steps.</string>
-    <string name="activity1_instructions" translatable="false">"One of the models for intercultural competence (Bennett) can be applied as a simple checklist of four steps, trying to move away from ethnocentrism towards an understanding some of the ways in which other cultures are similar to and different from our own. We emphasize adapting behavior in response to differing cultural contexts and reconciling cultural differences in order to learn or create value from cross-cultural interactions. "</string>
-    <string name="activity1_queHeading" translatable="false">Four steps to intercultural awareness</string>
-    <string name="activity2_heading" translatable="false">Activity 2: What´s the comment about?</string>
-    <string name="activity2_instructions" translatable="false">The adjustment to an unfamiliar situation or culture can be hard. There is some time of uncertainty and, in some cases, anxiety. We need to deal with ambiguity and new norms, ways to communicate/ behave. Some people go through similar phases during that time of adjustment. Can you connect these people´s comment to the description of the stage they´re at?</string>
-    <string name="match_pic_heading" translatable="false">Match the above statements with the pictures</string>
+    <string name="activity1_heading" translatable="false">Άσκηση 1. Αντιστοίχισε τις παρακάτω συμβουλές με τα τέσσερα βήματα.</string>
+    <string name="activity1_instructions" translatable="false”>”Ένα από τα μοντέλα διαπολιτισμικής ευαισθητοποίησης (Bennett) μπορεί να εφαρμοστεί ως μία απλή λίστα τεσσάρων βημάτων, με σκοπό να απομακρυνθούμε από τον εθνοκεντρισμό και να κατανοήσουμε πώς άλλες κουλτούρες διαφέρουν αλλά και μοιάζουν με την δική μας. Δίνουμε έμφαση στην προσαρμογή της συμπεριφοράς σε διαφορετικά πολιτισμικά πλαίσια και στη συμφιλίωση των πολιτισμικών διαφορών, προκειμένου να μάθουμε και να δημιουργήσουμε αξία από τις διαπολιτισμικές αλληλεπιδράσεις. "</string>
+    <string name="activity1_queHeading" translatable="false">Τέσσερα βήματα για την διαπολιτισμική ευαισθητοποίηση</string>
+    <string name="activity2_heading" translatable="false">Άσκηση 2: Σε τι αναφέρεται το σχόλιο;</string>
+    <string name="activity2_instructions" translatable="false">Η προσαρμογή με μια νέα κατάσταση ή κουλτούρα, μπορεί να είναι δύσκολη. Υπάρχει, πάντα, μια περίοδος αβεβαιότητας και άγχους. Πρέπει να αντιμετωπίσουμε την ασάφεια και τις νέες νόρμες με τρόπους επικοινωνίας/συμπεριφοράς. Ορισμένοι άνθρωποι περνούν από παρόμοιες φάσεις κατά την περίοδο προσαρμογής. Μπορείς να αντιστοιχίσεις τις δηλώσεις αυτών των ανθρώπων με την περιγραφή του σταδίου στο οποίο βρίσκονται;</string>
+    <string name="match_pic_heading" translatable="false">Αντιστοίχισε τις παραπάνω δηλώσεις με τις εικόνες.</string>
     <string name="age_drop_down_text">Η ηλικία σου</string>
     <string name="select_language">Επιλογή γλώσσας</string>
     <string name="select_age">επιλέξτε ηλικία</string>
     <string name="Login">Εγγραφή</string>
     <string name="Username">Όνομα χρήστη</string>
-    <string name="accessCode">Έχεις ένα κωδικό σύνδεσης;</string>
-    <string name="accessCode_Dialog_text">Εισήγαγε κωδικό σύνδεσης</string>
+    <string name="accessCode">Έχεις ένα κωδικό πρόσβασης;</string>
+    <string name="accessCode_Dialog_text">Εισήγαγε κωδικό πρόσβασης</string>
     <string name="Done">Τέλος</string>
     <string name="messageEdittext_hint">Γράψε ένα μήνυμα...</string>
     <string name="sendBTN_txt">Αποστολή</string>
@@ -53,23 +53,23 @@
     <string name="mainpage_ex_heading">Ασκήσεις</string>
     <string name="mainpage_settings_heading">Ρυθμίσεις</string>
     <string name="Accountlogin">Σύνδεση Λογαριασμού</string>
-    <string name="Grade">κλάση</string>
-    <string name="Returntochat">Πίσω (γύρνα πίσω)</string>
+    <string name="Grade">Κλάση</string>
+    <string name="Returntochat">Πίσω</string>
     <string name="mcqfeedbacktitletext">Αξιολόγηση</string>
     <string name="AccountRegister">Εγγραφή Λογαριασμού</string>
     <string name="Downloaded_Materials">Κατεβασμένα υλικά</string>
-    <string name="Setting_changeMateriallanguage">Υλική γλώσσα</string>
+    <string name="Setting_changeMateriallanguage">Γλώσσα υλικού</string>
     <string name="Select_material_language">Επιλέξτε τη γλώσσα του υλικού</string>
-    <string name="no_downloads_available">Δεν υπάρχουν διαθέσιμα κατεβασμένα υλικά!!</string>
-    <string name="Already_have_an_account">Έχετε ήδη λογαριασμό?</string>
+    <string name="no_downloads_available">Δεν υπάρχουν διαθέσιμα κατεβασμένα υλικά!</string>
+    <string name="Already_have_an_account">Έχετε ήδη λογαριασμό;</string>
     <string name="True">Αληθινό</string>
-    <string name="False">ψευδές</string>
+    <string name="False">Ψευδές</string>
     <string name="German">Γερμανικά</string>
     <string name="Spanish">Ισπανικά</string>
     <string name="English">Αγγλικά</string>
-    <string name="Greek">Ελληνική</string>
+    <string name="Greek">Ελληνικά</string>
     <string name="Choose_an_answer">Επιλέξτε μια απάντηση</string>
-    <string name="Setting_Contact_us_dialog_title">επικοινωνήσω με την ομάδα</string>
+    <string name="Setting_Contact_us_dialog_title">Θέλω να επικοινωνήσω με την ομάδα</string>
     <string name="contact_team_text">Μπορείτε να επικοινωνήσετε μαζί μας χρησιμοποιώντας το email μας: seeds.members@listserv.dfn.de</string>
 
 
