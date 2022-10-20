@@ -37,7 +37,7 @@
     <string name="activity1_queHeading" translatable="false">Τέσσερα βήματα για την διαπολιτισμική ευαισθητοποίηση</string>
     <string name="activity2_heading" translatable="false">Άσκηση 2: Σε τι αναφέρεται το σχόλιο;</string>
     <string name="activity2_instructions" translatable="false">Η προσαρμογή με μια νέα κατάσταση ή κουλτούρα, μπορεί να είναι δύσκολη. Υπάρχει, πάντα, μια περίοδος αβεβαιότητας και άγχους. Πρέπει να αντιμετωπίσουμε την ασάφεια και τις νέες νόρμες με τρόπους επικοινωνίας/συμπεριφοράς. Ορισμένοι άνθρωποι περνούν από παρόμοιες φάσεις κατά την περίοδο προσαρμογής. Μπορείς να αντιστοιχίσεις τις δηλώσεις αυτών των ανθρώπων με την περιγραφή του σταδίου στο οποίο βρίσκονται;</string>
-    <string name="match_pic_heading" translatable="false">Αντιστοίχισε τις παραπάνω δηλώσεις με τις εικόνες.</string>
+    <string name="match_pic_heading" >Αντιστοίχισε τις παραπάνω δηλώσεις με τις εικόνες.</string>
     <string name="age_drop_down_text">Η ηλικία σου</string>
     <string name="select_language">Επιλογή γλώσσας</string>
     <string name="select_age">επιλέξτε ηλικία</string>

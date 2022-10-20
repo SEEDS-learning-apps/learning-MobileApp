@@ -195,11 +195,18 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     }
 
     fun getQuiz(id: String) {
+        viewModel.getQuiz(id)
         viewModel.quizList.observe(viewLifecycleOwner, Observer {
             Log.d(ContentValues.TAG, "OnCreate: $it")
-
+           // Toast.makeText(context, it.size.toString(), Toast.LENGTH_SHORT).show()
 
             //  viewModel.getAllTopics()
+
+
+            if (quizez.size>0)
+            {
+                clearValues()
+            }
 
             quizez.addAll(listOf(it))
             var user: HashMap<String, String> =  session.getUserDetails()
@@ -218,17 +225,19 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
 
 
-
             for (item in quizez)
             {
                 for (i in item)
                 {
+
                     Quiz_access = i.access
-                   required_Access_Code =  i.accessCode
+                    required_Access_Code =  i.accessCode
                     quest.add(i)
                     question.addAll((i.allQuestions))
                     question.sortBy { i -> i.sequence }
 
+                }
+            }
                     //  question.filter { i.ageGroup == ageGroup }
 
                     for (k in question)
@@ -260,36 +269,24 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                         }
                     }
 
-                }
-            }
-
-
-
-            quiz = question as ArrayList<AllQuestion>
-
-
 
             Log.d("quizez", question.toString())
             //  Toast.makeText(this.requireContext(), quizez.toString(), Toast.LENGTH_SHORT).show()
 
         })
 
-        for (item in quiz)
-        {
-            //Log.d("daba", item.file)
-
-        }
-
-
-        viewModel.getQuiz(id)
-
+        quiz = question as ArrayList<AllQuestion>
         load_material()
-
-
+//        for (item in quiz)
+//        {
+//            //Log.d("daba", item.file)
+//
+//        }
 
 
         viewModel.errorMessage.observe(this) {
             Toast.makeText(this.requireContext(), "No quiz available", Toast.LENGTH_SHORT).show()
+
         }
 
 
@@ -308,11 +305,12 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
     override fun onResume() {
         super.onResume()
-        // Toast.makeText(requireContext(), "onResume", Toast.LENGTH_SHORT).show()
+       //  Toast.makeText(requireContext(), "onResume", Toast.LENGTH_SHORT).show()
         APP_MODE = checkAppMode()
         checklang()
         isOnline(this.requireContext())
         CheckAccessCode()
+       // clearValues()
         Log.d("ChatFragment", username)
 
 //        Toast.makeText(this.requireContext(), "Hello $username", Toast.LENGTH_SHORT).show()
@@ -641,7 +639,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
                         //customMsg(topic_name)
 
-                        Log.d("taap", filterd_topicss.toString())
                     }
 
                     adapter.publishSuggestion(filterd_topicss)
@@ -872,8 +869,11 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                 session.save_topicID(su)
                 selected_topicID = su
                 getQuiz(su.trim())
+                clearValues()
+
                 //
-            // Log.d("jaaga", su.replace("}", ""))
+
+             Log.d("jaaga", su.replace("}", ""))
             }
             else if (message._id.contains("/inform_new{\"subject\":"))
             {
@@ -946,6 +946,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                     if (quiz.isEmpty())
                     {
                         Toast.makeText(context, "no quiz available ", Toast.LENGTH_SHORT).show()
+                        loadOptions()
                     }
 
                     else
@@ -974,7 +975,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                             else
                             {
                                 Toast.makeText(context, "Quiz is private", Toast.LENGTH_SHORT).show()
-
+                                clearValues()
                                 ask_for_access_code()
                             }
 
@@ -998,10 +999,47 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
     }
 
-    private fun ask_for_access_code()
+    private fun loadOptions()
     {
         binding.etMessage.isEnabled = true
         binding.btnSend.isEnabled = true
+        clearValues()
+
+        if (language== "en")
+        {
+            sendMessagee("/user_stop{\"subject\":\"STOP\"}", display = false)
+        }
+        else if(language== "de")
+        {
+
+            sendMessagee("Ich möchte lernen", display = false)
+        }
+        else if (language== "es")
+        {
+
+            sendMessagee("quiero aprender", display = false)
+        }
+        else if(language == "el")
+        {
+            sendMessagee("Θέλω να μάθω", display = false)
+        }
+    }
+
+     private fun clearValues()
+    {
+        filterd_topics.clear()
+        question.clear()
+        quizez.clear()
+        quiz.clear()
+        quest.clear()
+    }
+
+    private fun ask_for_access_code()
+    {
+
+        binding.etMessage.isEnabled = true
+        binding.btnSend.isEnabled = true
+        //clearValues()
 
         if (language== "en")
         {
@@ -1011,13 +1049,16 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         else if(language== "de")
         {
             customMsg("Bitte geben Sie das Passwort in den Einstellungen ein und versuchen Sie es dann erneut",  false, msgBtn)
+            sendMessagee("Ich möchte lernen", display = false)
         }
         else if (language== "es")
         {
             customMsg("Por favor, introduzca la contraseña en los ajustes y vuelva a intentarlo", false, msgBtn)
+            sendMessagee("quiero aprender", display = false)
         }
         else if(language == "el")
         {
+            sendMessagee("Θέλω να μάθω", display = false)
             customMsg("Εισάγετε τον κωδικό πρόσβασης στις ρυθμίσεις και δοκιμάστε ξανά. ", false, msgBtn)
         }
 
@@ -1025,10 +1066,11 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
     private fun GotoSolveActivities()
     {
+
         val intent = Intent(context, QuizActivity::class.java).apply {
 
 
-            session.save_topic(msg )
+            session.save_topic(msg)
 
 
             // putExtra("filtered_topics", filterd_topics)
@@ -1195,8 +1237,10 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         //  val userMessag = UserMessage(user_id, message)
 
 
+
         if (filterd_topics.size > 0) {
             filterd_topics.clear()
+           // clearValues()
         }
         Log.d("user_id", m_androidId.toString())
 

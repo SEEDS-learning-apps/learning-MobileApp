@@ -29,7 +29,7 @@
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="mcq_positive_feedback" translatable="false">Results</string>
     <string name="mcq_positive_congratulations">Congratulations</string>
-    <string name="loading">Loading...!!</string>
+    <string name="loading" translatable="false">Loading...!!</string>
     <string name="Mcq_Activity" translatable="false">Mcq Activity</string>
     <string name="activity1_heading" translatable="false"> Match these statements to following answers.</string>
     <string name="activity1_instructions" translatable="false">"One of the models for intercultural competence (Bennett) can be applied as a simple checklist of four steps, trying to move away from ethnocentrism towards an understanding some of the ways in which other cultures are similar to and different from our own. We emphasize adapting behavior in response to differing cultural contexts and reconciling cultural differences in order to learn or create value from cross-cultural interactions. "</string>
@@ -44,7 +44,7 @@
     <string name="Username">Username</string>
     <string name="accessCode">Do you have an access code?</string>
     <string name="accessCode_Dialog_text">Enter access code</string>
-    <string name="accessCodehere">code here</string>
+    <string name="accessCodehere" translatable="false">code here</string>
     <string name="Done">Done</string>
     <string name="messageEdittext_hint">Type a message...</string>
     <string name="sendBTN_txt">Send</string>

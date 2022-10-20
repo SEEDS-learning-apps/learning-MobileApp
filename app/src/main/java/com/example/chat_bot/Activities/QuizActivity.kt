@@ -25,6 +25,7 @@ import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSViewModelFact
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSApi
 import com.example.chat_bot.ui.quiz_adapter
 import com.example.chat_bot.utils.SessionManager
+import com.example.chat_bot.utils.Time
 import kotlinx.coroutines.*
 
 
@@ -112,6 +113,13 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
                         intent.getSerializableExtra("filtered_topics") as ArrayList<Topics>
                     topic_name = intent.getSerializableExtra("selected_topic").toString()
                     question = intent.getSerializableExtra("Quiz") as ArrayList<AllQuestion>
+
+                    question.distinctBy { i->i._id }
+                   // question.distinct()
+                  //  Toast.makeText(this@QuizActivity, question.size.toString(), Toast.LENGTH_SHORT).show()
+
+
+
                     downloadedQuiz =
                         intent.getSerializableExtra("Whole Quest") as ArrayList<QuestItem>
 
@@ -305,9 +313,11 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
         else
         {
             var userDetails = session.getUserDetails()
+            val timeStamp = Time.timeStamp()
             user_name = userDetails["name"].toString()
 
             downloadedQuiz.forEach { it.username = user_name
+                it.time = timeStamp
 
                 var dao: SeedsDao = SeedsDatabase.getInstance(this).seedsDao
 

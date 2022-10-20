@@ -45,7 +45,7 @@ class dwnQuizAdapter(val context: Context):  RecyclerView.Adapter<dwnQuizAdapter
         val timeStamp = Time.timeStamp()
 
 
-        holder.binding.TimeStampofDownload.text = timeStamp
+        holder.binding.TimeStampofDownload.text = activityMaterial.time.toString()
         holder.binding.topic1.text = activityMaterial.topic
         holder.binding.downloadBTN.setOnClickListener {
 

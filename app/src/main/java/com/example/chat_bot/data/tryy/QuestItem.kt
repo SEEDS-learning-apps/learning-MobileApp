@@ -20,7 +20,7 @@ data class QuestItem  (
     val language: String,
     val noOfQuestions: String,
     val subId: String,
-    val time: Int,
+    var time: String,
     val access: Boolean,
     val accessCode: String,
     val topic: String,
