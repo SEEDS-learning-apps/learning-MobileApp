@@ -54,7 +54,7 @@ class Login : AppCompatActivity() {
         materialLanguage = ""
         session = SessionManager(applicationContext)
 
-        checkLogin()
+
         checklang()
         viewModel = ViewModelProvider(this, SEEDSViewModelFact(SEEDSRepository(retrofitService)))
             .get(SEEDSViewModel::class.java)
@@ -102,8 +102,8 @@ class Login : AppCompatActivity() {
         }
 
         binding.registerTv.setOnClickListener { register() }
-       // var conn: InternetConnection = fal
-       // conn.isOnline(this)
+        // var conn: InternetConnection = fal
+        // conn.isOnline(this)
         getDevID()
         hideActionBar()
 
@@ -128,19 +128,7 @@ class Login : AppCompatActivity() {
 
     }
 
-    private fun checkLogin() {
-        if(session.isLoggedIn())
-        {
-            val intent = Intent(this, HomeActivity::class.java)
-                .setAction(Intent.ACTION_VIEW)
-                .setData(Uri.parse("success"))
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            startActivity(intent)
-            finish()
-        }
 
-    }
 //    private fun dologin() {
 //        user_name = binding.usernameEt.text.toString().trim()
 //
@@ -345,10 +333,10 @@ class Login : AppCompatActivity() {
             else
             {
                 checklang()
-                 dao.insertUser(User(
-                 onlineUserData.data.name,onlineUserData.data.age,
-                 onlineUserData.data.country,onlineUserData.data.grade,
-                 onlineUserData.data.language, onlineUserData.data.dev_id,materialLanguage))
+                dao.insertUser(User(
+                    onlineUserData.data.name,onlineUserData.data.age,
+                    onlineUserData.data.country,onlineUserData.data.grade,
+                    onlineUserData.data.language, onlineUserData.data.dev_id,materialLanguage))
                 session.save_materialLangPref(materialLanguage)
                 session.save_details(onlineUserData.data.name,onlineUserData.data.age,onlineUserData.data.grade,materialLanguage)
                 goToLoginActivity()
@@ -376,27 +364,27 @@ class Login : AppCompatActivity() {
         try {
 
 
-        val dao: SeedsDao = SeedsDatabase.getInstance(this).seedsDao
-        lifecycleScope.launch { dao.getUser(user_name)
+            val dao: SeedsDao = SeedsDatabase.getInstance(this).seedsDao
+            lifecycleScope.launch { dao.getUser(user_name)
 
-            var user: List<User> = dao.getUser(user_name)
+                var user: List<User> = dao.getUser(user_name)
 
-            if (user.isNotEmpty() )
-            {
-                user.forEach {
+                if (user.isNotEmpty() )
+                {
+                    user.forEach {
 
-                    session.save_details(it.username, it.age, it.grade, it.preferredmaterialLanguage)
+                        session.save_details(it.username, it.age, it.grade, it.preferredmaterialLanguage)
+                    }
+
+                    Log.d("RoomDb", user.toString())
+
+                }
+                else
+                {
+                    Log.d("RoomDb", "Userlogin data not found")
                 }
 
-                Log.d("RoomDb", user.toString())
-
-            }
-            else
-            {
-                Log.d("RoomDb", "Userlogin data not found")
-            }
-
-            Log.d("login", user.toString())
+                Log.d("login", user.toString())
 
             }
         }catch (e: Exception)

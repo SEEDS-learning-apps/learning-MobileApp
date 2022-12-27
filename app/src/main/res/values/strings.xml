@@ -80,6 +80,10 @@
     <string name="Setting_Contact_us_dialog_title">Contact team</string>
     <string name="close">close</string>
     <string name="contact_team_text">You can contact us using our email: seeds.members@listserv.dfn.de</string>
+    <string name="GET_STARTED">GET STARTED</string>
+    <string name="Already_User">ALREADY USER</string>
+    <string name="what_is_seeds">What is SEEDS?</string>
+    <string name="Languages">Languages</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
