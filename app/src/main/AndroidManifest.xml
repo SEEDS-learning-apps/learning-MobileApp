@@ -16,6 +16,19 @@
         android:theme="@style/Theme.Chat_Bot"
         android:usesCleartextTraffic="true">
 
+<!--        Introduction Screen-->
+        <activity
+            android:name=".Activities.mainintroscreen"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity
+            android:name=".Activities.IntoductionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+<!--           Welcome Page-->
+        </activity>
         <activity
             android:name=".Activities.welcomepage"
             android:exported="true" />
@@ -93,12 +106,6 @@
             android:name=".Activities.Login"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".Activities.MainActivity"

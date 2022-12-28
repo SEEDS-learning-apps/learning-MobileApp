@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import com.example.chat_bot.Activities.HomePage.HomeActivity
-import com.example.chat_bot.Activities.Login
 import com.example.chat_bot.R
-import com.example.chat_bot.Rasa.rasaMsg.Button
 import com.example.chat_bot.utils.SessionManager
 
 class welcomepage : AppCompatActivity() {
@@ -33,6 +31,13 @@ class welcomepage : AppCompatActivity() {
         txt.setOnClickListener {
             startActivity(Intent(this,Login::class.java))
         }
+
+        val GetStartedbtn = findViewById<android.widget.Button>(R.id.Get_started_button)
+
+        GetStartedbtn.setOnClickListener {
+            startActivity(Intent(this, IntoductionActivity::class.java))
+        }
+
     }
     private fun checkLogin() {
         if(session.isLoggedIn())
