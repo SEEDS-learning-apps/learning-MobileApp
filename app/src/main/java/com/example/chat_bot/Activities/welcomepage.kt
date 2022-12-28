@@ -27,7 +27,7 @@ class welcomepage : AppCompatActivity() {
             AlreadyUserbtn.setOnClickListener{
                 startActivity(Intent(this, Login::class.java))
             }
-        
+
 
         val txt = findViewById<TextView>(R.id.textView)
         txt.setOnClickListener {
