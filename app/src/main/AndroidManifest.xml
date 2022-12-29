@@ -25,7 +25,7 @@
 <!--           Welcome Page-->
         </activity>
         <activity
-            android:name=".Activities.welcomepage"
+            android:name=".Activities.WelcomePage"
             android:exported="true" />
         <activity
             android:name=".Activities.acivity.OpenEnded"
