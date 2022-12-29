@@ -18,12 +18,7 @@
 
 <!--        Introduction Screen-->
         <activity
-            android:name=".Activities.mainintroscreen"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
-        <activity
-            android:name=".Activities.IntoductionActivity"
+            android:name=".Activities.IntroductionActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
@@ -80,19 +75,12 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name=".Activities.Register"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
         <activity
             android:name=".Activities.Splash"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-            >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -104,9 +92,7 @@
             android:exported="true" />
         <activity
             android:name=".Activities.Login"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
-
-        </activity>
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name=".Activities.MainActivity"
             android:exported="true" />

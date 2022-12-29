@@ -35,7 +35,7 @@ class welcomepage : AppCompatActivity() {
         val GetStartedbtn = findViewById<android.widget.Button>(R.id.Get_started_button)
 
         GetStartedbtn.setOnClickListener {
-            startActivity(Intent(this, IntoductionActivity::class.java))
+            startActivity(Intent(this, IntroductionActivity::class.java))
         }
 
     }
@@ -50,6 +50,5 @@ class welcomepage : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
     }
 }
