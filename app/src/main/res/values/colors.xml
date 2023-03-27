@@ -24,5 +24,16 @@
     <color name="score_color">#FFD6D2D2</color>
     <color name="settings_background">#003938</color>
 
+<!--    Introduction screen-->
+    <color name="inactive">#C4C4C4</color>
+    <color name="active">#50C2C9</color>
+    <color name="background">#F0F4F3</color>
+    <color name="buttontext">#50C2C9</color>
+    <color name="profile_card">#4D3DDCF1</color>
+    <color name="profile">#FECBF9FF</color>
+    <color name="type_a_message_colour">#212121</color>
+    <color name="message_send_box_colour">#C1D1E0</color>
+    <color name="mild_black">#1F1F1F</color>
+
 
 </resources>

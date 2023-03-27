@@ -4,48 +4,84 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Activities.HomePage.ChatFragment">
+    tools:context=".Activities.HomePage.ChatFragment"
+    android:id="@+id/fragment_container">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/background">
+
+        <ImageView
+            android:id="@+id/Dasboard_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:alpha="0.3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/education_tree" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_layout_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#E4E4E4"
+        android:layout_marginBottom="0dp"
+        android:background="@color/message_send_box_colour"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/et_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight=".5"
             android:background="@drawable/round_button"
             android:backgroundTint="@android:color/white"
             android:hint="@string/messageEdittext_hint"
             android:inputType="textShortMessage"
             android:padding="10dp"
-            android:textSize="20sp"
             android:singleLine="true"
             android:textAppearance="@style/text"
-            android:textColor="@color/black"
-            android:textColorHint="@color/editTextHint" />
+            android:textColor="#232323"
+            android:textColorHint="@color/type_a_message_colour"
+            android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/btn_send"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:textSize="20sp"
-            android:background="@drawable/round_button"
-            android:backgroundTint="@color/seed_light_blue"
-            android:text="@string/sendBTN_txt"
-            android:textAppearance="@style/text"
-            android:textColor="@android:color/white" />
 
+        <FrameLayout
+            android:layout_width="75dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/send_button_round">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_send"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/send_button_vector" />
+        </FrameLayout>
     </LinearLayout>
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/typingStatus"
         android:layout_width="60dp"
@@ -64,13 +100,20 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/ll_layout_bar"
         android:layout_below="@+id/dark_divider"
-        tools:itemCount="2"
-        tools:listitem="@layout/message_item" />
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+                android:textAlignment="viewEnd"
+        tools:itemCount="3"
+        tools:listitem="@layout/message_item">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
     <View
+        android:id="@+id/dark_divider"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/seed_dark_blue"
-        android:id="@+id/dark_divider"/>
+        android:layout_height="0dp"
+        android:background="@color/white" />
+
 
 
 

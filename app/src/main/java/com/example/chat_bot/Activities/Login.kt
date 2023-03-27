@@ -9,11 +9,16 @@ import android.os.Bundle
 import android.provider.Settings.Secure
 import android.provider.Settings.Secure.ANDROID_ID
 import android.util.Log
+import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.chat_bot.Activities.HomePage.HomeActivity
+import com.example.chat_bot.Activities.Welcomepage.WelcomePage
 import com.example.chat_bot.R
 import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.Entities.OnlineUserData
@@ -21,14 +26,13 @@ import com.example.chat_bot.Room.SeedsDatabase
 import com.example.chat_bot.data.User
 import com.example.chat_bot.data.Userz
 import com.example.chat_bot.databinding.ActivityLoginBinding
+import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSApi
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSRepository
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSViewModel
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSViewModelFact
-import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSApi
 import com.example.chat_bot.utils.SessionManager
 import com.yariksoffice.lingver.Lingver
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 
 class Login : AppCompatActivity() {
@@ -46,6 +50,7 @@ class Login : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(android.R.style.Theme_Light_NoTitleBar_Fullscreen)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -53,12 +58,17 @@ class Login : AppCompatActivity() {
 
         materialLanguage = ""
         session = SessionManager(applicationContext)
-
-        checkLogin()
         checklang()
         viewModel = ViewModelProvider(this, SEEDSViewModelFact(SEEDSRepository(retrofitService)))
             .get(SEEDSViewModel::class.java)
 
+
+        binding.backgroundImage?.setOnClickListener{
+            binding.usernameEt.clearFocus()
+            val foc = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+            foc.hideSoftInputFromWindow(binding.usernameEt.windowToken, 0)
+        }
 
         binding.btnLogin.setOnClickListener{
             if (isOnline(this))
@@ -93,19 +103,11 @@ class Login : AppCompatActivity() {
                 }
             }
 
-
-//            val intent = Intent(this@Login, HomeActivity::class.java)
-//                .setAction(Intent.ACTION_VIEW)
-//                .setData(Uri.parse("success"))
-//            startActivity(intent)
-//            finish()
         }
 
         binding.registerTv.setOnClickListener { register() }
-       // var conn: InternetConnection = fal
-       // conn.isOnline(this)
+
         getDevID()
-        hideActionBar()
 
     }
 
@@ -120,6 +122,7 @@ class Login : AppCompatActivity() {
             val intent = Intent(this, Register::class.java)
             startActivity(intent)
             finish()
+            overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
         }
         else
         {
@@ -128,80 +131,15 @@ class Login : AppCompatActivity() {
 
     }
 
-    private fun checkLogin() {
-        if(session.isLoggedIn())
-        {
-            val intent = Intent(this, HomeActivity::class.java)
-                .setAction(Intent.ACTION_VIEW)
-                .setData(Uri.parse("success"))
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            startActivity(intent)
-            finish()
-        }
-
-    }
-//    private fun dologin() {
-//        user_name = binding.usernameEt.text.toString().trim()
-//
-//
-//
-//        val user = User(user_name, "",  "germany", "", "", "" )
-//
-//        if (isOnline(this))
-//        {
-//            if (user_name != "") {
-//                viewModel.userList.observe(this, Observer {  response->
-//
-//                    Log.d("loginn", response.token)
-//                    Log.d("loginn", response.auth.toString())
-//
-//
-//
-////                    if (response.code()== 404)
-////                    {
-////                        Toast.makeText(this, "Account not found!!", Toast.LENGTH_SHORT).show()
-////                    }
-////                    else if (response.code() == 200)
-////                    {
-//                        session.createLoginSession(user_name, m_androidId.toString())
-//                        //  session.save_details(user_age, user_grade)
-//                        val intent = Intent(this, HomeActivity::class.java)
-//                            .setAction(Intent.ACTION_VIEW)
-//                            .setData(Uri.parse("success"))
-//                        startActivity(intent)
-//                        finish()
-//
-//                       // Log.d("user", response.code().toString())
-//
-//                   // }
-//
-////                    else
-////                        Log.d("user", response.body().toString())
-//                    // Toast.makeText(this, response.body().toString(), Toast.LENGTH_SHORT).show()
-//                })
-//                viewModel.login_user(user)
-//
-//                viewModel.errorMessage.observe(this) { response ->
-//
-//                    Log.d("userr", response.toString())
-//                }
-//            }
-//            else
-//            {
-//                Toast.makeText(this, "please enter username", Toast.LENGTH_SHORT).show()
-//            }
-//        }
-//        else
-//        {
-//            Toast.makeText(this, "please check your internet connection", Toast.LENGTH_SHORT).show()
-//        }
-//        viewModel.login_user(user)
-//    }
 
     private fun dologin() {
         user_name = binding.usernameEt.text.toString().trim()
 
+        binding.usernameEt.setOnFocusChangeListener{view,hasFocus ->
+            if (!hasFocus){
+
+            }
+        }
 
 
         setlanguage()
@@ -211,59 +149,6 @@ class Login : AppCompatActivity() {
 
         val user = Userz(user_name, "6-7", "germany", "German", "10", m_androidId.toString())
 
-//        getUserInfoFromLocalDB(user_name)
-//
-//        if (isOnline(this)) {
-//            if (user_name != "") { viewModel.login_user(user)
-//                viewModel.myresponse.observe(this, Observer { response ->
-//
-//                    response.isSuccessful
-//                    if (response.message() == "Not Found" ||response.errorBody()?.equals("404") == true)
-//                    {
-//                        Toast.makeText(this@Login, "Student not found", Toast.LENGTH_SHORT).show()
-//                    }
-//
-//                    else if (response.body() != null)
-//                    {
-//                        if (response.body()!!.auth)
-//                        {
-//                            response.body()!!.token
-//                            response.body()!!.auth
-//                            session.createLoginSession(user_name, m_androidId.toString())
-//                            //  session.save_details(user_age, user_grade)
-//                            val intent = Intent(this@Login, HomeActivity::class.java)
-//                                .setAction(Intent.ACTION_VIEW)
-//                                .setData(Uri.parse("success"))
-//                            startActivity(intent)
-//                            finish()
-//                        }
-//
-//                    }
-//
-//
-//
-//                    Log.d("userr", " response.body = ${response.body()}")
-//                    Log.d("userr", "response.errorBody() = ${response.errorBody()}")
-//                    Log.d("userr", "response.message() = ${response.message()}")
-//
-////                    if (response.isSuccessful) {
-////                        Log.d("user", response.body().toString())
-////                        Log.d("user", response.code().toString())
-////                        session.createLoginSession(user_name, m_androidId.toString())
-////                        //  session.save_details(user_age, user_grade)
-////                        val intent = Intent(this@Login, HomeActivity::class.java)
-////                            .setAction(Intent.ACTION_VIEW)
-////                            .setData(Uri.parse("success"))
-////                        startActivity(intent)
-////                        finish()
-////                    } else
-////                        Log.d("user", response.body().toString())
-////                    Toast.makeText(this@Login, response.body().toString(), Toast.LENGTH_SHORT).show()
-//
-//                })}
-//
-//            else {  Toast.makeText(this, "Please enter username", Toast.LENGTH_SHORT).show()  }
-//        }
     }
 
     private fun setlanguage() {
@@ -336,7 +221,7 @@ class Login : AppCompatActivity() {
             if (dao.isUserExists(onlineUserData.data.name))
             {
                 goToLoginActivity()
-                Toast.makeText(this@Login, "User Exists", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this@Login, "User Exists", Toast.LENGTH_SHORT).show()
                 Log.d("jaooo", language)
                 Log.d("jaooo", "Material: $materialLanguage")
 
@@ -345,15 +230,15 @@ class Login : AppCompatActivity() {
             else
             {
                 checklang()
-                 dao.insertUser(User(
-                 onlineUserData.data.name,onlineUserData.data.age,
-                 onlineUserData.data.country,onlineUserData.data.grade,
-                 onlineUserData.data.language, onlineUserData.data.dev_id,materialLanguage))
+                dao.insertUser(User(
+                    onlineUserData.data.name,onlineUserData.data.age,
+                    onlineUserData.data.country,onlineUserData.data.grade,
+                    onlineUserData.data.language, onlineUserData.data.dev_id,materialLanguage))
                 session.save_materialLangPref(materialLanguage)
                 session.save_details(onlineUserData.data.name,onlineUserData.data.age,onlineUserData.data.grade,materialLanguage)
                 goToLoginActivity()
 
-                Toast.makeText(this@Login, "User added to localDB", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this@Login, "User added to localDB", Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -365,6 +250,7 @@ class Login : AppCompatActivity() {
             .setData(Uri.parse("success"))
         startActivity(intent)
         finish()
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
         session.createLoginSession(user_name, m_androidId.toString())
 //               session.save_details(user_age, user_grade)
         session.save_materialLangPref(materialLanguage)
@@ -376,27 +262,27 @@ class Login : AppCompatActivity() {
         try {
 
 
-        val dao: SeedsDao = SeedsDatabase.getInstance(this).seedsDao
-        lifecycleScope.launch { dao.getUser(user_name)
+            val dao: SeedsDao = SeedsDatabase.getInstance(this).seedsDao
+            lifecycleScope.launch { dao.getUser(user_name)
 
-            var user: List<User> = dao.getUser(user_name)
+                var user: List<User> = dao.getUser(user_name)
 
-            if (user.isNotEmpty() )
-            {
-                user.forEach {
+                if (user.isNotEmpty() )
+                {
+                    user.forEach {
 
-                    session.save_details(it.username, it.age, it.grade, it.preferredmaterialLanguage)
+                        session.save_details(it.username, it.age, it.grade, it.preferredmaterialLanguage)
+                    }
+
+                    Log.d("RoomDb", user.toString())
+
+                }
+                else
+                {
+                    Log.d("RoomDb", "Userlogin data not found")
                 }
 
-                Log.d("RoomDb", user.toString())
-
-            }
-            else
-            {
-                Log.d("RoomDb", "Userlogin data not found")
-            }
-
-            Log.d("login", user.toString())
+                Log.d("login", user.toString())
 
             }
         }catch (e: Exception)
@@ -412,9 +298,7 @@ class Login : AppCompatActivity() {
         //Toast.makeText(this, m_androidId.toString(), Toast.LENGTH_SHORT).show()
         Log.d("DevID", m_androidId.toString())
     }
-    private fun hideActionBar() {
-        supportActionBar?.hide()
-    }
+
 
     fun isOnline(context: Context): Boolean {
         val connectivityManager =
@@ -439,11 +323,21 @@ class Login : AppCompatActivity() {
                 }
             }
         }
-//        Toast.makeText(
-//            this.requireContext(),
-//            "Connection not available",
-//            Toast.LENGTH_SHORT
-//        ).show()
+
         return false
     }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            val intent = Intent(this@Login, WelcomePage::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+
+
 }
+
+
+

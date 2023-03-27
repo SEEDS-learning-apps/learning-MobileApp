@@ -1,0 +1,10 @@
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/txt_lang_dropdwn"
+    android:layout_height="match_parent"
+    android:textSize="14sp"
+    android:padding="6.75dp"
+    android:textStyle="bold"
+    android:textColor="@color/white"
+    android:text="@string/select_language" />

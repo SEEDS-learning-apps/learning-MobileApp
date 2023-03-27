@@ -6,7 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".Activities.MainActivity"
     >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:orientation="horizontal">
 
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/navgraph" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_layout_bar"
@@ -53,7 +68,8 @@
         android:layout_marginTop="2dp"
         android:layout_marginBottom="-3dp"
         tools:itemCount="2"
-        tools:listitem="@layout/message_item" />
+        tools:listitem="@layout/message_item"
+        />
 
     <View
         android:layout_width="match_parent"

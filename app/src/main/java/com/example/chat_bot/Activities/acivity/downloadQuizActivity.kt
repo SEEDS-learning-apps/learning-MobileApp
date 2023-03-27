@@ -1,12 +1,20 @@
 package com.example.chat_bot.Activities.acivity
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.transition.Transition
 import android.util.Log
+import android.view.KeyEvent
 import android.view.View
+import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.chat_bot.Ac.DashboardFragment
+import com.example.chat_bot.Activities.HomePage.HomeActivity
+import com.example.chat_bot.Activities.Welcomepage.WelcomePage
+import com.example.chat_bot.R
 import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.Relations.UserAndMaterials
 import com.example.chat_bot.Room.Relations.UserAndMessage
@@ -27,7 +35,10 @@ class downloadQuizActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_download_quiz)
+
         binding = ActivityDownloadQuizBinding.inflate(layoutInflater)
 
         session = SessionManager(this)
@@ -36,6 +47,15 @@ class downloadQuizActivity : AppCompatActivity() {
 
         setContentView(binding.root)
         hideActionBar()
+
+        val backbtn = findViewById<ImageView>(R.id.Backbutton_downloadmaterials)
+
+        backbtn.setOnClickListener{
+            val intent = Intent (this.applicationContext, HomeActivity::class.java)
+            startActivity(intent)
+            finish()
+            overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -56,7 +76,7 @@ class downloadQuizActivity : AppCompatActivity() {
         lifecycleScope.launch{
 
          list =  dao.getMaterialsWithUsername(username)
-            list
+
 
             val user: List<UserAndMessage> = dao.getMessagesAndUserwithUsername(username)
             user
@@ -73,21 +93,8 @@ class downloadQuizActivity : AppCompatActivity() {
                 adapter.notifyItemInserted(list.size)
             }
 
-                //Toast.makeText(this.coroutineContext, "No downloads available", Toast.LENGTH_SHORT).show()
-
-
         }
 
-      // list = session.loadQuiz(this) as ArrayList<DowloadedQuiz>
-
-
-
-
-
-
-        //  Log.v(TAG, "ReCYCLE")
-
-        // }
 
     }
 
@@ -101,4 +108,5 @@ class downloadQuizActivity : AppCompatActivity() {
     private fun hideActionBar() {
         supportActionBar?.hide()
     }
+
 }

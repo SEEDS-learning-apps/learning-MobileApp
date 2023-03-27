@@ -8,23 +8,21 @@
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password" translatable="false">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="dummy_button" translatable="false">Dummy Button</string>
     <string name="dummy_content" translatable="false">DUMMY\nCONTENT</string>
     <string name="title_activity_splash" translatable="false">splash</string>
     <string name="splash_text">Learning is for everyone</string>
     <string name="splas_web" translatable="false">www.seeds.com</string>
-    <string name="create_password">type any password</string>
     <string name="Register_btn">Register</string>
-    <string name="username_register">Type any username of your choice</string>
+    <string name="username_register">Type a username</string>
     <string name="lang_drop_down_label">Languages</string>
     <string name="lang_drop_down_text">Select language</string>
     <string name="register_account">Create an account?</string>
     <string name="Setting_Feedback">Feedback</string>
     <string name="Setting_Contact">Contact us</string>
     <string name="Setting_Terms_of_use">Terms of use</string>
-    <string name="settings_powerd_by" translatable="false">Powered by seeds</string>
+    <string name="settings_powerd_by" translatable="false">Powered by SEEDS</string>
     <string name="Setting_logout">Sign Out</string>
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="mcq_positive_feedback" translatable="false">Results</string>
@@ -44,14 +42,14 @@
     <string name="Username">Username</string>
     <string name="accessCode">Do you have an access code?</string>
     <string name="accessCode_Dialog_text">Enter access code</string>
-    <string name="accessCodehere" translatable="false">code here</string>
+    <string name="accessCodehere" translatable="false">Code here</string>
     <string name="Done">Done</string>
     <string name="messageEdittext_hint">Type a message...</string>
     <string name="sendBTN_txt">Send</string>
     <string name="Next">Next</string>
     <string name="Setting_changelanguage">Interface language</string>
     <string name="mainpage_ex_heading">Exercises</string>
-    <string name="mainpage_settings_heading">Settings</string>
+    <string name="mainpage_Dashboard_heading">Dashboard</string>
     <string name="Accountlogin">Account login</string>
     <string name="mcqfeedbacktitletext" translatable="false">Feedback</string>
     <string name="loremipsum" translatable="false">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</string>
@@ -78,15 +76,57 @@
     <string name="Choose_an_answer">Choose an answer</string>
     <string name="your_score">Your score:</string>
     <string name="Setting_Contact_us_dialog_title">Contact team</string>
-    <string name="close">close</string>
-    <string name="contact_team_text">You can contact us using our email: seeds.members@listserv.dfn.de</string>
+    <string name="close">Close</string>
+    <string name="contact_team_text">You can contact our support team using the mail ID</string>
+    <string name="GET_STARTED">GET STARTED</string>
+    <string name="Already_User">ALREADY USER</string>
+    <string name="what_is_seeds">What is SEEDS?</string>
+    <string name="Languages">Languages</string>
+    <string name="Grade_register">Grade</string>
+    <!--    Introduction screen -->
+    //Headings
+    <string name="heading_one">Learning Application</string>
+    <string name="heading_two">Chatbot</string>
+    <string name="heading_three">Exercises and download materials</string>
+    <string name="heading_fourth">Activities</string>
+
+    //Description
+    <string name="desc_one">An Interactive learning application based on chatbot allowing students to learn using their android devices</string>
+    <string name="desc_two">Communicate with the chatbot to find your desired topics and more</string>
+    <string name="desc_three">Do some exercise in your favourite topics and also download materials for later reference</string>
+    <string name="desc_fourth">Check your activities anytime to stay motivated</string>
+    <string name="welcome2">WELCOME</string>
+    <string name="lets_go">LET\'S GO</string>
+    <string name="skip">Skip</string>
+    <string name="seeds_info">SEEDS is a project for supporting learning and education on the fringe of the digital sphere. Due to the lack of access to educational institutions and little or no equipment (Tablets, or Laptops and PCs) with necessary digital technologies, young people found it difficult to follow classes. ICT and above all the smartphone can be used here to mitigate this deficit. The needs and challenges of the target group must be taken into account (i.e. no up-to-date smartphones with outdated software). Our idea is to communicate learning content to vulnerable people in a new way by using chat bots.</string>
+    <string name="login_existing_account">Already an User? Login here.</string>
+    <string name="create_account">Create Account</string>
+
+    //Dashboard
+    <string name="Profile">Profile</string>
+    <string name="Learning_progress">Learning Progress</string>
+    <string name="Learning_cards">Learning Cards</string>
+    <string name="Download_materials">Download Materials</string>
+    <string name="Access_code">Access Code</string>
+    <string name="Settings">Settings</string>
+    <string name="Help">Help</string>
+    <string name="Signout">Sign Out</string>
+    <string name="Hello">Hello </string>
 
 
-    <!-- TODO: Remove or change this placeholder text -->
+    //Home Activity
+    <string name="press_back">Press back again to exit</string>
+    <string name="material_language">Material Language</string>
+    <string name="interface_language">Interface Language</string>
+    <string name="terms_of_use">Terms of use</string>
+    <string name="feedback">Feedback</string>
+    <string name="contact_us">Contact us</string>
+
+
     <string-array name="Languages">
-        <item>German</item>
-        <item>Spanish</item>
-        <item>Greek</item>
+        <item>Deutsch</item>
+        <item>Español</item>
+        <item>Ελληνικά</item>
         <item>English</item>
     </string-array>
 
@@ -109,11 +149,11 @@
     </string-array>
 
     <string-array name="grades">
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
+        <item>Grade 1</item>
+        <item>Grade 2</item>
+        <item>Grade 3</item>
+        <item>Grade 4</item>
+        <item>Grade 5</item>
 
     </string-array>
 

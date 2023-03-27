@@ -4,8 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/seed_dark_blue"
+    android:background="@color/background"
     tools:context=".Activities.Login">
+
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="32dp"
+        android:alpha="0.08"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/app_background" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,63 +42,58 @@
             android:layout_height="wrap_content"
             android:text="@string/Accountlogin"
             android:textAlignment="center"
-            android:textColor="@color/white"/>
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:alpha="0.7"
             android:paddingTop="50dp"
-            android:hint="@string/Username"
+            android:textColorHint="@android:color/black"
+            app:boxBackgroundColor="@color/background"
+            app:boxStrokeColor="@android:color/darker_gray"
             app:endIconMode="clear_text"
-            app:boxBackgroundColor="@color/editTextHint"
+            app:endIconTint="@android:color/darker_gray"
+            app:hintTextColor="@android:color/darker_gray"
             app:startIconDrawable="@drawable/ic_person"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:textColorHint="@color/white">
+            app:startIconTint="@color/black"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <EditText
+                android:id="@+id/username_et"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="58dp"
                 android:layout_gravity="center"
                 android:hint="@string/Username"
-                android:id="@+id/username_et">
+                android:textColor="@android:color/black"
+                android:singleLine="true"
+                android:imeOptions="actionGo"
+                android:inputType="text">
 
             </EditText>
         </com.google.android.material.textfield.TextInputLayout>
 
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:paddingTop="10dp"-->
-<!--            android:textColorHint="@color/white">-->
 
-<!--            <EditText-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:hint="Password"-->
-<!--                android:inputType="number"-->
-<!--                android:background="@color/editTextHint"-->
-<!--                android:id="@+id/password_et">-->
-
-<!--            </EditText>-->
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Login"
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_login"
-            android:layout_marginTop="10dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_button"
+            android:text="@string/Login" />
 
     </LinearLayout>
 
 
     <TextView
+        android:id="@+id/register_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/register_account"
-        android:id="@+id/register_tv"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@id/login_linear"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_linear" />

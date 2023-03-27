@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,104 +7,83 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Activities.HomePage.Chatzfrag">
 
-    <View
-        android:id="@+id/dark_divider"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@color/seed_dark_blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/message_list"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="188dp"
+               android:clipToPadding="false"
+               android:orientation="vertical"
+               android:overScrollMode="never"
+               android:padding="20sp"
+               app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+               app:layout_constraintBottom_toBottomOf="@+id/button_list"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintVertical_bias="1.0"
+               tools:layout_editor_absoluteX="8dp" />
 
-    <!--    <ScrollView-->
-    <!--        android:id="@+id/nest"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/dark_divider"-->
-    <!--        android:descendantFocusability="blocksDescendants">-->
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/button_list"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="64dp"
+               android:clipToPadding="false"
+               android:orientation="vertical"
+               android:overScrollMode="never"
+               android:padding="20sp"
+               app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+               app:layout_constraintBottom_toTopOf="@+id/et_message"
+               tools:layout_editor_absoluteX="8dp" />
 
-    <!--        <LinearLayout-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:orientation="vertical"-->
-    <!--            android:id="@+id/lala">-->
+           <com.airbnb.lottie.LottieAnimationView
+               android:id="@+id/typingStatus"
+               android:layout_width="60dp"
+               android:layout_height="60dp"
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_below="@id/dark_divider"
-        android:layout_above="@id/ll_layout_bar">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/message_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp" />
+               android:layout_marginStart="8dp"
+               android:tint="@color/seed_dark_blue"
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/button_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp" />
-    </LinearLayout>
-    <!--        </LinearLayout>-->
-    <!--    </ScrollView>-->
+               android:visibility="invisible"
+               app:layout_constraintBottom_toBottomOf="@+id/button_list"
+               app:layout_constraintStart_toStartOf="parent"
+               app:lottie_autoPlay="true"
+               app:lottie_loop="true"
+               app:lottie_rawRes="@raw/typing_animation"
+               app:lottie_repeatCount="50" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/typingStatus"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_above="@id/ll_layout_bar"
-        android:tint="@color/seed_dark_blue"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/ll_layout_bar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/typing_animation"
-        app:lottie_repeatCount="50" />
-
-    <LinearLayout
-        android:id="@+id/ll_layout_bar"
+    <EditText
+        android:id="@+id/et_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#E4E4E4"
-        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:layout_weight=".5"
+        android:background="@drawable/round_button"
+        android:backgroundTint="@android:color/white"
+        android:hint="@string/messageEdittext_hint"
+        android:inputType="textShortMessage"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="#282828"
+        android:textColorHint="@color/editTextHint"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintEnd_toStartOf="@+id/frameLayout"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <EditText
-            android:id="@+id/et_message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight=".5"
-            android:background="@drawable/round_button"
-            android:backgroundTint="@android:color/white"
-            android:hint="@string/messageEdittext_hint"
-            android:inputType="textShortMessage"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textColorHint="@color/editTextHint" />
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:background="@drawable/send_button_round"
+        app:layout_constraintBottom_toBottomOf="@+id/et_message"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/btn_send"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@drawable/round_button"
-            android:backgroundTint="@color/seed_light_blue"
-            android:text="@string/sendBTN_txt"
-            android:textColor="@android:color/white" />
+            android:src="@drawable/send_button_vector" />
+    </FrameLayout>
 
-    </LinearLayout>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

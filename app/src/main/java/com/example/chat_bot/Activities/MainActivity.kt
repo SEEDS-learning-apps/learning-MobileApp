@@ -1,14 +1,16 @@
 package com.example.chat_bot.Activities
 
-import android.content.Context
+//import com.example.chat_bot.Manifest
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.util.Log
-import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.chat_bot.Rasa.rasaMsg.BotResponse
+import com.example.chat_bot.Activities.HomePage.ChatFragment
+import com.example.chat_bot.R
 import com.example.chat_bot.data.Message
 import com.example.chat_bot.data.Topics
 import com.example.chat_bot.data.msgAdapter
@@ -20,7 +22,6 @@ import com.example.chat_bot.utils.Constants.RCV_ID
 import com.example.chat_bot.utils.Time.timeStamp
 import kotlinx.coroutines.*
 
-
 class MainActivity : AppCompatActivity(), msgAdapter.Callbackinter{
 
     private lateinit var adapter: msgAdapter
@@ -29,18 +30,28 @@ class MainActivity : AppCompatActivity(), msgAdapter.Callbackinter{
     var msgBtn: List<com.example.chat_bot.Rasa.rasaMsg.Button> = arrayListOf()
 
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(android.R.style.Theme_Light_NoTitleBar_Fullscreen)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
 
         recyclerView()
         clickEvents()
         customMsg("Hello, Seeds Asssitant here!!, How may i help you?")
 
         Log.v(TAG, "In main")
+
+
+
+
+
     }
+
 
     override fun onStart() {
         super.onStart()
@@ -141,5 +152,7 @@ class MainActivity : AppCompatActivity(), msgAdapter.Callbackinter{
     override fun passResultCallback(message: Topics) {
         TODO("Not yet implemented")
     }
+
+
 }
 

@@ -71,7 +71,7 @@ class msgAdapter(val jkt: Callbackinter, val context: Context) :  RecyclerView.A
 
                 }
                 holder.binding.senderMsgTime.apply { text = current_msg.time }
-                holder.binding.tvBotMessage.visibility = View.GONE
+                holder.binding.tvBotMessage?.visibility  = View.GONE
                 holder.binding.suggestionView.visibility = View.GONE
                 holder.binding.botMsgTime.visibility = View.GONE
             }
@@ -90,7 +90,7 @@ class msgAdapter(val jkt: Callbackinter, val context: Context) :  RecyclerView.A
                 }
                 else
                 {
-                    holder.binding.tvBotMessage.apply{
+                    holder.binding.tvBotMessage?.apply{
                         text = current_msg.message
                         visibility = View.VISIBLE
                     }
@@ -122,7 +122,7 @@ class msgAdapter(val jkt: Callbackinter, val context: Context) :  RecyclerView.A
 
 
 
-        holder.binding.tvBotMessage.visibility = View.GONE
+        holder.binding.tvBotMessage?.visibility   = View.GONE
         holder.binding.botMsgTime.visibility = View.GONE
         holder.binding.suggestionView.visibility = View.VISIBLE
 

@@ -4,6 +4,8 @@
 <!--        <item name="android:background">@color/black_overlay</item>-->
     </style>
 
+
+
     <style name="Theme.AppCompat.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -27,4 +29,23 @@
     <style name="messageStyle">Tablayout
         <item name="android:textSize">20sp</item>
     </style>
+
+    <style name="Seeds">Seeds_app</style>
+
+    <style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+    //Dialog box
+
+    <style name="PauseDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowAnimationStyle">@style/PauseDialogAnimation</item>
+    </style>
+
+    <style name="PauseDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/flip_in</item>
+        <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
+    </style>
+
 </resources>

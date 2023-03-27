@@ -6,29 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".Activities.HomePage.HomeActivity">
 
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabslayout">
+    </FrameLayout>
 
+    <FrameLayout
+        android:id="@+id/nav_host_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <FrameLayout
+    android:id="@+id/frame_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabslayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/seed_light_blue"
+        android:background="@drawable/custom_button_tab"
+        app:layout_constraintBottom_toTopOf="@+id/viewpager"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:tabGravity="center"
-        app:tabMode="fixed"
-        app:tabTextAppearance="@style/Tablayout"
-        app:tabTextColor="@color/seed_dark_blue"
-        app:tabSelectedTextColor="@color/white"
-        app:tabIndicatorAnimationMode="elastic"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/tabslayout"/>
+        app:tabGravity="fill"
+        app:tabIndicatorAnimationMode="fade"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextAppearance="@style/MineCustomTabText"
+        app:tabTextColor="@color/seed_dark_blue" />
+
 
     <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabslayout"
-        android:id="@+id/viewpager"/>
+        app:layout_constraintTop_toBottomOf="@+id/tabslayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

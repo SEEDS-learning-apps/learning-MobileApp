@@ -9,25 +9,30 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
+import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.chat_bot.Activities.HomePage.HomeActivity
+import com.example.chat_bot.Activities.Welcomepage.WelcomePage
 import com.example.chat_bot.R
 import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.SeedsDatabase
 import com.example.chat_bot.data.User
 import com.example.chat_bot.data.Userz
 import com.example.chat_bot.databinding.ActivityRegisterBinding
+import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSApi
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSRepository
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSViewModel
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSViewModelFact
-import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSApi
 import com.example.chat_bot.utils.SessionManager
 import com.yariksoffice.lingver.Lingver
 import kotlinx.coroutines.launch
@@ -35,6 +40,7 @@ import java.util.*
 
 
 class Register : AppCompatActivity() {
+
 
     private lateinit var binding: ActivityRegisterBinding
     lateinit var viewModel: SEEDSViewModel
@@ -51,9 +57,11 @@ class Register : AppCompatActivity() {
     var user_grade: String = ""
     var m_androidId: String ?= null
     private lateinit var language: String
+    private lateinit var alreadyUserbtn: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setTheme(android.R.style.Theme_Light_NoTitleBar_Fullscreen)
         setContentView(R.layout.activity_register)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -65,7 +73,6 @@ class Register : AppCompatActivity() {
 
 
 
-        hideActionBar()
         //isOnline(this)
         viewModel = ViewModelProvider(this, SEEDSViewModelFact(SEEDSRepository(retrofitService))).get(SEEDSViewModel::class.java)
         session = SessionManager(applicationContext)
@@ -150,90 +157,22 @@ class Register : AppCompatActivity() {
         }
 
 
+        alreadyUserLogin()
+        keyboardfocus()
 
 
-
-
-
-//            spinner.onItemSelectedListener = object :
-//                AdapterView.OnItemSelectedListener {
-//                override fun onItemSelected(
-//                    parent: AdapterView<*>,
-//                    view: View, position: Int, id: Long,
-//                ) {
-//                    Toast.makeText(this@Register, languages[position], Toast.LENGTH_SHORT).show()
-//                }
-//
-//                override fun onNothingSelected(parent: AdapterView<*>) {
-//                    // write code to perform some action
-//                }
-//            }
-        // }
-
-//        binding.langBtn.setOnClickListener{
-//            lang()
-//            Toast.makeText(this, "cick", Toast.LENGTH_SHORT).show()
-//        }
-
-        //            val mutListIterator = grade.listIterator()
-//
-//            while(mutListIterator.hasNext()){
-//                print(mutListIterator.next())
-//            }
-
-
-
-/* Name of your Custom JSON list */
-//        val resourceId =
-//            resources.getIdentifier("country_avail", "raw", applicationContext.packageName)
-//
-//        val countryPicker: CountryPickerDialog = CountryPickerDialog(this,
-//            { country, flagResId ->
-//
-//
-//
-//            /* Get Country Name: country.getCountryName(context); */
-//
-//                /* Call countryPicker.dismiss(); to prevent memory leaks */
-//            } /* Set to false if you want to disable Dial Code in the results and true if you want to show it
-//         Set to zero if you don't have a custom JSON list of countries in your raw file otherwise use
-//         resourceId for your customly available countries */, false, 0)
-//
-//        countryPicker.show()
-
-
-      //  setlang()
-
-
-
-
-    }
-
-    private fun gotoLoginScreen() {
-        val intent = Intent(this, Login::class.java)
-            .setAction(Intent.ACTION_VIEW)
-            .setData(Uri.parse("success"))
-        startActivity(intent)
-        finish()
     }
 
     fun View.hideKeyboard() {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(windowToken, 0)
     }
-//    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
-//        if (currentFocus != null) {
-//            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
-//        }
-//        return super.dispatchTouchEvent(ev)
-//    }
+
 
     private fun setMateriallang() {
 
         // access the items of the list
         val languages = resources.getStringArray(R.array.Languages)
-        val countries = resources.getStringArray(R.array.Countries)
 
         // access the language spinner
         val lang_spinner = binding.materiallangBtn
@@ -252,15 +191,6 @@ class Register : AppCompatActivity() {
 
                 materiallang(languages[position], adapter)
                 user_language = languages[position]
-//                Toast.makeText(this@Register,
-//                    user_language,
-//                    Toast.LENGTH_SHORT).show()
-              //  lang(languages[position],adapter)
-
-
-
-
-
             }
 
         }
@@ -270,7 +200,7 @@ class Register : AppCompatActivity() {
     private fun setlang() {
         // access the items of the list
         val languages = resources.getStringArray(R.array.Languages)
-        val countries = resources.getStringArray(R.array.Countries)
+
 
         // access the language spinner
         val lang_spinner = binding.langBtnn
@@ -286,14 +216,7 @@ class Register : AppCompatActivity() {
             lang_spinner.onItemClickListener = OnItemClickListener { parent, view, position, id ->
 
                 user_language = languages[position]
-//                Toast.makeText(this@Register,
-//                    user_language,
-//                    Toast.LENGTH_SHORT).show()
                 lang(languages[position],adapter)
-
-
-
-
 
             }
 
@@ -302,62 +225,13 @@ class Register : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
-        init_views()
         setlang()
         setMateriallang()
 
     }
 
-    fun init_views() {
-
-
-
-        // access the language spinner
-//        val country_spinner = binding.countryBtn
-//        if (country_spinner != null) {
-//            val adapter = ArrayAdapter(this,
-//                R.layout.lang_dropdown, countries)
-//            country_spinner.setAdapter(adapter)
-//
-//            country_spinner.onItemClickListener = OnItemClickListener { parent, view, position, id ->
-//                Toast.makeText(this@Register,
-//                    countries[position],
-//                    Toast.LENGTH_SHORT).show()
-//
-//                user_country = countries[position]
-////                lang(countries[position])
-//
-//
-//            }
-//        }
-
-
-
-//        // access the items of the list
-//        val garde = resources.getStringArray(R.array.grades)
-//
-//        // access the language spinner
-//        val grade_spinner = binding.classBtn
-//        if (grade_spinner != null) {
-//            val adapter = ArrayAdapter(this,
-//                R.layout.age_drop_down, gradesList)
-//            grade_spinner.setAdapter(adapter)
-//
-//            grade_spinner.onItemClickListener = OnItemClickListener { parent, view, position, id ->
-//                Toast.makeText(this@Register,
-//                    age.get(position),
-//                    Toast.LENGTH_SHORT).show()
-//                //age_setter(age.get(position))
-//
-//
-//            }
-    }
-
 
     private fun setgrade(it: MutableList<String>) {
-//        // access the items of the list
-//        val garde = resources.getStringArray(R.array.grades)
         grade_spinner = binding.classBtn
         // access the language spinner
         if (grade_spinner != null) {
@@ -367,14 +241,8 @@ class Register : AppCompatActivity() {
             adapter.notifyDataSetChanged()
 
             grade_spinner.onItemClickListener = OnItemClickListener { parent, view, position, id ->
-                //Toast.makeText(this@Register,
-//                    it[position].toString(),
-//                    Toast.LENGTH_SHORT).show()
                 adapter.notifyDataSetChanged()
                 user_grade = it[position]
-                //age_setter(age.get(position))
-
-
             }
     }
 
@@ -382,8 +250,6 @@ class Register : AppCompatActivity() {
     }
 
     private fun setAGEGROUPS(it: MutableList<String>) {
-        // access the items of the list
-        val garde = resources.getStringArray(R.array.grades)
 
         // access the language spinner
         val age_spinner = binding.ageBtn
@@ -395,12 +261,10 @@ class Register : AppCompatActivity() {
 
 
             age_spinner.onItemClickListener = OnItemClickListener { parent, view, position, id ->
-//                Toast.makeText(this@Register,
-//                    it[position].toString(),
-//                    Toast.LENGTH_SHORT).show()
+
                 user_age = it[position]
                 adapter.notifyDataSetChanged()
-                //age_setter(age.get(position))
+
 
 
             }
@@ -410,21 +274,15 @@ class Register : AppCompatActivity() {
     private fun materiallang(lang: String, adapter: ArrayAdapter<String>){
 
 
-        if(lang == "German")
+        if(lang == "Deutsch")
         {
-
-
-            // session.savelanguagePref(Lingver.getInstance().setLocale(this, "de").toString())
             recreate()
             adapter.notifyDataSetChanged()
 
 
         }
-        else if(lang == "Spanish")
+        else if(lang == "Español")
         {
-
-
-            // session.savelanguagePref(Lingver.getInstance().setLocale(this, "es").toString())
             recreate()
             adapter.notifyDataSetChanged()
 
@@ -437,7 +295,7 @@ class Register : AppCompatActivity() {
 
         }
 
-        else if(lang == "Greek")
+        else if(lang == "Ελληνικά")
         {
 
 
@@ -449,15 +307,6 @@ class Register : AppCompatActivity() {
         else
 
         adapter.notifyDataSetChanged()
-
-//        else if(lang == "Greek")
-//        {
-//            Lingver.getInstance().setLocale(this, "el")
-//            recreate()
-        //              session.savelanguagePref(lang)
-//        }
-
-
     }
 
 
@@ -465,7 +314,7 @@ class Register : AppCompatActivity() {
     private fun lang(lang: String, adapter: ArrayAdapter<String>){
 
 
-        if(lang == "German")
+        if(lang == "Deutsch")
         {
 
             Lingver.getInstance().setLocale(this, "de")
@@ -474,8 +323,9 @@ class Register : AppCompatActivity() {
             adapter.notifyDataSetChanged()
 
 
+
         }
-        else if(lang == "Spanish")
+        else if(lang == "Español")
         {
 
             Lingver.getInstance().setLocale(this, "es")
@@ -495,7 +345,7 @@ class Register : AppCompatActivity() {
 
         }
 
-        else if(lang == "Greek")
+        else if(lang == "Ελληνικά")
         {
 
             Lingver.getInstance().setLocale(this, "el")
@@ -509,14 +359,6 @@ class Register : AppCompatActivity() {
         else
             session.savelanguagePref(Lingver.getInstance().getLanguage()).toString()
         adapter.notifyDataSetChanged()
-
-//        else if(lang == "Greek")
-//        {
-//            Lingver.getInstance().setLocale(this, "el")
-//            recreate()
-    //              session.savelanguagePref(lang)
-//        }
-
 
     }
 
@@ -535,7 +377,6 @@ class Register : AppCompatActivity() {
         checkInternet()
         if(session.isLoggedIn())
         {
-           // Toast.makeText(this, session.getlanguagePref(), Toast.LENGTH_SHORT).show()
             Log.d("details",session.getUserDetails().toString())
             val intent = Intent(this, HomeActivity::class.java)
                 .setAction(Intent.ACTION_VIEW)
@@ -545,6 +386,7 @@ class Register : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
 
     }
 
@@ -571,132 +413,86 @@ class Register : AppCompatActivity() {
         }
     }
 
-    private fun doAuthentication() {
+
+
+
+    private fun dologin() = if (isOnline(applicationContext))
+    {
+        user_name = binding.usernameEt.text.toString().trim()
+        user_age = binding.ageBtn.text.toString().trim()
+        user_language = binding.langBtnn.text.toString().trim()
+        user_grade = binding.classBtn.text.toString().trim()
+        materialLang = binding.materiallangBtn.text.toString().trim()
+
+        user_country = "Germany"
+
+        user_grade
+
+
+        val user = Userz(user_name, user_age,  user_country,  user_grade, user_language, m_androidId.toString())
+
+        val user1 = User(user_name, user_age,  user_country,  user_grade, user_language, m_androidId.toString(), materialLang)
+
+
         if (binding.usernameEt.text == null || user_name == "")
         {
             Toast.makeText(applicationContext, "Username required", Toast.LENGTH_SHORT).show()
         }
         else if (binding.ageBtn.text == null || user_age == "")
         {
-            Toast.makeText(applicationContext, "age required", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Age required", Toast.LENGTH_SHORT).show()
         }
-         else if (binding.classBtn.text == null || user_grade == "")
+        else if (binding.classBtn.text == null || user_grade == "")
         {
-            Toast.makeText(applicationContext, "grade required", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Grade required", Toast.LENGTH_SHORT).show()
         }
-        else if (binding.langBtnn.text == null || user_language == "")
+        else if (binding.materiallangBtn.text == null || user_language == "")
         {
-            Toast.makeText(applicationContext, "language required", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Material Language required", Toast.LENGTH_SHORT).show()
         }
         else
         {
-           // dologin()
+
+            viewModel.create_user(user)
+            viewModel.myresponse.observe(this, Observer {  response->
+
+
+                if (response.code() == 400 )
+                {
+                    Toast.makeText(this, "User already exist!", Toast.LENGTH_SHORT).show()
+
+
+                }
+                if (response.code() == 500 )
+                {
+                    Toast.makeText(this, "The Username must contain atleast 5 letters", Toast.LENGTH_SHORT).show()
+                    //viewModel.myresponse.postValue(null)
+                }
+
+
+                else if (response.body()!= null)
+                {
+                    session.createLoginSession(user_name, m_androidId.toString())
+                    session.save_details(user_name, user_age, user_grade, materialLang)
+                    saveInfoToLocalDB(user1)
+                    val intent = Intent(this, Login::class.java)
+                        .setAction(Intent.ACTION_VIEW)
+                        .setData(Uri.parse("success"))
+                    startActivity(intent)
+                    finish()
+                }
+
+                response.code()
+                response.body()
+            })
         }
 
     }
-    private fun dologin() {
-        if (isOnline(applicationContext))
-        {
-            user_name = binding.usernameEt.text.toString().trim()
-            user_age = binding.ageBtn.text.toString().trim()
-            user_language = binding.langBtnn.text.toString().trim()
-            user_grade = binding.classBtn.text.toString().trim()
-            materialLang = binding.materiallangBtn.text.toString().trim()
 
-//            getDevID()
-//            var deviceID = "M-f8f2e818-80-$m_androidId"
-          //  Log.d("tara", deviceID)
-
-            user_country = "Germany"
-
-            user_grade
-
-
-            val user = Userz(user_name, user_age,  user_country,  user_grade, user_language, m_androidId.toString())
-
-            val user1 = User(user_name, user_age,  user_country,  user_grade, user_language, m_androidId.toString(), materialLang)
-
-
-            if (user_name.isBlank() || user_age.isBlank() || user_grade.isBlank() ||
-
-                user_language.isBlank() || materialLang.isBlank())
-            {
-                Toast.makeText(applicationContext, "Please fill all the fields", Toast.LENGTH_SHORT).show()
-            }
-            else
-            {
-
-                viewModel.create_user(user)
-                viewModel.myresponse.observe(this, Observer {  response->
-
-
-                    if (response.code() == 400 )
-                    {
-                        Toast.makeText(this, "That user already exists!", Toast.LENGTH_SHORT).show()
-                        //viewModel.myresponse.postValue(null)
-                    }
-                    if (response.code() == 500 )
-                    {
-                        Toast.makeText(this, "Please fill correct data!!", Toast.LENGTH_SHORT).show()
-                        //viewModel.myresponse.postValue(null)
-                    }
-
-
-                    else if (response.body()!= null)
-                    {
-                        session.createLoginSession(user_name, m_androidId.toString())
-                        session.save_details(user_name, user_age, user_grade, materialLang)
-                        saveInfoToLocalDB(user1)
-                        val intent = Intent(this, Login::class.java)
-                            .setAction(Intent.ACTION_VIEW)
-                            .setData(Uri.parse("success"))
-                        startActivity(intent)
-                        finish()
-                    }
-                    response.code()
-                    response.body()
-//            if (response.isSuccessful)
-//            {
-//                Log.d("user", response.body().toString())
-//                Log.d("user", response.code().toString())
-//                session.createLoginSession(user_name, m_androidId.toString())
-//                session.save_details(user_age, user_grade)
-//                val intent = Intent(this, Login::class.java)
-//                    .setAction(Intent.ACTION_VIEW)
-//                    .setData(Uri.parse("success"))
-//                startActivity(intent)
-//                finish()
-//            }
-//            else
-//                Log.d("user", response.body().toString())
-//            Toast.makeText(this, response.message().toString(), Toast.LENGTH_SHORT).show()
-                })
-
-
-//        if(user_name == "alpha")
-//        {
-//            session.createLoginSession(user_name, m_androidId.toString())
-//            session.save_details(user_age, user_grade, "germany")
-//            val intent = Intent(this, HomeActivity::class.java)
-//                .setAction(Intent.ACTION_VIEW)
-//                .setData(Uri.parse("success"))
-//            startActivity(intent)
-//            finish()
-//        }
-//        else
-//        {
-//            Toast.makeText(this, "wrong credentials", Toast.LENGTH_SHORT).show()
-//        }
-
-
-            }
-        }
-
-        else
-        {
-            checkInternet()
-        }
-        }
+    else
+    {
+        checkInternet()
+    }
 
     private fun saveInfoToLocalDB(user: User) {
         val dao: SeedsDao = SeedsDatabase.getInstance(this).seedsDao
@@ -710,10 +506,6 @@ class Register : AppCompatActivity() {
             val capabilities =
                 connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
             if (capabilities != null) {
-
-                //  Toast.makeText(this.requireContext(), "Connection available", Toast.LENGTH_SHORT)
-                //    .show()
-
                 if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
                     Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
                     return true
@@ -726,13 +518,67 @@ class Register : AppCompatActivity() {
                 }
             }
         }
-//        Toast.makeText(
-//            this.requireContext(),
-//            "Connection not available",
-//            Toast.LENGTH_SHORT
-//        ).show()
         return false
     }
 
+    fun alreadyUserLogin(){
 
+        alreadyUserbtn = findViewById<TextView>(R.id.Already_user_login_btn)
+
+        alreadyUserbtn.setOnClickListener {
+            startActivity(Intent(this, Login::class.java))
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
+        }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            val intent = Intent(this@Register, WelcomePage::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+
+    private fun keyboardfocus()
+    {
+        binding.classBtn.setOnClickListener {
+            binding.usernameEt.clearFocus()
+            val foc = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+            foc.hideSoftInputFromWindow(binding.usernameEt.windowToken, 0)
+        }
+
+         binding.ageBtn.setOnClickListener {
+            binding.usernameEt.clearFocus()
+            val foc = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+            foc.hideSoftInputFromWindow(binding.usernameEt.windowToken, 0)
+        }
+
+        binding.backgroundImage?.setOnClickListener {
+            binding.usernameEt.clearFocus()
+            val foc = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+            foc.hideSoftInputFromWindow(binding.usernameEt.windowToken, 0)
+        }
+
+        binding.ageBtn?.setOnClickListener {
+            binding.usernameEt.clearFocus()
+            val foc = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+            foc.hideSoftInputFromWindow(binding.usernameEt.windowToken, 0)
+        }
+        binding.classBtn?.setOnClickListener {
+            binding.usernameEt.clearFocus()
+            val foc = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+            foc.hideSoftInputFromWindow(binding.usernameEt.windowToken, 0)
+        }
+    }
+    private fun restartActivity() {
+        val intent = intent
+        finish()
+        startActivity(intent)
+    }
 }

@@ -171,41 +171,6 @@ class Mcqs_activity : AppCompatActivity() {
 
 
 
-
-
-//        //Age groups from database
-//        viewModel.topicListss.observe(this, Observer {
-//
-//
-//            Log.d(ContentValues.TAG, "OnCreate: $it")
-//            var datasize = it.size
-//
-//           filterd_topiclist = it.filter { it._id == "6273823342462bc9650d1ef4" && it.userId == "6239ece4bd5de9d4d99a52b0"
-//                   && it.topic == "Human anatomy" } as ArrayList<Topics>
-//            //adapter.setMcqList(mcqlist)
-//
-//          //  Log.d("MAA", mcqlist.toString())
-//           // var topicslist: MutableList<String> = arrayListOf()
-//               // topiclist = it
-//
-////            for (item in it)
-////            {
-////                val _id = item._id
-////                val topic = item. topic
-////                val ageGroup= item. ageGroup
-////                val language= item. language
-////                val country= item. country
-////                val grade= item. grade
-////                val noOfQuestions = item. noOfQuestions
-////                val time = item.time
-////                val userId= item. userId
-////                val subId = item.subId
-////                val ageId = item.ageId
-////            }
-//        })
-//        viewModel.getAllTopics()
-
-
         viewModel.errorMessage.observe(this, Observer {
             Toast.makeText(this, "Error went", Toast.LENGTH_SHORT).show()
             binding.loadingProgress.visibility = View.GONE
