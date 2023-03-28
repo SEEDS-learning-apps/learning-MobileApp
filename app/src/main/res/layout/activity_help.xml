@@ -82,7 +82,7 @@
                 android:textSize="18dp" />
 
             <ImageView
-                android:id="@+id/open_Material_language_dialog"
+                android:id="@+id/open_feedback_dialog"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"

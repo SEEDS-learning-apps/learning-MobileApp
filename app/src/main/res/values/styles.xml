@@ -48,4 +48,21 @@
         <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
     </style>
 
+    <style name="swipeDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowAnimationStyle">@style/swipeDialogAnimation</item>
+    </style>
+
+    <style name="swipeDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/flip_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_slide_left</item>
+    </style>
+
+    <style name="entryDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowAnimationStyle">@style/entryDialogAnimation</item>
+    </style>
+
+    <style name="entryDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:windowExitAnimation">@anim/dialog_slide_left</item>
+    </style>
 </resources>

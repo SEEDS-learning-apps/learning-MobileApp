@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="@string/splas_web"
+        android:text="@string/seeds_website"
         android:textAlignment="center"
         android:textSize="11sp"
         android:textStyle="bold"
