@@ -122,6 +122,7 @@
     <string name="feedback">Feedback</string>
     <string name="contact_us">Contact us</string>
     <string name="seeds_website">https://seeds.wineme.wiwi.uni-siegen.de/</string>
+    <string name="no_exercises_completed_yet">No exercises completed yet</string>
 
 
     <string-array name="Languages">

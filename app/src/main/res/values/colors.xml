@@ -34,6 +34,7 @@
     <color name="type_a_message_colour">#212121</color>
     <color name="message_send_box_colour">#C1D1E0</color>
     <color name="mild_black">#1F1F1F</color>
+    <color name="dialog_button_colour">#354B92</color>
 
 
 </resources>

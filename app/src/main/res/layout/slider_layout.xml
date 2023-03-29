@@ -19,12 +19,12 @@
         android:id="@+id/texttitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto"
-
+        android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="28dp"/>
+        android:textSize="20dp"/>
 
     <TextView
         android:id="@+id/textdeccription"

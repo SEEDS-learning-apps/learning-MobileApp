@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chat_bot.Ac.DashboardFragment
 import com.example.chat_bot.Activities.HomePage.HomeActivity
@@ -30,7 +31,6 @@ class downloadQuizActivity : AppCompatActivity() {
     lateinit var session: SessionManager
     lateinit var quizllist: List<UserAndMaterials>
     val adapter = dwnQuizAdapter(this)
-
     private lateinit var binding: ActivityDownloadQuizBinding
 
 
@@ -51,8 +51,7 @@ class downloadQuizActivity : AppCompatActivity() {
         val backbtn = findViewById<ImageView>(R.id.Backbutton_downloadmaterials)
 
         backbtn.setOnClickListener{
-            val intent = Intent (this.applicationContext, HomeActivity::class.java)
-            startActivity(intent)
+            onBackPressed()
             finish()
             overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
         }
@@ -109,4 +108,9 @@ class downloadQuizActivity : AppCompatActivity() {
         supportActionBar?.hide()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
+        // perform additional back navigation logic if necessary
+    }
 }

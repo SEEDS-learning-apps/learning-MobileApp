@@ -102,7 +102,7 @@
             android:name=".Activities.HomePage.HomeActivity"
             android:configChanges="orientation|screenSize"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
-            android:noHistory="true"/>
+            />
 
         <activity
             android:name=".Activities.Splash"

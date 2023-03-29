@@ -65,6 +65,7 @@ class HomeActivity : AppCompatActivity() {
         if (viewPager2.currentItem == 0) {
             if (backPressedTime + 2000 > System.currentTimeMillis()) {
                 backToast?.cancel()
+                finish()
                 super.onBackPressed()
                 return
             } else {
@@ -74,11 +75,9 @@ class HomeActivity : AppCompatActivity() {
             backPressedTime = System.currentTimeMillis()
         } else {
             viewPager2.setCurrentItem(0, true)
+
         }
     }
-
-
-
 }
 
 

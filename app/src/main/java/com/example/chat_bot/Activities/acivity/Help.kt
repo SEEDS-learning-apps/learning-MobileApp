@@ -34,8 +34,7 @@ class Help : AppCompatActivity() {
         val backbtn = findViewById<ImageView>(R.id.Backbutton_help)
 
         backbtn.setOnClickListener{
-            val intent = Intent (this.applicationContext, HomeActivity::class.java)
-            startActivity(intent)
+           onBackPressed()
             finish()
             overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
         }
@@ -158,16 +157,9 @@ class Help : AppCompatActivity() {
         builder.show()
     }
 
-
-
-
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            val intent = Intent(this@Help, HomeActivity::class.java)
-            startActivity(intent)
-            finish()
-            overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
-        }
-        return super.onKeyDown(keyCode, event)
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
+        // perform additional back navigation logic if necessary
     }
 }
