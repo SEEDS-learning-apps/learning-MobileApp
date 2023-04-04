@@ -186,7 +186,6 @@ class Register : AppCompatActivity() {
                 it.hideKeyboard()
             }
 
-
             lang_spinner.onItemClickListener = OnItemClickListener { parent, view, position, id ->
 
                 materiallang(languages[position], adapter)
@@ -200,7 +199,6 @@ class Register : AppCompatActivity() {
     private fun setlang() {
         // access the items of the list
         val languages = resources.getStringArray(R.array.Languages)
-
 
         // access the language spinner
         val lang_spinner = binding.langBtnn
@@ -259,13 +257,10 @@ class Register : AppCompatActivity() {
             age_spinner.setAdapter(adapter)
             adapter.notifyDataSetChanged()
 
-
             age_spinner.onItemClickListener = OnItemClickListener { parent, view, position, id ->
 
                 user_age = it[position]
                 adapter.notifyDataSetChanged()
-
-
 
             }
         }
@@ -321,8 +316,6 @@ class Register : AppCompatActivity() {
            // session.savelanguagePref(Lingver.getInstance().setLocale(this, "de").toString())
             recreate()
             adapter.notifyDataSetChanged()
-
-
 
         }
         else if(lang == "Español")
