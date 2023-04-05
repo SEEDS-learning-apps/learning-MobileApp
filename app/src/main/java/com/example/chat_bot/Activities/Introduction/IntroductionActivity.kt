@@ -1,8 +1,6 @@
 package com.example.chat_bot.Activities
 
 import android.content.Intent
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View.GONE
@@ -10,16 +8,14 @@ import android.view.View.VISIBLE
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.annotation.RequiresApi
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
-import com.example.chat_bot.Activities.HomePage.HomeActivity
 import com.example.chat_bot.Activities.Welcomepage.WelcomePage
 import com.example.chat_bot.R
+import java.util.*
 
 class IntroductionActivity : AppCompatActivity() {
     private lateinit var skipButton: Button
@@ -29,17 +25,46 @@ class IntroductionActivity : AppCompatActivity() {
     private lateinit var indicators: Array<TextView?>
     private lateinit var viewPagerAdapter: ViewPagerAdapter
     private val currentPage : MutableLiveData<Int> =  MutableLiveData<Int>()
-
+    private var timer: Timer? = null
+    private val DELAY_MS: Long = 5000 // Delay in milliseconds before the next screen is shown
+    private val PERIOD_MS: Long = 5000 // Repeat interval in milliseconds
+    private var isLastPageReached: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(android.R.style.Theme_Light_NoTitleBar_Fullscreen)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_introduction)
-
         setupListeners()
-
+        startAutoScroll()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        stopAutoScroll()
+    }
+
+    private fun startAutoScroll() {
+        timer = Timer()
+        timer?.schedule(object : TimerTask() {
+            override fun run() {
+                runOnUiThread {
+                    val currentIndex = slideViewPager.currentItem
+                    if (currentIndex == viewPagerAdapter.count - 2) {
+                        stopAutoScroll()
+                        isLastPageReached = true
+                    }
+                    val nextIndex = if (currentIndex == viewPagerAdapter.count - 1) 0 else currentIndex + 1
+                    slideViewPager.currentItem = nextIndex
+                }
+            }
+        }, DELAY_MS, PERIOD_MS)
+    }
+
+
+    private fun stopAutoScroll() {
+        timer?.cancel()
+        timer = null
+    }
 
     private fun setupListeners() {
         setupSkipButton()
@@ -89,6 +114,7 @@ class IntroductionActivity : AppCompatActivity() {
         }
     }
 
+
     private fun setupViewVisibility(position: Int) {
         if (position == viewPagerAdapter.count - 1) {
             skipButton.visibility = GONE
@@ -137,8 +163,9 @@ class IntroductionActivity : AppCompatActivity() {
             finish()
             overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
         }
-        return super.onKeyDown(keyCode, event)
-    }
 
+        return super.onKeyDown(keyCode, event)
+
+    }
 
 }

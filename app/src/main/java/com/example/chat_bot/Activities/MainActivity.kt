@@ -1,6 +1,8 @@
 package com.example.chat_bot.Activities
 
 //import com.example.chat_bot.Manifest
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
 import android.provider.AlarmClock.EXTRA_MESSAGE
@@ -10,6 +12,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chat_bot.Activities.HomePage.ChatFragment
+import com.example.chat_bot.Activities.acivity.NotificationReceiver
 import com.example.chat_bot.R
 import com.example.chat_bot.data.Message
 import com.example.chat_bot.data.Topics
@@ -46,8 +49,7 @@ class MainActivity : AppCompatActivity(), msgAdapter.Callbackinter{
 
         Log.v(TAG, "In main")
 
-
-
+        scheduleNotification()
 
 
     }
@@ -153,6 +155,20 @@ class MainActivity : AppCompatActivity(), msgAdapter.Callbackinter{
         TODO("Not yet implemented")
     }
 
-
+    private fun scheduleNotification() {
+        val intent = Intent(this, NotificationReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(
+            this,
+            0,
+            intent,
+            PendingIntent.FLAG_CANCEL_CURRENT
+        )
+        val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+        alarmManager.set(
+            AlarmManager.RTC_WAKEUP,
+            System.currentTimeMillis() + 5000, // 5 seconds from now
+            pendingIntent
+        )
+    }
 }
 
