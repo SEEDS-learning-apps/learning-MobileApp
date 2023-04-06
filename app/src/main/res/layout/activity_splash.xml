@@ -1,31 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/motionLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Splash"
-    android:background="@color/background">
+    app:layoutDescription="@xml/activity_step1_scene"
+    tools:context=".Activities.MainActivity"
+    tools:layout_editor_absoluteX="-46dp"
+    tools:layout_editor_absoluteY="56dp">
 
-    <ImageView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/backgroundLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:background="@drawable/bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <ImageView
+        android:id="@+id/white_seeds_logo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:src="@drawable/seeds_logo"
-        android:contentDescription="Image"
-        android:id="@+id/splash_image"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white" />
+
+    <ImageView
+        android:id="@+id/blue_seeds_logo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/seeds_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/seeds_moto"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/splash_text"
-        android:textAlignment="center"
+        android:gravity="center"
+        android:text="learning is for everyone"
+        android:textColor="#2462BC"
+        android:textSize="17dp"
         android:textStyle="bold"
-        android:textColor="@color/light_blue_900"
-        android:textSize="15sp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/splash_image"
-        android:id="@+id/splash_text"/>
+        tools:layout_editor_absoluteX="194dp"
+        tools:layout_editor_absoluteY="860dp" />
+
+    <TextView
+        android:id="@+id/seeds_website"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/seeds_website"
+        android:textColor="#2462BC"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="194dp"
+        tools:layout_editor_absoluteY="860dp" />
 
     <ProgressBar
         android:id="@+id/splash_progress"
@@ -35,18 +77,9 @@
         android:layout_centerInParent="true"
         android:indeterminate="true"
         android:layout_marginTop="20dp"
-        android:backgroundTint="@color/seed_light_blue"
+        android:textColor="#2462BC"
         android:backgroundTintMode="src_atop"
-       />
+        />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="@string/seeds_website"
-        android:textAlignment="center"
-        android:textSize="11sp"
-        android:textStyle="bold"
-        android:textColor="@color/seed_light_blue"
-        android:layout_marginBottom="20dp"/>
-</RelativeLayout>
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
