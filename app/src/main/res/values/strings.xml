@@ -91,10 +91,6 @@
     <string name="heading_fourth">Activities</string>
 
     //Description
-    <string name="desc_one">An Interactive learning application based on chatbot allowing students to learn using their android devices</string>
-    <string name="desc_two">Communicate with the chatbot to find your desired topics and more</string>
-    <string name="desc_three">Do some exercise in your favourite topics and also download materials for later reference</string>
-    <string name="desc_fourth">Check your activities anytime to stay motivated</string>
     <string name="welcome2">WELCOME</string>
     <string name="lets_go">LET\'S GO</string>
     <string name="skip">Skip</string>

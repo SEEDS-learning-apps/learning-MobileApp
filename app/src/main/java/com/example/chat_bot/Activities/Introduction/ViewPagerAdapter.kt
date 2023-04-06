@@ -10,37 +10,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.VideoView
 import androidx.viewpager.widget.PagerAdapter
+import com.airbnb.lottie.LottieAnimationView
 import com.example.chat_bot.R
 
 
 private var currentVideoView: VideoView? = null
 private var currentButton: Button? = null
-private val DELAY_TIME: Long = 3000
 
 class ViewPagerAdapter(var context: Context) : PagerAdapter() {
-    var images = intArrayOf(
-        R.drawable.app_logo,
-        R.drawable.chatbot,
-        R.drawable.quiz,
-        R.drawable.exercise
-    )
-    var headings = intArrayOf(
-        R.string.heading_one,
-        R.string.heading_two,
-        R.string.heading_three,
-        R.string.heading_fourth
-    )
-    var description = intArrayOf(
-        R.string.desc_one,
-        R.string.desc_two,
-        R.string.desc_three,
-        R.string.desc_fourth
-    )
-
-
 
     override fun getCount(): Int {
-        return headings.size
+        // Return the total number of pages in the ViewPager, including the last page with the video
+        return 4
     }
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
@@ -51,9 +32,31 @@ class ViewPagerAdapter(var context: Context) : PagerAdapter() {
         val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view: View
 
+        if (position == 0) {
+            // inflate the layout that includes the LottieAnimationView
+            view = layoutInflater.inflate(R.layout.slider_layout_page1, container, false)
+            val lottieAnimationView = view.findViewById<LottieAnimationView>(R.id.lottie_animation_page1)
 
-        // inflate a different layout for the last page
-        if (position == count - 1) {
+            // load the animation from the JSON file
+            lottieAnimationView.setAnimation(R.raw.e_learning)
+
+        } else if (position == 1) {
+            // inflate the layout that includes the LottieAnimationView
+            view = layoutInflater.inflate(R.layout.slider_layout_page2, container, false)
+            val lottieAnimationView = view.findViewById<LottieAnimationView>(R.id.lottie_animation_page2)
+
+            // load the animation from the JSON file
+            lottieAnimationView.setAnimation(R.raw.chatbot)
+
+        } else if (position == 2) {
+            // inflate the layout that includes the LottieAnimationView
+            view = layoutInflater.inflate(R.layout.slider_layout_page3, container, false)
+            val lottieAnimationView = view.findViewById<LottieAnimationView>(R.id.lottie_animation_page3)
+
+            // load the animation from the JSON file
+            lottieAnimationView.setAnimation(R.raw.statistics)
+
+        } else if (position == count - 1) {
             view = layoutInflater.inflate(R.layout.slider_layout_video, container, false)
             val videoView = view.findViewById<View>(R.id.intro_video) as VideoView
             val playButton = view.findViewById<View>(R.id.play_button) as Button
@@ -69,19 +72,19 @@ class ViewPagerAdapter(var context: Context) : PagerAdapter() {
                 currentButton?.visibility = View.GONE
             }
 
+            videoView.setOnCompletionListener {
+                playButton.visibility = View.VISIBLE
+                videoView.seekTo(0)
+            }
+
         } else {
-            view = layoutInflater.inflate(R.layout.slider_layout, container, false)
-            val slidetitleimage = view.findViewById<View>(R.id.titleImage) as ImageView
-            val slideHeading = view.findViewById<View>(R.id.texttitle) as TextView
-            val slideDesciption = view.findViewById<View>(R.id.textdeccription) as TextView
-            slidetitleimage.setImageResource(images[position])
-            slideHeading.setText(headings[position])
-            slideDesciption.setText(description[position])
+            return false
         }
 
         container.addView(view)
         return view
     }
+
 
     override fun setPrimaryItem(container: ViewGroup, position: Int, `object`: Any) {
         super.setPrimaryItem(container, position, `object`)

@@ -26,8 +26,8 @@ class IntroductionActivity : AppCompatActivity() {
     private lateinit var viewPagerAdapter: ViewPagerAdapter
     private val currentPage : MutableLiveData<Int> =  MutableLiveData<Int>()
     private var timer: Timer? = null
-    private val DELAY_MS: Long = 5000 // Delay in milliseconds before the next screen is shown
-    private val PERIOD_MS: Long = 5000 // Repeat interval in milliseconds
+    private val DELAY_MS: Long = 10000 // Delay in milliseconds before the next screen is shown
+    private val PERIOD_MS: Long = 10000 // Repeat interval in milliseconds
     private var isLastPageReached: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,11 +54,12 @@ class IntroductionActivity : AppCompatActivity() {
                         isLastPageReached = true
                     }
                     val nextIndex = if (currentIndex == viewPagerAdapter.count - 1) 0 else currentIndex + 1
-                    slideViewPager.currentItem = nextIndex
+                    slideViewPager.setCurrentItem(nextIndex, true)
                 }
             }
         }, DELAY_MS, PERIOD_MS)
     }
+
 
 
     private fun stopAutoScroll() {
@@ -151,7 +152,15 @@ class IntroductionActivity : AppCompatActivity() {
 
         override fun onPageSelected(position: Int) {
             currentPage.value = position
+
+            if (isLastPageReached && position < viewPagerAdapter.count - 1) {
+                startAutoScroll()
+                isLastPageReached = false
+            }
+            isLastPageReached = position == viewPagerAdapter.count - 1
         }
+
+
 
         override fun onPageScrollStateChanged(state: Int) {}
     }
