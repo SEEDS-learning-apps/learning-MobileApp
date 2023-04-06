@@ -23,6 +23,7 @@
 
         <receiver android:name=".Activities.acivity.NotificationReceiver" />
 
+
         <!-- Dashboard -->
         <activity
             android:name=".Activities.acivity.Settings"

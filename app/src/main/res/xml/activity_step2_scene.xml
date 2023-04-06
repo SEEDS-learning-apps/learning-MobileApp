@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="2500"
+        motion:autoTransition="animateToEnd">
+        <KeyFrameSet >
+
+        </KeyFrameSet>
+    </Transition>
+
+    <Transition
+        motion:constraintSetEnd="@+id/easeInOut"
+        motion:constraintSetStart="@id/end"
+        motion:duration="1500"
+        motion:autoTransition="animateToEnd">
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/backgroundLayout"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="500dp"
+            android:layout_height="500dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:scaleX="10"
+            android:scaleY="10" />
+        <Constraint
+            android:id="@+id/blue_seeds_logo"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="450dp"
+            android:layout_height="450dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:scaleX="0"
+            android:scaleY="0"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/white_seeds_logo"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="450dp"
+            android:layout_height="450dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:scaleX="1"
+            android:scaleY="1" />
+
+        <Constraint
+            android:id="@+id/splash_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp"
+            motion:layout_constraintBottom_toBottomOf="@id/white_seeds_logo"
+            motion:layout_constraintStart_toStartOf="@id/white_seeds_logo"
+            motion:layout_constraintEnd_toEndOf="@id/white_seeds_logo"
+            android:visibility="invisible">
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/seeds_website"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@+id/white_seeds_logo"
+            motion:layout_constraintStart_toStartOf="@+id/white_seeds_logo"
+            motion:layout_constraintEnd_toEndOf="@+id/white_seeds_logo"
+            android:visibility="invisible">
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/backgroundLayout"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="500dp"
+            android:layout_height="500dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:scaleX="0"
+            android:scaleY="0" />
+        <Constraint
+            android:id="@+id/blue_seeds_logo"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="450dp"
+            android:layout_height="450dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:scaleX="1"
+            android:scaleY="1"
+            motion:transitionEasing="cubic(1,0,1,0)" />
+        <Constraint
+            android:id="@+id/white_seeds_logo"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="450dp"
+            android:layout_height="450dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:scaleX="0"
+            android:scaleY="0" />
+
+        <Constraint
+            android:id="@+id/seeds_moto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="70dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/blue_seeds_logo"
+            motion:layout_constraintStart_toStartOf="@+id/blue_seeds_logo"
+            motion:layout_constraintEnd_toEndOf="@+id/blue_seeds_logo"
+            android:visibility="invisible">
+
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/seeds_website"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="500dp"
+            motion:layout_constraintBottom_toBottomOf="@id/backgroundLayout"
+            motion:layout_constraintStart_toStartOf="@id/backgroundLayout"
+            motion:layout_constraintEnd_toEndOf="@id/backgroundLayout"
+            android:visibility="invisible">
+
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/splash_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/blue_seeds_logo"
+            motion:layout_constraintStart_toStartOf="@+id/blue_seeds_logo"
+            motion:layout_constraintEnd_toEndOf="@+id/blue_seeds_logo"
+            android:visibility="invisible">
+
+        </Constraint>
+    </ConstraintSet>
+
+
+    <ConstraintSet android:id="@+id/easeInOut">
+
+        <Constraint
+            android:id="@+id/backgroundLayout"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="500dp"
+            android:layout_height="500dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:scaleX="0"
+            android:scaleY="0" />
+
+        <Constraint
+            android:id="@+id/blue_seeds_logo"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="450dp"
+            android:layout_height="450dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:alpha="1" />
+
+        <Constraint
+            android:id="@+id/seeds_moto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="130dp"
+            motion:layout_constraintBottom_toBottomOf="@id/backgroundLayout"
+            motion:layout_constraintStart_toStartOf="@id/backgroundLayout"
+            motion:layout_constraintEnd_toEndOf="@id/backgroundLayout">
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/splash_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="300dp"
+            motion:layout_constraintBottom_toBottomOf="@id/white_seeds_logo"
+            motion:layout_constraintStart_toStartOf="@id/white_seeds_logo"
+            motion:layout_constraintEnd_toEndOf="@id/white_seeds_logo">
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/seeds_website"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@id/white_seeds_logo"
+            motion:layout_constraintStart_toStartOf="@id/white_seeds_logo"
+            motion:layout_constraintEnd_toEndOf="@id/white_seeds_logo">
+        </Constraint>
+
+    </ConstraintSet>
+
+</MotionScene>

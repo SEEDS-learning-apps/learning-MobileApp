@@ -72,7 +72,6 @@
     <string name="Select_material_language">Επιλέξτε τη γλώσσα του υλικού</string>
     <string name="Download">Λήψη</string>
     <string name="no_downloads_available">Δεν υπάρχουν διαθέσιμα κατεβασμένα υλικά!</string>
-    <string name="Already_have_an_account">Έχετε ήδη λογαριασμό;</string>
     <string name="True">Αληθινό</string>
     <string name="False">Ψευδές</string>
     <string name="German">Γερμανικά</string>
@@ -88,14 +87,6 @@
     <string name="Already_User">ήδη χρήστης</string>
     <string name="what_is_seeds">Τι είναι το SEEDS;</string>
     <string name="Languages">Γλώσσες</string>
-    <string name="heading_one">Εφαρμογή μάθησης</string>
-    <string name="heading_three">Ασκήσεις και υλικό λήψης</string>
-    <string name="heading_fourth">Δραστηριότητες</string>
-    <string name="desc_one">Μια διαδραστική εφαρμογή μάθησης βασισμένη σε chatbot που επιτρέπει στους μαθητές να μαθαίνουν χρησιμοποιώντας τις android συσκευές τους</string>
-    <string name="desc_two">Επικοινωνήστε με το chatbot για να βρείτε τα θέματα που επιθυμείτε και πολλά άλλα</string>
-    <string name="desc_three">Κάντε κάποιες ασκήσεις στα αγαπημένα σας θέματα και επίσης κατεβάστε υλικό για μεταγενέστερη αναφορά</string>
-    <string name="desc_fourth">Ελέγξτε τις δραστηριότητές σας ανά πάσα στιγμή για να παραμείνετε παρακινημένοι</string>
-    <string name="welcome2">ΚΑΛΏΣ ΉΡΘΑΤΕ</string>
     <string name="lets_go">ΠΆΜΕ</string>
     <string name="skip">Παράλειψη</string>
     <string name="seeds_info">Το SEEDS είναι ένα έργο για την υποστήριξη της μάθησης και της εκπαίδευσης στο περιθώριο της ψηφιακής σφαίρας. Λόγω της έλλειψης πρόσβασης σε εκπαιδευτικά ιδρύματα και του ελάχιστου ή μηδενικού εξοπλισμού (Tablets ή φορητοί υπολογιστές και PC) με τις απαραίτητες ψηφιακές τεχνολογίες, οι νέοι δυσκολεύονταν να παρακολουθήσουν τα μαθήματα. Οι ΤΠΕ και κυρίως το smartphone μπορούν να χρησιμοποιηθούν εδώ για να μετριάσουν αυτό το έλλειμμα. Πρέπει να ληφθούν υπόψη οι ανάγκες και οι προκλήσεις της ομάδας-στόχου (π.χ. όχι σύγχρονα smartphones με ξεπερασμένο λογισμικό). Η ιδέα μας είναι να επικοινωνήσουμε το μαθησιακό περιεχόμενο σε ευάλωτα άτομα με έναν νέο τρόπο χρησιμοποιώντας chat bots.</string>

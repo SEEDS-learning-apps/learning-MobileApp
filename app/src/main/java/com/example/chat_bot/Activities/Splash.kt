@@ -5,9 +5,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.animation.AnimationUtils
-import androidx.appcompat.app.ActionBar
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import com.example.chat_bot.Activities.HomePage.HomeActivity
 import com.example.chat_bot.Activities.Welcomepage.WelcomePage
 import com.example.chat_bot.R
@@ -17,24 +17,22 @@ class Splash : AppCompatActivity() {
 
     private lateinit var session: SessionManager
 
-    private val splashDuration: Long = 2000
+    private val splashDuration: Long = 6000
     private val splashHandler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(android.R.style.Theme_Light_NoTitleBar_Fullscreen)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_splash)
         session = SessionManager(applicationContext)
 
-        splashHandler.postDelayed({
-            handleNavigationByAuthentication()
-            finish()
+            splashHandler.postDelayed({
+                handleNavigationByAuthentication()
+                finish()
         }, splashDuration)
-
-
-
-
     }
 
     private fun handleNavigationByAuthentication() {
@@ -51,13 +49,14 @@ class Splash : AppCompatActivity() {
             .setData(Uri.parse("success"))
             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        startActivity(intent)
+             startActivity(intent)
+            overridePendingTransition(R.anim.fade_in,R.anim.zoom_in)
     }
 
     private fun navigateToWelcomePage() {
         startActivity(Intent(this, WelcomePage::class.java))
 
-        overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
+        overridePendingTransition(R.anim.fade_in,R.anim.zoom_in)
     }
 }
 

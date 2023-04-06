@@ -119,6 +119,9 @@
     <string name="contact_us">Contact us</string>
     <string name="seeds_website">https://seeds.wineme.wiwi.uni-siegen.de/</string>
     <string name="no_exercises_completed_yet">No exercises completed yet</string>
+    <string name="star">star</string>
+    <string name="title_activity_step1">activity1</string>
+    <string name="credits">thank you</string>
 
 
     <string-array name="Languages">
