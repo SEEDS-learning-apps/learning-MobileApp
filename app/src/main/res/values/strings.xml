@@ -122,6 +122,7 @@
     <string name="star">star</string>
     <string name="title_activity_step1">activity1</string>
     <string name="credits">thank you</string>
+    <string name="snooze">snooze</string>
 
 
     <string-array name="Languages">

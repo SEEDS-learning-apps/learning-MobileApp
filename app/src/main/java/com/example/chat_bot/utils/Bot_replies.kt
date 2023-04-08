@@ -33,16 +33,6 @@ object Bot_replies {
                     else -> "try saying something else" }
             }
 
-//            //subject
-//            message.contains("biology") -> {
-//
-//                when (random) {
-//                    0 -> "which topic is intresting for you"
-//                    1 -> "which topic you want to learn"
-//                    else -> "try saying something else" }
-//            }
-
-            //Hello
             message.contains("greet_user") -> {
                 when (random) {
                     0 -> "Ahh Hi again  😁"
@@ -68,7 +58,7 @@ object Bot_replies {
 
                 when (random) {
 
-                    0 -> "Learning is always fun!! So, when you need to learn just say that you want to learn, i will get subjects that you might be intrested in. "
+                    0 -> "Learning is always fun!! So, when you need to learn just say that you want to learn, i will get subjects that you might be interested in. "
                     1 -> "Sure!! Just say, you want to learn, I will get subjects that you might be interested in. "
                     2 -> "Sure!! I'm happy that you choose SEEDS. Just say, you want to learn, I will get subjects, you might be interested in. "
                     3 -> "I got you!!, Just say, you want to learn, I will get subjects, you might be interested in. "
@@ -151,14 +141,6 @@ object Bot_replies {
 
     }
 
-
-//    fun launchMcqs(){
-//        val intent = Intent(context, Mcqs::class.java)
-//       // intent.putExtra("student_id", student)
-//        context.startActivity(intent)}
-interface Callbackchat {
-    fun passResultCallback(message: String)
-}
 }
 
 

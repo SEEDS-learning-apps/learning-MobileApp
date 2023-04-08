@@ -26,8 +26,8 @@ class IntroductionActivity : AppCompatActivity() {
     private lateinit var viewPagerAdapter: ViewPagerAdapter
     private val currentPage : MutableLiveData<Int> =  MutableLiveData<Int>()
     private var timer: Timer? = null
-    private val DELAY_MS: Long = 10000 // Delay in milliseconds before the next screen is shown
-    private val PERIOD_MS: Long = 10000 // Repeat interval in milliseconds
+    private val DELAY_MS: Long = 5000 // Delay in milliseconds before the next screen is shown
+    private val PERIOD_MS: Long = 15000 // Repeat interval in milliseconds
     private var isLastPageReached: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {

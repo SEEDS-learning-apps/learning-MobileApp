@@ -17,7 +17,7 @@ class Splash : AppCompatActivity() {
 
     private lateinit var session: SessionManager
 
-    private val splashDuration: Long = 6000
+    private var splashDuration: Long = 5500
     private val splashHandler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,12 +26,19 @@ class Splash : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+
         session = SessionManager(applicationContext)
 
-            splashHandler.postDelayed({
-                handleNavigationByAuthentication()
-                finish()
+        if (session.isLoggedIn()) {
+            setContentView(R.layout.activity_splash1)
+            splashDuration = 2500
+        } else {
+            setContentView(R.layout.activity_splash)
+        }
+
+        splashHandler.postDelayed({
+            handleNavigationByAuthentication()
+            finish()
         }, splashDuration)
     }
 
@@ -49,14 +56,14 @@ class Splash : AppCompatActivity() {
             .setData(Uri.parse("success"))
             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-             startActivity(intent)
-            overridePendingTransition(R.anim.fade_in,R.anim.zoom_in)
+        startActivity(intent)
+        overridePendingTransition(R.anim.fade_in, R.anim.zoom_in)
     }
 
     private fun navigateToWelcomePage() {
         startActivity(Intent(this, WelcomePage::class.java))
-
-        overridePendingTransition(R.anim.fade_in,R.anim.zoom_in)
+        overridePendingTransition(R.anim.fade_in, R.anim.zoom_in)
     }
+
 }
 

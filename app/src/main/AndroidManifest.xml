@@ -21,9 +21,10 @@
         android:usesCleartextTraffic="true">
 
 
-        <receiver android:name=".Activities.acivity.NotificationReceiver" />
+       <activity android:name=".Activities.acivity.AlarmManager"
+           android:exported="true"/>
 
-
+        <receiver android:name=".Activities.acivity.AlarmReceiver"/>
         <!-- Dashboard -->
         <activity
             android:name=".Activities.acivity.Settings"
