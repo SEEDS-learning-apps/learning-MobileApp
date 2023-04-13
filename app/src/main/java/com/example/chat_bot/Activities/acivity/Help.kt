@@ -25,7 +25,7 @@ class Help : AppCompatActivity() {
         setContentView(R.layout.activity_help)
 
 
-        val Contactus = findViewById<ImageView>(R.id.open_Contactus_dialog)
+        val Contactus = findViewById<View>(R.id.open_Contactus_dialog)
 
         Contactus.setOnClickListener{
             openContactDialog()
@@ -39,7 +39,7 @@ class Help : AppCompatActivity() {
             overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
         }
 
-        val feedback = findViewById<ImageView>(R.id.open_feedback_dialog)
+        val feedback = findViewById<View>(R.id.open_feedback_dialog)
 
         feedback.setOnClickListener{
             openRatingDialog()

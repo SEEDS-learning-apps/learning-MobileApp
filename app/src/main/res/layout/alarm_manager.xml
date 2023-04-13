@@ -1,40 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activities.acivity.AlarmManager">
+    android:background="@color/background"
+    tools:context=".Activities.acivity.NotificationManager">
+
+
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="32dp"
+        android:alpha="0.07"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/notification" />
+
+    <ImageView
+        android:id="@+id/Backbutton_alarmanager"
+        android:layout_width="61dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
+        android:id="@+id/selectedTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/selectedTime"
-        android:layout_marginTop="200dp"
         android:text="00 : 00 AM"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="46dp"/>
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/backgroundImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/backgroundImage"
+        app:layout_constraintVertical_bias="0.471" />
 
-
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/selectTimeBtn"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginHorizontal="26dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/custom_notification_button"
         android:text="Select Time"
-        android:textSize="26dp"/>
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.733"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectedTime" />
 
-    <Button
-        android:id="@+id/cancelAlarmBtn"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/cancelNotificationBtn"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginHorizontal="26dp"
-        android:text="Cancel Alarm"
-        android:textSize="26dp"/>
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/custom_notification_button"
+        android:text="Cancel Notification"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectTimeBtn" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

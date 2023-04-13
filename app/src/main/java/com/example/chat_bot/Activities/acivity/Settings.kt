@@ -3,13 +3,12 @@ package com.example.chat_bot.Activities.acivity
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.chat_bot.Activities.HomePage.HomeActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.SeedsDatabase
@@ -37,18 +36,24 @@ class Settings : AppCompatActivity() {
             overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
         }
 
-        val interfacelanguage = findViewById<ImageView>(R.id.open_Interface_language_dialog)
+        val interfacelanguage = findViewById<View>(R.id.interface_language)
 
             interfacelanguage.setOnClickListener{
                 alertbox_language()
         }
 
-        val materialLang = findViewById<ImageView>(R.id.open_Material_language_dialog)
+        val materialLang = findViewById<View>(R.id.Material_language)
 
         materialLang.setOnClickListener{
             alertbox_materiallanguage()
         }
 
+        val notification = findViewById<View>(R.id.notification)
+
+        notification.setOnClickListener {
+            val intent = Intent (this, NotificationManager::class.java)
+            startActivity(intent)
+        }
 
         session = SessionManager(this)
         var user = session.getUserDetails()

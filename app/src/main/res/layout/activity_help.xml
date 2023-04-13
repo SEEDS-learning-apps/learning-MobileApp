@@ -61,6 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
         <RelativeLayout
+            android:id="@+id/open_feedback_dialog"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
@@ -82,7 +83,7 @@
                 android:textSize="18dp" />
 
             <ImageView
-                android:id="@+id/open_feedback_dialog"
+
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
@@ -104,6 +105,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Material_language_dropdown">
 
         <RelativeLayout
+            android:id="@+id/open_Contactus_dialog"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
@@ -125,7 +127,7 @@
                 android:textSize="18dp" />
 
             <ImageView
-                android:id="@+id/open_Contactus_dialog"
+
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
