@@ -121,4 +121,14 @@ dependencies {
     implementation "androidx.room:room-ktx:2.4.3"
     androidTestImplementation "androidx.room:room-testing:2.4.3"
 
+    //Kodein Dependency Injection
+    implementation "org.kodein.di:kodein-di-generic-jvm:6.2.1"
+    implementation "org.kodein.di:kodein-di-framework-android-x:6.2.1"
+
+    //styleableToast
+    implementation 'com.muddzdev:styleabletoast:2.0.1'
+
+    // swipe decoration
+    implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.2'
+
 }
