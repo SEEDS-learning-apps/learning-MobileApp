@@ -6,6 +6,7 @@ import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil.setContentView
+import com.example.chat_bot.alarm_ui.AlarmMainActivity
 import com.example.chat_bot.Activities.IntroductionActivity
 import com.example.chat_bot.Activities.Login
 import com.example.chat_bot.R
@@ -124,7 +125,7 @@ class WelcomePage : AppCompatActivity() {
         infoTextView = findViewById(R.id.infoTextView)
 
         infoTextView.setOnClickListener {
-            val intent = Intent(this@WelcomePage, Seedsinfo::class.java)
+            val intent = Intent(this@WelcomePage, AlarmMainActivity::class.java)
             startActivity(intent)
             finish()
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
