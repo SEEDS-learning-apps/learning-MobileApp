@@ -123,6 +123,8 @@
     <string name="title_activity_step1">activity1</string>
     <string name="credits">thank you</string>
     <string name="snooze">snooze</string>
+    <string name="empty_rec_text">no alarm created yet\nSmash the + icon at the top right corner\nto create a new alarm</string>
+    <string name="Alarms">alarams</string>
 
 
 <!--    alarm-->

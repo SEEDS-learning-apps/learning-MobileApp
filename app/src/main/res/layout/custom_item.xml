@@ -32,7 +32,7 @@
                 android:layout_height="25dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_alarm"
-                app:tint="?attr/bottomBarBackground" />
+                app:tint="@color/black" />
 
             <TextView
                 android:id="@+id/item_title"
@@ -45,8 +45,8 @@
                 android:lines="1"
                 android:paddingEnd="5dp"
                 android:fontFamily="sans-serif-black"
-                android:text="@string/Alarms"
-                android:textColor="?attr/textcolor"
+                android:text="Alarm"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:visibility="gone"
                 tools:ignore="RtlSymmetry" />

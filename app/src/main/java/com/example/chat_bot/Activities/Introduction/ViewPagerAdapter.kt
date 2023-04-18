@@ -18,8 +18,7 @@ private var currentButton: Button? = null
 class ViewPagerAdapter(var context: Context) : PagerAdapter() {
 
     override fun getCount(): Int {
-        // Return the total number of pages in the ViewPager, including the last page with the video
-        return 4
+               return 4
     }
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
