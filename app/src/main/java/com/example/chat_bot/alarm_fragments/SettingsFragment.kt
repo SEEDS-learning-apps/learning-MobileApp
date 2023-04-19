@@ -15,7 +15,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.chat_bot.alarm_ui.AlarmMainActivity
+import com.example.chat_bot.Activities.acivity.AlarmMainActivity
 import com.example.chat_bot.R
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.switchmaterial.SwitchMaterial

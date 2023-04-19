@@ -54,7 +54,7 @@
             android:textAlignment="textStart"
             android:textColor="?attr/textcolor"
             android:textSize="18sp"
-            android:text="@string/about_app" />
+            android:text="@string/about_timely" />
 
     </LinearLayout>
     <LinearLayout

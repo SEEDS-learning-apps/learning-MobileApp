@@ -4,17 +4,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.chat_bot.Activities.acivity.CreateAlarmActivity
+import com.example.chat_bot.R
 import com.example.chat_bot.alarm_data.entities.Alarms
 import com.example.chat_bot.alarm_ui.AlarmViewModel
-import com.example.chat_bot.alarm_ui.CreateAlarmActivity
-import com.example.chat_bot.R
-import kotlinx.android.synthetic.main.alarm_items.view.*
+import com.example.chat_bot.databinding.AlarmItemsBinding
 
 class AlarmAdapter(
     private val alarmViewModel: AlarmViewModel,
     var alarmList: List<Alarms>
 ) :
     RecyclerView.Adapter<AlarmAdapter.AlarmViewHolder>() {
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlarmViewHolder {
@@ -33,11 +34,13 @@ class AlarmAdapter(
 
     override fun onBindViewHolder(holder: AlarmViewHolder, position: Int) {
         val currentAlarm = alarmList[position]
-        holder.itemView.time_tv.text = currentAlarm.time
-        holder.itemView.days_tv.text = currentAlarm.repeatDays
+        val binding = AlarmItemsBinding.bind(holder.itemView)
+
+        binding.timeTv.text = currentAlarm.time
+        binding.daysTv.text = currentAlarm.repeatDays
 
         //this basically checks the state of the switch
-        holder.itemView.isActive.setOnCheckedChangeListener { _, isChecked ->
+        binding.isActive.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 currentAlarm.AlarmIsEnabled = true
 
@@ -53,7 +56,7 @@ class AlarmAdapter(
         }
 
 
-        holder.itemView.isActive.isChecked = currentAlarm.AlarmIsEnabled
+        binding.isActive.isChecked = currentAlarm.AlarmIsEnabled
     }
 
 

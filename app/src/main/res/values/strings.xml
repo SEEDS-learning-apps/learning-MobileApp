@@ -127,7 +127,7 @@
 
 <!--    alarm-->
 
-    <string name="app_name">TimelyApp</string>
+
     <string name="demo_time">9:00PM</string>
     <string name="demo_date">Monday</string>
     <string name="Alarms">Alarm</string>
@@ -146,14 +146,15 @@
     <string name="every_monday">Every Monday</string>
     <string name="empty_rec_text">no alarm created yet\nSmash the + icon at the top right corner\nto create a new alarm</string>
     <string name="dark_mode">Dark Mode</string>
-    <string name="about_app">About App</string>
+
     <string name="App_policy">Privacy Policy</string>
     <string name="rate_app">Rate App</string>
     <string name="share_app">Share app</string>
-    <string name="contact_us">Contact us</string>
+
     <string name="about_timely">About Timely</string>
     <string name="about_timely_app">Timely is an alarm app created for scheduling multiple alarms at a time\n\nAvailable Features:\n-Create/Schedule multiple or single alarms.\n-Turn on or Turn off specific alarm.\n -Swipe delete alarm.\n-Stop or Snooze alarm sound.\nand lots more..</string>
-    <string name="close">Close</string>
+
+
     <string-array name="Languages">
         <item>Deutsch</item>
         <item>Español</item>

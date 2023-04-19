@@ -10,8 +10,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import androidx.core.app.NotificationCompat
-import com.example.chat_bot.alarm_service.Alarmservice
-import com.example.chat_bot.alarm_ui.AlarmMainActivity
+import com.example.chat_bot.Activities.acivity.AlarmMainActivity
 import com.example.chat_bot.R
 
 const val ACTION_STOP_ALARM ="ACTION_STOP_ALARM"
@@ -66,31 +65,12 @@ class AlarmNotificationHelper(base:Context) :ContextWrapper(base) {
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
             .setOngoing (true)
-            . addAction(R.drawable.ic_alarm_stop,"Stop",stopAlarmTone(this))
-            .addAction(R.drawable.ic_snooze,"Snooze",snoozeAlarm(this))
 
 
 
     }
     // stop alarm tone functionality
-    private fun stopAlarmTone(context:Context):PendingIntent{
-        val stopAlarmIntent=Intent(context, Alarmservice::class.java).apply {
-            action= ACTION_STOP_ALARM
-        }
-        return PendingIntent.getService(this, notificationId,stopAlarmIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT)
 
-    }
-
-    //snooze alarm
-    private fun snoozeAlarm(context:Context):PendingIntent{
-       val snoozeIntent=Intent(context,
-           Alarmservice::class.java).apply {
-           action= ACTION_SNOOZE_ALARM
-       }
-        return PendingIntent.getService(this, notificationId,snoozeIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT)
-    }
 
 
 

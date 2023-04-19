@@ -1,18 +1,22 @@
-package com.example.chat_bot.alarm_ui
+package com.example.chat_bot.Activities.acivity
 
 
 import android.annotation.SuppressLint
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.view.KeyEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.chat_bot.Activities.Welcomepage.WelcomePage
 import com.example.chat_bot.alarm_adapter.ItemAdapter
 import com.example.chat_bot.alarm_data.CustomBottomBar
 import com.example.chat_bot.alarm_data.CustomBottomItem
 import com.example.chat_bot.alarm_fragments.AlarmFragment
 import com.example.chat_bot.alarm_fragments.SettingsFragment
-import com.example.chat_bot.alarm_notification.ACTION_STOP_ALARM
-import com.example.chat_bot.alarm_receiver.AlarmReceiver
 import com.example.chat_bot.R
 
 @SuppressLint("ResourceType")
@@ -37,14 +41,9 @@ class AlarmMainActivity : AppCompatActivity(), ItemAdapter.ItemSelectorInterface
         super.onCreate(savedInstanceState)
         setContentView(R.layout.alarm_activity_main)
 
+        createNotificationChannel()
         val action=intent!!.action
 
-        //stop alarm sound on notification click
-        if(action == ACTION_STOP_ALARM){
-            AlarmReceiver.taskRingtone!!.stop()
-            AlarmReceiver.vibrator!!.cancel()
-
-        }
 
         fragment1 = AlarmFragment()
         fragment2 = SettingsFragment()
@@ -114,6 +113,30 @@ class AlarmMainActivity : AppCompatActivity(), ItemAdapter.ItemSelectorInterface
             }
         }
 
+
+
+    }
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "SEEDS CHAT & LEARN"
+            val description = "Channel For Alarm Manager"
+            val importance = NotificationManager.IMPORTANCE_HIGH
+            val channel = NotificationChannel("SeedsAndroid", name, importance)
+            channel.description = description
+
+            val notificationManager = getSystemService(NotificationManager::class.java)
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            val intent = Intent(this@AlarmMainActivity, WelcomePage::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
+        }
+        return super.onKeyDown(keyCode, event)
     }
 }
 

@@ -6,9 +6,9 @@ import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil.setContentView
-import com.example.chat_bot.alarm_ui.AlarmMainActivity
 import com.example.chat_bot.Activities.IntroductionActivity
 import com.example.chat_bot.Activities.Login
+import com.example.chat_bot.Activities.acivity.AlarmMainActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.databinding.ActivityWelcomepageBinding
 import com.example.chat_bot.utils.SessionManager

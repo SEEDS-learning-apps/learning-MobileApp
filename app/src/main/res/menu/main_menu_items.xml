@@ -5,5 +5,5 @@
     <item android:title="@string/add_alarm"
         android:id="@+id/create_new_alarm"
         android:icon="@drawable/ic_add_alarm"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
 </menu>

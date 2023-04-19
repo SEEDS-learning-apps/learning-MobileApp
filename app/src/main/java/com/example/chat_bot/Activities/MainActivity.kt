@@ -1,16 +1,12 @@
 package com.example.chat_bot.Activities
 
-//import com.example.chat_bot.Manifest
-import android.app.AlarmManager
-import android.app.PendingIntent
-import android.content.Context
+
 import android.content.Intent
 import android.os.Bundle
 import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.chat_bot.Activities.acivity.NotificationReceiver
 import com.example.chat_bot.data.Message
 import com.example.chat_bot.data.Topics
 import com.example.chat_bot.data.msgAdapter
@@ -46,7 +42,7 @@ class MainActivity : AppCompatActivity(), msgAdapter.Callbackinter{
 
         Log.v(TAG, "In main")
 
-        setupNotificationWithTrigger(10000)
+//        setupNotificationWithTrigger(10000)
 
     }
 
@@ -150,23 +146,23 @@ class MainActivity : AppCompatActivity(), msgAdapter.Callbackinter{
     override fun passResultCallback(message: Topics) {
         TODO("Not yet implemented")
     }
-    private fun setupNotificationWithTrigger(triggerTime: Long) {
-        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val notificationIntent = Intent(this, NotificationReceiver::class.java)
-        val pendingIntent = PendingIntent.getBroadcast(
-            this,
-            0,
-            notificationIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT
-        )
-
-        // Set the alarm to go off at the specified time
-        alarmManager.set(
-            AlarmManager.RTC_WAKEUP,
-            System.currentTimeMillis() + triggerTime,
-            pendingIntent
-        )
-    }
+//    private fun setupNotificationWithTrigger(triggerTime: Long) {
+//        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+//        val notificationIntent = Intent(this, NotificationReceiver::class.java)
+//        val pendingIntent = PendingIntent.getBroadcast(
+//            this,
+//            0,
+//            notificationIntent,
+//            PendingIntent.FLAG_UPDATE_CURRENT
+//        )
+//
+//        // Set the alarm to go off at the specified time
+//        alarmManager.set(
+//            AlarmManager.RTC_WAKEUP,
+//            System.currentTimeMillis() + triggerTime,
+//            pendingIntent
+//        )
+//    }
 }
 
 

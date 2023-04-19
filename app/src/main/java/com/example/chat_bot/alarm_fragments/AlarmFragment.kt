@@ -7,6 +7,7 @@ import android.content.Intent
 import android.graphics.Canvas
 import android.os.Bundle
 import android.view.*
+import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -16,17 +17,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chat_bot.alarm_ui.AlarmViewModel
-import com.example.chat_bot.alarm_ui.AlarmViewModelFactory
-import com.example.chat_bot.alarm_ui.CreateAlarmActivity
+import com.example.chat_bot.Activities.acivity.CreateAlarmActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.alarm_adapter.AlarmAdapter
 import com.example.chat_bot.alarm_data.entities.Alarms
 import com.example.chat_bot.alarm_fragments.AlarmFragment.Toast.displayFailureToast
 import com.example.chat_bot.alarm_fragments.AlarmFragment.Toast.displaySuccessToast
+import com.example.chat_bot.alarm_ui.AlarmViewModel
+import com.example.chat_bot.alarm_ui.AlarmViewModelFactory
 import com.muddzdev.styleabletoastlibrary.StyleableToast
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
-import kotlinx.android.synthetic.main.fragment_alarm.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
@@ -35,10 +35,9 @@ import java.util.*
 @Suppress("DEPRECATION")
 class AlarmFragment : Fragment(), KodeinAware {
     override val kodein by kodein()
-    private val factory: AlarmViewModelFactory by instance()
     private var viewModel: AlarmViewModel? = null
     private var adapter: AlarmAdapter? = null
-
+    private val factory: AlarmViewModelFactory by instance(tag = "AlarmFragment")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -48,6 +47,7 @@ class AlarmFragment : Fragment(), KodeinAware {
         //this tells the fragment hey, we've got a menu item
         setHasOptionsMenu(true)
         val view = inflater.inflate(R.layout.fragment_alarm, container, false)
+
 
         viewModel = ViewModelProvider(this, factory).get(AlarmViewModel::class.java)
 
@@ -60,9 +60,9 @@ class AlarmFragment : Fragment(), KodeinAware {
         viewModel!!.getAllAlarms().observe(viewLifecycleOwner, Observer {
             //this checks if the recyclerview is empty
             if (it.isEmpty()) {
-                emptyRecView.visibility = View.VISIBLE
+                view.findViewById<RelativeLayout>(R.id.emptyRecView).visibility = View.VISIBLE
             } else {
-                emptyRecView.visibility = View.GONE
+                view.findViewById<RelativeLayout>(R.id.emptyRecView).visibility = View.GONE
             }
             adapter!!.alarmList = it
             adapter!!.notifyDataSetChanged()
@@ -178,7 +178,7 @@ class AlarmFragment : Fragment(), KodeinAware {
     @SuppressLint("InflateParams")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.create_new_alarm) {
-            val intent = Intent(context, CreateAlarmActivity::class.java)
+            val intent = Intent(requireContext(), CreateAlarmActivity::class.java)
             startActivityForResult(intent, CREATE_ALARM_REQUEST)
 
         }

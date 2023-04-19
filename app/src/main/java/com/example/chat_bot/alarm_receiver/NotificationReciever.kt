@@ -19,7 +19,7 @@ class AlarmReceiver : BroadcastReceiver() {
             context,
             0,
             i,
-            PendingIntent.FLAG_IMMUTABLE // Add FLAG_IMMUTABLE flag
+            PendingIntent.FLAG_UPDATE_CURRENT// Add FLAG_IMMUTABLE flag
         )
 
         val Seeds_logo = BitmapFactory.decodeResource(

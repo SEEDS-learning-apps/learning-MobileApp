@@ -1,4 +1,4 @@
-package com.example.chat_bot.alarm_ui
+package com.example.chat_bot.Activities.acivity
 
 import android.app.Activity
 import android.app.AlarmManager
@@ -8,14 +8,14 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.widget.Button
 import android.widget.CompoundButton
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.alarm_fragments.AlarmFragment.Toast.displayFailureToast
-import com.example.chat_bot.alarm_receiver.AlarmReceiver
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import kotlinx.android.synthetic.main.activity_create_alarm.*
 import java.util.*
 
 
@@ -23,22 +23,18 @@ class CreateAlarmActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeL
 
     lateinit var AM_PM: String
     override fun onCreate(savedInstanceState: Bundle?) {
-        //get sharedprefs of switch(our switch from settings)
-        val sharedPrefs = getSharedPreferences("pref", Context.MODE_PRIVATE)
-        val darkModeIsActivated = sharedPrefs.getBoolean("DARK MODE", false)
-        if (darkModeIsActivated) {
-            setTheme(R.style.DarkMode)
-        } else {
-            setTheme(R.style.WhiteMode)
-        }
         super.onCreate(savedInstanceState)
-        overridePendingTransition(R.anim.fade_in,R.anim.fadeout)
+        overridePendingTransition(R.anim.fade_in,R.anim.zoom_in)
         setContentView(R.layout.activity_create_alarm)
 
         addDayChips()
 
         //set title
         title = "Schedule Alarm"
+
+        val btn_choose_time = findViewById<Button>(R.id.btn_choose_time)
+        val btn_set_alarm = findViewById<Button>(R.id.btn_set_alarm)
+        val timeTV = findViewById<TextView>(R.id.timeTV)
 
         btn_choose_time.setOnClickListener {
             val calendar=Calendar.getInstance()
@@ -80,6 +76,9 @@ class CreateAlarmActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeL
     }
 
     private fun sendDataToAlarmFragment() {
+
+        val timeTV = findViewById<TextView>(R.id.timeTV)
+
         val timeText = timeTV.text.toString()
         val builder = StringBuilder()
         val alarmIsOn = true
@@ -198,6 +197,7 @@ class CreateAlarmActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeL
 
 
     private fun addDayChips() {
+        val cg_days_chips = findViewById<ChipGroup>(R.id.cg_days_chips)
         days.forEach { day ->
             cg_days_chips.addChip {
                 text = day
@@ -212,7 +212,7 @@ class CreateAlarmActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeL
     private fun ChipGroup.addChip(chipInitializer: Chip.() -> Unit) {
         val dayChip =
             layoutInflater.inflate(R.layout.layout_day_chip, null).findViewById<Chip>(R.id.chip_day)
-        dayChip.setChipBackgroundColorResource(R.color.chipColor)
+        dayChip.setChipBackgroundColorResource(R.color.light_blue_600)
 
         val chip = dayChip.apply {
             chipInitializer(this)
@@ -234,4 +234,3 @@ class CreateAlarmActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeL
 
 
 }
-
