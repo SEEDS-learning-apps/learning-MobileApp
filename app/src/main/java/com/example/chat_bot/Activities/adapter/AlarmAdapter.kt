@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chat_bot.Activities.acivity.CreateAlarmActivity
+import com.example.chat_bot.Activities.activity.CreateNotificationActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.Room.Entities.Alarms
 import com.example.chat_bot.ui.AlarmViewModel
@@ -20,7 +20,7 @@ class AlarmAdapter(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlarmViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.alarm_items, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.notification_items, parent, false)
         return AlarmViewHolder(view)
 
     }
@@ -49,13 +49,13 @@ class AlarmAdapter(
             if (isChecked) {
                 currentAlarm.AlarmIsEnabled = true
 
-                CreateAlarmActivity.selectedDays.clear()
+                CreateNotificationActivity.selectedDays.clear()
 
-                CreateAlarmActivity.startAlarm(currentAlarm.id, holder.itemView.context)
+                CreateNotificationActivity.startAlarm(currentAlarm.id, holder.itemView.context)
                 alarmViewModel.update(currentAlarm)
             } else {
                 currentAlarm.AlarmIsEnabled = false
-                CreateAlarmActivity.cancelAlarm(currentAlarm.id,holder.itemView.context)
+                CreateNotificationActivity.cancelAlarm(currentAlarm.id,holder.itemView.context)
                 alarmViewModel.update(currentAlarm)
             }
         }
