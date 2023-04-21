@@ -8,7 +8,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:theme="@style/Theme.AppCompat.NoActionBar"
-    tools:context=".Activities.Register">
+    tools:context=".Activities.Welcomepage.Register">
 
     <ImageView
         android:id="@+id/backgroundImage"

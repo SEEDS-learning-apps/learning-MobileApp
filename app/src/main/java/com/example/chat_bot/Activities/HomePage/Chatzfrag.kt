@@ -20,7 +20,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chat_bot.Activities.QuizActivity
+import com.example.chat_bot.Activities.activity.QuizActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.Rasa.Networkings.api_Rasa
 import com.example.chat_bot.Rasa.rasaMsg.BotResponse

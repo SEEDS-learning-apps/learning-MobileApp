@@ -1,4 +1,4 @@
-package com.example.chat_bot.Activities
+package com.example.chat_bot.Activities.Introduction
 
 import android.content.Context
 import android.net.Uri

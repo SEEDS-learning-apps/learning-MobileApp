@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
-    tools:context=".Activities.acivity.NotificationManager">
+    tools:context=".Activities.Notification.Activity.NotificationManager">
 
 
     <ImageView

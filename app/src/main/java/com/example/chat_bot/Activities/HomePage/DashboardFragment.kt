@@ -1,4 +1,4 @@
-package com.example.chat_bot.Ac
+package com.example.chat_bot.Activities.HomePage
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -15,9 +15,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.chat_bot.Activities.acivity.Help
-import com.example.chat_bot.Activities.acivity.downloadQuizActivity
-import com.example.chat_bot.Activities.acivity.quiz_home
+import com.example.chat_bot.Activities.DashboardActivities.Help
+import com.example.chat_bot.Activities.DashboardActivities.downloadQuizActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.databinding.FragmentDashboardBinding
 import com.example.chat_bot.utils.AppMode
@@ -109,8 +108,9 @@ class DashboardFragment : Fragment() {
 
         bind.SettingsCardview.setOnClickListener {
             val intent =
-                Intent(this.context, com.example.chat_bot.Activities.acivity.Settings::class.java)
+                Intent(this.context, com.example.chat_bot.Activities.DashboardActivities.Settings::class.java)
             startActivity(intent)
+            activity?.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
 
         bind.HelpCardview.setOnClickListener {
@@ -118,13 +118,8 @@ class DashboardFragment : Fragment() {
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             }
             startActivity(intent)
+            activity?.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
-
-
-//        bind.complexTV.setOnClickListener {  loadHome()}
-
-
-
 
     }
 
@@ -134,15 +129,6 @@ class DashboardFragment : Fragment() {
         }
         startActivity(intent)
     }
-
-    private fun loadHome() {
-        val intent = Intent(context, quiz_home::class.java).apply {
-
-
-        }
-        startActivity(intent)
-    }
-
 
     private fun handleClicks() {
         session.logoutUser()
@@ -221,51 +207,6 @@ class DashboardFragment : Fragment() {
         builder.setCanceledOnTouchOutside(false)
         builder.show()
     }
-
-
-//    fun onBackpressed(){
-//        val intent = Intent(context, HomeActivity::class.java)
-//        startActivity(intent)
-//    }
-
-//    fun onBackPressed() {
-//        val count = childFragmentManager.backStackEntryCount
-//        if (count == 0) {
-//            super.onBackPressed()
-//            //additional code
-//        } else {
-//            childFragmentManager.popBackStack()
-//        }
-//    }
-
-//    fun onKeyDown(keyCode: Int, event: KeyEvent?) {
-//        if (keyCode == KeyEvent.KEYCODE_BACK) {
-//            val navHostFragment = fragmentManager?.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-//            val navController = navHostFragment.navController
-//            navController.navigate(R.id.chatFragment)
-//        }
-//    }
-
-//   override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-//        if (keyCode == KeyEvent.KEYCODE_BACK) {
-//            val intent = Intent(requireContext(), HomeActivity::class.java)
-//            startActivity(intent)
-//            return true
-//        }
-//        return true
-//    }
-//
-//}
-
-//    private fun Fragment.onBackPressed() {
-//        val count = childFragmentManager.backStackEntryCount
-//        if (count == 0) {
-//            return onBackPressed()
-//        //additional code
-//        } else {
-//            childFragmentManager.popBackStack()
-//        }
-//    }
 
 }
 

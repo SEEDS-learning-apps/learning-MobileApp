@@ -21,37 +21,37 @@
         android:usesCleartextTraffic="true">
 
 
-        <activity android:name=".alarm_ui.CreateAlarmActivity"
+        <activity android:name=".Notification_UI.CreateAlarmActivity"
             android:theme="@style/DarkMode">
         </activity>
 
-        <activity android:name=".alarm_ui.AlarmMainActivity"/>
+        <activity android:name=".Notification_UI.AlarmMainActivity"/>
 
         <service android:name=".alarm_service.Alarmservice" />
 
-        <receiver android:name=".alarm_receiver.AlarmReceiver" />
+        <receiver android:name=".Notification_receiver.AlarmReceiver" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-       <activity android:name=".Activities.acivity.NotificationManager"
+       <activity android:name=".Activities.activity.NotificationManager"
            android:exported="true"/>
 
-        <receiver android:name=".Activities.acivity.AlarmReceiver"/>
+        <receiver android:name=".Activities.activity.AlarmReceiver"/>
         <!-- Dashboard -->
         <activity
-            android:name=".Activities.acivity.Settings"
+            android:name=".Activities.activity.Settings"
             android:exported="false"
             android:noHistory="true" />
         <activity
-            android:name=".Activities.acivity.downloadQuizActivity"
+            android:name=".Activities.activity.downloadQuizActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:noHistory="true" />
 
         <activity
-            android:name=".Activities.acivity.Help"
+            android:name=".Activities.activity.Help"
             android:exported="false" />
 
 
@@ -90,7 +90,7 @@
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".Activities.acivity.OpenEnded"
+            android:name=".Activities.activity.OpenEnded"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
@@ -99,23 +99,23 @@
             android:exported="false"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
-            android:name=".Activities.acivity.TruefalseActivity"
+            android:name=".Activities.activity.TruefalseActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
-            android:name=".Activities.acivity.Pic_mataching"
+            android:name=".Activities.activity.Pic_mataching"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
-            android:name=".Activities.acivity.MatchingActivity"
+            android:name=".Activities.activity.MatchingActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
-            android:name=".Activities.acivity.Video"
+            android:name=".Activities.activity.Video"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
-            android:name=".Activities.acivity.quiz_home"
+            android:name=".Activities.activity.quiz_home"
             android:configChanges="orientation|screenSize"
             android:exported="true" />
         <activity

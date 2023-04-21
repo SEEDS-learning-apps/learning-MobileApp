@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.example.chat_bot.Ac.DashboardFragment"
+        android:name="com.example.chat_bot.Activities.HomePage.DashboardFragment"
         android:label="Dashboard" >
         <action
             android:id="@+id/action_dashboardFragment_to_downloadQuizActivity"
@@ -38,7 +38,7 @@
         android:label="Dashboard" />
     <activity
         android:id="@+id/downloadQuizActivity"
-        android:name="com.example.chat_bot.Activities.acivity.downloadQuizActivity"
+        android:name="com.example.chat_bot.Activities.DashboardActivities.downloadQuizActivity"
         android:label="activity_download_quiz"
         tools:layout="@layout/activity_download_quiz" />
 

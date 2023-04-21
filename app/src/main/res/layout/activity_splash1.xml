@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Splash"
+    tools:context=".Activities.Welcomepage.Splash"
     android:background="@color/background">
 
     <ImageView

@@ -5,9 +5,8 @@ import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chat_bot.Activities.QuizActivity
+import com.example.chat_bot.Activities.activity.QuizActivity
 import com.example.chat_bot.data.tryy.QuestItem
 import com.example.chat_bot.databinding.DownloadItemBinding
 import com.example.chat_bot.utils.Time

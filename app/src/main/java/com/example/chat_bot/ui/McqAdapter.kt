@@ -7,7 +7,6 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import android.util.Log
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,7 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chat_bot.Activities.HomePage.HomeActivity
-import com.example.chat_bot.Activities.acivity.TruefalseActivity
+import com.example.chat_bot.Activities.activity.TruefalseActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.data.Data
 import com.example.chat_bot.databinding.McqItemBinding

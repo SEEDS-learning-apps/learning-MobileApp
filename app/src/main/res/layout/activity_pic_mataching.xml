@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/scroll"
-    tools:context=".Activities.acivity.Pic_mataching">
+    tools:context=".Activities.activity.Pic_mataching">
 
     <RelativeLayout
         android:layout_width="match_parent"

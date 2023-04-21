@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:title="@string/add_alarm"
+    <item android:title="Notification"
         android:id="@+id/create_new_alarm"
-        android:icon="@drawable/ic_add_alarm"
-        app:showAsAction="ifRoom" />
+        android:icon="@drawable/ic_add_notification"
+        app:showAsAction="ifRoom"/>
 </menu>

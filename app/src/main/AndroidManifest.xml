@@ -21,34 +21,34 @@
         android:usesCleartextTraffic="true">
 
 
-        <activity android:name=".Activities.acivity.CreateAlarmActivity"
-            android:theme="@style/DarkMode"/>
+        <activity android:name=".Activities.activity.CreateNotificationActivity" />
 
-        <activity android:name=".Activities.acivity.AlarmMainActivity"
-            android:exported="true"/>
+        <activity android:name=".Activities.activity.Notification_MainActivity"
+            android:exported="true"
+            android:theme="@style/ALARM_MODE"/>
 
-        <receiver android:name=".Activities.acivity.AlarmReceiver" />
+        <receiver android:name=".Activities.Notification.Activity.Notification_receiver.NotificationReciever" />
 
         <!-- Dashboard -->
         <activity
-            android:name=".Activities.acivity.Settings"
+            android:name=".Activities.DashboardActivities.Settings"
             android:exported="false"
             android:noHistory="true" />
         <activity
-            android:name=".Activities.acivity.downloadQuizActivity"
+            android:name=".Activities.DashboardActivities.downloadQuizActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:noHistory="true" />
 
         <activity
-            android:name=".Activities.acivity.Help"
+            android:name=".Activities.DashboardActivities.Help"
             android:exported="false" />
 
 
         <!-- Introduction Screen -->
 
         <activity
-            android:name=".Activities.IntroductionActivity"
+            android:name=".Activities.Introduction.IntroductionActivity"
             android:exported="false"
             android:noHistory="true" />
 
@@ -66,7 +66,7 @@
         <!-- Login -->
 
         <activity
-            android:name=".Activities.Login"
+            android:name=".Activities.Welcomepage.Login"
             android:exported="true"
             android:noHistory="true"
             android:windowSoftInputMode="adjustResize" />
@@ -74,38 +74,38 @@
         <!-- Register -->
 
         <activity
-            android:name=".Activities.Register"
+            android:name=".Activities.Welcomepage.Register"
             android:configChanges="locale"
             android:noHistory="true"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".Activities.acivity.OpenEnded"
+            android:name=".Activities.activity.OpenEnded"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
-            android:name=".Activities.QuizActivity"
+            android:name=".Activities.activity.QuizActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
-            android:name=".Activities.acivity.TruefalseActivity"
+            android:name=".Activities.activity.TruefalseActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
-            android:name=".Activities.acivity.Pic_mataching"
+            android:name=".Activities.activity.Pic_mataching"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
-            android:name=".Activities.acivity.MatchingActivity"
+            android:name=".Activities.activity.MatchingActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
-            android:name=".Activities.acivity.Video"
+            android:name=".Activities.activity.Video"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
-            android:name=".Activities.acivity.quiz_home"
+            android:name=".Activities.activity.quiz_home"
             android:configChanges="orientation|screenSize"
             android:exported="true" />
         <activity
@@ -115,7 +115,7 @@
             />
 
         <activity
-            android:name=".Activities.Splash"
+            android:name=".Activities.Welcomepage.Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -124,10 +124,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.Mcqs_activity"
+            android:name=".Activities.activity.Mcqs_activity"
             android:exported="true" />
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".Activities.HomePage.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
     </application>

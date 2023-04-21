@@ -1,4 +1,4 @@
-package com.example.chat_bot.Activities
+package com.example.chat_bot.Activities.Introduction
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,6 +13,7 @@ import androidx.core.text.HtmlCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
+import com.example.chat_bot.Activities.Welcomepage.Register
 import com.example.chat_bot.Activities.Welcomepage.WelcomePage
 import com.example.chat_bot.R
 import java.util.*

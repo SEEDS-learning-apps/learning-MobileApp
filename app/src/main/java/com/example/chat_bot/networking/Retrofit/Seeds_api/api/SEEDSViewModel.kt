@@ -6,8 +6,8 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.chat_bot.Activities.activity.OpenEnded
 import com.example.chat_bot.Lists.*
-import com.example.chat_bot.Room.Entities.Data
 import com.example.chat_bot.Room.Entities.OnlineUserData
 import com.example.chat_bot.data.*
 

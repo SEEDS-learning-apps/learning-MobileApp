@@ -5,17 +5,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.chat_bot.Activities.Login
-import com.example.chat_bot.Activities.QuizActivity
 import com.example.chat_bot.Room.Coverters.ButtonConverter
 import com.example.chat_bot.Room.Coverters.MaterialListConverter
 import com.example.chat_bot.Room.Dao.SeedsDao
-import com.example.chat_bot.data.Message
 import com.example.chat_bot.data.R_Message
 import com.example.chat_bot.data.User
-import com.example.chat_bot.data.tryy.DowloadedQuiz
 import com.example.chat_bot.data.tryy.QuestItem
-import kotlinx.coroutines.CoroutineScope
 
 @Database(
     entities = [
