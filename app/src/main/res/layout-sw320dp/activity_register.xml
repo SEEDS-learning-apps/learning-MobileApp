@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="?attr/backgroundcolor"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    android:theme="@style/Theme.AppCompat.NoActionBar"
     tools:context=".Activities.Welcomepage.Register">
 
     <ImageView
@@ -19,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/app_background" />
+        android:src="@drawable/app_background_light"
+        app:tint="?attr/background" />
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
@@ -66,7 +66,8 @@
             android:id="@+id/person_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/person_foreground" />
+            android:src="@drawable/person_foreground"
+            app:tint="?attr/textcolor"/>
 
         <TextView
             android:id="@+id/textView3"
@@ -75,9 +76,9 @@
             android:baselineAligned="false"
             android:text="@string/create_account"
             android:textAlignment="center"
-            android:textColor="@color/black"
             android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="?attr/textcolor"/>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -176,7 +177,8 @@
             android:layout_height="35dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/custom_button"
-            android:text="@string/Register_btn" />
+            android:text="@string/Register_btn"
+            android:textColor="?attr/textcolor"/>
 
         <TextView
             android:id="@+id/Already_user_login_btn"
@@ -184,7 +186,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/login_existing_account"
-            android:textColor="@color/black"
+            android:textColor="?attr/textcolor"
             app:layout_constraintTop_toBottomOf="@+id/btn_reg" />
 
     </LinearLayout>

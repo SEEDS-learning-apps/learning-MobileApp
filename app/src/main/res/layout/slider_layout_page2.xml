@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundcolor">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -29,7 +30,6 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="CHATBOT"
-            android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -37,7 +37,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lottie_animation_page2"
-            app:layout_constraintVertical_bias="0.097" />
+            app:layout_constraintVertical_bias="0.097"
+            android:textColor="?attr/textcolor"/>
 
         <TextView
             android:id="@+id/page2_text"
@@ -50,6 +51,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/page2_heading"
             android:text = "You can chat with our inbuilt chatbot to get desired subjects and exercises"
-            android:textSize="15dp"/>
+            android:textSize="15dp"
+            android:textColor="?attr/textcolor"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

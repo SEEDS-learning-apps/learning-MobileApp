@@ -82,6 +82,7 @@ class CreateNotificationActivity : AppCompatActivity(), CompoundButton.OnChecked
 
         }
 
+
     }
 
     private fun sendDataToAlarmFragment() {
@@ -160,12 +161,15 @@ class CreateNotificationActivity : AppCompatActivity(), CompoundButton.OnChecked
                 }
 
                 val intent = Intent(context, NotificationReciever::class.java)
+                intent.putExtra(ALARM_REPEAT_DAYS, selectedDays.toTypedArray())
+                intent.putExtra("selectedDays", selectedDays.toTypedArray())
                 val pendingIntent =
                     PendingIntent.getBroadcast(context, alarmId, intent, PendingIntent.FLAG_UPDATE_CURRENT)
                 val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-                alarmManager.setExact(
+                alarmManager.setInexactRepeating(
                     AlarmManager.RTC_WAKEUP,
                     calendar.timeInMillis,
+                    7 * 24 * 60 * 60 * 1000,
                     pendingIntent
                 )
             }
@@ -186,15 +190,15 @@ class CreateNotificationActivity : AppCompatActivity(), CompoundButton.OnChecked
         const val ALARM_REPEAT_DAYS = "ALARM_REPEAT_DAYS"
 
         //list of repeat days
-        private val days by lazy {
+        val days by lazy {
             listOf(
-                "Every Sunday",
-                "Every Monday",
-                "Every Tuesday",
-                "Every Wednesday",
-                "Every Thursday",
-                "Every Friday",
-                "Every Saturday"
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday"
             )
         }
     }

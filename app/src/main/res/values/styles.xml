@@ -1,13 +1,5 @@
 <resources>
 
-    <style name="Theme.AppCompat.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/seed_light_blue</item>
-        <item name="colorPrimaryVariant">@color/seed_dark_blue</item>
-<!--        <item name="colorOnPrimary">@color/black</item>-->
-    </style>
-
     <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:windowBackground">@drawable/rounded_corner</item>
     </style>
@@ -74,16 +66,44 @@
         <item name="android:windowExitAnimation">@anim/dialog_slide_left</item>
     </style>
 
-<!--    alarm-->
 
+    <!-- APP mode -->
 
+    <style name="WhiteMode" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimaryVariant">@color/seed_dark_blue</item>
+        <item name="colorPrimary">@color/seed_light_blue</item>
+        <item name="backgroundcolor">@color/background</item>
+        <item name="textcolor">@color/mild_black</item>
+        <item name="background">@color/background_mild_black</item>
+        <item name="repeatbottomSheetIconColor">#9E151515</item>
+        <item name="backgroundInsetStart">@color/Button_start_light</item>
+        <item name="backgroundInsetEnd">@color/Button_end_light</item>
+        <item name="buttonBarStyle">@color/custom_Button_start_light</item>
+        <item name="buttonBarButtonStyle">@color/custom_Button_end_light</item>
+    </style>
 
     <!-- DARK MODE. -->
-    <style name="ALARM_MODE" parent="Theme.MaterialComponents.Light.DarkActionBar">
-        <item name="colorPrimary">#AFD5D5</item>
+    <style name="DarkMode" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/seed_light_blue</item>
+        <item name="colorPrimaryVariant">@color/seed_dark_blue</item>
         <item name="colorAccent">@color/colorPrimaryblue</item>
+        <item name="backgroundcolor">@color/background_black</item>
+        <item name="toastcolor">@color/black</item>
+        <item name="textcolor">@color/background</item>
+        <item name="background">@color/white</item>
+        <item name="repeatbottomSheetIconColor">#9EFFFFFF</item>
+        <item name="backgroundInsetStart">@color/Button_start_dark</item>
+        <item name="backgroundInsetEnd">@color/Button_end_dark</item>
+        <item name="buttonBarStyle">@color/custom_Button_start_dark</item>
+        <item name="buttonBarButtonStyle">@color/custom_Button_end_dark</item>
+
 
     </style>
+
 
     <!--    color for white toobar text-->
     <style name="WhiteMode.Toolbar" parent="Widget.MaterialComponents.Toolbar">
@@ -97,15 +117,15 @@
 
     <!--    styleable toast theme-->
     <style name="myToast">
-        <item name="colorBackground">@color/colorBottomBarBackground1</item>
-        <item name="textColor">@color/toast_text_color1</item>
+        <item name="colorBackground">@color/white</item>
+        <item name="textColor">@color/black</item>
         <item name="iconRight">@drawable/toast_success</item>
         <item name="length">LONG</item>
         <item name="cornerRadius">3dp</item>
     </style>
     <style name="myToast1">
-        <item name="colorBackground">@color/colorBottomBarBackground1</item>
-        <item name="textColor">@color/toast_text_color1</item>
+        <item name="colorBackground">@color/white</item>
+        <item name="textColor">@color/black</item>
         <item name="iconRight">@drawable/ic_cancel</item>
         <item name="length">LONG</item>
         <item name="cornerRadius">3dp</item>

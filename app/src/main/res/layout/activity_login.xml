@@ -4,20 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".Activities.Welcomepage.Login">
+    tools:context=".Activities.Welcomepage.Login"
+    android:background="?attr/backgroundcolor">
 
     <ImageView
         android:id="@+id/backgroundImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="32dp"
-        android:alpha="0.08"
+        android:alpha="0.1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/app_background" />
+        android:src="@drawable/app_background_light"
+        app:tint="?attr/background" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,7 +35,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/person_foreground"
-            android:id="@+id/person_iv">
+            android:id="@+id/person_iv"
+            app:tint="?attr/textcolor">
         </ImageView>
 
         <TextView
@@ -42,8 +44,8 @@
             android:layout_height="wrap_content"
             android:text="@string/Accountlogin"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="?attr/textcolor"/>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -83,7 +85,8 @@
             android:layout_height="35dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/custom_button"
-            android:text="@string/Login" />
+            android:text="@string/Login"
+            android:textColor="?attr/textcolor"/>
 
     </LinearLayout>
 
@@ -93,10 +96,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/register_account"
-        android:textColor="@color/black"
+        android:textColor="?attr/textcolor"
         app:layout_constraintEnd_toEndOf="@id/login_linear"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_linear" />
+        app:layout_constraintTop_toBottomOf="@+id/login_linear"
+      />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

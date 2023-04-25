@@ -3,21 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="?attr/backgroundcolor">
 
     <ImageView
         android:id="@+id/backgroundImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="32dp"
-        android:alpha="0.08"
+        android:alpha="0.1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/info_icon" />
+        app:srcCompat="@drawable/info_icon"
+        app:tint="?attr/background"/>
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -35,22 +36,23 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="0dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/back" />
+            android:src="@drawable/back"
+            app:tint="?attr/textcolor"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/Help"
-            android:textColor="@color/mild_black"
             android:textSize="24dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="?attr/textcolor"/>
 
     </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/Material_language_dropdown"
-        android:layout_width="400dp"
+        android:layout_width="380dp"
         android:layout_height="50dp"
         android:background="@drawable/settings_button"
         android:layout_marginTop="50dp"
@@ -71,7 +73,8 @@
                 android:layout_height="30dp"
                 android:layout_alignParentStart="true"
                 android:layout_centerInParent="true"
-                android:src="@drawable/feedback" />
+                android:src="@drawable/feedback"
+                app:tint="?attr/textcolor"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -79,7 +82,7 @@
                 android:layout_centerInParent="true"
                 android:padding="10dp"
                 android:text="@string/feedback"
-                android:textColor="@color/mild_black"
+                android:textColor="?attr/textcolor"
                 android:textSize="18dp" />
 
             <ImageView
@@ -88,13 +91,14 @@
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerInParent="true"
-                android:src="@drawable/next_icon" />
+                android:src="@drawable/next_icon"
+                app:tint="?attr/textcolor"/>
         </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/interface_language_dialog"
-        android:layout_width="400dp"
+        android:layout_width="380dp"
         android:layout_height="50dp"
         android:background="@drawable/settings_button"
         android:layout_marginTop="25dp"
@@ -115,7 +119,8 @@
                 android:layout_height="30dp"
                 android:layout_alignParentStart="true"
                 android:layout_centerInParent="true"
-                android:src="@drawable/contact_icon" />
+                android:src="@drawable/contact_icon"
+                app:tint="?attr/textcolor"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -123,8 +128,8 @@
                 android:layout_centerInParent="true"
                 android:padding="10dp"
                 android:text="@string/contact_us"
-                android:textColor="@color/mild_black"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textColor="?attr/textcolor"/>
 
             <ImageView
 
@@ -132,13 +137,14 @@
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerInParent="true"
-                android:src="@drawable/next_icon" />
+                android:src="@drawable/next_icon"
+                app:tint="?attr/textcolor"/>
         </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
 
-        android:layout_width="400dp"
+        android:layout_width="380dp"
         android:layout_height="50dp"
         android:background="@drawable/settings_button"
         android:layout_marginTop="25dp"
@@ -150,15 +156,15 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentStart="true"
                 android:layout_centerInParent="true"
-                android:src="@drawable/faq_icon" />
+                android:src="@drawable/faq_icon"
+                app:tint="?attr/textcolor"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -166,7 +172,7 @@
                 android:layout_centerInParent="true"
                 android:padding="10dp"
                 android:text="Frequently asked questions?"
-                android:textColor="@color/mild_black"
+                android:textColor="?attr/textcolor"
                 android:textSize="18dp" />
 
             <ImageView
@@ -174,7 +180,8 @@
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerInParent="true"
-                android:src="@drawable/next_icon" />
+                android:src="@drawable/next_icon"
+                app:tint="?attr/textcolor"/>
         </RelativeLayout>
     </LinearLayout>
 

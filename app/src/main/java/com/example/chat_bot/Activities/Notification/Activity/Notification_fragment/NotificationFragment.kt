@@ -27,7 +27,6 @@ import com.example.chat_bot.Activities.Notification.Activity.Notification_UI.Not
 import com.example.chat_bot.Activities.Notification.Activity.Notification_UI.NotificationViewModelFactory
 import com.muddzdev.styleabletoastlibrary.StyleableToast
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
-
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance

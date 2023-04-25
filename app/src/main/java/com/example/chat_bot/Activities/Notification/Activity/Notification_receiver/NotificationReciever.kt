@@ -14,6 +14,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import com.example.chat_bot.Activities.HomePage.HomeActivity
 import com.example.chat_bot.Activities.Welcomepage.Login
+import com.example.chat_bot.Activities.activity.CreateNotificationActivity.Companion.ALARM_REPEAT_DAYS
 import com.example.chat_bot.R
 import com.example.chat_bot.utils.SessionManager
 
@@ -27,6 +28,7 @@ class NotificationReciever : BroadcastReceiver() {
         // Step 1: Check if the user is logged in
         val isLoggedIn = session.isLoggedIn()
 
+        val selectedDays = intent.getStringArrayExtra(ALARM_REPEAT_DAYS)
         // Step 2: Create an intent to start the appropriate activity
         val targetActivity = if (isLoggedIn) {
             HomeActivity::class.java
@@ -80,16 +82,7 @@ class NotificationReciever : BroadcastReceiver() {
                     requestPermissionIntent,
                     PendingIntent.FLAG_UPDATE_CURRENT
                 )
-                val requestPermissionBuilder = NotificationCompat.Builder(context, "SeedsAndroid")
-                    .setSmallIcon(R.drawable.seeds_logo)
-                    .setContentTitle("SEEDS Chat & Learn")
-                    .setContentText("Please grant notification permission to receive updates")
-                    .setAutoCancel(true)
-                    .setContentIntent(pendingIntent)
-                    .setPriority(NotificationCompat.PRIORITY_HIGH)
-                val notificationManagerCompat = NotificationManagerCompat.from(context)
-                notificationManagerCompat.notify(456, requestPermissionBuilder.build())
-                return
+
             }
         }
 

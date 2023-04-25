@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activities.DashboardActivities.downloadQuizActivity">
+    tools:context=".Activities.DashboardActivities.downloadQuizActivity"
+    android:background="?attr/backgroundcolor">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -25,18 +26,19 @@
             android:layout_width="61dp"
             android:layout_height="36dp"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
             android:layout_marginStart="0dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/back" />
+            android:src="@drawable/back"
+            app:tint="?attr/textcolor"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/Download_materials"
-            android:textColor="@color/mild_black"
-            android:textSize="20dp"
+            android:textColor="?attr/textcolor"
+            android:textSize="23dp"
             android:textStyle="bold" />
 
     </RelativeLayout>
@@ -71,7 +73,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:src="@drawable/download" />
+                android:src="@drawable/download"
+                app:tint="?attr/textcolor"/>
 
             <TextView
                 android:layout_width="wrap_content"

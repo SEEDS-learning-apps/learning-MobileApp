@@ -1,19 +1,23 @@
 package com.example.chat_bot.Activities.DashboardActivities
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.lifecycleScope
 import com.example.chat_bot.Activities.Notification.Activity.NotificationManager
 import com.example.chat_bot.R
 import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.SeedsDatabase
 import com.example.chat_bot.utils.SessionManager
+import com.google.android.material.switchmaterial.SwitchMaterial
 import com.yariksoffice.lingver.Lingver
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,9 +27,18 @@ class Settings : AppCompatActivity() {
     lateinit var session: SessionManager
     lateinit var userename: String
     private var pref_material_language: String? = ""
-
+    private var switch: SwitchMaterial? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val sharedprefs: SharedPreferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE)
+
+        val switchIsTurnedOn = sharedprefs.getBoolean("DARK MODE", false)
+        if (switchIsTurnedOn) {
+            //if true then change app theme to dark mode
+            layoutInflater.context.setTheme(R.style.DarkMode)
+        } else {
+            layoutInflater.context.setTheme(R.style.WhiteMode)
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings)
 
@@ -56,9 +69,30 @@ class Settings : AppCompatActivity() {
             startActivity(intent)
         }
 
+
         session = SessionManager(this)
         var user = session.getUserDetails()
         userename = user.get("name").toString()
+
+
+        switch = findViewById(R.id.switchTheme)
+        // the switch state is assigned to the boolean value gotten from shared prefs
+        switch!!.isChecked = switchIsTurnedOn
+
+        switch!!.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                val editor = getSharedPreferences("pref", Context.MODE_PRIVATE)
+                switch!!.isChecked = true
+                editor.edit().putBoolean("DARK MODE", true).apply()
+                restartApp()
+            } else {
+                switch!!.isChecked = false
+                val editor = getSharedPreferences("pref", Context.MODE_PRIVATE)
+                editor.edit().putBoolean("DARK MODE", false).apply()
+                restartApp()
+
+            }
+        }
 
     }
 
@@ -181,6 +215,10 @@ class Settings : AppCompatActivity() {
         }
     }
 
+    private fun restartApp() {
+        val intent = Intent(this@Settings, Settings::class.java)
+        startActivity(intent)
+    }
 
     override fun onBackPressed() {
         super.onBackPressed()
