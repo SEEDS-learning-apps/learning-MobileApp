@@ -45,7 +45,10 @@
     <color name="custom_Button_end_light">#009EFD</color>
     <color name="mild_black">#1F1F1F</color>
     <color name="background_mild_black">#8AB7C2</color>
-
+    <color name="user_chat_start_light">#3B7DA9</color>
+    <color name="user_chat_end_light">#285064</color>
+    <color name="bot_chat_start_light">#6A6A6B</color>
+    <color name="bot_chat_end_light">#414142</color>
 
     <!--   Dark theme Buttons-->
     <color name="Button_start_dark">#99C4E3</color>
@@ -53,5 +56,8 @@
     <color name="custom_Button_start_dark">#3BF6A0</color>
     <color name="custom_Button_end_dark">#4882B1</color>
     <color name="background_black">#000000</color>
-
+    <color name="user_chat_start_dark">#3B7DA9</color>
+    <color name="user_chat_end_dark">#5794B1</color>
+    <color name="bot_chat_start_dark">#858585</color>
+    <color name="bot_chat_end_dark">#545455</color>
 </resources>

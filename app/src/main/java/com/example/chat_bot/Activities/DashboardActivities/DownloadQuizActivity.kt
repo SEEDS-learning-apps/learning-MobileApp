@@ -2,6 +2,7 @@ package com.example.chat_bot.Activities.DashboardActivities
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.chat_bot.Activities.HomePage.HomeActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.Relations.UserAndMaterials
@@ -114,7 +116,9 @@ class downloadQuizActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
-        // perform additional back navigation logic if necessary
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.putExtra("FRAGMENT_TO_SHOW", 2)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 }

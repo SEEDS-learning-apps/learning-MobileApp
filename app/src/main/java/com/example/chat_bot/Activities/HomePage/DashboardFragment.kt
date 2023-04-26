@@ -3,7 +3,9 @@ package com.example.chat_bot.Activities.HomePage
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
@@ -41,6 +43,14 @@ class DashboardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
+        val sharedPrefs: SharedPreferences = requireContext().getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val switchIsTurnedOn = sharedPrefs.getBoolean("DARK MODE", false)
+        if (switchIsTurnedOn) {
+            // if true then change the theme to dark mode
+            requireContext().setTheme(R.style.DarkMode)
+        } else {
+            requireContext().setTheme(R.style.WhiteMode)
+        }
 
         session = SessionManager(this.requireContext())
         var user = session.getUserDetails()

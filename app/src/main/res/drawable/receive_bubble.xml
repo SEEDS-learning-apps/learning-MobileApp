@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient  android:angle="45" android:startColor="#6A6A6B"
+    <gradient  android:angle="45" android:startColor="?attr/Botchat_start_color"
 
-        android:endColor="#414142"
+        android:endColor="?attr/Botchat_end_color"
         android:type="linear"/>
     <corners
         android:bottomLeftRadius="0dp"

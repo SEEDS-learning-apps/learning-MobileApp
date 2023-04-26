@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient  android:angle="45" android:startColor="#3B7DA9"
-
-        android:endColor="#285064"
+    <gradient  android:angle="45" android:startColor="?attr/userchat_start_color"
+        android:endColor="?attr/userchat_end_color"
         android:type="linear"/>
     <corners
         android:bottomLeftRadius="20dp"

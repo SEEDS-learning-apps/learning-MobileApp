@@ -10,8 +10,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.lifecycleScope
+import com.example.chat_bot.Activities.HomePage.HomeActivity
 import com.example.chat_bot.Activities.Notification.Activity.NotificationManager
 import com.example.chat_bot.R
 import com.example.chat_bot.Room.Dao.SeedsDao
@@ -30,6 +30,7 @@ class Settings : AppCompatActivity() {
     private var switch: SwitchMaterial? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         val sharedprefs: SharedPreferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE)
 
         val switchIsTurnedOn = sharedprefs.getBoolean("DARK MODE", false)
@@ -218,11 +219,17 @@ class Settings : AppCompatActivity() {
     private fun restartApp() {
         val intent = Intent(this@Settings, Settings::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        finish()
+
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
-        // perform additional back navigation logic if necessary
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.putExtra("FRAGMENT_TO_SHOW", 2) // Replace 2 with the index of the desired fragment to show
+        startActivity(intent)
+        finish()
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 }

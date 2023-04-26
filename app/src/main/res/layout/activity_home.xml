@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.HomePage.HomeActivity">
+    tools:context=".Activities.HomePage.HomeActivity"
+    android:background="?attr/backgroundcolor">
 
     <FrameLayout
         android:id="@+id/container"
@@ -14,18 +15,12 @@
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/nav_host_fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-
-    <FrameLayout
     android:id="@+id/frame_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"/>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabslayout"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/custom_button_tab"
         app:layout_constraintBottom_toTopOf="@+id/viewpager"
@@ -34,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tabGravity="fill"
-        app:tabIndicatorAnimationMode="fade"
+        app:tabIndicatorAnimationMode="linear"
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/white"
         app:tabTextAppearance="@style/MineCustomTabText"

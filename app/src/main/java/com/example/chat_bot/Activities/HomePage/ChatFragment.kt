@@ -7,18 +7,21 @@ import android.app.Activity
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.provider.Settings
 import android.util.Log
+import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -26,6 +29,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import com.example.chat_bot.Activities.activity.QuizActivity
 import com.example.chat_bot.Activities.activity.OpenEnded
 import com.example.chat_bot.R
@@ -129,13 +133,20 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
 
 
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
+        val sharedPrefs: SharedPreferences = requireContext().getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val switchIsTurnedOn = sharedPrefs.getBoolean("DARK MODE", false)
+        if (switchIsTurnedOn) {
+            // if true then change the theme to dark mode
+            requireContext().setTheme(R.style.DarkMode)
+        } else {
+            requireContext().setTheme(R.style.WhiteMode)
+        }
+        binding = FragmentChatBinding.inflate(layoutInflater, container, false)
+
 
         db = this.context?.let { DB(it) }
         viewModel = ViewModelProvider(this, SEEDSViewModelFact(SEEDSRepository(retrofitService))).get(
@@ -160,11 +171,11 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         isOnline(context as Activity)
 
 
+        val lottieAnimationView = view?.findViewById<LottieAnimationView>(R.id.typingStatus)
 
-
-        binding = FragmentChatBinding.inflate (layoutInflater,container,false)
-
-
+        // load the animation from the JSON file
+        lottieAnimationView?.setAnimation(R.raw.typing_animation)
+        lottieAnimationView?.playAnimation()
 
         binding.rvMessages.layoutManager = LinearLayoutManager(this.requireContext())
        // binding.rvMessages.hasFixedSize()
@@ -175,9 +186,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
             foc.hideSoftInputFromWindow(binding.etMessage.windowToken, 0)
         }
-
-
-
 
         return binding.root
     }
@@ -369,6 +377,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
 
 
@@ -1971,6 +1980,16 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         username = user.get("name").toString()
 
 
+    }
+    private fun setTheme() {
+        val sharedprefs: SharedPreferences = requireContext().getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val switchIsTurnedOn = sharedprefs.getBoolean("DARK MODE", false)
+
+        if (switchIsTurnedOn) {
+            activity?.setTheme(R.style.DarkMode)
+        } else {
+            activity?.setTheme(R.style.WhiteMode)
+        }
     }
 
     private fun getUserInfoFromLocalDB(user_name: String) {

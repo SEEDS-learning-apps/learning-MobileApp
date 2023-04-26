@@ -1,5 +1,9 @@
 package com.example.chat_bot.Activities.HomePage
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.Resources
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -24,10 +28,19 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(android.R.style.Theme_Light_NoTitleBar_Fullscreen)
+        val sharedprefs: SharedPreferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val switchIsTurnedOn = sharedprefs.getBoolean("DARK MODE", false)
+        if (switchIsTurnedOn) {
+            //if true then change app theme to dark mode
+            layoutInflater.context.setTheme(R.style.DarkMode)
+        } else {
+            layoutInflater.context.setTheme(R.style.WhiteMode)
+        }
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+
         session = SessionManager(this)
         binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(R.layout.activity_home)
         setContentView(binding.root)
 
         tabLayout = binding.tabslayout
@@ -43,9 +56,14 @@ class HomeActivity : AppCompatActivity() {
             }
         }.attach()
 
-
+        val fragmentIndex = intent.getIntExtra("FRAGMENT_TO_SHOW", -1)
+        if (fragmentIndex >= 0) {
+            // Show the desired fragment
+            viewPager2.setCurrentItem(fragmentIndex, false)
+        }
 
     }
+
 
     override fun onBackPressed() {
         if (viewPager2.currentItem == 0) {
@@ -64,6 +82,7 @@ class HomeActivity : AppCompatActivity() {
 
         }
     }
+
 }
 
 
