@@ -78,6 +78,7 @@
         android:indeterminate="true"
         android:layout_marginTop="20dp"
         android:textColor="#2462BC"
+        android:progressTint="#2462BC"
         android:backgroundTintMode="src_atop"
         />
 

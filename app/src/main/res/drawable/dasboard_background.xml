@@ -2,7 +2,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
-    <gradient android:startColor="#1393E9" android:centerColor="#B6E6DD" android:endColor="#BDE6E1" android:type="linear"
+    <gradient android:startColor="?attr/Dashboard_backgroundcurve_start" android:centerColor="?attr/Dashboard_backgroundcurve_middle" android:endColor="?attr/Dashboard_backgroundcurve_end"  android:type="linear"
         android:angle="45"/>
     <corners
         android:topLeftRadius="400dp"

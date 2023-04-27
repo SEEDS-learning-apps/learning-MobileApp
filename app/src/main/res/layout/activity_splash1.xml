@@ -33,11 +33,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/splash_text"
         android:layout_centerInParent="true"
+        android:layout_marginTop="106dp"
         android:indeterminate="true"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/seed_light_blue"
-        android:backgroundTintMode="src_atop"
-       />
+        android:progressTint="#2462BC" />
 
     <TextView
         android:layout_width="match_parent"

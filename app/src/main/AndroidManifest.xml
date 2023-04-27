@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/DarkMode"
+        android:theme="@style/WhiteMode"
         android:usesCleartextTraffic="true">
 
 
@@ -27,9 +27,15 @@
         <activity android:name=".Activities.activity.Notification_MainActivity"
             android:exported="true" />
 
-        <receiver android:name=".Activities.Notification.Activity.Notification_receiver.NotificationReciever" />
+        <activity android:name=".Activities.acivity.NotificationManager"
+            android:exported="true" />
 
-
+        <receiver android:name=".Activities.Notification.Activity.Notification_receiver.NotificationReciever"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="com.example.chat_bot.NOTIFICATION_RECEIVED" />
+            </intent-filter>
+        </receiver>
         <!-- Dashboard -->
         <activity
             android:name=".Activities.DashboardActivities.Settings"

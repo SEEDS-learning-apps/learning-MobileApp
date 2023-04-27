@@ -3,12 +3,16 @@ package com.example.chat_bot.Activities.activity
 import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.view.KeyEvent
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.chat_bot.Activities.DashboardActivities.Settings
 import com.example.chat_bot.Activities.Notification.Activity.Notification_fragment.NotificationFragment
 import com.example.chat_bot.Activities.Welcomepage.WelcomePage
 import com.example.chat_bot.R
@@ -21,7 +25,15 @@ class Notification_MainActivity : AppCompatActivity() {
     private var fragment1: Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(android.R.style.Theme_Light_NoTitleBar_Fullscreen)
+        val sharedprefs: SharedPreferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE)
+
+        val switchIsTurnedOn = sharedprefs.getBoolean("DARK MODE", false)
+        if (switchIsTurnedOn) {
+            //if true then change app theme to dark mode
+            layoutInflater.context.setTheme(R.style.Notification_DarkMode)
+        } else {
+            layoutInflater.context.setTheme(R.style.Notification_WhiteMode)
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.notification_activity_main)
 
@@ -49,7 +61,7 @@ class Notification_MainActivity : AppCompatActivity() {
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            val intent = Intent(this@Notification_MainActivity, WelcomePage::class.java)
+            val intent = Intent(this@Notification_MainActivity, Settings::class.java)
             startActivity(intent)
             finish()
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)

@@ -5,5 +5,6 @@
     <item android:title="Notification"
         android:id="@+id/create_new_alarm"
         android:icon="@drawable/ic_add_notification"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom"
+        app:tint="@color/white"/>
 </menu>

@@ -128,7 +128,7 @@ class WelcomePage : AppCompatActivity() {
         infoTextView = findViewById(R.id.infoTextView)
 
         infoTextView.setOnClickListener {
-            val intent = Intent(this@WelcomePage, Notification_MainActivity::class.java)
+            val intent = Intent(this@WelcomePage, Seedsinfo::class.java)
             startActivity(intent)
             finish()
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)

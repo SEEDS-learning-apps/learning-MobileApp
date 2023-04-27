@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   android:background="@drawable/dashboard_layout"
+    android:background="@drawable/dashboard_layout"
     tools:context=".Activities.HomePage.HomeActivity"
     android:id = "@+id/dashboard_container"
     >
@@ -27,13 +27,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="32dp"
-            android:alpha="0.1"
+            android:alpha="0.2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/app_backgroung_tranparent" />
+            android:src="@drawable/app_background_light"
+            app:tint="?attr/Dashboard_backgroundpicture"/>
     </LinearLayout>
 
     <TextView
@@ -110,7 +111,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:background="@drawable/background_profile">
+                        android:background="@drawable/dashboard_background_profile">
 
 
 
@@ -125,7 +126,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/person_foreground" />
+                        app:srcCompat="@drawable/person_foreground"
+                        app:tint="?attr/textcolor"/>
 
                     </LinearLayout>
                     <TextView
@@ -137,7 +139,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="@string/Profile"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/textcolor"
                         android:textSize="15sp" />
 
 
@@ -158,12 +160,13 @@
                     android:layout_width="130dp"
                     android:layout_height="130dp"
                     android:layout_margin="10dp"
-                    app:cardCornerRadius="30dp">
+                    app:cardCornerRadius="30dp"
+                    >
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/background_learningprogress"
+                        android:background="@drawable/dashboard_cardview_background"
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatImageView
@@ -177,7 +180,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/statistics_icon" />
+                            app:srcCompat="@drawable/statistics_icon"
+                            app:tint="?attr/textcolor"/>
                     </LinearLayout>
 
                     <TextView
@@ -189,7 +193,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="@string/Learning_progress"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/textcolor"
                         android:textSize="13sp" />
 
 
@@ -204,7 +208,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:background="@drawable/background_learningcards">
+                        android:background="@drawable/dashboard_cardview_background">
 
                     <ImageView
                         android:id="@+id/learning_cards_icon"
@@ -217,7 +221,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/learning_cards" />
+                        app:srcCompat="@drawable/learning_cards"
+                        app:tint="?attr/textcolor"/>
 
                     </LinearLayout>
 
@@ -230,7 +235,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="@string/Learning_cards"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/textcolor"
                         android:textSize="13sp" />
 
                 </androidx.cardview.widget.CardView>
@@ -255,7 +260,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:background="@drawable/background_downloadmaterials">
+                        android:background="@drawable/dashboard_cardview_background">
 
                     <ImageView
                         android:id="@+id/download_icon"
@@ -268,7 +273,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/download" />
+                        app:srcCompat="@drawable/download"
+                        app:tint="?attr/textcolor"/>
 
                         <ImageView
                             android:id="@+id/Dasboard_background"
@@ -281,7 +287,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/app_backgroung_tranparent" />
+                            app:srcCompat="@drawable/app_backgroung_tranparent"
+                            app:tint="?attr/textcolor"/>
 
                     </LinearLayout>
 
@@ -295,7 +302,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="@string/Download_materials"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/textcolor"
                         android:textSize="13sp" />
 
                 </androidx.cardview.widget.CardView>
@@ -314,7 +321,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:background="@drawable/background_accesscode">
+                        android:background="@drawable/dashboard_cardview_background">
 
 
                     <ImageView
@@ -328,7 +335,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/access_code_icon" />
+                        app:srcCompat="@drawable/access_code_icon"
+                        app:tint="?attr/textcolor"/>
                     </LinearLayout>
 
                     <TextView
@@ -340,7 +348,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="@string/Access_code"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/textcolor"
                         android:textSize="13sp" />
 
                 </androidx.cardview.widget.CardView>
@@ -365,7 +373,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:background="@drawable/background_settings">
+                        android:background="@drawable/dashboard_cardview_background">
 
                     <ImageView
                         android:id="@+id/settings_icon"
@@ -378,7 +386,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/settings_icon" />
+                        app:srcCompat="@drawable/settings_icon"
+                        app:tint="?attr/textcolor"/>
 
                     </LinearLayout>
 
@@ -391,7 +400,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="@string/Settings"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/textcolor"
                         android:textSize="15sp" />
 
                 </androidx.cardview.widget.CardView>
@@ -407,7 +416,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:background="@drawable/background_help">
+                        android:background="@drawable/dashboard_cardview_background">
 
                     <ImageView
                         android:id="@+id/help_icon"
@@ -420,7 +429,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/help_icon" />
+                        app:srcCompat="@drawable/help_icon"
+                        app:tint="?attr/textcolor"/>
 
                     </LinearLayout>
 
@@ -433,7 +443,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="@string/Help"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/textcolor"
                         android:textSize="15sp" />
 
                 </androidx.cardview.widget.CardView>

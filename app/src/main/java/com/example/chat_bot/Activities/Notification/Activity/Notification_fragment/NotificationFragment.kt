@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Canvas
 import android.os.Bundle
 import android.view.*
@@ -44,6 +45,15 @@ class NotificationFragment : Fragment(), KodeinAware {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val sharedPrefs: SharedPreferences = requireContext().getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val switchIsTurnedOn = sharedPrefs.getBoolean("DARK MODE", false)
+
+        if (switchIsTurnedOn) {
+            //if true then change app theme to dark mode
+            layoutInflater.context.setTheme(R.style.Notification_DarkMode)
+        } else {
+            layoutInflater.context.setTheme(R.style.Notification_WhiteMode)
+        }
 
         //this tells the fragment hey, we've got a menu item
         setHasOptionsMenu(true)

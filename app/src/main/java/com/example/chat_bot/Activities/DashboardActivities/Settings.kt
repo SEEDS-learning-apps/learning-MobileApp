@@ -12,7 +12,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.chat_bot.Activities.HomePage.HomeActivity
-import com.example.chat_bot.Activities.Notification.Activity.NotificationManager
+import com.example.chat_bot.Activities.activity.Notification_MainActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.SeedsDatabase
@@ -66,7 +66,7 @@ class Settings : AppCompatActivity() {
         val notification = findViewById<View>(R.id.notification)
 
         notification.setOnClickListener {
-            val intent = Intent (this, NotificationManager::class.java)
+            val intent = Intent (this, Notification_MainActivity::class.java)
             startActivity(intent)
         }
 

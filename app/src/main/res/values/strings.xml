@@ -133,6 +133,8 @@
     <string name="Spanish">Spanish</string>
     <string name="English">English</string>
     <string name="Greek">Greek</string>
+    <string name="select_days_of_week">days</string>
+    <string name="everyday">monday, tuesday</string>
 
     <string-array name="Languages">
         <item>Deutsch</item>

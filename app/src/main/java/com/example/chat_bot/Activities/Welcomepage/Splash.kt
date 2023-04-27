@@ -1,6 +1,8 @@
 package com.example.chat_bot.Activities.Welcomepage
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
@@ -19,6 +21,14 @@ class Splash : AppCompatActivity() {
     private val splashHandler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val sharedprefs: SharedPreferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val switchIsTurnedOn = sharedprefs.getBoolean("DARK MODE", false)
+        if (switchIsTurnedOn) {
+            //if true then change app theme to dark mode
+            layoutInflater.context.setTheme(R.style.DarkMode)
+        } else {
+            layoutInflater.context.setTheme(R.style.WhiteMode)
+        }
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN

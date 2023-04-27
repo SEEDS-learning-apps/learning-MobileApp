@@ -70,17 +70,6 @@ class DashboardFragment : Fragment() {
 
     }
 
-
-    @SuppressLint("HardwareIds")
-    private fun getDevID() {
-        m_androidId =
-            Settings.Secure.getString(requireContext().contentResolver, Settings.Secure.ANDROID_ID)
-        m_androidId = "$m_androidId/" + UUID.randomUUID().toString()
-        //Toast.makeText(this, m_androidId.toString(), Toast.LENGTH_SHORT).show()
-        Log.d("dev_id", "Device ID: $m_androidId")
-    }
-
-
     @SuppressLint("SetTextI18n")
     private fun showUserProfile() {
 

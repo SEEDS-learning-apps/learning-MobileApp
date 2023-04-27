@@ -6,12 +6,24 @@
 
     <declare-styleable name="ds">
         <attr name="backgroundcolor" format="color"/>
+        <attr name="Notification_backgroundcolor" format="color"/>
+        <attr name="Dashboard_backgroundpicture" format="color"/>
+        <attr name="Dashboard_profilecardview_start" format="color"/>
+        <attr name="Dashboard_profilecardview_end" format="color"/>
+        <attr name="Dashboard_cardviewbackground_start" format="color"/>
+        <attr name="Dashboard_cardviewbackground_end" format="color"/>
+        <attr name="Dashboard_backgroundcolor_start" format="color"/>
+        <attr name="Dashboard_backgroundcolor_end" format="color"/>
+        <attr name="Dashboard_backgroundcurve_start" format="color"/>
+        <attr name="Dashboard_backgroundcurve_middle" format="color"/>
+        <attr name="Dashboard_backgroundcurve_end" format="color"/>
         <attr name="userchat_start_color" format="color"/>
         <attr name="userchat_end_color" format="color"/>
         <attr name="Botchat_start_color" format="color"/>
         <attr name="Botchat_end_color" format="color"/>
         <attr name="cardgroundcolor" format="color"/>
         <attr name="textcolor" format="color"/>
+        <attr name="Notification_textcolor" format="color"/>
         <attr name="toastcolor" format="color"/>
         <attr name="CreateAlarmIconColor" format="color"/>
         <attr name="bottomSheetIconColor" format="color"/>

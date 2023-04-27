@@ -77,7 +77,18 @@
         <item name="userchat_end_color">@color/user_chat_end_light</item>
         <item name="Botchat_start_color">@color/bot_chat_start_light</item>
         <item name="Botchat_end_color">@color/bot_chat_end_light</item>
+        <item name="Dashboard_backgroundcolor_start">@color/Dashboard_backgroundcolor_start_light</item>
+        <item name="Dashboard_backgroundcolor_end">@color/Dashboard_backgroundcolor_end_light</item>
+        <item name="Dashboard_backgroundcurve_start" >@color/Dashboard_backgroundcurve_start_light</item>
+        <item name="Dashboard_backgroundcurve_middle" >@color/Dashboard_backgroundcurve_middle_light</item>
+        <item name="Dashboard_backgroundcurve_end" >@color/Dashboard_backgroundcurve_end_light</item>
+        <item name="Dashboard_backgroundpicture" >@color/Dashboard_backgroundpicture_light</item>
+        <item name="Dashboard_cardviewbackground_start" >@color/Dashboard_Cardviewbackground_start_light</item>
+        <item name="Dashboard_cardviewbackground_end" >@color/Dashboard_Cardviewbackground_end_light</item>
+        <item name="Dashboard_profilecardview_start" >@color/Dashboard_profilecardview_start_light</item>
+        <item name="Dashboard_profilecardview_end" >@color/Dashboard_profilecardview_end_light</item>
     </style>
+
 
     <!-- DARK MODE. -->
     <style name="DarkMode" parent="Theme.MaterialComponents.Light.DarkActionBar">
@@ -100,7 +111,40 @@
         <item name="userchat_end_color">@color/user_chat_end_dark</item>
         <item name="Botchat_start_color">@color/bot_chat_start_dark</item>
         <item name="Botchat_end_color">@color/bot_chat_end_dark</item>
+        <item name="Dashboard_backgroundcolor_start">@color/Dashboard_backgroundcolor_start_dark</item>
+        <item name="Dashboard_backgroundcolor_end">@color/Dashboard_backgroundcolor_end_dark</item>
+        <item name="Dashboard_backgroundcurve_start" >@color/Dashboard_backgroundcurve_start_dark</item>
+        <item name="Dashboard_backgroundcurve_middle" >@color/Dashboard_backgroundcurve_middle_dark</item>
+        <item name="Dashboard_backgroundcurve_end" >@color/Dashboard_backgroundcurve_end_dark</item>
+        <item name="Dashboard_backgroundpicture" >@color/Dashboard_backgroundpicture_dark</item>
+        <item name="Dashboard_cardviewbackground_start" >@color/Dashboard_Cardviewbackground_start_dark</item>
+        <item name="Dashboard_cardviewbackground_end" >@color/Dashboard_Cardviewbackground_end_dark</item>
+        <item name="Dashboard_profilecardview_start" >@color/Dashboard_profilecardview_start_dark</item>
+        <item name="Dashboard_profilecardview_end" >@color/Dashboard_profilecardview_end_dark</item>
     </style>
+
+
+    <style name="Notification_WhiteMode" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimaryVariant">@color/seed_dark_blue</item>
+        <item name="colorPrimary">@color/seed_light_blue</item>
+        <item name="colorAccent">@color/colorPrimaryblue</item>
+        <item name="Notification_backgroundcolor">@color/background</item>
+        <item name="Notification_textcolor">@color/mild_black</item>
+        <item name="toastcolor">@color/white</item>
+        <item name="repeatbottomSheetIconColor">#9E151515</item>
+    </style>
+
+
+    <style name="Notification_DarkMode" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/seed_light_blue</item>
+        <item name="colorPrimaryVariant">@color/seed_dark_blue</item>
+        <item name="colorAccent">@color/colorPrimaryblue</item>
+        <item name="Notification_backgroundcolor">#1A1919</item>
+        <item name="toastcolor">@color/black</item>
+        <item name="Notification_textcolor">@color/background</item>
+        <item name="repeatbottomSheetIconColor">#9EFFFFFF</item>
+    </style>
+
 
     <!--    color for white toobar text-->
     <style name="WhiteMode.Toolbar" parent="Widget.MaterialComponents.Toolbar">

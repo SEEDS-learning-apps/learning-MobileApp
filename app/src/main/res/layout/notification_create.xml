@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="?attr/backgroundcolor"
     tools:context=".Activities.activity.CreateNotificationActivity">
 
     <RelativeLayout
@@ -28,7 +28,8 @@
             android:layout_alignParentTop="true"
             android:layout_centerInParent="true"
             android:layout_marginStart="0dp"
-            android:src="@drawable/back" />
+            android:src="@drawable/back"
+            app:tint="?attr/textcolor"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,7 +37,7 @@
             android:layout_centerInParent="true"
             android:layout_marginTop="10dp"
             android:text="Create Notifications"
-            android:textColor="@color/mild_black"
+            android:textColor="?attr/textcolor"
             android:textSize="18dp"
             android:textStyle="bold" />
 
@@ -51,7 +52,8 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_choose_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="?attr/textcolor">
 
     </com.google.android.material.chip.ChipGroup>
 
@@ -98,7 +100,7 @@
         android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="?attr/textcolor"
         android:textColorHint="@color/black"
         android:textSize="29sp"
         android:text="00 : 00 AM"

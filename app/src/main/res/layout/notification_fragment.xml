@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="@color/background"
+    android:background="?attr/Notification_backgroundcolor"
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -26,7 +27,8 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:src="@drawable/notification" />
+            android:src="@drawable/notification"
+            app:tint="?attr/Notification_textcolor"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -35,7 +37,7 @@
             android:fontFamily="@font/roboto"
             android:layout_marginTop="30dp"
             android:text="@string/empty_rec_text"
-            android:textColor="@color/black"
+            android:textColor="?attr/Notification_textcolor"
             android:textSize="18sp"
             android:textStyle="bold"
             android:gravity="center"/>
