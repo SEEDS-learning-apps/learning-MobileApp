@@ -27,8 +27,10 @@
         <activity android:name=".Activities.activity.Notification_MainActivity"
             android:exported="true" />
 
-        <activity android:name=".Activities.acivity.NotificationManager"
+
+        <activity android:name=".Activities.Notification.Activity.NotificationManager"
             android:exported="true" />
+
 
         <receiver android:name=".Activities.Notification.Activity.Notification_receiver.NotificationReciever"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">

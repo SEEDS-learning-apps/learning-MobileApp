@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.Welcomepage.Seedsinfo"
-    android:background="@color/background">
+    android:background="?attr/backgroundcolor">
 
     <ImageView
         android:id="@+id/splash_image2"
@@ -32,9 +32,8 @@
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:text="@string/seeds_info"
-        android:textAlignment="textStart"
         android:textAllCaps="false"
-        android:textColor="@color/black"
+        android:textColor="?attr/textcolor"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +48,8 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="?attr/textcolor"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

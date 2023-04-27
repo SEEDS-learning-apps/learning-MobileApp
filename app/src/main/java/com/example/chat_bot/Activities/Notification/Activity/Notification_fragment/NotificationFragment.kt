@@ -109,7 +109,7 @@ class NotificationFragment : Fragment(), KodeinAware {
                     //notifies the recyclerview that an item was removed
                     adapter!!.notifyItemRemoved(adapterPosition)
 
-                    displaySuccessToast(requireContext(), "Alarm deleted")
+                    displaySuccessToast(requireContext(), "Notification deleted")
                 }
             }
 
@@ -173,7 +173,7 @@ class NotificationFragment : Fragment(), KodeinAware {
                 //insert the alarm into database using our viewmodel instance
                 viewModel!!.insert(alarm)
 
-                displaySuccessToast(requireContext(), "alarm created successfully")
+                displaySuccessToast(requireContext(), "Notification created successfully")
             } else {
                 displayFailureToast(requireContext(), "an error occurred")
             }

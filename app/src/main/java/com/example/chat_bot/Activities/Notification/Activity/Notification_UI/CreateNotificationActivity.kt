@@ -6,6 +6,7 @@ import android.app.PendingIntent
 import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.KeyEvent
@@ -26,7 +27,15 @@ class CreateNotificationActivity : AppCompatActivity(), CompoundButton.OnChecked
 
     lateinit var AM_PM: String
     override fun onCreate(savedInstanceState: Bundle?) {
+        val sharedprefs: SharedPreferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE)
 
+        val switchIsTurnedOn = sharedprefs.getBoolean("DARK MODE", false)
+        if (switchIsTurnedOn) {
+            //if true then change app theme to dark mode
+            layoutInflater.context.setTheme(R.style.DarkMode)
+        } else {
+            layoutInflater.context.setTheme(R.style.WhiteMode)
+        }
         super.onCreate(savedInstanceState)
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
         setContentView(R.layout.notification_create)
@@ -64,7 +73,6 @@ class CreateNotificationActivity : AppCompatActivity(), CompoundButton.OnChecked
                     minString = "0$selectedMin"
                 }
                 val formattedTime = "$hourString:$minString $AM_PM"
-
                 timeTV.text=formattedTime
             }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false).show()
 
@@ -86,9 +94,7 @@ class CreateNotificationActivity : AppCompatActivity(), CompoundButton.OnChecked
     }
 
     private fun sendDataToAlarmFragment() {
-
         val timeTV = findViewById<TextView>(R.id.timeTV)
-
         val timeText = timeTV.text.toString()
         val builder = StringBuilder()
         val alarmIsOn = true
@@ -118,6 +124,7 @@ class CreateNotificationActivity : AppCompatActivity(), CompoundButton.OnChecked
         setResult(Activity.RESULT_OK, intent)
         finish()
     }
+
 
 
     companion object {
@@ -181,7 +188,7 @@ class CreateNotificationActivity : AppCompatActivity(), CompoundButton.OnChecked
             val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val intent = Intent(context, NotificationReciever::class.java)
             val pendingIntent =
-                PendingIntent.getBroadcast(context, id, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+                PendingIntent.getBroadcast(context, id, intent,PendingIntent.FLAG_UPDATE_CURRENT)
             alarmManager.cancel(pendingIntent)
         }
 
@@ -190,15 +197,15 @@ class CreateNotificationActivity : AppCompatActivity(), CompoundButton.OnChecked
         const val ALARM_REPEAT_DAYS = "ALARM_REPEAT_DAYS"
 
         //list of repeat days
-        val days by lazy {
+        private val days by lazy {
             listOf(
-                "Sunday",
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday"
+                "Every Sunday",
+                "Every Monday",
+                "Every Tuesday",
+                "Every Wednesday",
+                "Every Thursday",
+                "Every Friday",
+                "Every Saturday"
             )
         }
     }
