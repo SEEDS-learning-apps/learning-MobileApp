@@ -75,13 +75,6 @@ class Mcqs_activity : AppCompatActivity() {
 
         mcqlist = filterd_topiclist as ArrayList<Mcqss>
 
-
-        // val sharedPreferences: SharedPreferences = this.getSharedPreferences(Context.MODE_PRIVATE.toString())
-
-        //val dev = sharedPreferences.getString("dev_id", "")
-
-        //LocalBroadcastManager.getInstance(this).registerReceiver(mFlagReciever, IntentFilter("Answer_flag"))
-
         CoroutineScope(Dispatchers.IO).launch {
             Log.d(TAG, Thread.currentThread().name)
         }
@@ -120,14 +113,6 @@ class Mcqs_activity : AppCompatActivity() {
 
             // else
             Toast.makeText(applicationContext, "No mcqs matched", Toast.LENGTH_SHORT).show()
-//            val intent = Intent(applicationContext, HomeActivity::class.java).apply {
-//
-//                // putExtra("filtered_topics", filterd_topics)
-//
-//            }
-//            startActivity(intent)
-
-
 
 
             Log.d("MAA", mcqlist.toString())
@@ -168,9 +153,6 @@ class Mcqs_activity : AppCompatActivity() {
         viewModel.getAllTF()
      //   viewModel.getAllMcqs()
 
-
-
-
         viewModel.errorMessage.observe(this, Observer {
             Toast.makeText(this, "Error went", Toast.LENGTH_SHORT).show()
             binding.loadingProgress.visibility = View.GONE
@@ -183,52 +165,11 @@ class Mcqs_activity : AppCompatActivity() {
         },SPLASH_TIME)
 
 
-//        binding.btnMcqNext.setOnClickListener{
-//
-//        }
 
-
-        // onMcqclick()
-
-
-
-        // Get the Intent that started this activity and extract the string
-        val message = intent.getStringExtra(EXTRA_MESSAGE)
-
-//        RetrofitInstance.api.getMcqs().enqueue(object : Callback<McqsListss>{
-//            override fun onResponse(call: Call<McqsListss>, response: Response<McqsListss>) {
-//                if (response.body() != null)
-//                {
-//                    val randomMcq : Mcqss = response.body()!![0]
-//                    Log.d("Test", "Mcq id ${randomMcq._id}$")
-//                    Toast.makeText(this@Mcqs_activity, "Loading quiz", Toast.LENGTH_SHORT).show()
-//                }
-//                else{ return }
-//            }
-//
-//            override fun onFailure(call: Call<McqsListss>, t: Throwable) {
-//                Log.d("Fail", t.message.toString())
-//                Toast.makeText(this@Mcqs_activity, "Something went wrong", Toast.LENGTH_SHORT).show()
-//            }
-//
-//        })
-
-
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
     }
 
     private fun hideActionBar() {
         supportActionBar?.hide()
     }
 
-
-//    private fun onMcqclick() {
-//        adapter.onItemClick = { Mcqss ->
-//            Toast.makeText(this, Mcqss.answer, Toast.LENGTH_SHORT).show()
-//        }
-//    }
 }

@@ -59,48 +59,6 @@
     </androidx.recyclerview.widget.RecyclerView>
 
 
-    <!--    <Button-->
-    <!--        android:id="@+id/btn_mcqSubmit"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="Submit"-->
-    <!--        android:textColor="@color/white"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        android:visibility="gone"-->
-    <!--        app:layout_constraintTop_toTopOf="@+id/guideline2">-->
-
-    <!--    </Button>-->
-
-    <!--    <Button-->
-    <!--        android:id="@+id/btn_mcqNext"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="Next"-->
-    <!--        android:textColor="@color/white"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toEndOf="@+id/btn_mcqSubmit"-->
-    <!--        app:layout_constraintTop_toTopOf="@+id/guideline2"></Button>-->
-
-    <!--    <androidx.constraintlayout.widget.Guideline-->
-    <!--        android:id="@+id/guideline2"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:orientation="horizontal"-->
-    <!--        app:layout_constraintGuide_begin="395dp" />-->
-
-    <!--    <Button-->
-    <!--        android:id="@+id/btn_mcqPrev"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="Previous"-->
-    <!--        android:textColor="@color/white"-->
-    <!--        app:layout_constraintEnd_toStartOf="@+id/btn_mcqSubmit"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="@+id/guideline2"-->
-    <!--        android:visibility="gone">-->
-
-    <!--    </Button>-->
 
 
 

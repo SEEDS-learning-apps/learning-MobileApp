@@ -1,7 +1,6 @@
 package com.example.chat_bot.Activities.HomePage
 
 import Quest
-
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues
@@ -11,34 +10,23 @@ import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.provider.Settings
 import android.util.Log
-import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import com.example.chat_bot.Activities.activity.QuizActivity
-import com.example.chat_bot.Activities.activity.OpenEnded
 import com.example.chat_bot.R
-
 import com.example.chat_bot.Rasa.Networkings.*
 import com.example.chat_bot.Rasa.rasaMsg.BotResponse
 import com.example.chat_bot.Rasa.rasaMsg.UserMessage
-import com.example.chat_bot.Room.Dao.SeedsDao
-import com.example.chat_bot.Room.SeedsDatabase
 import com.example.chat_bot.data.*
 import com.example.chat_bot.data.tryy.AllQuestion
 import com.example.chat_bot.data.tryy.QuestItem
@@ -93,8 +81,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     lateinit var grades: String
     var m_androidId: String ?= null
     lateinit var topicLang: String
-    var count: Int = 0
-    private val USER = "M-" + UUID.randomUUID().toString()
     private val retrofitService = SEEDSApi.getInstance()
     lateinit var session: SessionManager
     lateinit var user: List<User>
@@ -117,13 +103,10 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
     lateinit var vmRasa: ViewmodelRasa
     private val retroService = api_Rasa.getInstance()
-    var RasaMsg: String = ""
-    val msglist = MutableLiveData<List<BotResponse>>()
     var msgBtn: ArrayList<com.example.chat_bot.Rasa.rasaMsg.Button> = arrayListOf()
 
     var iterator: Int = 0
-    var currentPos: Int = 6
-    private lateinit var recyclerView: RecyclerView
+
     //////////////////////////////////////
 
 
@@ -326,25 +309,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
     }
 
-    private fun checkInternet() {
-        val application = requireActivity().application
-        checkConnection = connectionManager(application)
-        checkConnection.observe(viewLifecycleOwner) { isConnected ->
-            if (isConnected) {
-                Toast.makeText(this.requireContext(), "Connection available", Toast.LENGTH_SHORT)
-                    .show()
-            } else {
-                Toast.makeText(
-                    this.requireContext(),
-                    "Connection not available",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
-
-
-    }
-
     fun isOnline(context: Context): Boolean {
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -368,11 +332,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                 }
             }
         }
-//        Toast.makeText(
-//            this.requireContext(),
-//            "Connection not available",
-//            Toast.LENGTH_SHORT
-//        ).show()
+
         return false
     }
 
@@ -406,19 +366,9 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
         }
 
-        // timer()
-        //getUserDetails()
-
-        // sendrasa()
-
-        // customMsg("Hello, Seeds Asssitant here!!, How may i help you?")
         showLastMessages()
 
-
-
         Log.v(TAG, "In main")
-
-
 
     }
 
@@ -486,35 +436,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
     }
 
-    private  fun getUserDetails() {
-        var user: HashMap<String, String> =  session.getUserDetails()
-
-        user_id = user.get("devID").toString()
-
-        materialLang  = user.get("KEY_materialLang").toString()
-
-        if (materialLang == "null")
-        {
-            customMsg("Please tell me what is your preferred material language", true, msgBtn)
-            adapter.publishSuggestion(filterd_topics)
-            msgBtn.addAll(listOf(com.example.chat_bot.Rasa.rasaMsg.Button("", "English")))
-            msgBtn.addAll(listOf(com.example.chat_bot.Rasa.rasaMsg.Button("", "Spanish")))
-            msgBtn.addAll(listOf(com.example.chat_bot.Rasa.rasaMsg.Button("", "Greek")))
-            msgBtn.addAll(listOf(com.example.chat_bot.Rasa.rasaMsg.Button("", "German")))
-
-
-
-            !material_Lang_not_known
-//            Toast.makeText(context, "Materials: ${session.get_materialLangPref()}", Toast.LENGTH_SHORT).show()
-//            Toast.makeText(context, "Material language know = : ${!material_Lang_not_known}", Toast.LENGTH_SHORT).show()
-        }
-        else{
-            //Toast.makeText(context, materialLang, Toast.LENGTH_SHORT).show()
-        }
-
-    }
-
-
     private fun checklang() {
         language = Lingver.getInstance().getLanguage()
         if (language == "de") {url = "https://l0mgxbahu7.execute-api.eu-central-1.amazonaws.com" }
@@ -526,9 +447,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     private fun process_request(response: String) {
 
         offersubjects()
-//        val intent = Intent (getActivity(), Mcqs_activity::class.java)
-//        getActivity()?.startActivity(intent)
-//        (context as Activity).finish()
+
 
     }
     private  fun offersubjects() {
@@ -567,18 +486,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             else
                 isSubjectfetched = true
 
-
-
-
-            // initiate_subject_filtration(it)
-            // sendMessage()
-
-//               var found: Subjects? =  subjects.find { item -> item.subject == "Biology" }
-//
-//            if (found != null) {
-//                Log.d("found", found.subject.toString())
-//            }
-            // Toast.makeText(context, found.toString(), Toast.LENGTH_SHORT).show()
         })
         viewModel.errorMessage.observe(viewLifecycleOwner, Observer {
             Toast.makeText(this.requireContext(), "Error fetching subjects", Toast.LENGTH_SHORT).show()
@@ -1024,12 +931,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     }
 
 
-
-    fun View.hideKeyboard() {
-        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(windowToken, 0)
-    }
-
     private fun customMsg(message: String, _yo: Boolean, buttons: List<com.example.chat_bot.Rasa.rasaMsg.Button>) {
         binding.typingStatus.visibility = View.VISIBLE
         binding.typingStatus.playAnimation()
@@ -1058,18 +959,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
     }
 
-    private fun sendGreetingMessage() {
-        val message = "greet_user"
-        val timeStamp = Time.timeStamp()
-        binding.typingStatus.visibility = View.VISIBLE
-        binding.typingStatus.playAnimation()
-
-        if (message.isNotEmpty()) { botResponse(message, false) }
-
-        //  }
-    }
-
-
     private fun recyclerView() {
         //binding.rvMessages.apply {
         adapter = msgAdapter(this, requireContext())
@@ -1081,33 +970,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
     }
 
-    private fun clickevents2()
-    {
-        binding.btnSend.setOnClickListener {
-
-            GlobalScope.launch {
-                delay(200)
-                withContext(Dispatchers.Main) {
-                    val msg = binding.etMessage .text.toString().trim()
-                    //  smoothScroller.setTargetPosition(adapter.itemCount -1)
-//            msgRV.getLayoutManager()?.startSmoothScroll(smoothScroller)
-
-                    if (msg != "") {
-                        sendMessagee(msg)
-                        // getQuiz("62fe1bb09c4afe7b1a0bedfd")
-                        binding.etMessage.setText("")
-                        //     hideKeyboard()
-                    } else {
-                        Toast.makeText(requireContext(), "Please enter a message.", Toast.LENGTH_SHORT).show()
-                    }
-
-                    //  msgRV.scrollToPosition(messageList.size-1)
-
-                }
-            }
-
-        }
-    }
     @SuppressLint("HardwareIds")
     private fun getDevID() {
         m_androidId = Settings.Secure.getString(requireContext().contentResolver, Settings.Secure.ANDROID_ID)
@@ -1115,21 +977,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
        m_androidId =  "$m_androidId/" + UUID.randomUUID().toString()
         //Toast.makeText(this, m_androidId.toString(), Toast.LENGTH_SHORT).show()
         Log.d("DevID", m_androidId.toString())
-    }
-
-
-    fun timer()
-    {
-        val timer = object: CountDownTimer(20000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-
-                Toast.makeText(context, "Timer started", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onFinish() {Toast.makeText(context, "Timer finished", Toast.LENGTH_SHORT).show()}
-        }
-        timer.start()
-
     }
 
     fun sendMessagee(message: String, alternative: String = "", display: Boolean = true) {
@@ -1263,19 +1110,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                                             )
                                         )
 
-//                                        db!!.insertMessage(
-//                                            Message(
-//                                                message.text,
-//                                                Constants.RCV_ID,
-//                                                timeStamp,
-//                                                true,
-//                                                "",
-//                                                msgBtn, username
-//                                            )
-//                                        )
-
-//                                        SaveMessagesToLocalDb(message.text, Constants.RCV_ID)
-//
                                         binding.btnSend.isEnabled = false
                                         binding.etMessage.isEnabled = false
 
@@ -1448,13 +1282,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             else
 
                 sendMessage()
-            //goto()
-
-            //sendMessage()
-            //openEnded()
-
-
-
 
         }
         binding.etMessage.setOnClickListener {
@@ -1466,24 +1293,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                 }
             }
         }
-    }
-
-    private fun goto() {
-        val intent = Intent(context, QuizActivity::class.java).apply {
-
-
-
-            // putExtra("filtered_topics", filterd_topics)
-
-            (context as Activity).finish()
-        }
-        startActivity(intent)
-    }
-
-    private fun openEnded() {
-        val intent = Intent (getActivity(), OpenEnded::class.java)
-        activity?.startActivity(intent)
-        (context as Activity).finish()
     }
 
     fun sendMessage() {
@@ -1681,12 +1490,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                                 islearningstarted=false
                                 process_request(response)
                             }
-
-
-
-
-
-
 
                             //  val status = db!!.insertMessage(
                             Message(
@@ -1931,7 +1734,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
         messagesList.filter { i->i.username == username }
 
-        //
         // Collections.reverse(messagesList)
         adapter.setMessages(messagesList)
         binding.rvMessages.adapter = adapter
@@ -1939,38 +1741,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         adapter.notifyDataSetChanged()
 
 
-    }
-    inner class ButtonRecyclerView(var context: Context, var buttons: List<com.example.chat_bot.Rasa.rasaMsg.Button>) :
-        RecyclerView.Adapter<ButtonRecyclerView.ButtonViewHolder>() {
-
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ButtonViewHolder {
-            val view =
-                LayoutInflater.from(context).inflate(R.layout.button_list_item, parent, false)
-
-            return ButtonViewHolder(view)
-
-        }
-
-        override fun onBindViewHolder(holder: ButtonViewHolder, position: Int) {
-            val payload_button = buttons[position]
-            holder.button.text = payload_button.title
-            holder.button.setOnClickListener {
-                val userMessage = UserMessage(Constants.SND_ID, payload_button.payload )
-                //    sendz(userMessage)
-
-            }
-        }
-
-        override fun getItemCount(): Int {
-            buttons.isEmpty() ?: return -1
-            return buttons.size
-
-        }
-
-        inner class ButtonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            val button = view.findViewById<Button>(R.id.payloadBtn)
-        }
     }
 
     private fun GetuserDetails()
@@ -1981,28 +1751,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
 
     }
-    private fun setTheme() {
-        val sharedprefs: SharedPreferences = requireContext().getSharedPreferences("pref", Context.MODE_PRIVATE)
-        val switchIsTurnedOn = sharedprefs.getBoolean("DARK MODE", false)
-
-        if (switchIsTurnedOn) {
-            activity?.setTheme(R.style.DarkMode)
-        } else {
-            activity?.setTheme(R.style.WhiteMode)
-        }
-    }
-
-    private fun getUserInfoFromLocalDB(user_name: String) {
-        val dao: SeedsDao = SeedsDatabase.getInstance(this.requireContext()).seedsDao
-        lifecycleScope.launch { dao.getUser(user_name)
-
-            user = dao.getUser(user_name)
-
-            Log.d("login", user.toString())
-
-        }
-    }
-
 
 }
 

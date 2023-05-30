@@ -24,10 +24,7 @@ class ChatAdapter(var context: Context, var messageList: ArrayList<UserMessage>)
 
     class MessageViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val messageView  = view.findViewById<TextView>(R.id.message_tv)
-        //val time_view    = view.findViewById<TextView>(R.id.time_tv)
-        // val image_view   = view.findViewById<ImageView>(R.id.image_tv)
-        val button_view  = view.findViewById<RecyclerView>(R.id.button_list)
-        //val button_view  = view.findViewById<RecyclerView>(R.id.message_list)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
@@ -54,9 +51,6 @@ class ChatAdapter(var context: Context, var messageList: ArrayList<UserMessage>)
 
             try {
 
-                //holder.image_view.visibility = View.GONE
-                holder.button_view.visibility = View.GONE
-                //holder.time_view.visibility = View.GONE
             } catch (e: Exception) { }
 
         } else if (message.sender == BOT_IMG_LAYOUT.toString()) {
@@ -65,8 +59,7 @@ class ChatAdapter(var context: Context, var messageList: ArrayList<UserMessage>)
 
             try {
                 holder.messageView.visibility == View.GONE
-                holder.button_view.visibility = View.GONE
-                //holder.time_view.visibility = View.GONE
+
             } catch (e: Exception) { }
 
         } else if (message.sender == BOT_BUT_LAYOUT.toString()) {

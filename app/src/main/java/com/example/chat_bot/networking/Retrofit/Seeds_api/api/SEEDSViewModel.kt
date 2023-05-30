@@ -104,24 +104,7 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
 
 
 
-//    fun getAllMatchingPairs() {
-//
-//        viewModelScope.launch {
-//            val response = repository.getAllmatchpairs()
-//            response.enqueue(object : Callback<Matchpairs> {
-//                override fun onResponse(call: Call<Matchpairs>, response: Response<Matchpairs>) {
-//                    if (response?.body() != null)
-//                    {matchList.postValue(response.body())}
-//
-//                }
-//                override fun onFailure(call: Call<Matchpairs>, t: Throwable) {
-//                    errorMessage.postValue(t.message.toString())
-//
-//                }
-//            })
-//        }
-//
-//    }
+
 
      fun getAllGrades() {
 
@@ -166,15 +149,7 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
              {
                  errorMessage.postValue(response.toString())
              }
-//             response.enqueue(object : Callback<TopicsList> {
-//                 override fun onResponse(call: Call<TopicsList>, response: Response<TopicsList>) {
-//                     if (response?.body() != null)
-//                     {topicListss.postValue(response.body())}
-//                 }
-//                 override fun onFailure(call: Call<TopicsList>, t: Throwable) {
-//                     errorMessage.postValue(t.cause.toString())
-//                 }
-//             })
+
          }
 
     }
@@ -233,80 +208,5 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
     }
 
 
-
-//    fun create_user(user: User)
-//    {
-//        viewModelScope.launch {
-//            val response : Call<LoginData> = repository.createUser(user)
-//            response.enqueue(object : Callback<LoginData> {
-//                override fun onResponse(call: Call<LoginData>, response: Response<LoginData>) {
-//                    if (response?.body() != null)
-//                    {
-//                        response.body().toString()
-//
-//
-//                        userList.postValue(response.body())
-//
-//
-//
-//                    }
-//                }
-//                override fun onFailure(call: Call<LoginData>, t: Throwable) {
-//                    errorMessage.postValue(t.cause.toString())
-//                }
-//            })
-//
-//        }
-//    }
-
-    fun login_user(user: Userz)
-    {
-        viewModelScope.launch {
-            val response : Response<LoginData> = repository.loginUser(user)
-            myresponse.value = response
-        }
-    }
-//    fun login_user(user: User)
-//    {
-//        viewModelScope.launch {
-//            val response : Call<LoginData> = repository.loginUser(user)
-//            response.enqueue(object : Callback<LoginData> {
-//                override fun onResponse(call: Call<LoginData>, response: Response<LoginData>) {
-//                    if (response?.body() != null)
-//                    {
-//                        response.body().toString()
-//
-//                        userList.postValue(response.body())
-//
-//
-//
-//                    }
-//                }
-//                override fun onFailure(call: Call<LoginData>, t: Throwable) {
-//                    errorMessage.postValue(t.cause.toString())
-//                }
-//            })
-//        }
-//    }
-
-//    fun login_user(user: User)
-//    {
-//        viewModelScope.launch {
-//            val response : Call<LoginData> = repository.getUser(user)
-//            response.enqueue(object : Callback<LoginData> {
-//                override fun onResponse(call: Call<LoginData>, response: Response<LoginData>) {
-//                    if (response?.body() != null)
-//                    {
-//                        response.body().toString()
-//                        userList.postValue(response.body())
-//
-//                    }
-//                }
-//                override fun onFailure(call: Call<LoginData>, t: Throwable) {
-//                    errorMessage.postValue(t.cause.toString())
-//                }
-//            })
-//        }
-//    }
 }
 

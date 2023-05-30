@@ -43,7 +43,6 @@ class MainActivity : AppCompatActivity(), msgAdapter.Callbackinter{
 
         Log.v(TAG, "In main")
 
-//        setupNotificationWithTrigger(10000)
 
     }
 
@@ -147,23 +146,7 @@ class MainActivity : AppCompatActivity(), msgAdapter.Callbackinter{
     override fun passResultCallback(message: Topics) {
         TODO("Not yet implemented")
     }
-//    private fun setupNotificationWithTrigger(triggerTime: Long) {
-//        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-//        val notificationIntent = Intent(this, NotificationReceiver::class.java)
-//        val pendingIntent = PendingIntent.getBroadcast(
-//            this,
-//            0,
-//            notificationIntent,
-//            PendingIntent.FLAG_UPDATE_CURRENT
-//        )
-//
-//        // Set the alarm to go off at the specified time
-//        alarmManager.set(
-//            AlarmManager.RTC_WAKEUP,
-//            System.currentTimeMillis() + triggerTime,
-//            pendingIntent
-//        )
-//    }
+
 }
 
 

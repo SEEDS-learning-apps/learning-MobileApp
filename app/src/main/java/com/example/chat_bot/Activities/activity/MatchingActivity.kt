@@ -19,7 +19,6 @@ class MatchingActivity : AppCompatActivity() {
         init_spinners()
         load_next()
 
-
     }
 
     private fun load_next() {
@@ -37,14 +36,6 @@ class MatchingActivity : AppCompatActivity() {
                 R.layout.ans_dropdwn, answers)
             spinner1.setAdapter(adapter)
 
-//            spinner.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
-//                Toast.makeText(this@Register,
-//                    languages.get(position),
-//                    Toast.LENGTH_SHORT).show()
-//                lang(languages.get(position))
-
-
-            //  })
         }
 
         // access the spinner
@@ -54,14 +45,6 @@ class MatchingActivity : AppCompatActivity() {
                 R.layout.ans_dropdwn, answers)
             spinner2.setAdapter(adapter)
 
-//            spinner.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
-//                Toast.makeText(this@Register,
-//                    languages.get(position),
-//                    Toast.LENGTH_SHORT).show()
-//                lang(languages.get(position))
-
-
-            //  })
         }
 
 
@@ -72,14 +55,6 @@ class MatchingActivity : AppCompatActivity() {
                 R.layout.ans_dropdwn, answers)
             spinner3.setAdapter(adapter)
 
-//            spinner.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
-//                Toast.makeText(this@Register,
-//                    languages.get(position),
-//                    Toast.LENGTH_SHORT).show()
-//                lang(languages.get(position))
-
-
-            //  })
         }
 
         // access the spinner
@@ -89,16 +64,7 @@ class MatchingActivity : AppCompatActivity() {
                 R.layout.ans_dropdwn, answers)
             spinner4.setAdapter(adapter)
 
-//            spinner.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
-//                Toast.makeText(this@Register,
-//                    languages.get(position),
-//                    Toast.LENGTH_SHORT).show()
-//                lang(languages.get(position))
-
-
-            //  })
         }
-
 
     }
 

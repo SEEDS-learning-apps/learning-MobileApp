@@ -310,31 +310,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
 
         }
-//        else{//Toast.makeText(context, "quiz khtm", Toast.LENGTH_SHORT).show()
-//            //fire_alert()
-//
-//            if (haveTFS)
-//            {
-////                    val intent = Intent(context,TruefalseActivity::class.java)
-////                    intent.putExtra("filterd_trufalses", filterd_trufalses)
-////                    context.startActivity(intent)
-////                    (context as Activity).finish()
-//
-//                val intent = Intent(context, TruefalseActivity::class.java).apply {
-//
-//                    // putExtra("filtered_topics", filterd_topics)
-//                    putExtra("filterd_trufalses", filterd_trufalses)
-//                    putExtra("scores", correct_answers)
-//                    putExtra("total_mcqs", az.size)
-//                }
-//                context.startActivity(intent)
-//
-//            }
-//            else{
-//                positive_results_alert(az)
-//            }
-//
-//        }
 
         when {
             current_pos == az!!.size -> {
@@ -385,12 +360,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
             holder.binding.tfSubmit.isEnabled = false
 
-
-
-
-
-            //Log.d("tf", ans)
-            //Toast.makeText(context, ans, Toast.LENGTH_SHORT).show()
 
             var rbGroup: RadioGroup = holder.binding.mcqRG
 
@@ -452,22 +421,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                     }
                 }
 
-//                if (radioTXT.lowercase() == ans){
-//                    correct_answers++
-//
-//                    holder.binding.tfPosFeedbackTv.text = tf.posFeedback
-//                    holder.binding.tfNegFeedbackTv.visibility = View.GONE
-//                    holder.binding.tfPosFeedbackTv.visibility = View.VISIBLE
-//
-//                    //Toast.makeText(context, "Right answer", Toast.LENGTH_SHORT).show()
-//                }
-//                else if (radioTXT.lowercase() != ans)
-//                {
-//                    holder.binding.tfNegFeedbackTv.text = tf.negFeedback
-//                    holder.binding.tfNegFeedbackTv.visibility = View.VISIBLE
-//                    holder.binding.tfPosFeedbackTv.visibility = View.GONE
-//                }
-
                 holder.binding.tfFeedbackCard.visibility = View.VISIBLE
                 holder.binding.tfSubmit.visibility = View.GONE
                 holder.binding.feebackSubmit.visibility = View.VISIBLE
@@ -482,8 +435,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
             }
 
             }
-
-
 
         }
     }
@@ -574,12 +525,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                 if (ansList.size == 5)
                 {
                     holder.binding.activyText.text = matchingActivity.question
-//                    holder.binding.ans1TXT.text = matchingActivity.answer1
-//                    holder.binding.ans2TXT.text = matchingActivity.answer2
-//                    holder.binding.ans3TXT.text = matchingActivity.answer3
-//                    holder.binding.ans4TXT.text = matchingActivity.answer4
-//                    holder.binding.ans5TXT.text = matchingActivity.answer5
-
                     holder.binding.st1TXT.text = matchingActivity.statement1
                     holder.binding.st2TXT.text = matchingActivity.statement2
                     holder.binding.st3TXT.text = matchingActivity.statement3
@@ -600,11 +545,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
                 if(ansList.size == 4)
                 {  holder.binding.activyText.text = matchingActivity.question
-//                    holder.binding.ans1TXT.text = matchingActivity.answer1
-//                    holder.binding.ans2TXT.text = matchingActivity.answer2
-//                    holder.binding.ans3TXT.text = matchingActivity.answer3
-//                    holder.binding.ans4TXT.text = matchingActivity.answer4
-
                     holder.binding.st1TXT.text = matchingActivity.statement1
                     holder.binding.st2TXT.text = matchingActivity.statement2
                     holder.binding.st3TXT.text = matchingActivity.statement3

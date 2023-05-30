@@ -7,6 +7,8 @@ import android.os.Looper
 import android.view.View
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
+import com.example.chat_bot.Activities.HomePage.HomeActivity
+import com.example.chat_bot.R
 import com.example.chat_bot.databinding.ActivityQuizHomeBinding
 
 
@@ -28,7 +30,6 @@ class quiz_home : AppCompatActivity() {
 
         binding.btnNextQuizHome.setOnClickListener { Load_video() }
 
-
     }
 
     private fun Load_video() {
@@ -37,12 +38,9 @@ class quiz_home : AppCompatActivity() {
 
     private fun load_instructions() {
 
-
         // WebViewClient allows you to handle
         // onPageFinished and override Url loading.
         binding.webView.webViewClient = WebViewClient()
-
-
 
         // this will load the url of the website
         binding.webView.loadUrl("https://www.wineme.uni-siegen.de/projekte/seeds/")
@@ -57,4 +55,5 @@ class quiz_home : AppCompatActivity() {
     private fun hideActionBar() {
         supportActionBar?.hide()
     }
+
 }

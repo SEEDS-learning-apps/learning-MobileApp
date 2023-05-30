@@ -30,7 +30,8 @@ class ExerciseFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        val sharedPrefs: SharedPreferences = requireContext().getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val sharedPrefs: SharedPreferences =
+            requireContext().getSharedPreferences("pref", Context.MODE_PRIVATE)
         val switchIsTurnedOn = sharedPrefs.getBoolean("DARK MODE", false)
         if (switchIsTurnedOn) {
             // if true then change the theme to dark mode
@@ -46,40 +47,34 @@ class ExerciseFragment : Fragment() {
     }
 
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         recyclerView()
-        // hideActionBar()
 
     }
 
     private fun recyclerView() {
-
         binding.exRv.adapter = adapter
         binding.exRv.layoutManager = LinearLayoutManager(this.context)
 
-        //   if (!exerciseList.isNullOrEmpty())
-        // {
         exerciseList = session.readListFromPref(context as Activity) as ArrayList<Exercise>
-        // }
-        // var list: ArrayList<Exercise> = arrayListOf()
 
-
-        //Log.d("listaaa", list.toString())
         if (exerciseList.isNotEmpty()) {
-
+            manageViews()
             adapter.setExList(exerciseList)
             adapter.notifyDataSetChanged()
             adapter.notifyItemInserted(exerciseList.size)
-        } else
-            false
-
+        } else {
+            manageViews(false)
+        }
     }
+
+    private fun manageViews(hasExercise: Boolean = true) {
+        binding.exRv.visibility = if (hasExercise) View.VISIBLE else View.GONE
+        binding.noExercise.visibility = if (hasExercise) View.GONE else View.VISIBLE
+    }
+
 
 
 }

@@ -17,7 +17,6 @@ class Pic_mataching : AppCompatActivity() {
 
         hideActionBar()
 
-
         init_spinners()
     }
 
@@ -32,14 +31,6 @@ class Pic_mataching : AppCompatActivity() {
                 R.layout.ans_dropdwn, answers)
             spinner1.setAdapter(adapter)
 
-//            spinner.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
-//                Toast.makeText(this@Register,
-//                    languages.get(position),
-//                    Toast.LENGTH_SHORT).show()
-//                lang(languages.get(position))
-
-
-            //  })
         }
 
         // access the spinner
@@ -49,14 +40,6 @@ class Pic_mataching : AppCompatActivity() {
                 R.layout.ans_dropdwn, answers)
             spinner2.setAdapter(adapter)
 
-//            spinner.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
-//                Toast.makeText(this@Register,
-//                    languages.get(position),
-//                    Toast.LENGTH_SHORT).show()
-//                lang(languages.get(position))
-
-
-            //  })
         }
 
 
@@ -67,14 +50,6 @@ class Pic_mataching : AppCompatActivity() {
                 R.layout.ans_dropdwn, answers)
             spinner3.setAdapter(adapter)
 
-//            spinner.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
-//                Toast.makeText(this@Register,
-//                    languages.get(position),
-//                    Toast.LENGTH_SHORT).show()
-//                lang(languages.get(position))
-
-
-            //  })
         }
 
         // access the spinner
@@ -84,14 +59,6 @@ class Pic_mataching : AppCompatActivity() {
                 R.layout.ans_dropdwn, answers)
             spinner4.setAdapter(adapter)
 
-//            spinner.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
-//                Toast.makeText(this@Register,
-//                    languages.get(position),
-//                    Toast.LENGTH_SHORT).show()
-//                lang(languages.get(position))
-
-
-            //  })
         }
 
 

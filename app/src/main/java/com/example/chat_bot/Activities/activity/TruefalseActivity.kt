@@ -7,6 +7,8 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import android.widget.Button
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
@@ -33,13 +35,9 @@ class TruefalseActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTruefalseBinding
     private var correct_answers: Int = 0
     lateinit var q_mcqs: ArrayList <Mcqss>
-     var TFlist: ArrayList<Data> = arrayListOf()
-     var filterd_topiclist: ArrayList<Topics> = arrayListOf()
      var filterd_trufalses: ArrayList<Data> = arrayListOf()
     private var totale_mcq : Int = 0
     private val retrofitService = SEEDSApi.getInstance()
-    lateinit var topic_id: String
-    lateinit var user_id: String
     val adapter = Tfadapter(this)
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -74,43 +72,10 @@ class TruefalseActivity : AppCompatActivity() {
         binding.loadingProgress.visibility = View.VISIBLE
 
 
-        // val sharedPreferences: SharedPreferences = this.getSharedPreferences(Context.MODE_PRIVATE.toString())
-
-        //val dev = sharedPreferences.getString("dev_id", "")
-
-        //LocalBroadcastManager.getInstance(this).registerReceiver(mFlagReciever, IntentFilter("Answer_flag"))
-
-//
-//        viewModel.tfList.observe(this, Observer {
-//            Log.d(TAG, "OnCreate: $it")
-//            var datasize = it.size
-//
-//
-//
-//            var mil: MutableList<String> = arrayListOf()
-//
-//            // for (item in it)
-//            // {
-//            for (item in filterd_topiclist)
-//            {
-//                topic_id = item._id
-//                user_id = item.userId
-//
-//                TFlist = item.filter { it.topicId == topic_id && it.userId == user_id } as ArrayList<trufalses>
-//
-//                TFlist = item.filter { it.topicId == topic_id && it.userId == user_id} as ArrayList<trufalses>
-//
-//            }
 
 
                 adapter.setMcqList(filterd_trufalses, correct_answers, totale_mcq)
 
-
-//
-//            Log.d("MAA", TFlist.toString())
-//            // }
-//
-//        })
 
         viewModel.errorMessage.observe(this, Observer {
             Toast.makeText(this, "Error went", Toast.LENGTH_SHORT).show()
@@ -123,43 +88,6 @@ class TruefalseActivity : AppCompatActivity() {
             binding.loadingProgress.visibility = View.GONE
         },SPLASH_TIME)
 
-    }
-
-    private fun fill_tf() {
-        viewModel.tfList.observe(this, Observer {
-            Log.d(TAG, "OnCreate: $it")
-//            var datasize = it.
-            var mil: MutableList<String> = arrayListOf()
-
-
-
-            // for (item in it)
-            // {
-            for (item in filterd_topiclist) {
-                topic_id = item._id
-                user_id = item.userId
-
-                TFlist =
-                    it.data.filter { it.topicId == topic_id && it.userId == user_id } as ArrayList<Data>
-                if (TFlist.isNotEmpty())
-                {
-                   adapter.setMcqList(TFlist,correct_answers,totale_mcq)
-                }
-
-            }
-
-
-            //  adapter.setMcqList(mcqlist)
-
-            Log.d("OnCreate", TFlist.toString())
-            // }
-
-        })
-        viewModel.errorMessage.observe(this, Observer {
-            Toast.makeText(this, "NO TF found", Toast.LENGTH_SHORT).show()
-
-        })
-        viewModel.getAllTF()
     }
 
     override fun onBackPressed() {

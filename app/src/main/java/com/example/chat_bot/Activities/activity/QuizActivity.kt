@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.chat_bot.Activities.DashboardActivities.downloadQuizActivity
+import com.example.chat_bot.Activities.HomePage.HomeActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.SeedsDatabase
@@ -31,42 +32,26 @@ import kotlinx.coroutines.*
 
 class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
 
-    private val TAG = "quizActivity"
-    private val SPLASH_TIME: Long = 2000
     lateinit var session: SessionManager
-    val handler = Handler(Looper.getMainLooper())
     private lateinit var binding: ActivityQuizBinding
     lateinit var viewModel: SEEDSViewModel
     lateinit var q_mcqs: ArrayList<Mcqss>
-    var mcqlist: ArrayList<Mcqss> = arrayListOf()
 
     // var matchlist: ArrayList<Matchpairs> = arrayListOf()
-    var MCQ: ArrayList<Mcqss> = arrayListOf()
     private val KEY_RECYCLER_STATE = "recycler_state"
     var question: MutableList<AllQuestion> = arrayListOf()
 
-    var quizlist: ArrayList<Quiz> = arrayListOf()
-    var TFlist: ArrayList<Data> = arrayListOf()
-    var TF: ArrayList<Data> = arrayListOf()
     lateinit var filterd_topiclist: ArrayList<Topics>
     private val retrofitService = SEEDSApi.getInstance()
     lateinit var topic_name: String
     lateinit var user_name: String
     lateinit var topic_id: String
-    lateinit var user_id: String
     lateinit var ActivityType: String
-    var j: List<Any> = arrayListOf()
-    var haveTFS: Boolean = false
     val adapter = quiz_adapter(this, this)
-    lateinit var state: CharSequence
     private var mBundleRecyclerViewState: Bundle? = null
     lateinit var listState: Parcelable
 
-    var downloadedQuizz: ArrayList<DowloadedQuiz> = arrayListOf()
     var downloadedQuiz: ArrayList<QuestItem> = arrayListOf()
- //var Quu: ArrayList<QuestItem> = arrayListOf()
-
-    var msgBtn: ArrayList<com.example.chat_bot.Rasa.rasaMsg.Button> = arrayListOf()
 
     //lateinit var questItem: QuestItem
     lateinit var questItem: QuestItem
@@ -200,64 +185,6 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
         }
 
 
-
-//    private fun runTest() {
-//        que.addAll(listOf(AllQuestion(0, "0", "option2", "", "","","","","","","I am mcqs.","","option1","option2","option3","option4","","","", 2, "","","","","","62f22b06c992eabdda6fbd93","",2)).toMutableList())
-//
-//        que.addAll(listOf(AllQuestion(0, "0", "true", "", "","","","","","","","Try again","option1","option2","option3","option4","Good","I am open ended question.","", 1, "","","","","","","",5)).toMutableList())
-//
-//        que.sortBy { i-> i.sequence }
-//    }
-
-//    private fun getMatchpairs() {
-//
-//        viewModel.matchList.observe(this, Observer { it ->
-//            Log.d(TAG, "OnCreate: $it")
-//            var datasize = matchlist.size
-//            //  var mil: MutableList<String> = arrayListOf()
-//
-//            // for (item in it)
-//            // {
-//            for (item in filterd_topiclist)
-//            {
-//                topic_id = item._id
-//                user_id = item.userId
-//                matchlist = matchlist.filter { matchpairs ->  matchpairs.topicId == topic_id  } as ArrayList<Matchpairs>
-//               // MCQ = mcqlist
-//
-//
-//
-//            }
-//            Log.d("mcq", matchlist.size.toString())
-//        })
-//        viewModel.getAllMatchingPairs()
-//    }
-
-
-
-    fun getQuiz(id: String) {
-        viewModel.quizList.observe(this, Observer {
-            Log.d(ContentValues.TAG, "OnCreate: $it")
-
-
-        })
-
-
-
-
-        viewModel.getQuiz(id)
-
-
-
-
-
-        viewModel.errorMessage.observe(this) {
-            Toast.makeText(this, "No quiz available", Toast.LENGTH_SHORT).show()
-        }
-
-
-    }
-
     override fun onPause() {
         super.onPause()
 
@@ -334,9 +261,7 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
             }
         }
 
-
     }
-
 
     private fun showDownload() {
         val intent = Intent(this, downloadQuizActivity::class.java).apply {
@@ -346,32 +271,17 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
         startActivity(intent)
     }
 
-
-
     override fun onBackPressed() {
         super.onBackPressed()
-        finish()
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.putExtra("FRAGMENT_TO_SHOW", 0)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+
     }
 
     private fun hideActionBar() {
         supportActionBar?.hide()
-    }
-
-    fun submitAnswerCallback(openEnded: OpenEnded) {
-
-        Log.d("openzz", openEnded.toString())
-
-        viewModel.op_response.observe(this) {
-
-            if (it.isSuccessful)
-            {
-                Toast.makeText(this, "answerSubmitted", Toast.LENGTH_SHORT).show()
-            }
-            else
-                Toast.makeText(this, "failed", Toast.LENGTH_SHORT).show()
-
-        }
-        viewModel.submitOpenEnded(openEnded)
     }
 
     override fun submitAnswerCallback(openEnded: com.example.chat_bot.data.OpenEnded) {
@@ -381,4 +291,6 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
     override fun quizDonez() {
 
     }
+
+
 }

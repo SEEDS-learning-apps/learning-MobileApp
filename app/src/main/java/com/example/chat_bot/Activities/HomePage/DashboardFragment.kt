@@ -18,6 +18,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.chat_bot.Activities.DashboardActivities.Help
+import com.example.chat_bot.Activities.DashboardActivities.LearningProgress
 import com.example.chat_bot.Activities.DashboardActivities.downloadQuizActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.databinding.FragmentDashboardBinding
@@ -114,6 +115,14 @@ class DashboardFragment : Fragment() {
 
         bind.HelpCardview.setOnClickListener {
             val intent = Intent(this.context, Help::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            }
+            startActivity(intent)
+            activity?.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
+
+        bind.LearningprogressCardview.setOnClickListener {
+            val intent = Intent(this.context, LearningProgress::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             }
             startActivity(intent)

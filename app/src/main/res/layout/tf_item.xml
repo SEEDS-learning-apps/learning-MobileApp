@@ -81,7 +81,8 @@
                 android:animateLayoutChanges="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView">
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                android:focusableInTouchMode="true">
 
                 <RadioButton
                     android:id="@+id/tf_optOne"
@@ -93,7 +94,8 @@
                     android:checked="false"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/mcq_statememntTV" />
+                    app:layout_constraintTop_toBottomOf="@+id/mcq_statememntTV"
+                    android:focusableInTouchMode="true"/>
 
                 <RadioButton
                     android:id="@+id/tf_optTwo"
@@ -105,7 +107,8 @@
                     android:checked="false"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/mcq_optOne" />
+                    app:layout_constraintTop_toBottomOf="@+id/mcq_optOne"
+                    android:focusableInTouchMode="true"/>
 
             </RadioGroup>
 
