@@ -7,12 +7,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chat_bot.Activities.DashboardActivities.downloadQuizActivity
 import com.example.chat_bot.Activities.activity.QuizActivity
+import com.example.chat_bot.Room.Dao.SeedsDao
+import com.example.chat_bot.Room.SeedsDatabase
 import com.example.chat_bot.data.tryy.QuestItem
 import com.example.chat_bot.databinding.DownloadItemBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class dwnQuizAdapter(val context: Context) : RecyclerView.Adapter<dwnQuizAdapter.dwnViewholder>() {
+class dwnQuizAdapter(private val context: Context) : RecyclerView.Adapter<dwnQuizAdapter.dwnViewholder>() {
 
     var quizList: List<QuestItem> = listOf()
     private var listener: dwnQuizAdapterListener? = null
@@ -24,7 +28,7 @@ class dwnQuizAdapter(val context: Context) : RecyclerView.Adapter<dwnQuizAdapter
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     // Perform deletion logic here
-                    deleteCard(this, position)
+                    deleteCard(position)
                 }
             }
         }
@@ -65,23 +69,34 @@ class dwnQuizAdapter(val context: Context) : RecyclerView.Adapter<dwnQuizAdapter
     fun setdwnList(quizList: List<QuestItem>) {
         this.quizList = quizList
         notifyDataSetChanged()
+        checkEmptyState()
     }
 
-    private fun deleteCard(holder: dwnViewholder, position: Int) {
+    private fun deleteCard(position: Int) {
         if (position in 0 until quizList.size) {
             val deletedItem = quizList[position]
             quizList = quizList.toMutableList().apply { removeAt(position) }
             notifyItemRemoved(position)
-            Toast.makeText(context, "Item '${deletedItem.topic}' deleted", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Topic '${deletedItem.topic}' deleted", Toast.LENGTH_SHORT).show()
+
+            // Delete the item from the database
+            val dao: SeedsDao = SeedsDatabase.getInstance(context).seedsDao
+            GlobalScope.launch(Dispatchers.IO) {
+                dao.deleteMaterial(deletedItem)
+            }
 
             // Check if the list becomes empty after deletion
-            if (quizList.isEmpty()) {
-                listener?.manageViews(true)
-            }
+            checkEmptyState()
         }
-
     }
-    fun setListener(listener: downloadQuizActivity) {
+
+    private fun checkEmptyState() {
+        if (quizList.isEmpty()) {
+            listener?.manageViews(true)
+        }
+    }
+
+    fun setListener(listener: dwnQuizAdapterListener) {
         this.listener = listener
     }
 
@@ -89,3 +104,4 @@ class dwnQuizAdapter(val context: Context) : RecyclerView.Adapter<dwnQuizAdapter
         fun manageViews(isEmpty: Boolean)
     }
 }
+

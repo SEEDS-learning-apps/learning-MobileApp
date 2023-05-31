@@ -16,7 +16,7 @@ path: networking\Retrofit\Seeds_api\api
 - type converters: Room\Converters\ (datatype converters for room database)
 - Database relations Room\Relations (Database joins and relations declaration)
 
-## Resousrces
+## Resources
 Res folder contains all resources such as font, images, strings, animations, layout (XML files)
 
 ## Pre-made responses

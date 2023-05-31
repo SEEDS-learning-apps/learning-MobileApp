@@ -23,7 +23,7 @@ import com.example.chat_bot.ui.dwnQuizAdapter
 import com.example.chat_bot.utils.SessionManager
 import kotlinx.coroutines.launch
 
-class downloadQuizActivity : AppCompatActivity() {
+class downloadQuizActivity : AppCompatActivity(), dwnQuizAdapter.dwnQuizAdapterListener {
 
     lateinit var session: SessionManager
     lateinit var quizllist: List<UserAndMaterials>
@@ -44,7 +44,7 @@ class downloadQuizActivity : AppCompatActivity() {
         }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_download_quiz)
-
+        adapter.setListener(this)
         binding = ActivityDownloadQuizBinding.inflate(layoutInflater)
 
         session = SessionManager(this)
@@ -89,13 +89,13 @@ class downloadQuizActivity : AppCompatActivity() {
             Log.d("dwnnn", list.size.toString())
 
             Log.d("listaaa", list.toString())
-            if(list.isNotEmpty())
-            {
-
-                manage_views()
+            if (list.isNotEmpty()) {
+                manageViews(false) // Call the method without parentheses
                 adapter.setdwnList(list)
                 adapter.notifyDataSetChanged()
                 adapter.notifyItemInserted(list.size)
+            } else {
+                manageViews(true) // Call the method without parentheses
             }
 
         }
@@ -103,11 +103,7 @@ class downloadQuizActivity : AppCompatActivity() {
 
     }
 
-    private fun manage_views() {
-        binding.dwnQuizRv.visibility = View.VISIBLE
-        binding.noDownloads.visibility = View.GONE
 
-    }
 
 
     private fun hideActionBar() {
@@ -120,5 +116,15 @@ class downloadQuizActivity : AppCompatActivity() {
         intent.putExtra("FRAGMENT_TO_SHOW", 2)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+    }
+
+    override fun manageViews(isEmpty: Boolean) {
+        if (isEmpty) {
+            binding.dwnQuizRv.visibility = View.GONE
+            binding.noDownloads.visibility = View.VISIBLE
+        } else {
+            binding.dwnQuizRv.visibility = View.VISIBLE
+            binding.noDownloads.visibility = View.GONE
+        }
     }
 }

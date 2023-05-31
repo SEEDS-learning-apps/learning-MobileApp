@@ -43,4 +43,8 @@ interface SeedsDao{
     @Transaction //Avoids Multithreading issues
     @Query("select * from QuestItem where username = :username")
     suspend fun getMaterialsWithUsername(username: String): List<QuestItem>
+
+    @Transaction
+    @Delete
+    suspend fun deleteMaterial(questItem: QuestItem): Int
 }
