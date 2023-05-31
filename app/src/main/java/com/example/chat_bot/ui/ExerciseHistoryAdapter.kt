@@ -21,6 +21,7 @@ class ExerciseHistoryAdapter(val context: ExerciseFragment):  RecyclerView.Adapt
                 if (position != RecyclerView.NO_POSITION) {
                     exerciseList.removeAt(position)
                     notifyItemRemoved(position)
+                    context.onExerciseDeleted()
                 }
             }
         }
@@ -56,5 +57,17 @@ class ExerciseHistoryAdapter(val context: ExerciseFragment):  RecyclerView.Adapt
 
         Log.d("loggg", exerciseList.toString())
         notifyDataSetChanged()
+        checkEmptyState()
+
     }
+
+    private fun checkEmptyState() {
+        val isEmpty = exerciseList.isEmpty()
+        context.manageViews(!isEmpty)
+    }
+
+    interface ExerciseDeleteListener {
+        fun onExerciseDeleted()
+    }
+
 }

@@ -16,7 +16,7 @@ import com.example.chat_bot.ui.ExerciseHistoryAdapter
 import com.example.chat_bot.utils.SessionManager
 
 
-class ExerciseFragment : Fragment() {
+class ExerciseFragment : Fragment(), ExerciseHistoryAdapter.ExerciseDeleteListener {
 
     var exerciseList: ArrayList<Exercise> = arrayListOf()
     val adapter = ExerciseHistoryAdapter(this)
@@ -55,26 +55,30 @@ class ExerciseFragment : Fragment() {
     }
 
     private fun recyclerView() {
+
+        val adapter = ExerciseHistoryAdapter(this)
+
         binding.exRv.adapter = adapter
         binding.exRv.layoutManager = LinearLayoutManager(this.context)
 
         exerciseList = session.readListFromPref(context as Activity) as ArrayList<Exercise>
-
         if (exerciseList.isNotEmpty()) {
             manageViews()
             adapter.setExList(exerciseList)
-            adapter.notifyDataSetChanged()
-            adapter.notifyItemInserted(exerciseList.size)
         } else {
             manageViews(false)
         }
     }
 
-    private fun manageViews(hasExercise: Boolean = true) {
+    fun manageViews(hasExercise: Boolean = true) {
         binding.exRv.visibility = if (hasExercise) View.VISIBLE else View.GONE
         binding.noExercise.visibility = if (hasExercise) View.GONE else View.VISIBLE
     }
 
 
+    override fun onExerciseDeleted() {
+        val isEmpty = exerciseList.isEmpty()
+        manageViews(!isEmpty)
+    }
 
 }
