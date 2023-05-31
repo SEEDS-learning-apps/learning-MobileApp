@@ -16,9 +16,12 @@ class ExerciseHistoryAdapter(val context: ExerciseFragment):  RecyclerView.Adapt
 
     inner class exViewholder(val binding: ExerciseItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
-            itemView.setOnClickListener{
-                exerciseList.removeAt(absoluteAdapterPosition)
-                notifyItemRemoved(absoluteAdapterPosition)
+            binding.deleteButton.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    exerciseList.removeAt(position)
+                    notifyItemRemoved(position)
+                }
             }
         }
     }
