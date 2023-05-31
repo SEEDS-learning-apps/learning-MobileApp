@@ -1,5 +1,7 @@
 package com.example.chat_bot.Activities.activity
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -40,8 +42,17 @@ class TruefalseActivity : AppCompatActivity() {
     private val retrofitService = SEEDSApi.getInstance()
     val adapter = Tfadapter(this)
 
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
+        val sharedprefs: SharedPreferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val switchIsTurnedOn = sharedprefs.getBoolean("DARK MODE", false)
+        if (switchIsTurnedOn) {
+            //if true then change app theme to dark mode
+            layoutInflater.context.setTheme(R.style.DarkMode)
+        } else {
+            layoutInflater.context.setTheme(R.style.WhiteMode)
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_truefalse)
 

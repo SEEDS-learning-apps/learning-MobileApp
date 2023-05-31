@@ -21,6 +21,8 @@
     <color name="seed_dark_blue">#202C53</color>
     <color name="seed_light">#004a9f</color>
 
+
+
     <color name="score_color">#FFD6D2D2</color>
     <color name="settings_background">#003938</color>
 
@@ -36,6 +38,10 @@
     <color name="dialog_button_colour">#354B92</color>
     <color name="red">#E71515</color>
 
+    <!--    Actvity-->
+
+    <color name="Activity_next_btn">#B2B2B2</color>
+    <color name="progressBarColor">#2068AB</color>
 
     <!--   light theme Buttons-->
 
@@ -59,6 +65,7 @@
     <color name="Dashboard_Cardviewbackground_end_light">#5B97B8</color>
     <color name="Dashboard_profilecardview_start_light">#E6E9E8</color>
     <color name="Dashboard_profilecardview_end_light">#5BAEB8</color>
+
 
     <!--   Dark theme Buttons-->
     <color name="Button_start_dark">#99C4E3</color>

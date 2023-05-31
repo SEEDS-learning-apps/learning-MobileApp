@@ -1,7 +1,9 @@
 package com.example.chat_bot.Activities.activity
 
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.*
 import android.util.Log
 import android.view.View
@@ -50,13 +52,22 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
     val adapter = quiz_adapter(this, this)
     private var mBundleRecyclerViewState: Bundle? = null
     lateinit var listState: Parcelable
-
     var downloadedQuiz: ArrayList<QuestItem> = arrayListOf()
 
     //lateinit var questItem: QuestItem
     lateinit var questItem: QuestItem
     var que: ArrayList<QuestItem> = arrayListOf()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        val sharedprefs: SharedPreferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val switchIsTurnedOn = sharedprefs.getBoolean("DARK MODE", false)
+        if (switchIsTurnedOn) {
+            //if true then change app theme to dark mode
+            layoutInflater.context.setTheme(R.style.DarkMode)
+        } else {
+            layoutInflater.context.setTheme(R.style.WhiteMode)
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
 

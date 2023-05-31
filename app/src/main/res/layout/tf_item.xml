@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="?attr/backgroundcolor">
 
 
     <LinearLayout
@@ -27,6 +28,7 @@
                 android:padding="15dp"
                 android:text="@string/mcq"
                 android:textSize="16sp"
+                android:textColor="?attr/textcolor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +51,9 @@
                     android:indeterminate="false"
                     android:max="3"
                     android:minHeight="50dp"
-                    android:progress="0" />
+                    android:progress="0"
+                    android:backgroundTint="@color/progressBarColor"
+                    />
 
                 <TextView
                     android:id="@+id/tv_progress"
@@ -57,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="15dp"
-                    android:textColorHint="#7A8089"
+                    android:textColor="?attr/textcolor"
                     android:textSize="14sp"
                     tools:text="0/10" />
 
@@ -91,6 +95,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/True"
+                    android:textColor="?attr/textcolor"
                     android:checked="false"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -104,6 +109,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/False"
+                    android:textColor="?attr/textcolor"
                     android:checked="false"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
