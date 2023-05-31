@@ -365,7 +365,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
             if (rbGroup.checkedRadioButtonId == -1) {
 
-                Toast.makeText(context, "please select your answer", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "please select your answer once", Toast.LENGTH_SHORT).show()
                 holder.binding.tfSubmit.isEnabled = false
             }
 
@@ -431,6 +431,8 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                 holder.binding.tfFeedbackCard.visibility = View.GONE
                 holder.binding.feebackSubmit.visibility = View.GONE
                 holder.binding.tfSubmit.visibility = View.VISIBLE
+                    holder.binding.tfOptOne.isChecked = false
+                    holder.binding.tfOptTwo.isChecked = false
 
             }
 
