@@ -21,7 +21,6 @@ import com.example.chat_bot.Activities.DashboardActivities.LearningProgress
 import com.example.chat_bot.Activities.DashboardActivities.downloadQuizActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.databinding.FragmentDashboardBinding
-import com.example.chat_bot.utils.Language
 import com.example.chat_bot.utils.SessionManager
 import java.util.*
 
@@ -30,8 +29,6 @@ class DashboardFragment : Fragment() {
 
     private lateinit var bind: FragmentDashboardBinding
     lateinit var session: SessionManager
-
-    lateinit var lang: Language
     var m_androidId: String? = null
     private val USER = "M-f8f2e818-808f-"
     lateinit var userename: String
