@@ -981,22 +981,14 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
     fun sendMessagee(message: String, alternative: String = "", display: Boolean = true) {
 
-
-
         binding.typingStatus.visibility = View.VISIBLE
         binding.typingStatus.playAnimation()
 
         val displayedMessage = if (alternative.isNullOrEmpty()) message else alternative
         val timeStamp = Time.timeStamp()
 
-       // val uuid = UUID.fromString("517198089746p2"+m_androidId)
-       // Log.d("uuid", uuid.toString())
-
         binding.btnSend.isEnabled = true
         binding.etMessage.isEnabled = true
-        //  val userMessag = UserMessage(user_id, message)
-
-
 
         if (filterd_topics.size > 0) {
             filterd_topics.clear()
@@ -1004,16 +996,9 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         }
         Log.d("user_id", m_androidId.toString())
 
-      //  Log.d("user_id", "${Constants.DEV_ID}$m_androidId")
         var userMessage = UserMessage(m_androidId.toString(), message)
 
         Log.d("what is message", message)
-
-        // var userMessage       = UserMessage(USER, message) // The message that will be sent to Rasa (payload in case of buttons)
-        var userDisplayed = UserMessage(
-            m_androidId.toString(),
-            displayedMessage
-        ) // The message that will be displayed on screen (title in case of buttons)
 
         if (display) {
             db!!.insertMessage(Message(message, Constants.SND_ID, timeStamp, false, "", msgBtn, username))

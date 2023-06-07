@@ -1,13 +1,13 @@
 package com.crushtech.timelyapp.data.repository
 
-import com.example.chat_bot.Room.AlarmDatabase
 import com.example.chat_bot.Room.Entities.Alarms
+import com.example.chat_bot.Room.SeedsDatabase
 
 
-class AlarmRepository(private val db: AlarmDatabase) {
-    suspend fun insert(alarm: Alarms) = db.getAlarmDao().insert(alarm)
-    suspend fun update(alarm: Alarms) = db.getAlarmDao().update(alarm)
-    suspend fun delete(alarm: Alarms) = db.getAlarmDao().delete(alarm)
-    suspend fun deleteAllAlarms() = db.getAlarmDao().deleteAllAlarms()
-    fun getAllAlarms() = db.getAlarmDao().getAllAlarms()
+class AlarmRepository(private val db: SeedsDatabase) {
+    suspend fun insert(alarm: Alarms) = db.seedsDao.insert(alarm)
+    suspend fun update(alarm: Alarms) = db.seedsDao.update(alarm)
+    suspend fun delete(alarm: Alarms) = db.seedsDao.delete(alarm)
+    suspend fun deleteAllAlarms() = db.seedsDao.deleteAllAlarms()
+    fun getAllAlarms() = db.seedsDao.getAllAlarms()
 }
