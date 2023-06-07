@@ -75,8 +75,6 @@ class downloadQuizActivity : AppCompatActivity(), dwnQuizAdapter.dwnQuizAdapterL
 
         var list: List<QuestItem> = listOf()
 
-
-
         val dao: SeedsDao = SeedsDatabase.getInstance(this).seedsDao
         lifecycleScope.launch{
 
@@ -100,11 +98,7 @@ class downloadQuizActivity : AppCompatActivity(), dwnQuizAdapter.dwnQuizAdapterL
 
         }
 
-
     }
-
-
-
 
     private fun hideActionBar() {
         supportActionBar?.hide()

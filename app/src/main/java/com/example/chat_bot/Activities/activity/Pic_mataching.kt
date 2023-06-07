@@ -42,7 +42,6 @@ class Pic_mataching : AppCompatActivity() {
 
         }
 
-
         // access the spinner
         val spinner3 = binding.st3Sp
         if (spinner3 != null) {
@@ -60,7 +59,6 @@ class Pic_mataching : AppCompatActivity() {
             spinner4.setAdapter(adapter)
 
         }
-
 
     }
 

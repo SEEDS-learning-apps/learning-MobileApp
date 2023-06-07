@@ -32,7 +32,6 @@ class Help : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_help)
 
-
         val Contactus = findViewById<View>(R.id.open_Contactus_dialog)
 
         Contactus.setOnClickListener{

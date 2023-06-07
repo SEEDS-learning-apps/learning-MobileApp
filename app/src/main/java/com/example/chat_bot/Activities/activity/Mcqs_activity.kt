@@ -2,15 +2,14 @@ package com.example.chat_bot.Activities.activity
 
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.chat_bot.Activities.HomePage.HomeActivity
@@ -34,9 +33,8 @@ class Mcqs_activity : AppCompatActivity() {
     val handler = Handler(Looper.getMainLooper())
     private lateinit var binding: ActivityMcqsBinding
     lateinit var viewModel: SEEDSViewModel
-    lateinit var q_mcqs: ArrayList <Mcqss>
     lateinit var mcqlist: ArrayList<Mcqss>
-     var TFlist: ArrayList<Data> = arrayListOf()
+    var TFlist: ArrayList<Data> = arrayListOf()
     lateinit var filterd_topiclist: ArrayList<Topics>
     private val retrofitService = SEEDSApi.getInstance()
     lateinit var topic_name: String
@@ -83,11 +81,6 @@ class Mcqs_activity : AppCompatActivity() {
 
         viewModel.mcqList.observe(this, Observer {
             Log.d(TAG, "OnCreate: $it")
-            var datasize = it.size
-          //  var mil: MutableList<String> = arrayListOf()
-
-            // for (item in it)
-            // {
             for (item in filterd_topiclist)
             {
                 topic_id = item._id
@@ -109,27 +102,16 @@ class Mcqs_activity : AppCompatActivity() {
             else
             { adapter.setMcqList(mcqlist, haveTFS, TFlist)}
 
-
-
-            // else
             Toast.makeText(applicationContext, "No mcqs matched", Toast.LENGTH_SHORT).show()
 
-
             Log.d("MAA", mcqlist.toString())
-            // }
 
         })
 
 
         viewModel.tfList.observe(this, Observer {
             Log.d(TAG, "OnCreate: $it")
-//            var datasize = it.
-            var mil: MutableList<String> = arrayListOf()
 
-
-
-            // for (item in it)
-            // {
             for (item in filterd_topiclist) {
                 topic_id = item._id
                 user_id = item.userId
@@ -143,15 +125,10 @@ class Mcqs_activity : AppCompatActivity() {
 
             }
 
-
-            //  adapter.setMcqList(mcqlist)
-
             Log.d("OnCreate", TFlist.toString())
-            // }
 
         })
         viewModel.getAllTF()
-     //   viewModel.getAllMcqs()
 
         viewModel.errorMessage.observe(this, Observer {
             Toast.makeText(this, "Error went", Toast.LENGTH_SHORT).show()
@@ -163,8 +140,6 @@ class Mcqs_activity : AppCompatActivity() {
 
             binding.loadingProgress.visibility = View.GONE
         },SPLASH_TIME)
-
-
 
     }
 

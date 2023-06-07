@@ -29,15 +29,13 @@ import com.example.chat_bot.utils.SessionManager
 
 class TruefalseActivity : AppCompatActivity() {
 
-    private val TAG = "TFActivity"
     private val SPLASH_TIME: Long = 2000
     lateinit var session: SessionManager
     val handler = Handler(Looper.getMainLooper())
     lateinit var viewModel: SEEDSViewModel
     private lateinit var binding: ActivityTruefalseBinding
     private var correct_answers: Int = 0
-    lateinit var q_mcqs: ArrayList <Mcqss>
-     var filterd_trufalses: ArrayList<Data> = arrayListOf()
+    var filterd_trufalses: ArrayList<Data> = arrayListOf()
     private var totale_mcq : Int = 0
     private val retrofitService = SEEDSApi.getInstance()
     val adapter = Tfadapter(this)
@@ -62,14 +60,9 @@ class TruefalseActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, SEEDSViewModelFact(SEEDSRepository(retrofitService))).get(SEEDSViewModel::class.java)
         session = SessionManager(applicationContext)
 
-
             filterd_trufalses = intent.getSerializableExtra("filterd_trufalses") as ArrayList<Data>
             correct_answers = intent.getIntExtra("scores", correct_answers)
             totale_mcq = intent.getIntExtra("total_mcqs", totale_mcq)
-
-
-
-
 
         var country: String = ""
 
@@ -82,11 +75,7 @@ class TruefalseActivity : AppCompatActivity() {
         binding.tfRv.adapter = adapter
         binding.loadingProgress.visibility = View.VISIBLE
 
-
-
-
-                adapter.setMcqList(filterd_trufalses, correct_answers, totale_mcq)
-
+        adapter.setMcqList(filterd_trufalses, correct_answers, totale_mcq)
 
         viewModel.errorMessage.observe(this, Observer {
             Toast.makeText(this, "Error went", Toast.LENGTH_SHORT).show()

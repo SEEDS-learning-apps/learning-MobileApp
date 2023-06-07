@@ -46,15 +46,12 @@ class MatchingActivity : AppCompatActivity() {
             spinner2.setAdapter(adapter)
 
         }
-
-
         // access the spinner
         val spinner3 = binding.st3Sp
         if (spinner3 != null) {
             val adapter = ArrayAdapter(this,
                 R.layout.ans_dropdwn, answers)
             spinner3.setAdapter(adapter)
-
         }
 
         // access the spinner

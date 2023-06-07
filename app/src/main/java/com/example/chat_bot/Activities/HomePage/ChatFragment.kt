@@ -443,32 +443,16 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     }
     private fun process_request(response: String) {
 
-        offersubjects()
-
-
-    }
-    private  fun offersubjects() {
-
-        // botResponse("please_publish_sugesstion mry tha", false)
-
-        //Todo offer subjects and topics
-        //customMsg("which subject you want to learn")
         fetch_subjects()
+
 
     }
 
     private  fun fetch_subjects() {
 
-
-
-        //subjects from database
         viewModel.subjectList.observe(viewLifecycleOwner, Observer {
             Log.d(ContentValues.TAG, "OnCreate: $it")
 
-            var datasize = it.size
-            //   var sub_list: MutableList<Subjects> = arrayListOf()
-            // subjects.addAll(it)
-            // sub_list.addAll(it)
             subjects.addAll(it)
             subjects.size
 
@@ -504,19 +488,12 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                 customMsg("Actualmente tengo problemas", false, msgBtn)
             }
 
-
-
-
-
-
-            //binding.loadingProgress.visibility = View.GONE
         })
 
         viewModel.getAllSubjects()
 
     }
     private fun suggest_topic(filterd_topicss: ArrayList<Topics>) {
-        val timeStamp = Time.timeStamp()
         binding.typingStatus.visibility = View.VISIBLE
         binding.typingStatus.playAnimation()
 
@@ -543,16 +520,9 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                         topicLang = item.language
                         grades = item.grade
 
-                        //customMsg(topic_name)
-
                     }
 
                     adapter.publishSuggestion(filterd_topicss)
-                    // adapter.notifyDataSetChanged()
-
-
-
-                    // customMsg("Hope you like to study this!!")
 
                     botResponse("please_publish_sugesstion", true)
                 }
@@ -563,11 +533,9 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     private  fun initiate_subject_filtration(mk: String) {
         var found: Subjects? =  subjects.find { i -> i.subject.trim().lowercase() == mk.trim().lowercase() }
         if (found != null) {
-            // Toast.makeText(context, "we got you" + " "+found.subject, Toast.LENGTH_SHORT).show()
+
             filterd_subjects.addAll(listOf(found))
 
-
-            //customMsg("Which topic is intresting for you?")
             fetch_topics(filterd_subjects, mk)
 
         }
@@ -592,8 +560,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                 customMsg("Lo sentimos, este tema no está disponible", false, msgBtn)
             }
             customMsg("Try looking for some other subjects", false, msgBtn)
-//            customMsg("if you want me to look for another subject, Say yes!!")
-//            lookmore = true
+
         }
 
 
@@ -667,17 +634,11 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     override fun passResultCallback(message: Topics) {
         isMaterialReady = true
 
-        // Toast.makeText(requireContext(), loadNext(message._id).toString(), Toast.LENGTH_SHORT).show()
-
         msg = message.topic
         var id: String = message._id
-        val userMessage = UserMessage(id, msg)
-
-        //changepayload(message._id)
 
         val payload = id.split(":")
         Log.d("payloadss", payload.toString())
-        //val payload = "/inform_new{\"${message._id}\":\"ma\"}"
 
         session.save_topic(msg)
 
@@ -699,11 +660,10 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
             {
                 islearningstarted == true
-             //   Toast.makeText(requireContext(), "Topic selected", Toast.LENGTH_SHORT).show()
+
                 val jaga = message._id.split(":")
 
                 var su = jaga.last().replace("\"", "")
-                // su.replace("}", "")
 
                 su =  su.replace("}", "")
 
@@ -711,8 +671,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                 selected_topicID = su
                 getQuiz(su.trim())
                 clearValues()
-
-                //
 
              Log.d("jaaga", su.replace("}", ""))
             }
@@ -723,14 +681,13 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             else
             {
                 sendMessagee(message._id, display = false)
-               // Toast.makeText(this.requireContext(), id, Toast.LENGTH_SHORT).show()
+
             }
 
         }
 
         adapter.notifyDataSetChanged()
-        // adapter.notifyDataSetChanged()
-        //sendMessage()
+
     }
 
     private fun Send_filterInfo_toRASA(_id: String) {
@@ -738,7 +695,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         val payload = _id.split(":")
 
         var subjectName = payload.last().replace("\"", "")
-        // su.replace("}", "")
 
         subjectName =  subjectName.replace("}", "")
 
@@ -753,20 +709,13 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             PreferedMaterialslang = "English"
         }
 
-
-       // var newpayload = "/inform_new{\"subject\":\"${subjectName}\", \"subject_from_entity\":\"${PreferedMaterialslang}\", \"age_group\":\"$userAge\", \"grade\":\"${userGrade}\"}"
         var newpayload = "/inform_new{\"subject\":\"${subjectName}\", \"material_language\":\"${PreferedMaterialslang}\", \"age\":\"$userAge\", \"grade\":\"${userGrade}\"}"
         sendMessagee(newpayload, display = false)
-       // Toast.makeText(this.requireContext(), newpayload.toString(), Toast.LENGTH_SHORT).show()
         Log.d("ChatFragment", newpayload.toString())
     }
 
 
     private fun load_material() {
-
-
-        // checkmcqs()
-
 
         if (filterd_topics.isEmpty()){
 

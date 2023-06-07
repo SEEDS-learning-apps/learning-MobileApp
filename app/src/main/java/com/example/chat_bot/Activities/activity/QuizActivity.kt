@@ -37,12 +37,8 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
     lateinit var session: SessionManager
     private lateinit var binding: ActivityQuizBinding
     lateinit var viewModel: SEEDSViewModel
-    lateinit var q_mcqs: ArrayList<Mcqss>
-
-    // var matchlist: ArrayList<Matchpairs> = arrayListOf()
     private val KEY_RECYCLER_STATE = "recycler_state"
     var question: MutableList<AllQuestion> = arrayListOf()
-
     lateinit var filterd_topiclist: ArrayList<Topics>
     private val retrofitService = SEEDSApi.getInstance()
     lateinit var topic_name: String
@@ -53,8 +49,6 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
     private var mBundleRecyclerViewState: Bundle? = null
     lateinit var listState: Parcelable
     var downloadedQuiz: ArrayList<QuestItem> = arrayListOf()
-
-    //lateinit var questItem: QuestItem
     lateinit var questItem: QuestItem
     var que: ArrayList<QuestItem> = arrayListOf()
 
@@ -80,8 +74,6 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
 
         setContentView(binding.root)
         hideActionBar()
-
-        //  getMatchpairs()
 
         topic_id = session.get_topicID()
 
@@ -111,11 +103,6 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
                     question = intent.getSerializableExtra("Quiz") as ArrayList<AllQuestion>
 
                     question.distinctBy { i->i._id }
-                   // question.distinct()
-                  //  Toast.makeText(this@QuizActivity, question.size.toString(), Toast.LENGTH_SHORT).show()
-
-
-
                     downloadedQuiz =
                         intent.getSerializableExtra("Whole Quest") as ArrayList<QuestItem>
 
@@ -188,7 +175,6 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
 
             }
 
-
         }
 
             adapter.setQuizList(question as ArrayList<AllQuestion>, topic_name)
@@ -198,9 +184,6 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
 
     override fun onPause() {
         super.onPause()
-
-        // save RecyclerView state
-        // save RecyclerView state
         mBundleRecyclerViewState = Bundle()
         listState = binding.mcqsRv.getLayoutManager()?.onSaveInstanceState()!!
         mBundleRecyclerViewState!!.putParcelable(KEY_RECYCLER_STATE, listState)
@@ -226,8 +209,6 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
         super.onRestoreInstanceState(savedInstanceState)
 
         savedInstanceState[KEY_RECYCLER_STATE]
-
-
     }
 
     private suspend fun down()
