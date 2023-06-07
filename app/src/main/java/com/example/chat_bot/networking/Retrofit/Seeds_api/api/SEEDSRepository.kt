@@ -17,21 +17,12 @@ class SEEDSRepository constructor(private val retrofitService: SEEDSApi) {
      fun getAllSubjects() = retrofitService.getallSubjects()
      fun getAllTF() = retrofitService.getallTF()
 
-    suspend  //fun getUser(user: User) = retrofitService.login_user(user )
     fun getQuiz(topicID: String) = retrofitService.getQuiz(topicID)
 
     fun getuserByName(name: String) = retrofitService.getUserbyUsername(name)
 
-//    suspend fun getQuiz(topicID: String) : Response<Quizz> {
-//        return retrofitService.getQuiz(topicID)
-//    }
-
-
      suspend fun createUser(user: Userz) : Response<LoginData> {
         return retrofitService.create_user(user)
-    }
-    suspend fun loginUser(user: Userz) : Response<LoginData> {
-        return retrofitService.login_user(user)
     }
 
     suspend fun submitOpenEnded(openEnded: OpenEnded): Response<openEndedResponse> {

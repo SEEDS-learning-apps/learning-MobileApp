@@ -22,16 +22,6 @@ class ViewmodelRasa constructor(private val repository: Repsoitryrasa)  : ViewMo
     val errorMessage = MutableLiveData<String>()
 
 
-//    fun sendMsg(message: UserMessage)
-//    {
-//        viewModelScope.launch {
-//            val response : Call<ArrayList<BotResponse>> = repository.sendmessage(message)
-//            response.enqueue()
-//
-//
-//
-//        }
-//    }
 
     fun sendMsg(message: UserMessage) {
 

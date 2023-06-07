@@ -1,6 +1,6 @@
 package com.example.chat_bot.networking.Retrofit.Seeds_api.api
 
-import McqsListss
+import McqsList
 import Quest
 import com.example.chat_bot.Activities.activity.OpenEnded
 import com.example.chat_bot.Lists.*
@@ -20,14 +20,11 @@ interface SEEDSApi {
     @GET("true_false")
      fun getallTF() : Call<trufalses>
 
-//    @GET("topic")
-//    fun getallTopics() : Call<TopicsList>
-
     @GET("subject/get")
      fun getallSubjects() : Call<SubjectList>
 
     @GET("mcqs")
-     fun getMcqs() : Call<McqsListss>
+     fun getMcqs() : Call<McqsList>
 
 
     @GET("topic/getByTopic/{topicID}")
@@ -66,11 +63,7 @@ interface SEEDSApi {
         fun getInstance(): SEEDSApi {
             if (retrofitService == null) {
                 val retrofit = Retrofit.Builder()
-                    //.baseUrl("http://192.168.178.135:5000/api/")
                     .baseUrl("http://ec2-3-71-216-21.eu-central-1.compute.amazonaws.com:5000/api/")
-
-
-                    // .baseUrl("https://seedsbackend.herokuapp.com/api/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                 retrofitService = retrofit.create(SEEDSApi::class.java)
