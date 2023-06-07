@@ -9,16 +9,12 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.chat_bot.R
 import com.example.chat_bot.data.Data
-import com.example.chat_bot.data.Mcqss
-import com.example.chat_bot.data.Topics
 import com.example.chat_bot.databinding.ActivityTruefalseBinding
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSRepository
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSViewModel

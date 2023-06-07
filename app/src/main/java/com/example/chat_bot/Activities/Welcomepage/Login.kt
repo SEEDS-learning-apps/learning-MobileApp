@@ -22,7 +22,7 @@ import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.Entities.OnlineUserData
 import com.example.chat_bot.Room.SeedsDatabase
 import com.example.chat_bot.data.User
-import com.example.chat_bot.data.Userz
+import com.example.chat_bot.data.Userinfo
 import com.example.chat_bot.databinding.ActivityLoginBinding
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSApi
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSRepository
@@ -153,7 +153,7 @@ class Login : AppCompatActivity() {
         getDatafromOnlineDB(user_name)
 
 
-        val user = Userz(user_name, "6-7", "germany", "German", "10", m_androidId.toString())
+        val user = Userinfo(user_name, "6-7", "germany", "German", "10", m_androidId.toString())
 
     }
 

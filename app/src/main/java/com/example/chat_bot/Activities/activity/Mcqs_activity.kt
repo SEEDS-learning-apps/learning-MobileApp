@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.chat_bot.Activities.HomePage.HomeActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.data.Data
-import com.example.chat_bot.data.Mcqss
+import com.example.chat_bot.data.Mcqs
 import com.example.chat_bot.data.Topics
 import com.example.chat_bot.databinding.ActivityMcqsBinding
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.*
@@ -33,7 +33,7 @@ class Mcqs_activity : AppCompatActivity() {
     val handler = Handler(Looper.getMainLooper())
     private lateinit var binding: ActivityMcqsBinding
     lateinit var viewModel: SEEDSViewModel
-    lateinit var mcqlist: ArrayList<Mcqss>
+    lateinit var mcqlist: ArrayList<Mcqs>
     var TFlist: ArrayList<Data> = arrayListOf()
     lateinit var filterd_topiclist: ArrayList<Topics>
     private val retrofitService = SEEDSApi.getInstance()
@@ -71,7 +71,7 @@ class Mcqs_activity : AppCompatActivity() {
         binding.loadingProgress.visibility = View.VISIBLE
 
 
-        mcqlist = filterd_topiclist as ArrayList<Mcqss>
+        mcqlist = filterd_topiclist as ArrayList<Mcqs>
 
         CoroutineScope(Dispatchers.IO).launch {
             Log.d(TAG, Thread.currentThread().name)
@@ -85,7 +85,7 @@ class Mcqs_activity : AppCompatActivity() {
             {
                 topic_id = item._id
                 user_id = item.userId
-                mcqlist = it.filter { it.topicId == topic_id  } as ArrayList<Mcqss>
+                mcqlist = it.filter { it.topicId == topic_id  } as ArrayList<Mcqs>
 
             }
             Log.d("mcq", mcqlist.size.toString())

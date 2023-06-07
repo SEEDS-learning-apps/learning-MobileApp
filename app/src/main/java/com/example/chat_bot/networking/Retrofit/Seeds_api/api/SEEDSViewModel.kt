@@ -185,7 +185,7 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
             }
         })
     }
-    fun create_user(user: Userz)
+    fun create_user(user: Userinfo)
     {
         viewModelScope.launch {
             val response : Response<LoginData> = repository.createUser(user)

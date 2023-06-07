@@ -1,6 +1,6 @@
 package com.example.chat_bot.data
 
-data class Userz(
+data class Userinfo(
     val name: String,
     val age: String,
     val country: String,

@@ -18,12 +18,12 @@ import com.example.chat_bot.Activities.activity.TruefalseActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.data.Data
 import com.example.chat_bot.databinding.McqItemBinding
-import com.example.chat_bot.data.Mcqss
+import com.example.chat_bot.data.Mcqs
 
 
 class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqViewholder>() {
 
-    lateinit var az: ArrayList <Mcqss>
+    lateinit var az: ArrayList <Mcqs>
     private  var iterator: Int = 0
     private  var current_pos: Int = 1
     var message: String ?= null
@@ -36,9 +36,9 @@ class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqVie
     private var op4 = 2131362126
     var haveTFS: Boolean = false
     lateinit var filterd_trufalses: ArrayList<Data>
-    var mcqs = mutableListOf<Mcqss>()
+    var mcqs = mutableListOf<Mcqs>()
 
-    fun setMcqList(az: ArrayList<Mcqss>, haveTFS: Boolean, filterd_trufalses: ArrayList<Data>) {
+    fun setMcqList(az: ArrayList<Mcqs>, haveTFS: Boolean, filterd_trufalses: ArrayList<Data>) {
         setMcqs(iterator, current_pos, az)
         this.az = az
         this.filterd_trufalses = filterd_trufalses
@@ -46,7 +46,7 @@ class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqVie
 
     }
 
-    private fun setMcqs(iterator : Int, current_pos: Int, AY: ArrayList<Mcqss>) {
+    private fun setMcqs(iterator : Int, current_pos: Int, AY: ArrayList<Mcqs>) {
 
         mcqs =  AY.subList(iterator,current_pos).toMutableList()
 
@@ -232,7 +232,7 @@ class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqVie
         alert.show()
     }
 
-    fun positive_results_alert(az: ArrayList<Mcqss>)
+    fun positive_results_alert(az: ArrayList<Mcqs>)
     {
         val builder = AlertDialog.Builder(context, R.style.CustomAlertDialog)
             .create()

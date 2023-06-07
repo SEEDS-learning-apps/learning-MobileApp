@@ -27,7 +27,7 @@ import com.example.chat_bot.R
 import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.SeedsDatabase
 import com.example.chat_bot.data.User
-import com.example.chat_bot.data.Userz
+import com.example.chat_bot.data.Userinfo
 import com.example.chat_bot.databinding.ActivityRegisterBinding
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSApi
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSRepository
@@ -430,7 +430,7 @@ class Register : AppCompatActivity() {
         user_grade
 
 
-        val user = Userz(user_name, user_age,  user_country,  user_grade, user_language, m_androidId.toString())
+        val user = Userinfo(user_name, user_age,  user_country,  user_grade, user_language, m_androidId.toString())
 
         val user1 = User(user_name, user_age,  user_country,  user_grade, user_language, m_androidId.toString(), materialLang)
 

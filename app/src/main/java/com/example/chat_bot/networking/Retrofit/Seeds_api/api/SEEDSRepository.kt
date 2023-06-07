@@ -21,7 +21,7 @@ class SEEDSRepository constructor(private val retrofitService: SEEDSApi) {
 
     fun getuserByName(name: String) = retrofitService.getUserbyUsername(name)
 
-     suspend fun createUser(user: Userz) : Response<LoginData> {
+     suspend fun createUser(user: Userinfo) : Response<LoginData> {
         return retrofitService.create_user(user)
     }
 

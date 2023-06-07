@@ -1,6 +1,6 @@
 package com.example.chat_bot.data
 
-data class Mcqss(
+data class Mcqs(
     val __v: Int,
     val _id: String,
     var answer: String,

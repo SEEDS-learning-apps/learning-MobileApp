@@ -1,4 +1,4 @@
-import com.example.chat_bot.data.Mcqss
+import com.example.chat_bot.data.Mcqs
 
 
-class McqsList : ArrayList<Mcqss>()
+class McqsList : ArrayList<Mcqs>()

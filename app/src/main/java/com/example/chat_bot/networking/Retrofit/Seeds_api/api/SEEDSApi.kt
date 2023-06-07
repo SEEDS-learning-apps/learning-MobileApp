@@ -43,10 +43,10 @@ interface SEEDSApi {
      fun getGrades() : Call<gradesList>
 
     @POST("students/create")
-    suspend fun create_user(@Body user: Userz): Response<LoginData>
+    suspend fun create_user(@Body user: Userinfo): Response<LoginData>
 
     @POST("students/login")
-    suspend fun login_user(@Body user: Userz): Response<LoginData>
+    suspend fun login_user(@Body user: Userinfo): Response<LoginData>
 
     @GET("students/getUser/{name}")
     fun getUserbyUsername(
