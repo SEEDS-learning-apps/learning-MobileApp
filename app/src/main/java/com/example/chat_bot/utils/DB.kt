@@ -5,13 +5,8 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
-import android.widget.Toast
-import com.example.chat_bot.Rasa.rasaMsg.BotResponse
 import com.example.chat_bot.data.Message
-import java.text.ParseException
-import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.coroutines.coroutineContext
 
 
 class DB (context: Context): SQLiteOpenHelper(context,DATABASE_NAME,null, DATABASE_VERSION){

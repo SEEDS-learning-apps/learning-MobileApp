@@ -53,15 +53,6 @@ class SessionManager {
         val KEY_QUIZ = "KEY_QUIZ"
     }
 
-//    fun createLoginSession(name: String, devID: String) {
-//
-//        editor.putBoolean(IS_LOGIN, true)
-//        editor.putString(KEY_NAME, name)
-//       // editor.putString(KEY_PASS, emai)
-//        editor.putString(KEY_devID, devID)
-//        editor.commit()
-//    }
-
     fun quizDone(lang: String)
     {
         editor.putString(KEY_QUIZ, lang)
@@ -84,13 +75,7 @@ class SessionManager {
         editor.commit()
     }
 
-    fun save_subject(sub: String)
-    {
-        editor.putString(KEY_sub, sub)
-        editor.commit()
-    }
-
-    fun save_materialLangPref(lang: String)
+   fun save_materialLangPref(lang: String)
     {
         editor.putString(KEY_materialLang, lang)
         editor.commit()
@@ -128,14 +113,7 @@ class SessionManager {
         return pref.getString(KEY_topic, topic).toString().also { topic = it }
     }
 
-    fun get_sub(): String
-    {
-        var sub: String = ""
-        return pref.getString(KEY_sub, sub).toString().also { sub = it }
-    }
-
-
-    fun saveTOtalScore(t_score: String)
+   fun saveTOtalScore(t_score: String)
     {
         editor.putString(KEY_TotalScore, t_score)
         editor.commit()
@@ -167,9 +145,7 @@ class SessionManager {
 
         editor.putBoolean(IS_LOGIN, true)
         editor.putString(KEY_NAME, name)
-        // editor.putString(KEY_PASS, emai)
         editor.putString(KEY_devID, devID)
-//        editor.putString(KEY_InterfaceLang, lang)
         editor.commit()
     }
 
@@ -192,46 +168,10 @@ class SessionManager {
         editor.commit()
     }
 
-    fun getlanguagePref(): String {
-
-        var lang: String = ""
-        return pref.getString(KEY_InterfaceLang, lang).toString().also { lang = it }
-    }
-
-    fun saveAppMode(mode: String)
-    {
-        editor.putString(KEY_App_Mode, mode)
-        editor.commit()
-    }
-
     fun getAppMode(): String {
 
         var mode: String = ""
         return pref.getString(KEY_App_Mode, mode).toString().also { mode = it }
-    }
-
-    fun saveSwitch(mode: Boolean)
-    {
-        editor.putBoolean(KEY_SWITCH, mode)
-        editor.commit()
-    }
-
-    fun getSwitch(): Boolean {
-
-        var mode: Boolean = false
-        return pref.getBoolean(KEY_SWITCH, mode).also { mode = it }
-    }
-
-
-
-    fun checkLogin() {
-
-        if (!this.isLoggedIn()) {
-            var i: Intent = Intent(context, MainActivity::class.java)
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            context.startActivity(i)
-        }
     }
 
     fun getUserDetails(): HashMap<String, String> {
@@ -274,22 +214,6 @@ class SessionManager {
         editor.apply()
     }
 
-    fun saveQuiz(context: Context?, list: ArrayList<QuestItem>) {
-        val gson = Gson()
-        val jsonString = gson.toJson(list)
-        val editor = pref.edit()
-        editor.putString(savedQuiz_KEY, jsonString)
-        editor.apply()
-    }
-    fun loadQuiz(context: Context?): ArrayList<QuestItem> {
-
-        val emptyList = Gson().toJson(ArrayList<QuestItem>())
-        val jsonString = pref.getString(savedQuiz_KEY, emptyList)
-        val gson = Gson()
-        val type = object : TypeToken<ArrayList<QuestItem?>?>() {}.type
-        return gson.fromJson<ArrayList<QuestItem>>(jsonString, type)
-    }
-
 
     fun readListFromPref(context: Context?): List<Exercise?> {
         val emptyList = Gson().toJson(ArrayList<Exercise>())
@@ -297,46 +221,6 @@ class SessionManager {
         val gson = Gson()
         val type = object : TypeToken<ArrayList<Exercise?>?>() {}.type
         return gson.fromJson<List<Exercise>>(jsonString, type)
-    }
-
-    fun isOnline(context: Context): Boolean {
-        val connectivityManager =
-            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (connectivityManager != null) {
-            val capabilities =
-                connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
-            if (capabilities != null) {
-
-                //  Toast.makeText(this.requireContext(), "Connection available", Toast.LENGTH_SHORT)
-                //    .show()
-
-                if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
-                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
-                    return true
-                } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
-                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_WIFI")
-                    return true
-                } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
-                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_ETHERNET")
-                    return true
-                }
-            }
-        }
-//        Toast.makeText(
-//            this.requireContext(),
-//            "Connection not available",
-//            Toast.LENGTH_SHORT
-//        ).show()
-        return false
-    }
-
-    private val addToast = ArrayList<Toast>()
-
-    private fun killAllToast() {
-        for (t in addToast) {
-            t?.cancel()
-        }
-        addToast.clear()
     }
 
 }
