@@ -72,7 +72,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     var istopicfetched: Boolean = false
     var isMaterialReady: Boolean = false
     var islearningstarted: Boolean= false
-    private lateinit var checkConnection: connectionManager
     var returnedFromquiz: Boolean = false
     var material_Lang_not_known: Boolean = false
     lateinit  var APP_MODE: String

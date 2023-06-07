@@ -35,40 +35,15 @@ class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqVie
     private var op3 = 2131362128
     private var op4 = 2131362126
     var haveTFS: Boolean = false
-    private var IsFinished: Boolean = false
     lateinit var filterd_trufalses: ArrayList<Data>
-    private var mSelectedOptionPosition: Int = 0
-
-
-   // private var mQuestionList: ArrayList<Mcqss>? = null
-    // var mcqs:ArrayList<Mcqss> ?= null
     var mcqs = mutableListOf<Mcqss>()
-
-
-
-
-    //  var onItemClick: ((Mcqss) -> Unit) ?= null
-
-    //private var options: List<String> = listOf(question.option1, question.option2, question.option3, question.option4)
 
     fun setMcqList(az: ArrayList<Mcqss>, haveTFS: Boolean, filterd_trufalses: ArrayList<Data>) {
         setMcqs(iterator, current_pos, az)
         this.az = az
         this.filterd_trufalses = filterd_trufalses
         this.haveTFS = haveTFS
-//        mcqs =  az.subList(iterator,current_pos).toMutableList()
-//        Log.d("loggg", mcqs.toString())
-//        notifyDataSetChanged()
 
-//        get_mcq_set()
-
-
-      //  mcqs = az.subList(0, 1).toMutableList()
-        //Zarori
-//        mcqs =  az.subList(0,current_pos).toMutableList()
-//        Log.d("loggg", mcqs.toString())
-//        notifyDataSetChanged()
-        //   var list_size =  this.mcqs.size
     }
 
     private fun setMcqs(iterator : Int, current_pos: Int, AY: ArrayList<Mcqss>) {
@@ -133,24 +108,6 @@ class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqVie
             radioTXT= radio.text.toString()
             Toast.makeText(context, radioTXT, Toast.LENGTH_SHORT).show()
 
-//            if (text == mcq.answer) {
-//               // flag = "correct"
-//             //   Toast.makeText(context, "right answer", Toast.LENGTH_SHORT).show()
-//                holder.binding.mcqSubmit.isEnabled = true
-//                correct_answers++
-//
-//                //callbackInterface.passResultCallback("Your message")
-//
-//
-//
-//            } else {
-//              //  Toast.makeText(context, "wrong answer!!", Toast.LENGTH_SHORT).show()
-//
-//            }
-
-
-
-
         }
 
         holder.binding.mcqSubmit.setOnClickListener{
@@ -193,77 +150,6 @@ class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqVie
 
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        holder.binding.mcqSubmit.setOnClickListener{
-//            if (radioTXT == mcq.answer){
-//                correct_answers++
-//                holder.binding.mcqNegFeedbackTv.visibility = View.GONE
-//                holder.binding.mcqPosFeedbackTv.visibility = View.VISIBLE
-//            }
-//            else if (radioTXT != mcq.answer)
-//            {
-//                holder.binding.mcqNegFeedbackTv.visibility = View.VISIBLE
-//                holder.binding.mcqPosFeedbackTv.visibility = View.GONE
-//            }
-//
-//            holder.binding.mcqFeedbackCard.visibility = View.VISIBLE
-//            holder.binding.mcqSubmit.visibility = View.GONE
-//            holder.binding.feebackSubmit.visibility = View.VISIBLE
-//
-//               holder.binding.feebackSubmit.setOnClickListener {
-//                new(holder, position)
-//                holder.binding.mcqFeedbackCard.visibility = View.GONE
-//                holder.binding.feebackSubmit.visibility = View.GONE
-//                holder.binding.mcqSubmit.visibility = View.VISIBLE
-//            }
-//        }
-
-            //new(holder, position)}
-
-//        if(rbGroup.checkedRadioButtonId == -1)
-//        {
-//            Toast.makeText(context, "No radios checked", Toast.LENGTH_SHORT).show()
-//        }
-//        else
-//        {
-//            Toast.makeText(context, "radios checked", Toast.LENGTH_SHORT).show()
-//        }
-
-            //}
-
-            // notifyItemChanged(position)
-
-//
-//        holder.itemView.setOnClickListener{
-////            question.answer = options[position]
-//             =holder.binding.mcqRG.checkedRadioButtonId
-//            Toast.makeText(context, checkedID.toString(), Toast.LENGTH_SHORT).show()
-//            Log.d("Radio", checkedID.toString())
-////            notifyDataSetChanged()
-//
-//        }
-
-
-//        Glide.with(holder.itemView.context).load(movie.imageUrl).into(holder.binding.imageview)
-
-
-
     }
 
     private fun new(holder: mcqViewholder, position: Int)
@@ -293,15 +179,10 @@ class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqVie
 
 
         }
-        else{//Toast.makeText(context, "quiz khtm", Toast.LENGTH_SHORT).show()
-            //fire_alert()
+        else{
 
                 if (haveTFS)
                 {
-//                    val intent = Intent(context,TruefalseActivity::class.java)
-//                    intent.putExtra("filterd_trufalses", filterd_trufalses)
-//                    context.startActivity(intent)
-//                    (context as Activity).finish()
 
                     val intent = Intent(context, TruefalseActivity::class.java).apply {
 
@@ -341,10 +222,7 @@ class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqVie
                     dialog, id -> val intent = Intent(context,HomeActivity::class.java)
                    context.startActivity(intent)
             })
-            // negative button text and action
-//            .setNegativeButton("Cancel", DialogInterface.OnClickListener {
-//                    dialog, id -> dialog.cancel()
-//            })
+
 
         // create dialog box
         val alert = dialogBuilder.create()
@@ -380,52 +258,6 @@ class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqVie
         }
 
 
-    private fun next(holder: mcqViewholder, position: Int) {
-
-        if (mSelectedOptionPosition == 0) {
-            current_pos++
-            iterator++
-
-            when {
-                current_pos <= az!!.size -> {
-                   setMcqs(iterator, current_pos, az)
-
-                }
-                else -> {
-                    holder.binding.mcqSubmit.text = "Finish"
-                    notifyDataSetChanged()
-                   // Toast.makeText(context, "quiz done", Toast.LENGTH_SHORT).show()
-
-
-//                    Toast.makeText(
-//                        this,
-//                        "You have successfully completed the Quiz", Toast.LENGTH_SHORT
-//                    ).show()
-//                    val intent = Intent(this,MainActivity::class.java)
-//                    startActivity(intent)
-                }
-            }
-        }
-        else if(current_pos == az!!.size) {
-            //Toast.makeText(context, "quiz donesssss", Toast.LENGTH_SHORT).show()
-        }
-        else {
-            //  val question = mQuestionList?.get(mCurrentPosition - 1)
-//            if (question!!.correctOption != mSelectedOptionPosition) {
-//              //  answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
-//            }
-            //   answerView(question.correctOption, R.drawable.correct_option_border_bg)
-            if (current_pos == az!!.size) {
-                Log.d("finished", "numberbazi")
-                // btn_submit.text = "Finish"
-
-            } else {
-                //btn_submit.text = "Go to next question"
-            }
-            mSelectedOptionPosition = 0
-        }
-    }
-
     override fun getItemCount(): Int {
             return mcqs.size
         }
@@ -434,9 +266,7 @@ class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqVie
 
         }
 
-//    interface CallbackInterface {
-//        fun passResultCallback(message: String)
-//    }
+
 
 }
 

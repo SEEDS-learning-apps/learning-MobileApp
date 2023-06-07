@@ -41,13 +41,10 @@ class SessionManager {
         val KEY_ObtainedScore: String = "KEY_ObtainedScore"
         val KEY_TotalScore: String = "KEY_TotalScore"
         val KEY_grade: String = "grade"
-        val KEY_sub: String = "sub"
         val KEY_topic: String = "topic"
         val KEY_topicID: String = "KEY_topicID"
         val LIST_KEY = "list_key100"
-        val savedQuiz_KEY = "dwnQuiz"
         val KEY_App_Mode = "appMode"
-        val KEY_SWITCH = "KEY_SWITCH"
         val KEY_materialLang = "KEY_materialLang"
         val KEY_AccessCode = "KEY_AccessCode"
         val KEY_QUIZ = "KEY_QUIZ"
@@ -136,10 +133,6 @@ class SessionManager {
         var o_score: String = ""
         return pref.getString(KEY_ObtainedScore, o_score).toString().also { o_score = it }
     }
-
-
-
-
 
     fun createLoginSession(name: String, devID: String) {
 

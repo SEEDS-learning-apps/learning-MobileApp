@@ -28,8 +28,6 @@ class Tfadapter(val context: Context) : RecyclerView.Adapter<Tfadapter.tfViewhol
     private var correct_mcqs: Int = 0
     lateinit var radioTXT: String
     private var total_mcqs: Int = 0
-    private var IsFinished: Boolean = false
-    private var mSelectedOptionPosition: Int = 0
 
     var tfs = mutableListOf<Data>()
 

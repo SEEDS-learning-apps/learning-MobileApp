@@ -28,10 +28,6 @@ import com.example.chat_bot.utils.Time
 class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callbackinter):
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    //    private var op1 = 2131362127
-//    private var op2 = 2131362129
-//    private var op3 = 2131362128
-//    private var op4 = 2131362126
     var idx: Int = 0
     private  var iterator: Int = 0
     private  var current_pos: Int = 1
