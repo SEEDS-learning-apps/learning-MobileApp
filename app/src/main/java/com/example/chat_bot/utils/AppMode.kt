@@ -13,13 +13,4 @@ class AppMode {
     }
 
 
-
-
-    fun setAppMode(mode: String) {
-        this. mode = mode
-    }
-
-    fun getAppMode(): String {
-        return mode
-    }
 }

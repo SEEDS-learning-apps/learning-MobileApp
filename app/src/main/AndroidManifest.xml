@@ -101,10 +101,7 @@
             android:name=".Activities.activity.Video"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
-        <activity
-            android:name=".Activities.activity.quiz_home"
-            android:configChanges="orientation|screenSize"
-            android:exported="true" />
+
         <activity
             android:name=".Activities.HomePage.HomeActivity"
             android:configChanges="orientation|screenSize"
