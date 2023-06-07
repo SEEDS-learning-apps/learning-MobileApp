@@ -1,6 +1,6 @@
 package com.example.chat_bot.Activities.HomePage
 
-import Quest
+import com.example.chat_bot.Lists.Quest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues
@@ -28,8 +28,8 @@ import com.example.chat_bot.Rasa.Networkings.*
 import com.example.chat_bot.Rasa.rasaMsg.BotResponse
 import com.example.chat_bot.Rasa.rasaMsg.UserMessage
 import com.example.chat_bot.data.*
-import com.example.chat_bot.data.tryy.AllQuestion
-import com.example.chat_bot.data.tryy.QuestItem
+import com.example.chat_bot.data.AllQuestion
+import com.example.chat_bot.data.QuestItem
 import com.example.chat_bot.databinding.FragmentChatBinding
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSApi
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSRepository
@@ -846,7 +846,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             putExtra("filtered_topics", filterd_topics)
             putExtra("selected_topic", msg)
             putExtra("Quiz", quiz)
-            putExtra("Whole Quest", quest)
+            putExtra("Whole com.example.chat_bot.Lists.Quest", quest)
             (context as Activity).finish()
         }
         startActivity(intent)

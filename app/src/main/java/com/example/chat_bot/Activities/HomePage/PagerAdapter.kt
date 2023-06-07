@@ -20,6 +20,4 @@ class PagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fr
 
     }
 
-
-
 }

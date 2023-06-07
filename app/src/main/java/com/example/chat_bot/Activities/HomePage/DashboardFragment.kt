@@ -29,10 +29,7 @@ class DashboardFragment : Fragment() {
 
     private lateinit var bind: FragmentDashboardBinding
     lateinit var session: SessionManager
-    var m_androidId: String? = null
-    private val USER = "M-f8f2e818-808f-"
     lateinit var userename: String
-    var pref_material_language: String = ""
 
 
     override fun onCreateView(
@@ -195,8 +192,6 @@ class DashboardFragment : Fragment() {
         val button = view.findViewById<Button>(R.id.code_return_to_chat)
         builder.setView(view)
         button.setOnClickListener {
-//            val intent = Intent(context, HomeActivity::class.java)
-//            startActivity(intent)
             val code = et.text.trim()
             if (code.isNotEmpty()) {
                 Log.d("SettingsFragment", "Access Code: ${code.toString()}")

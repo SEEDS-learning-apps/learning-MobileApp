@@ -26,9 +26,6 @@ class MainActivity : AppCompatActivity(), msgAdapter.Callbackinter{
     private lateinit var binding: ActivityMainBinding
     var msgBtn: List<com.example.chat_bot.Rasa.rasaMsg.Button> = arrayListOf()
 
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(android.R.style.Theme_Light_NoTitleBar_Fullscreen)
         super.onCreate(savedInstanceState)
@@ -36,16 +33,12 @@ class MainActivity : AppCompatActivity(), msgAdapter.Callbackinter{
         val view = binding.root
         setContentView(view)
 
-
         recyclerView()
         clickEvents()
         customMsg("Hello, Seeds Asssitant here!!, How may i help you?")
 
         Log.v(TAG, "In main")
-
-
     }
-
 
     override fun onStart() {
         super.onStart()
@@ -118,9 +111,6 @@ class MainActivity : AppCompatActivity(), msgAdapter.Callbackinter{
                 withContext(Dispatchers.Main) {
                     //Gets the response
                     val response = Bot_replies.basicResponses(message,false)
-
-//                //Adds it to our local list
-//                messagesList.add(Message(response, RECEIVE_ID, timeStamp))
 
                     //Inserts our message into the adapter
                     adapter.insertMessage(Message(response as String, RCV_ID, timeStamp, false,"", msgBtn,""))

@@ -20,11 +20,8 @@ class ExerciseFragment : Fragment(), ExerciseHistoryAdapter.ExerciseDeleteListen
 
     var exerciseList: ArrayList<Exercise> = arrayListOf()
     val adapter = ExerciseHistoryAdapter(this)
-    private val TAG = "EXFragment"
-
     private lateinit var binding: FragmentExerciseBinding
     lateinit var session: SessionManager
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +42,6 @@ class ExerciseFragment : Fragment(), ExerciseHistoryAdapter.ExerciseDeleteListen
         session = SessionManager(context as Activity)
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -74,7 +70,6 @@ class ExerciseFragment : Fragment(), ExerciseHistoryAdapter.ExerciseDeleteListen
         binding.exRv.visibility = if (hasExercise) View.VISIBLE else View.GONE
         binding.noExercise.visibility = if (hasExercise) View.GONE else View.VISIBLE
     }
-
 
     override fun onExerciseDeleted() {
         val isEmpty = exerciseList.isEmpty()

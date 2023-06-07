@@ -19,7 +19,7 @@ import com.example.chat_bot.Activities.HomePage.HomeActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.data.Exercise
 import com.example.chat_bot.data.OpenEnded
-import com.example.chat_bot.data.tryy.AllQuestion
+import com.example.chat_bot.data.AllQuestion
 import com.example.chat_bot.databinding.*
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSViewModel
 import com.example.chat_bot.utils.SessionManager

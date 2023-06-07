@@ -25,7 +25,6 @@ class HomeActivity : AppCompatActivity() {
     private var backToast: Toast? = null
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(android.R.style.Theme_Light_NoTitleBar_Fullscreen)
         val sharedprefs: SharedPreferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE)
@@ -64,7 +63,6 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
-
     override fun onBackPressed() {
         if (viewPager2.currentItem == 0) {
             if (backPressedTime + 2000 > System.currentTimeMillis()) {
@@ -81,6 +79,7 @@ class HomeActivity : AppCompatActivity() {
             viewPager2.setCurrentItem(0, true)
 
         }
+
     }
 
 }

@@ -1,7 +1,7 @@
 package com.example.chat_bot.networking.Retrofit.Seeds_api.api
 
 import McqsList
-import Quest
+import com.example.chat_bot.Lists.Quest
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,7 +22,7 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
 
     val mcqList = MutableLiveData<McqsList>()
     val topicListss = MutableLiveData<TopicsList>()
-    val gradeList = MutableLiveData<gradesList>()
+    val gradeList = MutableLiveData<gradeList>()
     val agegrouplist = MutableLiveData<AgegroupList>()
     val subjectList = MutableLiveData<SubjectList>()
     val tfList = MutableLiveData<trufalses>()
@@ -105,12 +105,12 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
 
          GlobalScope.launch (Dispatchers.IO){
         val response = repository.getAllGrades()
-        response.enqueue(object : Callback<gradesList> {
-            override fun onResponse(call: Call<gradesList>, response: Response<gradesList>) {
+        response.enqueue(object : Callback<gradeList> {
+            override fun onResponse(call: Call<gradeList>, response: Response<gradeList>) {
                 if (response?.body() != null)
                 {gradeList.postValue(response.body())}
             }
-            override fun onFailure(call: Call<gradesList>, t: Throwable) {
+            override fun onFailure(call: Call<gradeList>, t: Throwable) {
                 errorMessage.postValue(t.message.toString())
             }
         })

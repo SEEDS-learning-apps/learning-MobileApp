@@ -1,6 +1,5 @@
 package com.example.chat_bot.Activities.activity
 
-import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -9,7 +8,6 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.chat_bot.Activities.DashboardActivities.downloadQuizActivity
@@ -18,9 +16,8 @@ import com.example.chat_bot.R
 import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.SeedsDatabase
 import com.example.chat_bot.data.*
-import com.example.chat_bot.data.tryy.AllQuestion
-import com.example.chat_bot.data.tryy.DowloadedQuiz
-import com.example.chat_bot.data.tryy.QuestItem
+import com.example.chat_bot.data.AllQuestion
+import com.example.chat_bot.data.QuestItem
 import com.example.chat_bot.databinding.ActivityQuizBinding
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSRepository
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSViewModel
@@ -104,7 +101,7 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
 
                     question.distinctBy { i->i._id }
                     downloadedQuiz =
-                        intent.getSerializableExtra("Whole Quest") as ArrayList<QuestItem>
+                        intent.getSerializableExtra("Whole com.example.chat_bot.Lists.Quest") as ArrayList<QuestItem>
 
                     adapter.setQuizList(question as ArrayList<AllQuestion>, topic_name)
                     binding.loadingProgress.visibility = View.GONE

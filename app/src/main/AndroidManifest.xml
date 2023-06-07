@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
+
     <application
         android:name=".ui.SeedsApplication"
         android:allowBackup="true"
@@ -19,6 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/WhiteMode"
         android:usesCleartextTraffic="true" >
+
+
 
         <!-- Notification -->
         <activity android:name=".Activities.activity.CreateNotificationActivity" />
@@ -36,6 +39,8 @@
                 <action android:name="com.example.chat_bot.NOTIFICATION_RECEIVED" />
             </intent-filter>
         </receiver>
+
+
 
         <!-- Dashboard -->
 
@@ -65,12 +70,18 @@
         <activity
             android:name=".Activities.Welcomepage.Seedsinfo"
             android:exported="true"
-            android:noHistory="true" /> <!-- Login -->
+            android:noHistory="true" />
+
+
+        <!-- Login -->
         <activity
             android:name=".Activities.Welcomepage.Login"
             android:exported="true"
             android:noHistory="true"
-            android:windowSoftInputMode="adjustResize" /> <!-- Register -->
+            android:windowSoftInputMode="adjustResize" />
+
+
+        <!-- Register -->
         <activity
             android:name=".Activities.Welcomepage.Register"
             android:configChanges="locale"

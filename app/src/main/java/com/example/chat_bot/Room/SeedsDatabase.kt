@@ -11,7 +11,7 @@ import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.Entities.Alarms
 import com.example.chat_bot.data.R_Message
 import com.example.chat_bot.data.User
-import com.example.chat_bot.data.tryy.QuestItem
+import com.example.chat_bot.data.QuestItem
 
 @Database(
     entities = [

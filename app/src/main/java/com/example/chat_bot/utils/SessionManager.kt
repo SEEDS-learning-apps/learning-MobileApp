@@ -3,14 +3,8 @@ package com.example.chat_bot.utils
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
-import android.util.Log
-import android.widget.Toast
 import com.example.chat_bot.Activities.Welcomepage.Login
-import com.example.chat_bot.Activities.HomePage.MainActivity
 import com.example.chat_bot.data.Exercise
-import com.example.chat_bot.data.tryy.QuestItem
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

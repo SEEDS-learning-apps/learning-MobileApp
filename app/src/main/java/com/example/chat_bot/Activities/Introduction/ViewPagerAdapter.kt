@@ -82,7 +82,6 @@ class ViewPagerAdapter(var context: Context) : PagerAdapter() {
         return view
     }
 
-
     override fun setPrimaryItem(container: ViewGroup, position: Int, `object`: Any) {
         super.setPrimaryItem(container, position, `object`)
         // if there is a current video view and button
@@ -100,6 +99,5 @@ class ViewPagerAdapter(var context: Context) : PagerAdapter() {
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView(`object` as View)
     }
-
 
 }

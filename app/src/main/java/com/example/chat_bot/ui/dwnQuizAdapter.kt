@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.chat_bot.Activities.activity.QuizActivity
 import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.SeedsDatabase
-import com.example.chat_bot.data.tryy.QuestItem
+import com.example.chat_bot.data.QuestItem
 import com.example.chat_bot.databinding.DownloadItemBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

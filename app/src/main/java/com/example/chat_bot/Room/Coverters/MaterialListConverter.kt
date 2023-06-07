@@ -2,7 +2,7 @@ package com.example.chat_bot.Room.Coverters
 
 import android.util.Log
 import androidx.room.TypeConverter
-import com.example.chat_bot.data.tryy.AllQuestion
+import com.example.chat_bot.data.AllQuestion
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type

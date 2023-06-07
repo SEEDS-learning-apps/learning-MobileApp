@@ -17,7 +17,7 @@ import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.Relations.UserAndMaterials
 import com.example.chat_bot.Room.Relations.UserAndMessage
 import com.example.chat_bot.Room.SeedsDatabase
-import com.example.chat_bot.data.tryy.QuestItem
+import com.example.chat_bot.data.QuestItem
 import com.example.chat_bot.databinding.ActivityDownloadQuizBinding
 import com.example.chat_bot.ui.dwnQuizAdapter
 import com.example.chat_bot.utils.SessionManager
