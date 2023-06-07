@@ -15,8 +15,6 @@ interface api_Rasa {
      @POST("webhooks/rest/webhook")
      fun sendMessage(@Body userMessage: UserMessage?): Call<ArrayList<BotResponse>>
 
-
-
     companion object{
         var retrofitService: api_Rasa? = null
 

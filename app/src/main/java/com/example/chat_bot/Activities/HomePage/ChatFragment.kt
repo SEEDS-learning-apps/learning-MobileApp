@@ -101,7 +101,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     ///////////////////////////////////////////
     //////////RASA////////////////////////////
 
-    lateinit var vmRasa: ViewmodelRasa
+
     private val retroService = api_Rasa.getInstance()
     var msgBtn: ArrayList<com.example.chat_bot.Rasa.rasaMsg.Button> = arrayListOf()
 
@@ -136,9 +136,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             SEEDSViewModel::class.java)
 
         //rasa view model
-        vmRasa = ViewModelProvider(this, RasaModelFact(Repsoitryrasa(retroService))).get(
-            ViewmodelRasa::class.java)
-
         session = SessionManager(context as Activity)
         adapter = msgAdapter(this, this.requireContext())
         topic_id = ""
