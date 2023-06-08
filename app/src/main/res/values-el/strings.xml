@@ -12,7 +12,6 @@
     <string name="invalid_password" >Ο κωδικός σύνδεσης πρέπει να έχει >5 χαρακτήρες</string>
     <string name="login_failed">Η σύνδεση απέτυχε</string>
     <string name="dummy_button" translatable="false">Dummy Button</string>
-    <string name="dummy_content" translatable="false">DUMMY\nCONTENT</string>
     <string name="title_activity_splash" translatable="false">splash</string>
     <string name="splash_text">Η μάθηση είναι για όλες και όλους</string>
     <string name="splas_web" translatable="false">www.seeds.com</string>
@@ -35,10 +34,8 @@
     <string name="Setting_Terms_of_use">Όροι Χρήσης</string>
     <string name="settings_powerd_by" translatable="false">Powered by SEEDS</string>
     <string name="Setting_logout">Αποσύνδεση</string>
-    <string name="hello_blank_fragment" translatable="false">Γειά σου blank fragment</string>
     <string name="mcq_positive_feedback" translatable="false">Αποτελέσματα</string>
     <string name="mcq_positive_congratulations">Συγχαρητήρια</string>
-    <string name="loading" translatable="false">Loading...!!</string>
     <string name="Mcq_Activity" translatable="false">Mcq Activity</string>
     <string name="activity1_heading" translatable="false">Άσκηση 1. Αντιστοίχισε τις παρακάτω συμβουλές με τα τέσσερα βήματα.</string>
     <string name="activity1_instructions" >Ένα από τα μοντέλα διαπολιτισμικής ευαισθητοποίησης (Bennett) μπορεί να εφαρμοστεί ως μία απλή λίστα τεσσάρων βημάτων, με σκοπό να απομακρυνθούμε από τον εθνοκεντρισμό και να κατανοήσουμε πώς άλλες κουλτούρες διαφέρουν αλλά και μοιάζουν με την δική μας. Δίνουμε έμφαση στην προσαρμογή της συμπεριφοράς σε διαφορετικά πολιτισμικά πλαίσια και στη συμφιλίωση των πολιτισμικών διαφορών, προκειμένου να μάθουμε και να δημιουργήσουμε αξία από τις διαπολιτισμικές αλληλεπιδράσεις.</string>

@@ -30,7 +30,6 @@
     <string name="heading_one">Learning Application</string>
     <string name="heading_two">Chatbot</string>
     <string name="heading_three">Exercises and download materials</string>
-    <string name="heading_fourth">Activities</string>
 
     //Description
     <string name="welcome2">WELCOME</string>
@@ -63,7 +62,6 @@
     <string name="accessCodehere" translatable="false">Code here</string>
     <string name="age_drop_down_text">Your age</string>
     <string name="settings_powerd_by" translatable="false">Powered by SEEDS</string>
-    <string name="Setting_logout">Sign Out</string>
 
     //Home Activity
     <string name="press_back">Press back again to exit</string>
@@ -74,7 +72,6 @@
     <string name="contact_us">Contact us</string>
     <string name="seeds_website">https://seeds.wineme.wiwi.uni-siegen.de/</string>
     <string name="no_exercises_completed_yet">No exercises completed yet</string>
-    <string name="star">star</string>
     <string name="title_activity_step1">activity1</string>
     <string name="credits">thank you</string>
     <string name="mainpage_ex_heading">Exercises</string>
@@ -122,7 +119,6 @@
     <string name="every_saturday">Every Saturday</string>
     <string name="every_thursday">Every Thursday</string>
     <string name="every_wednesday">Every Wednesday</string>
-    <string name="every_tuesday">Every Tuesday</string>
     <string name="every_monday">Every Monday</string>
     <string name="empty_rec_text">No notifications created yet\n\nClick on the + icon at the top right corner\nto create a new Notification</string>
     <string name="dark_mode">Dark Mode</string>

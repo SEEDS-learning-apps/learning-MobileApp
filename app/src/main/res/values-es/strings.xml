@@ -21,7 +21,6 @@
     <string name="welcome">Bienvenido</string>
     <string name="Setting_Feedback">Comentarios</string>
     <string name="Setting_Contact">Contáctanos</string>
-    <string name="Setting_Terms_of_use">Términos de uso</string>
     <string name="Setting_logout">Cerrar sesión</string>
     <string name="mcq_positive_congratulations">Enhorabuena</string>
     <string name="age_drop_down_text">Su edad</string>
@@ -47,7 +46,6 @@
     <string name="Returntochat">Volver atrás</string>
     <string name="mcqfeedbacktitletext">Comentarios</string>
     <string name="AccountRegister">Registro de la cuenta</string>
-    <string name="Downloaded_Materials">Materiales descargados</string>
     <string name="Setting_changeMateriallanguage">Lengua de los materiales</string>
     <string name="Select_material_language">Seleccione el idioma del material</string>
     <string name="Download">Descargar</string>

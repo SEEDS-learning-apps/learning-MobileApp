@@ -36,12 +36,6 @@
         <item name="android:windowExitAnimation">@anim/dialog_slide_left</item>
     </style>
 
-    <style name="swipeDialog_w720dp"  parent="swipeDialog">
-        <item name="android:windowEnterAnimation">@anim/flip_in</item>
-        <item name="android:windowExitAnimation">@anim/dialog_slide_left</item>
-    </style>
-
-
 
     <style name="entryDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:windowAnimationStyle">@style/entryDialogAnimation</item>

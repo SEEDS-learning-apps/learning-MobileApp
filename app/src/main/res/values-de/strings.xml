@@ -12,12 +12,10 @@
     <string name="material_language">Material Sprache</string>
     <string name="interface_language">Interface Sprache</string>
     <string name="terms_of_use">Bedingungen für die Nutzung</string>
-    <string name="create_password">Passwort</string>
     <string name="lang_drop_down_text">Sprache auswählen</string>
     <string name="lang_drop_down_label">Sprache</string>
     <string name="action_sign_in">Anmelden oder registrieren</string>
     <string name="action_sign_in_short">Anmelden</string>
-    <string name="welcome">Willkommen!</string>
     <string name="invalid_username">Kein gültiger Benutzername</string>
     <string name="login_failed">Anmelden fehlgeschlagen</string>
     <string name="select_language">Sprache wählen</string>
@@ -51,7 +49,6 @@
     <string name="Select_material_language">Sprache das Lernmaterials auswählen</string>
     <string name="Download">Herunterladen</string>
     <string name="no_downloads_available">Keine heruntergeladenen Materialien verfügbar!!</string>
-    <string name="Already_have_an_account">Haben Sie schon ein Konto?</string>
     <string name="True">Richtig</string>
     <string name="False">Falsch</string>
     <string name="German">Deutsch</string>
@@ -73,7 +70,6 @@
     <string name="desc_one">Eine interaktive Lernanwendung auf der Basis eines Chatbots, die es Schülern ermöglicht, mit ihren Android-Geräten zu lernen</string>
     <string name="desc_two">Kommunizieren Sie mit dem Chatbot, um Ihre gewünschten Themen und mehr zu finden</string>
     <string name="desc_three">Machen Sie einige Übungen zu Ihren Lieblingsthemen und laden Sie auch Materialien zum späteren Nachschlagen herunter</string>
-    <string name="desc_fourth">Überprüfen Sie jederzeit Ihre Aktivitäten, um motiviert zu bleiben</string>
     <string name="welcome2">WILLKOMMEN</string>
     <string name="lets_go">LOS GEHT\'S</string>
     <string name="skip">Überspringen</string>
