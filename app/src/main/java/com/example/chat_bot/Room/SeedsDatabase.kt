@@ -39,7 +39,6 @@ abstract class SeedsDatabase : RoomDatabase() {
                     SeedsDatabase::class.java,
                     "seeds_db"
                 )
-                    .fallbackToDestructiveMigration() // Enable destructive migrations
                     .build()
                 INSTANCE = instance
                 instance
