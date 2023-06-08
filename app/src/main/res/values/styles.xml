@@ -46,11 +46,6 @@
         <item name="android:windowExitAnimation">@anim/dialog_slide_left</item>
     </style>
 
-    <style name="entryDialog_w720dp" parent="entryDialog">
-        <item name="android:windowEnterAnimation">@anim/slide_in_right</item>
-        <item name="android:windowExitAnimation">@anim/dialog_slide_left</item>
-    </style>
-
 
     <!-- APP mode -->
     <style name="WhiteMode" parent="Theme.MaterialComponents.Light.DarkActionBar">
@@ -139,11 +134,6 @@
         <item name="repeatbottomSheetIconColor">#9EFFFFFF</item>
     </style>
 
-
-    <!--    color for white toobar text-->
-    <style name="WhiteMode.Toolbar" parent="Widget.MaterialComponents.Toolbar">
-        <item name="titleTextColor">@android:color/black</item>
-    </style>
 
     <style name="chipText" parent="TextAppearance.MaterialComponents.Chip">
         <item name="android:textSize">15sp</item>

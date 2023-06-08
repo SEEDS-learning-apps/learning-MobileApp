@@ -17,7 +17,6 @@
     <string name="register_account">Create an account?</string>
     <string name="Register_btn">Register</string>
     <string name="Grade_register">Grade</string>
-    <string name="AccountRegister">Account Register</string>
     <string name="select_language">Select language</string>
     <string name="select_age">Select age</string>
 
@@ -26,13 +25,8 @@
     <string name="Accountlogin">Account login</string>
     <string name="Login">Login</string>
 
-    //Introduction screen
-    <string name="heading_one">Learning Application</string>
-    <string name="heading_two">Chatbot</string>
-    <string name="heading_three">Exercises and download materials</string>
 
     //Description
-    <string name="welcome2">WELCOME</string>
     <string name="lets_go">LET\'S GO</string>
     <string name="skip">Skip</string>
     <string name="seeds_info">SEEDS is a project for supporting learning and education on the fringe of the digital sphere. Due to the lack of access to educational institutions and little or no equipment (Tablets, or Laptops and PCs) with necessary digital technologies, young people found it difficult to follow classes. ICT and above all the smartphone can be used here to mitigate this deficit. The needs and challenges of the target group must be taken into account (i.e. no up-to-date smartphones with outdated software). Our idea is to communicate learning content to vulnerable people in a new way by using chat bots.</string>
@@ -57,7 +51,6 @@
     <string name="Setting_changeMateriallanguage">Material Language</string>
     <string name="Grade">Grade</string>
     <string name="Done">Done</string>
-    <string name="accessCode">Do you have an access code?</string>
     <string name="accessCode_Dialog_text">Enter access code</string>
     <string name="accessCodehere" translatable="false">Code here</string>
     <string name="age_drop_down_text">Your age</string>
@@ -72,8 +65,6 @@
     <string name="contact_us">Contact us</string>
     <string name="seeds_website">https://seeds.wineme.wiwi.uni-siegen.de/</string>
     <string name="no_exercises_completed_yet">No exercises completed yet</string>
-    <string name="title_activity_step1">activity1</string>
-    <string name="credits">thank you</string>
     <string name="mainpage_ex_heading">Exercises</string>
     <string name="mainpage_Dashboard_heading">Dashboard</string>
     <string name="messageEdittext_hint">Type a message...</string>
@@ -94,11 +85,10 @@
     <string name="ok">Ok</string>
     <string name="Next">Next</string>
     <string name="mcq" translatable="false">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
-    <string name="loading" translatable="false">Loading...!!</string>
     <string name="Mcq_Activity" translatable="false">Mcq Activity</string>
     <string name="activity1_heading" translatable="false"> Match these statements to following answers.</string>
     <string name="activity1_instructions" translatable="false">"One of the models for intercultural competence (Bennett) can be applied as a simple checklist of four steps, trying to move away from ethnocentrism towards an understanding some of the ways in which other cultures are similar to and different from our own. We emphasize adapting behavior in response to differing cultural contexts and reconciling cultural differences in order to learn or create value from cross-cultural interactions. "</string>
-    <string name="activity1_queHeading" translatable="false">Four steps to intercultural awareness</string>
+
     <string name="activity2_heading" translatable="false">Activity 2: What´s the comment about?</string>
     <string name="activity2_instructions" translatable="false">The adjustment to an unfamiliar situation or culture can be hard. There is some time of uncertainty and, in some cases, anxiety. We need to deal with ambiguity and new norms, ways to communicate/ behave. Some people go through similar phases during that time of adjustment. Can you connect these people´s comment to the description of the stage they´re at?</string>
     <string name="match_pic_heading" translatable="false">Match the above statements with the pictures</string>
@@ -109,17 +99,6 @@
     <string name="demo_time">9:00PM</string>
     <string name="demo_date">Monday</string>
     <string name="Notification">Notification</string>
-    <string name="settings">Settings</string>
-    <string name="repeat">Repeat</string>
-    <string name="cancel">CANCEL</string>
-    <string name="create">Create</string>
-    <string name="demo_repeatDays">Mon Tue Wed</string>
-    <string name="every_friday">Every Friday</string>
-    <string name="every_sunday">Every Sunday</string>
-    <string name="every_saturday">Every Saturday</string>
-    <string name="every_thursday">Every Thursday</string>
-    <string name="every_wednesday">Every Wednesday</string>
-    <string name="every_monday">Every Monday</string>
     <string name="empty_rec_text">No notifications created yet\n\nClick on the + icon at the top right corner\nto create a new Notification</string>
     <string name="dark_mode">Dark Mode</string>
 
@@ -129,8 +108,8 @@
     <string name="Spanish">Spanish</string>
     <string name="English">English</string>
     <string name="Greek">Greek</string>
-    <string name="select_days_of_week">days</string>
-    <string name="everyday">monday, tuesday</string>
+
+
 
     <string-array name="Languages">
         <item>Deutsch</item>
@@ -139,30 +118,5 @@
         <item>English</item>
     </string-array>
 
-    <string-array name="Countries">
-        <item>Germany</item>
-        <item>Great Britain</item>
-        <item>Spain</item>
-        <item>Greece</item>
-    </string-array>
-
-    <string-array name="ageGroup">
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
-    </string-array>
-
-    <string-array name="grades">
-        <item>Grade 1</item>
-        <item>Grade 2</item>
-        <item>Grade 3</item>
-        <item>Grade 4</item>
-        <item>Grade 5</item>
-    </string-array>
 
 </resources>

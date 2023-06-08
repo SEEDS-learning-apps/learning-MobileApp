@@ -3,7 +3,9 @@ package com.example.chat_bot.Activities.activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.os.*
+import android.os.Bundle
+import android.os.Parcelable
+import android.os.PersistableBundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -15,14 +17,14 @@ import com.example.chat_bot.Activities.HomePage.HomeActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.SeedsDatabase
-import com.example.chat_bot.data.*
 import com.example.chat_bot.data.AllQuestion
 import com.example.chat_bot.data.QuestItem
+import com.example.chat_bot.data.Topics
 import com.example.chat_bot.databinding.ActivityQuizBinding
+import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSApi
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSRepository
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSViewModel
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSViewModelFact
-import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSApi
 import com.example.chat_bot.ui.quiz_adapter
 import com.example.chat_bot.utils.SessionManager
 import com.example.chat_bot.utils.Time
