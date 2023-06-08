@@ -5,7 +5,6 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.chat_bot.Room.Coverters.ButtonConverter
 import com.example.chat_bot.Room.Coverters.MaterialListConverter
 import com.example.chat_bot.Room.Dao.SeedsDao
@@ -40,21 +39,7 @@ abstract class SeedsDatabase : RoomDatabase() {
                     SeedsDatabase::class.java,
                     "seeds_db"
                 )
-                    .addCallback(object : RoomDatabase.Callback() {
-                        override fun onCreate(db: SupportSQLiteDatabase) {
-                            super.onCreate(db)
-                            // Perform any initial setup or migration logic here for the first database creation
-                        }
-
-                        override fun onOpen(db: SupportSQLiteDatabase) {
-                            super.onOpen(db)
-                            // Perform any migration logic here when the database is opened
-                            // Use SQL statements to modify the schema
-
-                            // Example: Add a new column to an existing table
-                            db.execSQL("ALTER TABLE tableName ADD COLUMN newColumnName TEXT NOT NULL DEFAULT ''")
-                        }
-                    })
+                    .fallbackToDestructiveMigration() // Enable destructive migrations
                     .build()
                 INSTANCE = instance
                 instance
