@@ -174,8 +174,6 @@ class DashboardFragment : Fragment() {
         profileuserage.text = age
         profilegrade.text = grade
 
-
-
         builder.setCanceledOnTouchOutside(false)
         builder.show()
 

@@ -23,7 +23,6 @@ class WelcomePage : AppCompatActivity() {
     lateinit var session: SessionManager
     private lateinit var user_language: String
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(android.R.style.Theme_Light_NoTitleBar_Fullscreen)
 
@@ -64,11 +63,7 @@ class WelcomePage : AppCompatActivity() {
         session = SessionManager(applicationContext)
         user_language = ""
 
-
-
     }
-
-
 
     private fun setlang() {
         // access the items of the list
@@ -89,9 +84,7 @@ class WelcomePage : AppCompatActivity() {
                     lang(languages[position], adapter)
 
                 }
-
         }
-
     }
 
     private fun setupViews() {
@@ -135,8 +128,6 @@ class WelcomePage : AppCompatActivity() {
         }
     }
 
-
-
     private fun lang(lang: String, adapter: ArrayAdapter<String>) {
 
         when (lang) {
@@ -145,8 +136,6 @@ class WelcomePage : AppCompatActivity() {
                 Lingver.getInstance().setLocale(this, "de")
                 recreate()
                 adapter.notifyDataSetChanged()
-//                overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
-
 
             }
             "Español" -> {
@@ -178,12 +167,7 @@ class WelcomePage : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         setlang()
-
-
-
     }
-
-
 
 }
 

@@ -40,7 +40,6 @@ class Login : AppCompatActivity() {
     private val retrofitService = SEEDSApi.getInstance()
     lateinit var session: SessionManager
     var user_name:String = ""
-    var password: String = ""
     var m_androidId: String ?= null
     private lateinit var language: String
     private lateinit var materialLanguage: String
@@ -152,9 +151,6 @@ class Login : AppCompatActivity() {
 
         getDatafromOnlineDB(user_name)
 
-
-        val user = Userinfo(user_name, "6-7", "germany", "German", "10", m_androidId.toString())
-
     }
 
     private fun setlanguage() {
@@ -162,32 +158,26 @@ class Login : AppCompatActivity() {
         {
             materialLanguage = "English"
 
-
         }
         if (language== "de")
         {
             materialLanguage = "Deutsch"
-
 
         }
         if (language== "es")
         {
             materialLanguage = "español"
 
-
         }
         if (language== "el")
         {
             materialLanguage = "ελληνικά"
-
 
         }
     }
 
     private fun getDatafromOnlineDB(userName: String) {
         viewModel.userList.observe(this) {
-
-
 
             if (it.success)
             {
@@ -227,7 +217,6 @@ class Login : AppCompatActivity() {
             if (dao.isUserExists(onlineUserData.data.name))
             {
                 goToLoginActivity()
-//                Toast.makeText(this@Login, "User Exists", Toast.LENGTH_SHORT).show()
                 Log.d("jaooo", language)
                 Log.d("jaooo", "Material: $materialLanguage")
 
@@ -244,7 +233,6 @@ class Login : AppCompatActivity() {
                 session.save_details(onlineUserData.data.name,onlineUserData.data.age,onlineUserData.data.grade,materialLanguage)
                 goToLoginActivity()
 
-//                Toast.makeText(this@Login, "User added to localDB", Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -258,50 +246,12 @@ class Login : AppCompatActivity() {
         finish()
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
         session.createLoginSession(user_name, m_androidId.toString())
-//               session.save_details(user_age, user_grade)
         session.save_materialLangPref(materialLanguage)
 
     }
 
-
-    private fun getUserInfoFromLocalDB(user_name: String) {
-        try {
-
-
-            val dao: SeedsDao = SeedsDatabase.getInstance(this).seedsDao
-            lifecycleScope.launch { dao.getUser(user_name)
-
-                var user: List<User> = dao.getUser(user_name)
-
-                if (user.isNotEmpty() )
-                {
-                    user.forEach {
-
-                        session.save_details(it.username, it.age, it.grade, it.preferredmaterialLanguage)
-                    }
-
-                    Log.d("RoomDb", user.toString())
-
-                }
-                else
-                {
-                    Log.d("RoomDb", "Userlogin data not found")
-                }
-
-                Log.d("login", user.toString())
-
-            }
-        }catch (e: Exception)
-        {
-            Log.d("RoomDb", "Userlogin data not found and db crashed!!")
-        }
-    }
-
-
     private fun getDevID() {
         m_androidId = Secure.getString(contentResolver, ANDROID_ID)
-
-        //Toast.makeText(this, m_androidId.toString(), Toast.LENGTH_SHORT).show()
         Log.d("DevID", m_androidId.toString())
     }
 
@@ -313,10 +263,6 @@ class Login : AppCompatActivity() {
             val capabilities =
                 connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
             if (capabilities != null) {
-
-                //  Toast.makeText(this.requireContext(), "Connection available", Toast.LENGTH_SHORT)
-                //    .show()
-
                 if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
                     Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
                     return true
@@ -341,7 +287,6 @@ class Login : AppCompatActivity() {
         }
         return super.onKeyDown(keyCode, event)
     }
-
 
 }
 

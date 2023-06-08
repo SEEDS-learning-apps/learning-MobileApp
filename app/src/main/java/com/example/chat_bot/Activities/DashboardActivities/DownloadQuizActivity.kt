@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chat_bot.Activities.HomePage.HomeActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.Room.Dao.SeedsDao
-import com.example.chat_bot.Room.Relations.UserAndMaterials
 import com.example.chat_bot.Room.Relations.UserAndMessage
 import com.example.chat_bot.Room.SeedsDatabase
 import com.example.chat_bot.data.QuestItem
@@ -26,7 +25,6 @@ import kotlinx.coroutines.launch
 class downloadQuizActivity : AppCompatActivity(), dwnQuizAdapter.dwnQuizAdapterListener {
 
     lateinit var session: SessionManager
-    lateinit var quizllist: List<UserAndMaterials>
     val adapter = dwnQuizAdapter(this)
     private lateinit var binding: ActivityDownloadQuizBinding
 

@@ -71,8 +71,6 @@ class IntroductionActivity : AppCompatActivity() {
         }, DELAY_MS, PERIOD_MS)
     }
 
-
-
     private fun stopAutoScroll() {
         timer?.cancel()
         timer = null

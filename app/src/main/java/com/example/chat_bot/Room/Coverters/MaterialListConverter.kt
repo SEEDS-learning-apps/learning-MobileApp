@@ -9,8 +9,6 @@ import java.lang.reflect.Type
 
 class MaterialListConverter {
 
-
-
     @TypeConverter
     fun fromStringToMaterialList(value: String?): List<AllQuestion> {
         val listType: Type = object : TypeToken<List<AllQuestion?>?>() {}.type

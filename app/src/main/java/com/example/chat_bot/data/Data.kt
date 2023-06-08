@@ -1,6 +1,8 @@
 package com.example.chat_bot.data
 
+
 import java.io.Serializable
+
 
 data class Data(
     val __v: Int,

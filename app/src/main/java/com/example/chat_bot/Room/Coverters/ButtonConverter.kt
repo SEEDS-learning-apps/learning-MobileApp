@@ -7,8 +7,6 @@ import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 
 class ButtonConverter {
-
-
     @TypeConverter
     fun fromStringToButtonsList(value: String?): List<Button> {
         val listType: Type = object : TypeToken<ArrayList<String?>?>() {}.type

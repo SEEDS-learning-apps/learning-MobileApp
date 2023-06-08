@@ -26,27 +26,19 @@ interface SEEDSApi {
     @GET("mcqs")
      fun getMcqs() : Call<McqsList>
 
-
     @GET("topic/getByTopic/{topicID}")
     fun getQuiz(
         @Path("topicID" ) topicID: String
     ) : Call<Quest>
 
-
     @POST("openAnswer/create")
     suspend fun submitOpenEnded(@Body openEnded: OpenEnded): Response<openEndedResponse>
-
-
-
 
     @GET("grade/get")
      fun getGrades() : Call<gradeList>
 
     @POST("students/create")
     suspend fun create_user(@Body user: Userinfo): Response<LoginData>
-
-    @POST("students/login")
-    suspend fun login_user(@Body user: Userinfo): Response<LoginData>
 
     @GET("students/getUser/{name}")
     fun getUserbyUsername(

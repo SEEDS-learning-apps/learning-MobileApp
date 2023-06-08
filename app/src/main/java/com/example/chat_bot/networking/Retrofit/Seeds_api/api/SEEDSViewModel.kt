@@ -85,9 +85,7 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
                     {
                         errorMessage.postValue(response.code().toString())
 
-
                     }
-
 
                 }
 
@@ -102,7 +100,6 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
     }
 
      fun getAllGrades() {
-
          GlobalScope.launch (Dispatchers.IO){
         val response = repository.getAllGrades()
         response.enqueue(object : Callback<gradeList> {

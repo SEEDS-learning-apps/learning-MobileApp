@@ -47,7 +47,6 @@ class Register : AppCompatActivity() {
     private val retrofitService = SEEDSApi.getInstance()
     lateinit var session: SessionManager
     lateinit var grade_spinner: AutoCompleteTextView
-    //private val USER = "M-" + UUID.randomUUID().toString()
     private var USER = "M-f8f2e818-808f-"
     var user_name:String = ""
     var user_age: String = ""
@@ -73,15 +72,11 @@ class Register : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-       // Lingver.init(this.application)
 
         language = ""
 
         USER += getDevID()
 
-
-
-        //isOnline(this)
         viewModel = ViewModelProvider(this, SEEDSViewModelFact(SEEDSRepository(retrofitService))).get(SEEDSViewModel::class.java)
         session = SessionManager(applicationContext)
 
@@ -89,7 +84,6 @@ class Register : AppCompatActivity() {
         checkLogin()
 
         binding.btnReg.setOnClickListener{
-            //doAuthentication()
             if (isOnline(applicationContext))
             {
                 dologin()
@@ -145,29 +139,23 @@ class Register : AppCompatActivity() {
             if (language== "en")
             {
                 Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_SHORT).show()
-
             }
             if (language== "de")
             {
                 Toast.makeText(this, "Bitte überprüfen Sie Ihre Internetverbindung", Toast.LENGTH_SHORT).show()
-
             }
             if (language== "es")
             {
                 Toast.makeText(this, "Por favor, compruebe su conexión a Internet", Toast.LENGTH_SHORT).show()
-
             }
             if (language== "el")
             {
                 Toast.makeText(this, "Ελέγξτε τη σύνδεσή σας στο διαδίκτυο", Toast.LENGTH_SHORT).show()
-
             }
         }
 
-
         alreadyUserLogin()
         keyboardfocus()
-
 
     }
 
@@ -250,8 +238,7 @@ class Register : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
                 user_grade = it[position]
             }
-    }
-
+         }
 
     }
 
@@ -276,39 +263,29 @@ class Register : AppCompatActivity() {
     }
     private fun materiallang(lang: String, adapter: ArrayAdapter<String>){
 
-
         if(lang == "Deutsch")
         {
             recreate()
             adapter.notifyDataSetChanged()
-
-
         }
         else if(lang == "Español")
         {
             recreate()
             adapter.notifyDataSetChanged()
-
         }
         else if(lang == "English")
         {
 
             recreate()
             adapter.notifyDataSetChanged()
-
         }
 
         else if(lang == "Ελληνικά")
         {
-
-
             recreate()
             adapter.notifyDataSetChanged()
-
-
         }
         else
-
         adapter.notifyDataSetChanged()
     }
 
@@ -363,9 +340,6 @@ class Register : AppCompatActivity() {
 
     }
 
-    private fun hideActionBar() {
-        supportActionBar?.hide()
-    }
     private fun getDevID() {
         m_androidId = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
         m_androidId =  "$m_androidId/" + UUID.randomUUID().toString()
@@ -387,7 +361,6 @@ class Register : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
 
     }
 
@@ -414,9 +387,6 @@ class Register : AppCompatActivity() {
         }
     }
 
-
-
-
     private fun dologin() = if (isOnline(applicationContext))
     {
         user_name = binding.usernameEt.text.toString().trim()
@@ -429,11 +399,9 @@ class Register : AppCompatActivity() {
 
         user_grade
 
-
         val user = Userinfo(user_name, user_age,  user_country,  user_grade, user_language, m_androidId.toString())
 
         val user1 = User(user_name, user_age,  user_country,  user_grade, user_language, m_androidId.toString(), materialLang)
-
 
         if (binding.usernameEt.text == null || user_name == "")
         {
@@ -453,7 +421,6 @@ class Register : AppCompatActivity() {
         }
         else
         {
-
             viewModel.create_user(user)
             viewModel.myresponse.observe(this, Observer {  response->
 
@@ -461,15 +428,12 @@ class Register : AppCompatActivity() {
                 if (response.code() == 400 )
                 {
                     Toast.makeText(this, "User already exist!", Toast.LENGTH_SHORT).show()
-
-
                 }
                 if (response.code() == 500 )
                 {
                     Toast.makeText(this, "The Username must contain atleast 5 letters", Toast.LENGTH_SHORT).show()
                     //viewModel.myresponse.postValue(null)
                 }
-
 
                 else if (response.body()!= null)
                 {
@@ -576,10 +540,5 @@ class Register : AppCompatActivity() {
 
             foc.hideSoftInputFromWindow(binding.usernameEt.windowToken, 0)
         }
-    }
-    private fun restartActivity() {
-        val intent = intent
-        finish()
-        startActivity(intent)
     }
 }

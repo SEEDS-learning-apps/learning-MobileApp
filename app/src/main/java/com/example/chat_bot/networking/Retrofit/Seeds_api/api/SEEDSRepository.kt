@@ -12,9 +12,13 @@ class SEEDSRepository constructor(private val retrofitService: SEEDSApi) {
      fun getAllMcqs() = retrofitService.getMcqs()
 
      fun getAllGrades() = retrofitService.getGrades()
+
      fun getAllAgegroups() = retrofitService.getAgegroups()
+
      suspend fun getAllTopics() = retrofitService.getallTopics()
+
      fun getAllSubjects() = retrofitService.getallSubjects()
+
      fun getAllTF() = retrofitService.getallTF()
 
     fun getQuiz(topicID: String) = retrofitService.getQuiz(topicID)
@@ -28,7 +32,5 @@ class SEEDSRepository constructor(private val retrofitService: SEEDSApi) {
     suspend fun submitOpenEnded(openEnded: OpenEnded): Response<openEndedResponse> {
         return retrofitService.submitOpenEnded(openEnded)
     }
-
-
 
 }

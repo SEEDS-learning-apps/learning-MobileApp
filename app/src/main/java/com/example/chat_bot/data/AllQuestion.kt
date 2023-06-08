@@ -1,5 +1,9 @@
 package com.example.chat_bot.data
+
+
 import java.io.Serializable
+
+
 data class AllQuestion(
     val __v: Int?,
     val _id: String,
