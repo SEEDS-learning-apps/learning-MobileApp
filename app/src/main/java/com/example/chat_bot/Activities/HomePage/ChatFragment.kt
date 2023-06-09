@@ -1,6 +1,5 @@
 package com.example.chat_bot.Activities.HomePage
 
-import com.example.chat_bot.Lists.Quest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues
@@ -22,14 +21,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.airbnb.lottie.LottieAnimationView
+import com.example.chat_bot.Activities.DashboardActivities.DatabaseHelper
 import com.example.chat_bot.Activities.activity.QuizActivity
+import com.example.chat_bot.Lists.Quest
 import com.example.chat_bot.R
 import com.example.chat_bot.Rasa.Networkings.*
 import com.example.chat_bot.Rasa.rasaMsg.BotResponse
 import com.example.chat_bot.Rasa.rasaMsg.UserMessage
 import com.example.chat_bot.data.*
-import com.example.chat_bot.data.AllQuestion
-import com.example.chat_bot.data.QuestItem
 import com.example.chat_bot.databinding.FragmentChatBinding
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSApi
 import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSRepository
@@ -54,6 +53,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     private lateinit var selected_topicID: String
     private lateinit var adapter: msgAdapter
     private lateinit var msg: String
+    private lateinit var subject: String
     private val TAG = "ChatFragment"
     private lateinit var binding: FragmentChatBinding
     private lateinit var language: String
@@ -69,13 +69,13 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     private var isSubjectfetched: Boolean = false
     var istopicfetched: Boolean = false
     var isMaterialReady: Boolean = false
-    var islearningstarted: Boolean= false
+    var islearningstarted: Boolean = false
     var returnedFromquiz: Boolean = false
-    lateinit  var APP_MODE: String
+    lateinit var APP_MODE: String
     lateinit var topic_name: String
     lateinit var ageGroup: String
     lateinit var grades: String
-    var m_androidId: String ?= null
+    var m_androidId: String? = null
     lateinit var topicLang: String
     private val retrofitService = SEEDSApi.getInstance()
     lateinit var session: SessionManager
@@ -85,10 +85,10 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     lateinit var topic_namez: String
     lateinit var topic_id: String
     var user_id: String = ""
-    var username: String =""
-    private var url  = ""
+    var username: String = ""
+    private var url = ""
     private var accessCode: String = ""
-    var required_Access_Code: String= ""
+    var required_Access_Code: String = ""
     var Quiz_access: Boolean = false
     lateinit var toast: Toast
 
@@ -109,7 +109,8 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        val sharedPrefs: SharedPreferences = requireContext().getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val sharedPrefs: SharedPreferences =
+            requireContext().getSharedPreferences("pref", Context.MODE_PRIVATE)
         val switchIsTurnedOn = sharedPrefs.getBoolean("DARK MODE", false)
         if (switchIsTurnedOn) {
             // if true then change the theme to dark mode
@@ -121,15 +122,17 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
 
         db = this.context?.let { DB(it) }
-        viewModel = ViewModelProvider(this, SEEDSViewModelFact(SEEDSRepository(retrofitService))).get(
-            SEEDSViewModel::class.java)
+        viewModel =
+            ViewModelProvider(this, SEEDSViewModelFact(SEEDSRepository(retrofitService))).get(
+                SEEDSViewModel::class.java
+            )
 
         //rasa view model
         session = SessionManager(context as Activity)
         adapter = msgAdapter(this, this.requireContext())
         topic_id = ""
-        user_id= ""
-        selected_topicID= ""
+        user_id = ""
+        selected_topicID = ""
 
         GetuserDetails()
         CheckAccessCode()
@@ -147,7 +150,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         lottieAnimationView?.playAnimation()
 
         binding.rvMessages.layoutManager = LinearLayoutManager(this.requireContext())
-        binding.rvMessages.setOnClickListener{
+        binding.rvMessages.setOnClickListener {
             binding.etMessage.clearFocus()
             val foc = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
@@ -168,7 +171,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
     }
 
-    private fun CheckAccessCode():String {
+    private fun CheckAccessCode(): String {
         accessCode = session.getPrivateMaterialsAccessCode()
         Log.d("ChatFragment", "Access Code $accessCode")
         return accessCode
@@ -179,23 +182,20 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         viewModel.quizList.observe(viewLifecycleOwner, Observer {
             Log.d(ContentValues.TAG, "OnCreate: $it")
 
-            if (quizez.size>0)
-            {
+            if (quizez.size > 0) {
                 clearValues()
             }
 
             quizez.addAll(listOf(it))
-            var user: HashMap<String, String> =  session.getUserDetails()
+            var user: HashMap<String, String> = session.getUserDetails()
 
             user.get("age")
 
-            for (item in quizez)
-            {
-                for (i in item)
-                {
+            for (item in quizez) {
+                for (i in item) {
 
                     Quiz_access = i.access
-                    required_Access_Code =  i.accessCode
+                    required_Access_Code = i.accessCode
                     quest.add(i)
                     question.addAll((i.allQuestions))
                     question.sortBy { i -> i.sequence }
@@ -204,27 +204,18 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             }
 
             for (k in question) {
-                if (k.questionType == "mcqs")
-                {
+                if (k.questionType == "mcqs") {
 
                     k.q_type = 2
-                }
-                else if (k.questionType== "trueFalse")
-                {
+                } else if (k.questionType == "trueFalse") {
                     k.q_type = 3
 
-                }
-                else if (k.questionType== "openEnded")
-                {
+                } else if (k.questionType == "openEnded") {
 
                     k.q_type = 5
-                }
-                else if (k.questionType== "introduction")
-                {
+                } else if (k.questionType == "introduction") {
                     k.q_type = 1
-                }
-                else if (k.questionType== "matchPairs")
-                {
+                } else if (k.questionType == "matchPairs") {
                     k.q_type = 4
                 }
             }
@@ -298,19 +289,13 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         clickEvents()
         checklang()
 
-       var score = session.get_quizDone()
-        if (score == "done")
-        {
+        var score = session.get_quizDone()
+        if (score == "done") {
             quizDone()
-        }
-
-        else
-        {
-            if (isOnline(this.requireContext()))
-            {
+        } else {
+            if (isOnline(this.requireContext())) {
                 sendMessagee("Hello", display = false)
-            }
-            else{
+            } else {
                 customMsg("Hello, Seeds Assistant here!!, How may i help you?", false, msgBtn)
             }
 
@@ -322,7 +307,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
     }
 
-    override fun submitAnswerCallback(openEnded: com.example.chat_bot.data.OpenEnded) {
+    override fun submitAnswerCallback(openEnded: OpenEnded) {
         TODO("Not yet implemented")
     }
 
@@ -331,19 +316,26 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         returnedFromquiz == true
         topic_namez = (context as Activity).intent.getSerializableExtra("Total score").toString()
 
-        if (topic_namez!= "null")
-        {
-            Log.d("topic_namez",topic_namez)
-            Log.d("topic_namez",session.getObtainedScore())
-            Log.d("topic_namez",session.getTOtalScore())
+        if (topic_namez != "null") {
+            Log.d("topic_namez", topic_namez)
+            Log.d("topic_namez", session.getObtainedScore())
+            Log.d("topic_namez", session.getTOtalScore())
             val obtained_score = session.getObtainedScore()
             val total_score = session.getTOtalScore()
 
-            val scores = "/activity_done{\"score1\":${obtained_score}, \"score2\":${total_score}, \"topic_id\":\"${session.get_topicID()}\", \"topic_completed\":\"${session.get_topic()}\"}"
-            returnedFromquiz = true
-           // Toast.makeText(context as Activity, scores.toString(), Toast.LENGTH_SHORT).show()
+            val scores =
+                "/activity_done{\"score1\":${obtained_score}, \"score2\":${total_score}, \"topic_id\":\"${session.get_topicID()}\", \"topic_completed\":\"${session.get_topic()}\"}"
 
-            Log.d("topic_namez",scores)
+            val newScores =
+                "/activity_done{\"subject_completed\":\"${session.get_subject()}\"}"
+
+
+            returnedFromquiz = true
+             Toast.makeText(context as Activity, scores.toString(), Toast.LENGTH_SHORT).show()
+
+            Log.d("topic_namez", session.get_subject())
+
+
             filterd_topics.clear()
             msgBtn.clear()
             sendMessagee(scores, display = false)
@@ -357,19 +349,25 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         topic_namez = (context as Activity).intent.getSerializableExtra("Total score").toString()
 
 
-        if (topic_namez!= "null")
-        {
-            Log.d("topic_namez",topic_namez)
-            Log.d("topic_namez",session.getObtainedScore())
-            Log.d("topic_namez",session.getTOtalScore())
+        if (topic_namez != "null") {
+            Log.d("topic_namez", topic_namez)
+            Log.d("topic_namez", session.getObtainedScore())
+            Log.d("topic_namez", session.getTOtalScore())
             val obtained_score = session.getObtainedScore()
             val total_score = session.getTOtalScore()
 
-            val scores = "/activity_done{\"score1\":${obtained_score}, \"score2\":${total_score}, \"topic_id\":\"${session.get_topicID()}\", \"topic_completed\":\"${session.get_topic()}\"}"
+            val scores =
+                "/activity_done{\"score1\":${obtained_score}, \"score2\":${total_score}, \"topic_id\":\"${session.get_topicID()}\", \"topic_completed\":\"${session.get_topic()}\"}"
             returnedFromquiz = true
 
-            Log.d("topic_namez",scores)
+            Log.d("topic_namez", scores)
             Log.d("topic_namezZ", msgBtn.size.toString())
+
+            Log.d("topic_namez", session.get_subject())
+
+            val dbHelper = DatabaseHelper(context as Activity)
+            val subject = session.get_subject()
+            dbHelper.increaseCount(subject)
 
             filterd_topics.clear()
             msgBtn.clear()
@@ -381,19 +379,23 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
     private fun checklang() {
         language = Lingver.getInstance().getLanguage()
-        if (language == "de") {url = "https://l0mgxbahu7.execute-api.eu-central-1.amazonaws.com" }
-        else if (language == "es") { url = "https://l21uryvtf9.execute-api.eu-central-1.amazonaws.com"}
-        else if (language == "el") {url = "https://i9490x4qog.execute-api.eu-central-1.amazonaws.com"}
-        else url = "https://ig1mceza29.execute-api.eu-central-1.amazonaws.com/"
+        if (language == "de") {
+            url = "https://l0mgxbahu7.execute-api.eu-central-1.amazonaws.com"
+        } else if (language == "es") {
+            url = "https://l21uryvtf9.execute-api.eu-central-1.amazonaws.com"
+        } else if (language == "el") {
+            url = "https://i9490x4qog.execute-api.eu-central-1.amazonaws.com"
+        } else url = "https://ig1mceza29.execute-api.eu-central-1.amazonaws.com/"
         Log.d("ChatFragment", "language = $language")
     }
+
     private fun process_request(response: String) {
 
         fetch_subjects()
 
     }
 
-    private  fun fetch_subjects() {
+    private fun fetch_subjects() {
 
         viewModel.subjectList.observe(viewLifecycleOwner, Observer {
             Log.d(ContentValues.TAG, "OnCreate: $it")
@@ -401,35 +403,31 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             subjects.addAll(it)
             subjects.size
 
-            if (it.size<1)
-            {
+            if (it.size < 1) {
                 customMsg("Subject List is empty (fetch_subjects)", false, msgBtn)
                 !istopicfetched
                 !isMaterialReady
                 !isSubjectfetched
                 return@Observer
-            }
-            else
+            } else
                 isSubjectfetched = true
 
         })
         viewModel.errorMessage.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(this.requireContext(), "Error fetching subjects", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.requireContext(), "Error fetching subjects", Toast.LENGTH_SHORT)
+                .show()
             Log.d(ContentValues.TAG, "OnCreate: $it")
 
             isSubjectfetched = false
             istopicfetched = false
 
-            if (language== "en")
-            {
+            if (language == "en") {
                 customMsg("I am facing problems at the moment", false, msgBtn)
             }
-            if (language== "de")
-            {
+            if (language == "de") {
                 customMsg("Ich habe derzeit Probleme", false, msgBtn)
             }
-            if (language== "es")
-            {
+            if (language == "es") {
                 customMsg("Actualmente tengo problemas", false, msgBtn)
             }
 
@@ -438,6 +436,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         viewModel.getAllSubjects()
 
     }
+
     private fun suggest_topic(filterd_topicss: ArrayList<Topics>) {
         binding.typingStatus.visibility = View.VISIBLE
         binding.typingStatus.playAnimation()
@@ -447,16 +446,13 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             delay(2000)
             withContext(Dispatchers.Main) {
 
-                if (filterd_topicss.isEmpty())
-                {
+                if (filterd_topicss.isEmpty()) {
                     customMsg("This topic is not found", false, msgBtn)
                     !istopicfetched
                     !isMaterialReady
                     !isSubjectfetched
-                }
-                else{
-                    for (item in filterd_topicss)
-                    {
+                } else {
+                    for (item in filterd_topicss) {
                         topic_name = item.topic
                         ageGroup = item.ageGroup
                         topicLang = item.language
@@ -472,33 +468,30 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             }
         }
     }
-    private  fun initiate_subject_filtration(mk: String) {
-        var found: Subjects? =  subjects.find { i -> i.subject.trim().lowercase() == mk.trim().lowercase() }
+
+    private fun initiate_subject_filtration(mk: String) {
+        var found: Subjects? =
+            subjects.find { i -> i.subject.trim().lowercase() == mk.trim().lowercase() }
         if (found != null) {
 
             filterd_subjects.addAll(listOf(found))
 
             fetch_topics(filterd_subjects, mk)
 
-        }
-
-        else{
+        } else {
             isSubjectfetched = true
             istopicfetched = false
             isMaterialReady = false
 
-            if (language== "en")
-            {
+            if (language == "en") {
                 customMsg("Sorry this one is not available", false, msgBtn)
 
 
             }
-            if (language== "de")
-            {
+            if (language == "de") {
                 customMsg("Dieses Thema ist leider nicht verfügbar", false, msgBtn)
             }
-            if (language== "es")
-            {
+            if (language == "es") {
                 customMsg("Lo sentimos, este tema no está disponible", false, msgBtn)
             }
             customMsg("Try looking for some other subjects", false, msgBtn)
@@ -506,7 +499,8 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         }
 
     }
-    private  fun fetch_topics(filterd_subjects: MutableList<Subjects>, mk: String) {
+
+    private fun fetch_topics(filterd_subjects: MutableList<Subjects>, mk: String) {
 
         //topics from database
         viewModel.topicListss.observe(viewLifecycleOwner) {
@@ -514,24 +508,26 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             var datasize = it.size
             istopicfetched = true
 
-            if (it.size<1)
-            {
+            if (it.size < 1) {
                 customMsg("No topic found with $mk subject", false, msgBtn)
                 !isSubjectfetched
                 !isMaterialReady
                 !istopicfetched
                 return@observe
-            }
-            else
+            } else
 
                 for (item in filterd_subjects) {
 
-                    if (materialLang != "null")
-                    {filterd_topics = it.filter { it.subId == item._id  && it.ageId == ageGroup
+                    if (materialLang != "null") {
+                        filterd_topics = it.filter {
+                            it.subId == item._id && it.ageId == ageGroup
 
-                            && it.language == materialLang} as ArrayList<Topics>}
-                    else
-                    {filterd_topics = it.filter { it.subId == item._id  && it.ageId == ageGroup} as ArrayList<Topics>}
+                                    && it.language == materialLang
+                        } as ArrayList<Topics>
+                    } else {
+                        filterd_topics =
+                            it.filter { it.subId == item._id && it.ageId == ageGroup } as ArrayList<Topics>
+                    }
 
                     Log.d("joko", ageGroup)
                     suggest_topic(filterd_topics)
@@ -545,22 +541,23 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             isSubjectfetched = false
             isMaterialReady = false
 
-            if (language== "en")
-            {
+            if (language == "en") {
                 customMsg("I am facing problems at the moment", false, msgBtn)
             }
-            if (language== "de")
-            {
+            if (language == "de") {
                 customMsg("Ich habe derzeit Probleme", false, msgBtn)
             }
-            if (language== "es")
-            {
+            if (language == "es") {
                 customMsg("Actualmente tengo problemas", false, msgBtn)
             }
         })
     }
+
     fun loadNext(input: String): Boolean {
-        val regex = Regex(pattern = "/next_option\\{\"subj\":\"None\"\\}", options = setOf(RegexOption.IGNORE_CASE))
+        val regex = Regex(
+            pattern = "/next_option\\{\"subj\":\"None\"\\}",
+            options = setOf(RegexOption.IGNORE_CASE)
+        )
         return regex.matches(input)
     }
 
@@ -575,41 +572,35 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
         session.save_topic(msg)
 
+
+
         customMsg(msg, false, msgBtn)
 
-        if (loadNext(message._id))
-        {
+        if (loadNext(message._id)) {
 
             sendMessagee(message._id, display = false)
-        }
-        else
-        {
-            if(message._id.contains("/inform_new{\"topic\":") ||
+        } else {
+            if (message._id.contains("/inform_new{\"topic\":") ||
                 message._id.contains("/inform_new_topic{\"topic\":") ||
-                message._id.contains("/inform_new_direct_topic{\"topic\":"))
-
-            {
+                message._id.contains("/inform_new_direct_topic{\"topic\":")
+            ) {
                 islearningstarted == true
 
                 val jaga = message._id.split(":")
 
                 var su = jaga.last().replace("\"", "")
 
-                su =  su.replace("}", "")
+                su = su.replace("}", "")
 
                 session.save_topicID(su)
                 selected_topicID = su
                 getQuiz(su.trim())
                 clearValues()
 
-             Log.d("jaaga", su.replace("}", ""))
-            }
-            else if (message._id.contains("/inform_new{\"subject\":"))
-            {
+                Log.d("inform new subject", su.replace("}", ""))
+            } else if (message._id.contains("/inform_new{\"subject\":")) {
                 Send_filterInfo_toRASA(message._id)
-            }
-            else
-            {
+            } else {
                 sendMessagee(message._id, display = false)
 
             }
@@ -626,27 +617,28 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
         var subjectName = payload.last().replace("\"", "")
 
-        subjectName =  subjectName.replace("}", "")
+        subjectName = subjectName.replace("}", "")
 
+        session.save_subject(subjectName)
 
         var userDetails = session.getUserDetails()
 
         var userAge = userDetails.get("age")
         var userGrade = userDetails.get("grade")
         var PreferedMaterialslang = session.get_materialLangPref()
-        if (PreferedMaterialslang == null || PreferedMaterialslang == "null" || PreferedMaterialslang.isEmpty())
-        {
+        if (PreferedMaterialslang == null || PreferedMaterialslang == "null" || PreferedMaterialslang.isEmpty()) {
             PreferedMaterialslang = "English"
         }
 
-        var newpayload = "/inform_new{\"subject\":\"${subjectName}\", \"material_language\":\"${PreferedMaterialslang}\", \"age\":\"$userAge\", \"grade\":\"${userGrade}\"}"
+        var newpayload =
+            "/inform_new{\"subject\":\"${subjectName}\", \"material_language\":\"${PreferedMaterialslang}\", \"age\":\"$userAge\", \"grade\":\"${userGrade}\"}"
         sendMessagee(newpayload, display = false)
         Log.d("ChatFragment", newpayload.toString())
     }
 
     private fun load_material() {
 
-        if (filterd_topics.isEmpty()){
+        if (filterd_topics.isEmpty()) {
 
             customMsg("no topics found", false, msgBtn)
             !istopicfetched
@@ -654,40 +646,29 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             !isSubjectfetched
             return
 
-        }
-        else if (!filterd_topics.isEmpty())
-        {
+        } else if (!filterd_topics.isEmpty()) {
             GlobalScope.launch {
                 delay(3000)
                 withContext(Dispatchers.Main) {
 
 
-                    if (quiz.isEmpty())
-                    {
+                    if (quiz.isEmpty()) {
                         Toast.makeText(context, "no quiz available ", Toast.LENGTH_SHORT).show()
                         loadOptions()
-                    }
+                    } else {
 
-                    else
-                    {
-
-                        if (Quiz_access)
-                        {
-                            if (CheckAccessCode()== required_Access_Code)
-                            {
+                        if (Quiz_access) {
+                            if (CheckAccessCode() == required_Access_Code) {
                                 GotoSolveActivities()
-                            }
-                            else
-                            {
-                                Toast.makeText(context, "Quiz is private", Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(context, "Quiz is private", Toast.LENGTH_SHORT)
+                                    .show()
                                 clearValues()
                                 ask_for_access_code()
                             }
 
-                        }
-                        else
-                        {
-                         GotoSolveActivities()
+                        } else {
+                            GotoSolveActivities()
                         }
 
                     }
@@ -698,34 +679,25 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
     }
 
-    private fun loadOptions()
-    {
+    private fun loadOptions() {
         binding.etMessage.isEnabled = true
         binding.btnSend.isEnabled = true
         clearValues()
 
-        if (language== "en")
-        {
+        if (language == "en") {
             sendMessagee("/user_stop{\"subject\":\"STOP\"}", display = false)
-        }
-        else if(language== "de")
-        {
+        } else if (language == "de") {
 
             sendMessagee("Ich möchte lernen", display = false)
-        }
-        else if (language== "es")
-        {
+        } else if (language == "es") {
 
             sendMessagee("quiero aprender", display = false)
-        }
-        else if(language == "el")
-        {
+        } else if (language == "el") {
             sendMessagee("Θέλω να μάθω", display = false)
         }
     }
 
-     private fun clearValues()
-    {
+    private fun clearValues() {
         filterd_topics.clear()
         question.clear()
         quizez.clear()
@@ -733,37 +705,40 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         quest.clear()
     }
 
-    private fun ask_for_access_code()
-    {
+    private fun ask_for_access_code() {
         binding.etMessage.isEnabled = true
         binding.btnSend.isEnabled = true
         //clearValues()
 
-        if (language== "en")
-        {
+        if (language == "en") {
             customMsg("Enter the password in settings and try again.", false, msgBtn)
             sendMessagee("i want to learn", display = false)
-        }
-        else if(language== "de")
-        {
-            customMsg("Bitte geben Sie das Passwort in den Einstellungen ein und versuchen Sie es dann erneut",  false, msgBtn)
+        } else if (language == "de") {
+            customMsg(
+                "Bitte geben Sie das Passwort in den Einstellungen ein und versuchen Sie es dann erneut",
+                false,
+                msgBtn
+            )
             sendMessagee("Ich möchte lernen", display = false)
-        }
-        else if (language== "es")
-        {
-            customMsg("Por favor, introduzca la contraseña en los ajustes y vuelva a intentarlo", false, msgBtn)
+        } else if (language == "es") {
+            customMsg(
+                "Por favor, introduzca la contraseña en los ajustes y vuelva a intentarlo",
+                false,
+                msgBtn
+            )
             sendMessagee("quiero aprender", display = false)
-        }
-        else if(language == "el")
-        {
+        } else if (language == "el") {
             sendMessagee("Θέλω να μάθω", display = false)
-            customMsg("Εισάγετε τον κωδικό πρόσβασης στις ρυθμίσεις και δοκιμάστε ξανά. ", false, msgBtn)
+            customMsg(
+                "Εισάγετε τον κωδικό πρόσβασης στις ρυθμίσεις και δοκιμάστε ξανά. ",
+                false,
+                msgBtn
+            )
         }
 
     }
 
-    private fun GotoSolveActivities()
-    {
+    private fun GotoSolveActivities() {
         val intent = Intent(context, QuizActivity::class.java).apply {
 
             session.save_topic(msg)
@@ -801,23 +776,65 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         }
     }
 
-    private fun customMsg(message: String, _yo: Boolean, buttons: List<com.example.chat_bot.Rasa.rasaMsg.Button>) {
+    private fun customMsg(
+        message: String,
+        _yo: Boolean,
+        buttons: List<com.example.chat_bot.Rasa.rasaMsg.Button>
+    ) {
         binding.typingStatus.visibility = View.VISIBLE
         binding.typingStatus.playAnimation()
         GlobalScope.launch {
             delay(2000)
             withContext(Dispatchers.Main) {
                 val timeStamp = Time.timeStamp()
-                if (_yo)
-                {
-                    adapter.insertMessage(Message(message, Constants.SND_ID, timeStamp, true, "",buttons, username))
+                if (_yo) {
+                    adapter.insertMessage(
+                        Message(
+                            message,
+                            Constants.SND_ID,
+                            timeStamp,
+                            true,
+                            "",
+                            buttons,
+                            username
+                        )
+                    )
 
-                    db?.insertMessage(Message(message, Constants.SND_ID, timeStamp, true, "",buttons, username))
-                }
-                else{
-                    adapter.insertMessage(Message(message, Constants.SND_ID, timeStamp, false, "",buttons, username))
+                    db?.insertMessage(
+                        Message(
+                            message,
+                            Constants.SND_ID,
+                            timeStamp,
+                            true,
+                            "",
+                            buttons,
+                            username
+                        )
+                    )
+                } else {
+                    adapter.insertMessage(
+                        Message(
+                            message,
+                            Constants.SND_ID,
+                            timeStamp,
+                            false,
+                            "",
+                            buttons,
+                            username
+                        )
+                    )
 
-                    db?.insertMessage(Message(message, Constants.SND_ID, timeStamp, false, "",buttons, username))
+                    db?.insertMessage(
+                        Message(
+                            message,
+                            Constants.SND_ID,
+                            timeStamp,
+                            false,
+                            "",
+                            buttons,
+                            username
+                        )
+                    )
                 }
 
 
@@ -840,8 +857,9 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
     @SuppressLint("HardwareIds")
     private fun getDevID() {
-        m_androidId = Settings.Secure.getString(requireContext().contentResolver, Settings.Secure.ANDROID_ID)
-       m_androidId =  "$m_androidId/" + UUID.randomUUID().toString()
+        m_androidId =
+            Settings.Secure.getString(requireContext().contentResolver, Settings.Secure.ANDROID_ID)
+        m_androidId = "$m_androidId/" + UUID.randomUUID().toString()
         Log.d("DevID", m_androidId.toString())
     }
 
@@ -856,7 +874,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
         if (filterd_topics.size > 0) {
             filterd_topics.clear()
-           // clearValues()
+            // clearValues()
         }
         Log.d("user_id", m_androidId.toString())
 
@@ -865,7 +883,17 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         Log.d("what is message", message)
 
         if (display) {
-            db!!.insertMessage(Message(message, Constants.SND_ID, timeStamp, false, "", msgBtn, username))
+            db!!.insertMessage(
+                Message(
+                    message,
+                    Constants.SND_ID,
+                    timeStamp,
+                    false,
+                    "",
+                    msgBtn,
+                    username
+                )
+            )
             //  }
 
             adapter.insertMessage(
@@ -944,7 +972,8 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                                 try {
                                     if (message.buttons != null) {
 
-                                        msgBtn = message.buttons as ArrayList<com.example.chat_bot.Rasa.rasaMsg.Button>
+                                        msgBtn =
+                                            message.buttons as ArrayList<com.example.chat_bot.Rasa.rasaMsg.Button>
                                         adapter.insertMessage(
                                             Message(
                                                 message.text,
@@ -1074,19 +1103,21 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                 delay(200)
                 withContext(Dispatchers.Main) {
 
-                    val msg = binding.etMessage .text.toString().trim()
+                    val msg = binding.etMessage.text.toString().trim()
 
                     if (msg != "") {
-                        if (checkAppMode() == "vanilla")
-                        {
+                        if (checkAppMode() == "vanilla") {
                             VanillasendMessage()
-                        }
-                        else{
+                        } else {
                             sendMessage()
                         }
                         binding.etMessage.setText("")
                     } else {
-                        Toast.makeText(requireContext(), "Please enter a message.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(),
+                            "Please enter a message.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
 
                 }
@@ -1096,11 +1127,9 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         //Send a message
         binding.btnSend.setOnClickListener {
 
-            if (checkAppMode() == "vanilla")
-            {
+            if (checkAppMode() == "vanilla") {
                 VanillasendMessage()
-            }
-            else
+            } else
 
                 sendMessage()
 
@@ -1118,7 +1147,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
     fun sendMessage() {
         var user: HashMap<String, String> = session.getUserDetails()
-        var age =  user.getValue("age")
+        var age = user.getValue("age")
         var grade = user.getValue("grade")
 
         msg = binding.etMessage.text.toString().trim()
@@ -1128,57 +1157,70 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
             binding.etMessage.setText("")
 
-            if (isOnline(this.requireContext()))
-            {
+            if (isOnline(this.requireContext())) {
 
                 sendMessagee(msg)
                 hideKeyboard()
-            }
-            else
-            {
+            } else {
 
-                db!!.insertMessage(Message(msg, Constants.SND_ID, timeStamp, false, "",msgBtn, username))
+                db!!.insertMessage(
+                    Message(
+                        msg,
+                        Constants.SND_ID,
+                        timeStamp,
+                        false,
+                        "",
+                        msgBtn,
+                        username
+                    )
+                )
                 //  }
 
-                adapter.insertMessage(Message(msg, Constants.SND_ID, timeStamp,false, "",msgBtn, username))
+                adapter.insertMessage(
+                    Message(
+                        msg,
+                        Constants.SND_ID,
+                        timeStamp,
+                        false,
+                        "",
+                        msgBtn,
+                        username
+                    )
+                )
 
                 binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
             }
 
 
-            if (!isMaterialReady)
-            {
-                if(isSubjectfetched == true)
-                {
+            if (!isMaterialReady) {
+                if (isSubjectfetched == true) {
                     initiate_subject_filtration(msg)
                     return
                 }
 
             }
 
-            if (isMaterialReady){
-                if(!filterd_topics.isEmpty())
-                {
-                    for (item in filterd_topics)
-                    {
+            if (isMaterialReady) {
+                if (!filterd_topics.isEmpty()) {
+                    for (item in filterd_topics) {
                         topic_name = item.topic
                         topic_id = item._id
 
-                        if (msg == topic_name && ageGroup == age && grades == grade )
-                        {
+                        if (msg == topic_name && ageGroup == age && grades == grade) {
                             return
-                        }
-                        else
-                        {
-                            Toast.makeText(this.requireContext(), "Error! Loading materials", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(
+                                this.requireContext(),
+                                "Error! Loading materials",
+                                Toast.LENGTH_SHORT
+                            ).show()
                             return
                         }
 
                     }
                 }
             }
-            if (!isOnline(this.requireContext()))
-            {
+            if (!isOnline(this.requireContext())) {
                 botResponse(msg, false)
             }
 
@@ -1188,7 +1230,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
     fun VanillasendMessage() {
         var user: HashMap<String, String> = session.getUserDetails()
-        var age =  user.getValue("age")
+        var age = user.getValue("age")
         var grade = user.getValue("grade")
         msg = binding.etMessage.text.toString().trim()
         val timeStamp = Time.timeStamp()
@@ -1199,56 +1241,73 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             //Adds it to our local list
 
 
-            db!!.insertMessage(Message(msg, Constants.SND_ID, timeStamp, false, "", msgBtn, username))
+            db!!.insertMessage(
+                Message(
+                    msg,
+                    Constants.SND_ID,
+                    timeStamp,
+                    false,
+                    "",
+                    msgBtn,
+                    username
+                )
+            )
             //  }
 
-            adapter.insertMessage(Message(msg, Constants.SND_ID, timeStamp,false, "", msgBtn, username))
+            adapter.insertMessage(
+                Message(
+                    msg,
+                    Constants.SND_ID,
+                    timeStamp,
+                    false,
+                    "",
+                    msgBtn,
+                    username
+                )
+            )
 
             binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
 
 
-            if (!isMaterialReady)
-            {
-                if(isSubjectfetched == true)
-                {
+            if (!isMaterialReady) {
+                if (isSubjectfetched == true) {
                     initiate_subject_filtration(msg)
                     return
                 }
 
             }
 
-            if (isMaterialReady){
-                if(!filterd_topics.isEmpty())
-                {
-                    for (item in filterd_topics)
-                    {
+            if (isMaterialReady) {
+                if (!filterd_topics.isEmpty()) {
+                    for (item in filterd_topics) {
                         topic_name = item.topic
                         topic_id = item._id
 
                         Log.d("ageGroupp", age.toString())
                         Log.d("ageGroupp", ageGroup.toString())
 
-                        if (msg == topic_name && ageGroup == age && grades == grade )
-                        {
+                        if (msg == topic_name && ageGroup == age && grades == grade) {
                             load_material()
                             return
-                        }
-                        else
-                        {
-                            Toast.makeText(this.requireContext(), "Error! Loading materials", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(
+                                this.requireContext(),
+                                "Error! Loading materials",
+                                Toast.LENGTH_SHORT
+                            ).show()
                             return
                         }
 
                     }
                 }
+            } else {
+                botResponse(msg, false)
             }
-
-            else{botResponse(msg, false)}
 
         }
     }
 
-    private fun botResponse(message: String, _yo:Boolean) {
+    private fun botResponse(message: String, _yo: Boolean) {
         val timeStamp = Time.timeStamp()
         binding.typingStatus.visibility = View.VISIBLE
         binding.typingStatus.playAnimation()
@@ -1258,48 +1317,83 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             delay(2000)
             withContext(Dispatchers.Main) {
 
-                if (isVanilla == false)
-                {
-                    if (isRasa)
-                    {
-                        if (_yo)
-                        {
+                if (isVanilla == false) {
+                    if (isRasa) {
+                        if (_yo) {
                             val response = Bot_replies.basicResponses(message, false)
-                            db!!.insertMessage(Message(response as String, Constants.RCV_ID, timeStamp, false, "",msgBtn, username))
+                            db!!.insertMessage(
+                                Message(
+                                    response as String,
+                                    Constants.RCV_ID,
+                                    timeStamp,
+                                    false,
+                                    "",
+                                    msgBtn,
+                                    username
+                                )
+                            )
                             //Inserts our message into the adapter
-                            adapter.insertMessage(Message(response as String, Constants.RCV_ID, timeStamp,false, "",msgBtn, ""))
+                            adapter.insertMessage(
+                                Message(
+                                    response,
+                                    Constants.RCV_ID,
+                                    timeStamp,
+                                    false,
+                                    "",
+                                    msgBtn,
+                                    ""
+                                )
+                            )
 
                             delay(2000)
-                            adapter.insertMessage(Message(response , Constants.RCV_ID, timeStamp,true, "",msgBtn, ""))
+                            adapter.insertMessage(
+                                Message(
+                                    response,
+                                    Constants.RCV_ID,
+                                    timeStamp,
+                                    true,
+                                    "",
+                                    msgBtn,
+                                    ""
+                                )
+                            )
 
                             binding.typingStatus.cancelAnimation()
                             binding.typingStatus.visibility = View.GONE
                             //Scrolls us to the position of the latest message
                             binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
-                        }
-                        else {
+                        } else {
                             var ans: Boolean
                             //Gets the response
                             val res: Any = Bot_replies.basicResponses(message, false)
-                            var response = Bot_replies.basicResponses(message,false)
+                            var response = Bot_replies.basicResponses(message, false)
                             ans = res.toString().contains("12")
-                            if ( ans)
-                            {
+                            if (ans) {
                                 response = res.toString().replace("12", "")
 
-                                islearningstarted=false
+                                islearningstarted = false
                                 process_request(response)
                             }
                             Message(
                                 response as String,
                                 Constants.RCV_ID,
                                 timeStamp,
-                                false, ""
-                                ,msgBtn, username)
+                                false, "", msgBtn, username
+                            )
 
 
                             //Inserts our message into the adapter
-                            adapter.insertMessage(Message(response, Constants.RCV_ID, timeStamp, false, "",msgBtn, username))
+                            adapter.insertMessage(
+                                Message(
+                                    response,
+                                    Constants.RCV_ID,
+                                    timeStamp,
+                                    false,
+                                    "",
+                                    msgBtn,
+                                    username
+                                )
+                            )
 
                             binding.typingStatus.cancelAnimation()
                             binding.typingStatus.visibility = View.GONE
@@ -1310,38 +1404,61 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
                         }
                     }
-                }
-
-                else
-                {
+                } else {
                     if (language == "de") {
 
-                        if (_yo)
-                        {
+                        if (_yo) {
                             //Gets the response
                             val response = Bot_replies_de.basicResponses(message, false)
-                            db!!.insertMessage(Message(response as String, Constants.RCV_ID, timeStamp, false, "",msgBtn,username))
+                            db!!.insertMessage(
+                                Message(
+                                    response as String,
+                                    Constants.RCV_ID,
+                                    timeStamp,
+                                    false,
+                                    "",
+                                    msgBtn,
+                                    username
+                                )
+                            )
                             //Inserts our message into the adapter
-                            adapter.insertMessage(Message(response , Constants.RCV_ID, timeStamp,false, "",msgBtn, username))
+                            adapter.insertMessage(
+                                Message(
+                                    response,
+                                    Constants.RCV_ID,
+                                    timeStamp,
+                                    false,
+                                    "",
+                                    msgBtn,
+                                    username
+                                )
+                            )
 
                             delay(2000)
-                            adapter.insertMessage(Message(response , Constants.RCV_ID, timeStamp,true, "",msgBtn, ""))
+                            adapter.insertMessage(
+                                Message(
+                                    response,
+                                    Constants.RCV_ID,
+                                    timeStamp,
+                                    true,
+                                    "",
+                                    msgBtn,
+                                    ""
+                                )
+                            )
 
                             binding.typingStatus.cancelAnimation()
                             binding.typingStatus.visibility = View.GONE
                             //Scrolls us to the position of the latest message
                             binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
-                        }
-                        else
-                        {
+                        } else {
                             var ans: Boolean
                             //Gets the response
                             val res: Any = Bot_replies_de.basicResponses(message, false)
-                            var response = Bot_replies_de.basicResponses(message,false)
+                            var response = Bot_replies_de.basicResponses(message, false)
                             ans = res.toString().contains("12")
 
-                            if ( ans)
-                            {
+                            if (ans) {
                                 response = res.toString().replace("12", "")
 
                                 process_request(response)
@@ -1360,11 +1477,21 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                                 response as String,
                                 Constants.RCV_ID,
                                 timeStamp,
-                                false, ""
-                                ,msgBtn, username)
+                                false, "", msgBtn, username
+                            )
 
                             //Inserts our message into the adapter
-                            adapter.insertMessage(Message(response , Constants.RCV_ID, timeStamp,false,"",msgBtn, username))
+                            adapter.insertMessage(
+                                Message(
+                                    response,
+                                    Constants.RCV_ID,
+                                    timeStamp,
+                                    false,
+                                    "",
+                                    msgBtn,
+                                    username
+                                )
+                            )
 
                             binding.typingStatus.cancelAnimation()
                             binding.typingStatus.visibility = View.GONE
@@ -1379,31 +1506,57 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                     if (language == "es") {
                         //setbottoGerman()
 
-                        if (_yo)
-                        {
+                        if (_yo) {
                             //Gets the response
                             val response = Bot_replies_es.basicResponses(message, false, "")
-                            db!!.insertMessage(Message(response as String, Constants.RCV_ID, timeStamp, false, "",msgBtn,username))
+                            db!!.insertMessage(
+                                Message(
+                                    response as String,
+                                    Constants.RCV_ID,
+                                    timeStamp,
+                                    false,
+                                    "",
+                                    msgBtn,
+                                    username
+                                )
+                            )
                             //Inserts our message into the adapter
-                            adapter.insertMessage(Message(response , Constants.RCV_ID, timeStamp,false, "",msgBtn, username))
+                            adapter.insertMessage(
+                                Message(
+                                    response,
+                                    Constants.RCV_ID,
+                                    timeStamp,
+                                    false,
+                                    "",
+                                    msgBtn,
+                                    username
+                                )
+                            )
 
                             delay(2000)
-                            adapter.insertMessage(Message(response, Constants.RCV_ID, timeStamp,true, "",msgBtn, username))
+                            adapter.insertMessage(
+                                Message(
+                                    response,
+                                    Constants.RCV_ID,
+                                    timeStamp,
+                                    true,
+                                    "",
+                                    msgBtn,
+                                    username
+                                )
+                            )
 
                             binding.typingStatus.cancelAnimation()
                             binding.typingStatus.visibility = View.GONE
                             //Scrolls us to the position of the latest message
                             binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
-                        }
-                        else
-                        {
+                        } else {
                             var ans: Boolean
                             //Gets the response
                             val res: Any = Bot_replies_es.basicResponses(message, false, "")
                             var response = Bot_replies_es.basicResponses(message, false, "")
                             ans = res.toString().contains("12")
-                            if ( ans)
-                            {
+                            if (ans) {
                                 response = res.toString().replace("12", "")
 
                                 islearningstarted == false
@@ -1423,12 +1576,22 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                                 response as String,
                                 Constants.RCV_ID,
                                 timeStamp,
-                                false, ""
-                                ,msgBtn,"")
+                                false, "", msgBtn, ""
+                            )
                             //   )
 
                             //Inserts our message into the adapter
-                            adapter.insertMessage(Message(response , Constants.RCV_ID, timeStamp,false, "",msgBtn, username))
+                            adapter.insertMessage(
+                                Message(
+                                    response,
+                                    Constants.RCV_ID,
+                                    timeStamp,
+                                    false,
+                                    "",
+                                    msgBtn,
+                                    username
+                                )
+                            )
 
                             binding.typingStatus.cancelAnimation()
                             binding.typingStatus.visibility = View.GONE
@@ -1442,33 +1605,60 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                     }
 
 
-                    if (_yo)
-                    {
+                    if (_yo) {
                         //Gets the response
                         val response = Bot_replies.basicResponses(message, false)
-                        db!!.insertMessage(Message(response as String, Constants.RCV_ID, timeStamp, false, "",msgBtn,username))
+                        db!!.insertMessage(
+                            Message(
+                                response as String,
+                                Constants.RCV_ID,
+                                timeStamp,
+                                false,
+                                "",
+                                msgBtn,
+                                username
+                            )
+                        )
                         //Inserts our message into the adapter
-                        adapter.insertMessage(Message(response as String, Constants.RCV_ID, timeStamp,false, "",msgBtn,username))
+                        adapter.insertMessage(
+                            Message(
+                                response,
+                                Constants.RCV_ID,
+                                timeStamp,
+                                false,
+                                "",
+                                msgBtn,
+                                username
+                            )
+                        )
 
                         delay(2000)
-                        adapter.insertMessage(Message(response , Constants.RCV_ID, timeStamp,true, "",msgBtn, username))
+                        adapter.insertMessage(
+                            Message(
+                                response,
+                                Constants.RCV_ID,
+                                timeStamp,
+                                true,
+                                "",
+                                msgBtn,
+                                username
+                            )
+                        )
 
                         binding.typingStatus.cancelAnimation()
                         binding.typingStatus.visibility = View.GONE
                         //Scrolls us to the position of the latest message
                         binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
-                    }
-                    else {
+                    } else {
                         var ans: Boolean
                         //Gets the response
                         val res: Any = Bot_replies.basicResponses(message, false)
-                        var response = Bot_replies.basicResponses(message,false)
+                        var response = Bot_replies.basicResponses(message, false)
                         ans = res.toString().contains("12")
-                        if ( ans)
-                        {
+                        if (ans) {
                             response = res.toString().replace("12", "")
 
-                            islearningstarted=false
+                            islearningstarted = false
                             process_request(response)
                         }
 
@@ -1478,12 +1668,22 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                             response as String,
                             Constants.RCV_ID,
                             timeStamp,
-                            false, ""
-                            ,msgBtn,username)
+                            false, "", msgBtn, username
+                        )
 
 
                         //Inserts our message into the adapter
-                        adapter.insertMessage(Message(response, Constants.RCV_ID, timeStamp, false, "",msgBtn,username))
+                        adapter.insertMessage(
+                            Message(
+                                response,
+                                Constants.RCV_ID,
+                                timeStamp,
+                                false,
+                                "",
+                                msgBtn,
+                                username
+                            )
+                        )
 
                         binding.typingStatus.cancelAnimation()
                         binding.typingStatus.visibility = View.GONE
@@ -1501,7 +1701,8 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                         if (response.contains("want to study") || response.contains("want to learn")
                             || response.contains("study") || response.contains("möchte lernen")
                             || response.contains("lernen wollen")
-                            || response.contains("kennenlernen möchten") || response.contains("learn")) {
+                            || response.contains("kennenlernen möchten") || response.contains("learn")
+                        ) {
 
                         }
 
@@ -1522,7 +1723,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
         messagesList = db!!.getMessages()
 
-        messagesList.filter { i->i.username == username }
+        messagesList.filter { i -> i.username == username }
 
         // Collections.reverse(messagesList)
         adapter.setMessages(messagesList)
@@ -1533,9 +1734,8 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
     }
 
-    private fun GetuserDetails()
-    {
-        val user= session.getUserDetails()
+    private fun GetuserDetails() {
+        val user = session.getUserDetails()
 
         username = user.get("name").toString()
 

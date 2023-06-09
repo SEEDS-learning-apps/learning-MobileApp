@@ -11,6 +11,16 @@ import com.example.chat_bot.data.QuestItem
 @Dao
 interface SeedsDao {
 
+    // Count functions
+    @Query("SELECT count FROM subject_counts WHERE subject = :subject")
+    suspend fun getCount(subject: String): Int
+
+    @Query("UPDATE subject_counts SET count = count + 1 WHERE subject = :subject")
+    suspend fun incrementCount(subject: String)
+
+    @Query("UPDATE subject_counts SET count = count - 1 WHERE subject = :subject")
+    suspend fun decrementCount(subject: String)
+
     // Alarm functions
     @Insert
     suspend fun insert(alarm: Alarms)

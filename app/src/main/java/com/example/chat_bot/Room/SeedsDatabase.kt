@@ -9,18 +9,21 @@ import com.example.chat_bot.Room.Coverters.ButtonConverter
 import com.example.chat_bot.Room.Coverters.MaterialListConverter
 import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.Entities.Alarms
+import com.example.chat_bot.Room.Entities.SubjectCount
 import com.example.chat_bot.data.QuestItem
 import com.example.chat_bot.data.R_Message
 import com.example.chat_bot.data.User
+
 
 @Database(
     entities = [
         User::class,
         R_Message::class,
         QuestItem::class,
-        Alarms::class
+        Alarms::class,
+        SubjectCount::class
     ],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 @TypeConverters(value = [ButtonConverter::class, MaterialListConverter::class])
@@ -39,6 +42,7 @@ abstract class SeedsDatabase : RoomDatabase() {
                     SeedsDatabase::class.java,
                     "seeds_db"
                 )
+                    .fallbackToDestructiveMigration() // Set destructive migration
                     .build()
                 INSTANCE = instance
                 instance
@@ -46,3 +50,4 @@ abstract class SeedsDatabase : RoomDatabase() {
         }
     }
 }
+
