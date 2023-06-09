@@ -2,7 +2,6 @@ package com.example.chat_bot.networking.Retrofit.Seeds_api.api
 
 import McqsList
 import com.example.chat_bot.Lists.Quest
-import com.example.chat_bot.Activities.activity.OpenEnded
 import com.example.chat_bot.Lists.*
 import com.example.chat_bot.Room.Entities.OnlineUserData
 import com.example.chat_bot.data.*
@@ -32,7 +31,7 @@ interface SEEDSApi {
     ) : Call<Quest>
 
     @POST("openAnswer/create")
-    suspend fun submitOpenEnded(@Body openEnded: OpenEnded): Response<openEndedResponse>
+    suspend fun submitOpenEnded(@Body openEnded: com.example.chat_bot.data.OpenEnded): Response<openEndedResponse>
 
     @GET("grade/get")
      fun getGrades() : Call<gradeList>

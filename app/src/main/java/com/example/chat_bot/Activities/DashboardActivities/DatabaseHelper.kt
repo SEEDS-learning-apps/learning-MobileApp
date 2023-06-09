@@ -39,7 +39,7 @@ class DatabaseHelper(context: Context) :
             "Biology",
             "Physics",
             "Humanities",
-            "Art & Design"
+            "Art and Design"
         )
 
         subjects.forEach { subject ->

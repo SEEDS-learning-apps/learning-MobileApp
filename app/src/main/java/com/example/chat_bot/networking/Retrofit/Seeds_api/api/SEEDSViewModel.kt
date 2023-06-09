@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.chat_bot.Activities.activity.OpenEnded
 import com.example.chat_bot.Lists.*
 import com.example.chat_bot.Room.Entities.OnlineUserData
 import com.example.chat_bot.data.*
@@ -190,7 +189,7 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
         }
     }
 
-    fun submitOpenEnded(openEnded: OpenEnded)
+    fun submitOpenEnded(openEnded: com.example.chat_bot.data.OpenEnded)
     {
         viewModelScope.launch {
             val response : Response<openEndedResponse> = repository.submitOpenEnded(

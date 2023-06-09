@@ -2,7 +2,6 @@ package com.example.chat_bot.networking.Retrofit.Seeds_api.api
 
 
 
-import com.example.chat_bot.Activities.activity.OpenEnded
 import com.example.chat_bot.data.*
 import retrofit2.Response
 
@@ -29,7 +28,7 @@ class SEEDSRepository constructor(private val retrofitService: SEEDSApi) {
         return retrofitService.create_user(user)
     }
 
-    suspend fun submitOpenEnded(openEnded: OpenEnded): Response<openEndedResponse> {
+    suspend fun submitOpenEnded(openEnded: com.example.chat_bot.data.OpenEnded): Response<openEndedResponse> {
         return retrofitService.submitOpenEnded(openEnded)
     }
 

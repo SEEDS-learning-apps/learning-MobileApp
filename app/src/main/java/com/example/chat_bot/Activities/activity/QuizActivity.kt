@@ -18,6 +18,7 @@ import com.example.chat_bot.R
 import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.SeedsDatabase
 import com.example.chat_bot.data.AllQuestion
+import com.example.chat_bot.data.OpenEnded
 import com.example.chat_bot.data.QuestItem
 import com.example.chat_bot.data.Topics
 import com.example.chat_bot.databinding.ActivityQuizBinding
@@ -275,8 +276,21 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
         supportActionBar?.hide()
     }
 
-    override fun submitAnswerCallback(openEnded: com.example.chat_bot.data.OpenEnded) {
-        TODO("Not yet implemented")
+    override fun submitAnswerCallback(openEnded: OpenEnded) {
+
+        Log.d("openzz", openEnded.toString())
+
+        viewModel.op_response.observe(this) {
+
+            if (it.isSuccessful)
+            {
+                Toast.makeText(this, "answerSubmitted", Toast.LENGTH_SHORT).show()
+            }
+            else
+                Toast.makeText(this, "failed", Toast.LENGTH_SHORT).show()
+
+        }
+        viewModel.submitOpenEnded(openEnded)
     }
 
     override fun quizDonez() {

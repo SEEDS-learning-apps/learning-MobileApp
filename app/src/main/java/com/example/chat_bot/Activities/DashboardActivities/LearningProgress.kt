@@ -43,7 +43,7 @@ class LearningProgress : AppCompatActivity() {
                 "Biology",
                 "Physics",
                 "Humanities",
-                "Art & Design"
+                "Art and Design"
             )
 
             val counts = subjects.map { subject ->
