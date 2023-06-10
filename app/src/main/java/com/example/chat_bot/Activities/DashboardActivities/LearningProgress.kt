@@ -126,14 +126,14 @@ class LearningProgress : AppCompatActivity() {
         pie3d.labels().format("{%value}")
         pie3d.labels().fontSize(14) // Set the font size for the labels
         pie3d.labels().fontWeight("bold") // Make the labels bold
-        pie3d.labels().fontColor("#000000") // Set the font color for the labels
+
 
         val pieLabels = pie3d.labels()
         pieLabels.position("outside")
         pieLabels.format("{%Value}")
         pieLabels.fontSize(14) // Set the font size for the labels
         pieLabels.fontWeight("bold") // Make the labels bold
-        pieLabels.fontColor("#000000") // Set the font color for the labels
+
 
         val chartBackground = pie3d.background()
 
@@ -145,11 +145,13 @@ class LearningProgress : AppCompatActivity() {
             pie3d.title().fontColor("#FFFFFF") // Set the title font color to white in dark mode
             pie3d.legend().title().fontColor("#FFFFFF") // Set the legend title font color to white in dark mode
             pie3d.legend().fontColor("#FFFFFF")
+            pie3d.labels().fontColor("#FFFFFF")
         } else {
             chartBackground.fill(arrayOf("#EEF5F6", "#C8D5D7", "#67A8D5")) // Set the gradient colors for light mode
             pie3d.title().fontColor("#000000") // Set the title font color to black in light mode
             pie3d.legend().title().fontColor("#000000") // Set the legend title font color to black in light mode
             pie3d.legend().fontColor("#000000")
+            pie3d.labels().fontColor("#000000")
         }
 
         val legend = pie3d.legend()
@@ -165,6 +167,7 @@ class LearningProgress : AppCompatActivity() {
         legendTitle.align(Align.TOP)
         legendTitle.fontSize(25)
         legendTitle.fontWeight("bold") // Make the legend title bold
+        legendTitle.margin(0, 0, 10, 0)
 
         chartView.setChart(pie3d)
 
