@@ -141,6 +141,7 @@ dependencies {
     implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.2'
 
     //Android chart
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
+
 
 }
