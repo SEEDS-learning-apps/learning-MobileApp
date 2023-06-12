@@ -4,7 +4,6 @@ package com.example.chat_bot.ui
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chat_bot.Activities.HomePage.ExerciseFragment
 import com.example.chat_bot.data.Exercise

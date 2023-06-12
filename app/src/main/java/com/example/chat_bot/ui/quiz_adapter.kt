@@ -13,15 +13,13 @@ import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.chat_bot.Activities.HomePage.ChatFragment
 import com.example.chat_bot.Activities.HomePage.ExerciseFragment
 import com.example.chat_bot.Activities.HomePage.HomeActivity
 import com.example.chat_bot.R
+import com.example.chat_bot.data.AllQuestion
 import com.example.chat_bot.data.Exercise
 import com.example.chat_bot.data.OpenEnded
-import com.example.chat_bot.data.AllQuestion
 import com.example.chat_bot.databinding.*
-import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSViewModel
 import com.example.chat_bot.utils.SessionManager
 import com.example.chat_bot.utils.Time
 
@@ -46,7 +44,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
     var ansList: MutableList<String> = arrayListOf()
     private lateinit var message: String
     var Selected_ansList: MutableList<String> = arrayListOf()
-    lateinit var viewModel: SEEDSViewModel
+
 
     companion object {
         const val VIEW_TYPE_ONE = 1
@@ -63,13 +61,11 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
             val mcq = quiz[position]
 
             haveInto = true
-          //  Toast.makeText(context, (haveInto == true).toString(), Toast.LENGTH_SHORT).show()
 
             holder.binding.introTXT.text = mcq.introduction
 
             val url = mcq.file
-//            if (session.isOnline(context))
-//            {
+
                 if (mcq.file.isNotEmpty() && mcq.file.isNotBlank())
                 {
                     holder.binding.imageView.visibility = View.VISIBLE
@@ -82,11 +78,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                     holder.binding.introURL.text = mcq.link
                     holder.binding.introURL.setOnClickListener {  }
                 }
-            //}
-
-          //  topicName = "topic_name"
-
-            holder.binding.introNXT.setOnClickListener {
+               holder.binding.introNXT.setOnClickListener {
 
                 newIntro(holder, position)
 
@@ -100,10 +92,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
     {
         current_pos++
         iterator++
-
-        Log.d("loggg", current_pos.toString())
-        Log.d("loggg", iterator.toString())
-
 
             setQuiz(iterator, current_pos, az)
     }
@@ -130,8 +118,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
             binding.mcqNegFeedbackTv.text = mcq.negFeedback
 
             clearChecks()
-
-            val url = mcq.file
 
             if (mcq.file.isNotEmpty() && mcq.file.isNotBlank()) {
                 binding.imageView.visibility = View.VISIBLE
@@ -262,7 +248,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
         if (rbGroup.checkedRadioButtonId == -1) {
 
-            // Toast.makeText(context, "please select your answer", Toast.LENGTH_SHORT).show()
             holder.binding.mcqSubmit.isEnabled = false
             rbGroup.clearCheck()
 
@@ -288,7 +273,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         when {
             current_pos == az!!.size -> {
                 holder.binding.mcqSubmit.text = "Finish"
-                //   Toast.makeText(context, "quiz done", Toast.LENGTH_SHORT).show()
 
             }
 
@@ -325,9 +309,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
             }
 
             holder.binding.tfStatememntTV.text = tf.question
-//            holder.binding.tfOptOne.text = "True"
-//            holder.binding.tfOptTwo.text = "False"
-
 
             holder.binding.progressBar.max = max
 
@@ -448,11 +429,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         var rbGroup: RadioGroup = holder.binding.mcqRG
         holder.binding.progressBar.max = max
 
-
-
-        Log.d("loggg", current_pos.toString())
-        Log.d("loggg", iterator.toString())
-
         if (rbGroup.checkedRadioButtonId == -1) {
 
             Toast.makeText(context, "please select your answer", Toast.LENGTH_SHORT).show()
@@ -470,8 +446,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
 
         }
-        else{//Toast.makeText(context, "quiz khtm", Toast.LENGTH_SHORT).show()
-            //fire_alert()
+        else{
             positive_results_alert(az)
         }
 
@@ -479,7 +454,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
             current_pos == az!!.size -> {
 
                 holder.binding.tfSubmit.text = "Finish"
-                //   Toast.makeText(context, "quiz done", Toast.LENGTH_SHORT).show()
 
             }
 
@@ -621,14 +595,10 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
              if (matchingActivity.file.isNotBlank() && matchingActivity.file.isNotEmpty())
             {
-                val url = matchingActivity.file
-
                 holder.binding.imageView.visibility = View.VISIBLE
                 Glide.with(context).load(matchingActivity.file).into(holder.binding.imageView)
             }
 
-
-            // holder.binding.mcqOptFour.text = mcq.mcq_op4
             holder.binding.matchingPosFeedbackTv.text = matchingActivity.posFeedback
             holder.binding.matchingNegFeedbackTv.text = matchingActivity.negFeedback
 
@@ -656,37 +626,28 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
             holder.binding.matchingSubmit.setOnClickListener {
 
-                Log.d("janaa", ansList.toString())
-                Log.d("janaa", Selected_ansList.toString())
                 Selected_ansList
                 if (ansList == Selected_ansList)
                 {
                     correct_answers++
                     holder.binding.matchingNegFeedbackTv.visibility = View.GONE
                     holder.binding.matchingPosFeedbackTv.visibility = View.VISIBLE
-                    Toast.makeText(context, "very well", Toast.LENGTH_SHORT).show()
                 }
 
                 else if (ansList != Selected_ansList)
                 {
                     holder.binding.matchingNegFeedbackTv.visibility = View.VISIBLE
                     holder.binding.matchingPosFeedbackTv.visibility = View.GONE
-                    Toast.makeText(context, "sorry", Toast.LENGTH_SHORT).show()
                 }
 
                 holder.binding.matchingFeedbackCard.visibility = View.VISIBLE
                 holder.binding.matchingSubmit.visibility = View.GONE
                 holder.binding.feebackSubmit.visibility = View.VISIBLE
 
-
                 holder.binding.feebackSubmit.setOnClickListener { newMatching(holder, position)   }
 
 
             }
-
-
-
-
 
         }
 
@@ -703,13 +664,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
             var s_Ans4: String
             var s_Ans5: String
 
-
-
             ansList.toSet().toList()
-
-
-
-            Log.d("wawa", ansList.size.toString())
 
             if (ans1_spinner != null) {
                 val adapter = ArrayAdapter(context, R.layout.ans_dropdwn, ansList)
@@ -723,7 +678,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
                         s_Ans1 = ans1_spinner.text.toString()
                         Selected_ansList.addAll(listOf(s_Ans1))
-                        Log.d("wawa", "Selected ${Selected_ansList.size}")
+                        Log.d("Select answer", "Selected ${Selected_ansList.size}")
 
                         if (ansList.size== Selected_ansList.size)
                         {
@@ -753,7 +708,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                         {
                             binding.matchingSubmit.isEnabled = true
                         }
-                        Log.d("wawa", "Selected ${Selected_ansList.size}")
 
                         adapter.notifyDataSetChanged()
 
@@ -775,7 +729,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                         {
                             binding.matchingSubmit.isEnabled = true
                         }
-                        Log.d("wawa", "Selected ${Selected_ansList.size}")
 
                         adapter.notifyDataSetChanged()
 
@@ -797,9 +750,8 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                         {
                             binding.matchingSubmit.isEnabled = true
                         }
-                        Log.d("wawa", "Selected ${Selected_ansList.size}")
+
                         adapter.notifyDataSetChanged()
-                        //age_setter(age.get(position))
 
                     }
             }
@@ -820,11 +772,8 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                         {
                             binding.matchingSubmit.isEnabled = true
                         }
-                        Log.d("wawa", "Selected ${Selected_ansList.size}")
 
                         adapter.notifyDataSetChanged()
-                        //age_setter(age.get(position))
-
 
                     }
             }
@@ -930,8 +879,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
         val openEnded = OpenEnded(questionid, timeStamp, answer, username.toString(), teacherID)
 
-        Log.d("openz", openEnded.toString())
-        Log.d("openz", answer)
+        Log.d("answer", answer)
 
         jkt.submitAnswerCallback(openEnded)
 
@@ -940,8 +888,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
     private fun newOpenEnded(holder: OpenEndedViewHolder, position: Int)
     {
-
-//        var rbGroup: RadioGroup = holder.binding.mcqRG
         current_pos++
         iterator++
 
@@ -978,8 +924,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
         when {
             current_pos == az!!.size -> {
-                //holder.binding.mcqSubmit.text = "Finish"
-                //   Toast.makeText(context, "quiz done", Toast.LENGTH_SHORT).show()
 
             }
 
@@ -1064,7 +1008,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
         else {
             (holder as IntroViewHolder).bind(position, holder)
-            // Toast.makeText(context, "tf coming", Toast.LENGTH_SHORT).show()
+
         }
     }
 
@@ -1073,7 +1017,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
     }
 
     override fun getItemViewType(position: Int): Int {
-        Log.d("loggg", quiz[position].q_type.toString())
+        Log.d("get quiz item", quiz[position].q_type.toString())
         return quiz[position].q_type
 
     }
@@ -1087,7 +1031,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
     private fun setQuiz(iterator: Int, currentPos: Int, quizlists: ArrayList<AllQuestion>) {
         quiz = quizlists.subList(iterator,currentPos).toMutableList() as ArrayList<AllQuestion>
 
-        Log.d("loggg", quiz.toString())
+        Log.d("Set quiz", quiz.toString())
 
         notifyDataSetChanged()
 
@@ -1100,11 +1044,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
             .create()
         val view = LayoutInflater.from(context).inflate(R.layout.positive_feedback,null)
         val Score = view.findViewById<TextView>(R.id.Results_score_tv)
-
-        //This callback to Rasa will tell student is done with quiz
-
-
-        //topicName
 
         if (haveInto== true)
         {
@@ -1125,14 +1064,9 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
             session.saveObtainedScore(correct_answers.toString())
             session.saveTOtalScore(az.size.toString())
 
-            val chatFragment = ChatFragment()
-
-
-
             message =
                 "done is"
-          //  chatFragment.sendMessagee(message, display = false)
-           // chatFragment.jugnu(message)
+
         }
 
 
@@ -1141,8 +1075,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         builder.setView(view)
         button.setOnClickListener {
 
-
-           // jkt.quizDoneCallback(true)
             builder.dismiss()
 
             val intent = Intent(context, HomeActivity::class.java)
@@ -1155,7 +1087,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         builder.setCanceledOnTouchOutside(false)
         builder.show()
         session.quizDone("done")
-       // jkt.quizDonez()
         adapter.notifyDataSetChanged()
 
 
@@ -1169,19 +1100,17 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
 
     private fun saveScores(correctAnswers: Int, totalQues: Int) {
-        //  if (!exerciseList.isEmpty())
-        // {
+
         exerciseList = session.readListFromPref(this.context) as ArrayList<Exercise>
         // }
         val timeStamp = Time.timeStamp()
 
-       // topicName = session.get_topic()
         exerciseList.add(Exercise(topicName, correctAnswers.toString(), totalQues.toString(), timeStamp))
-        // binding.exRv.adapter = adapter
+
 
         session.writeListInPref(this.context,exerciseList)
 
-        Log.d("veg", exerciseList.size.toString())
+        Log.d("Save score", exerciseList.size.toString())
     }
 
     interface Callbackinter {
