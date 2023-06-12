@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.chat_bot" >
+    package="com.example.chat_bot">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -10,7 +10,6 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
-
     <application
         android:name=".ui.SeedsApplication"
         android:allowBackup="true"
@@ -19,10 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/WhiteMode"
-        android:usesCleartextTraffic="true" >
-
-
-
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".Activities.DashboardActivities.EmptyLearningProgress"
+            android:exported="false" />
         <!-- Notification -->
         <activity android:name=".Activities.activity.CreateNotificationActivity" />
         <activity
@@ -34,16 +33,11 @@
 
         <receiver
             android:name=".Activities.Notification.Activity.Notification_receiver.NotificationReciever"
-            android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
                 <action android:name="com.example.chat_bot.NOTIFICATION_RECEIVED" />
             </intent-filter>
-        </receiver>
-
-
-
-        <!-- Dashboard -->
-
+        </receiver> <!-- Dashboard -->
         <activity
             android:name=".Activities.DashboardActivities.LearningProgress"
             android:exported="false" />
@@ -70,18 +64,12 @@
         <activity
             android:name=".Activities.Welcomepage.Seedsinfo"
             android:exported="true"
-            android:noHistory="true" />
-
-
-        <!-- Login -->
+            android:noHistory="true" /> <!-- Login -->
         <activity
             android:name=".Activities.Welcomepage.Login"
             android:exported="true"
             android:noHistory="true"
-            android:windowSoftInputMode="adjustResize" />
-
-
-        <!-- Register -->
+            android:windowSoftInputMode="adjustResize" /> <!-- Register -->
         <activity
             android:name=".Activities.Welcomepage.Register"
             android:configChanges="locale"
@@ -112,7 +100,6 @@
             android:name=".Activities.activity.Video"
             android:configChanges="orientation|screenSize"
             android:exported="false" />
-
         <activity
             android:name=".Activities.HomePage.HomeActivity"
             android:configChanges="orientation|screenSize"
@@ -120,7 +107,7 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name=".Activities.Welcomepage.Splash"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

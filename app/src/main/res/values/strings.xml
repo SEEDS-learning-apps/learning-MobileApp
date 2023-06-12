@@ -108,7 +108,8 @@
     <string name="Spanish">Spanish</string>
     <string name="English">English</string>
     <string name="Greek">Greek</string>
-
+    <string name="learning_statistics">Learning Statistics</string>
+    <string name="empty_statistics">No Statistical data is available to show try Completing some Activities</string>
 
 
     <string-array name="Languages">

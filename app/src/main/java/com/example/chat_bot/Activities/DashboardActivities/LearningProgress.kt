@@ -17,10 +17,7 @@ import com.anychart.enums.Align
 import com.anychart.enums.LegendLayout
 import com.example.chat_bot.Activities.HomePage.HomeActivity
 import com.example.chat_bot.R
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 class LearningProgress : AppCompatActivity() {
 
@@ -29,17 +26,8 @@ class LearningProgress : AppCompatActivity() {
     private lateinit var animationView2: LottieAnimationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val sharedprefs: SharedPreferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE)
-
-        val switchIsTurnedOn = sharedprefs.getBoolean("DARK MODE", false)
-        if (switchIsTurnedOn) {
-            //if true then change app theme to dark mode
-            layoutInflater.context.setTheme(R.style.DarkMode)
-        } else {
-            layoutInflater.context.setTheme(R.style.WhiteMode)
-        }
-
         super.onCreate(savedInstanceState)
+        applyTheme()
         setContentView(R.layout.dashboard_android_chart)
 
         chartView = findViewById(R.id.chart)
@@ -111,6 +99,12 @@ class LearningProgress : AppCompatActivity() {
         animationSet.start()
     }
 
+    private fun applyTheme() {
+        val sharedPrefs: SharedPreferences = getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val isDarkMode = sharedPrefs.getBoolean("DARK MODE", false)
+        val themeResId = if (isDarkMode) R.style.DarkMode else R.style.WhiteMode
+        setTheme(themeResId)
+    }
 
     private fun updateChart(counts: List<Pair<String, Int>>) {
         val filteredCounts = counts.filter { it.second >= 1 }
@@ -124,32 +118,22 @@ class LearningProgress : AppCompatActivity() {
 
         pie3d.labels().position("outside")
         pie3d.labels().format("{%value}")
-        pie3d.labels().fontSize(14) // Set the font size for the labels
-        pie3d.labels().fontWeight("bold") // Make the labels bold
-
-
-        val pieLabels = pie3d.labels()
-        pieLabels.position("outside")
-        pieLabels.format("{%Value}")
-        pieLabels.fontSize(14) // Set the font size for the labels
-        pieLabels.fontWeight("bold") // Make the labels bold
-
+        pie3d.labels().fontSize(14)
+        pie3d.labels().fontWeight("bold")
 
         val chartBackground = pie3d.background()
-
-        // Check the app theme and set the background accordingly
         val sharedPrefs: SharedPreferences = getSharedPreferences("pref", Context.MODE_PRIVATE)
         val isDarkMode = sharedPrefs.getBoolean("DARK MODE", false)
         if (isDarkMode) {
-            chartBackground.fill(arrayOf("#373737", "#373737", "#283248")) // Set the gradient colors for dark mode
-            pie3d.title().fontColor("#FFFFFF") // Set the title font color to white in dark mode
-            pie3d.legend().title().fontColor("#FFFFFF") // Set the legend title font color to white in dark mode
+            chartBackground.fill(arrayOf("#373737", "#373737", "#283248"))
+            pie3d.title().fontColor("#FFFFFF")
+            pie3d.legend().title().fontColor("#FFFFFF")
             pie3d.legend().fontColor("#FFFFFF")
             pie3d.labels().fontColor("#FFFFFF")
         } else {
-            chartBackground.fill(arrayOf("#EEF5F6", "#C8D5D7", "#67A8D5")) // Set the gradient colors for light mode
-            pie3d.title().fontColor("#000000") // Set the title font color to black in light mode
-            pie3d.legend().title().fontColor("#000000") // Set the legend title font color to black in light mode
+            chartBackground.fill(arrayOf("#EEF5F6", "#C8D5D7", "#67A8D5"))
+            pie3d.title().fontColor("#000000")
+            pie3d.legend().title().fontColor("#000000")
             pie3d.legend().fontColor("#000000")
             pie3d.labels().fontColor("#000000")
         }
@@ -166,7 +150,7 @@ class LearningProgress : AppCompatActivity() {
         legendTitle.text("Learning Statistics")
         legendTitle.align(Align.TOP)
         legendTitle.fontSize(25)
-        legendTitle.fontWeight("bold") // Make the legend title bold
+        legendTitle.fontWeight("bold")
         legendTitle.margin(0, 0, 10, 0)
 
         chartView.setChart(pie3d)
@@ -174,9 +158,6 @@ class LearningProgress : AppCompatActivity() {
         pie3d.animation(true)
         pie3d.animation().duration(1000)
     }
-
-
-
 
     override fun onBackPressed() {
         super.onBackPressed()

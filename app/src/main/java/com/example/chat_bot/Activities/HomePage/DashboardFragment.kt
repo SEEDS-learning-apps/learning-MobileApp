@@ -16,9 +16,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.chat_bot.Activities.DashboardActivities.Help
-import com.example.chat_bot.Activities.DashboardActivities.LearningProgress
-import com.example.chat_bot.Activities.DashboardActivities.downloadQuizActivity
+import com.example.chat_bot.Activities.DashboardActivities.*
 import com.example.chat_bot.R
 import com.example.chat_bot.databinding.FragmentDashboardBinding
 import com.example.chat_bot.utils.SessionManager
@@ -114,12 +112,45 @@ class DashboardFragment : Fragment() {
         }
 
         bind.LearningprogressCardview.setOnClickListener {
-            val intent = Intent(this.context, LearningProgress::class.java).apply {
-                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            val dbHelper = DatabaseHelper(requireContext())
+
+            // Retrieve the counts of all subjects
+            val subjects = listOf(
+                "Business",
+                "Chemistry",
+                "Psychology",
+                "Technology",
+                "Language",
+                "Math",
+                "History",
+                "Biology",
+                "Physics",
+                "Humanities",
+                "Art and Design"
+            )
+
+            val counts = subjects.map { subject ->
+                val count = dbHelper.getCount(subject)
+                count
             }
-            startActivity(intent)
-            activity?.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+
+            if (counts.all { it == 0 }) {
+                // All counts are zero, open a different layout/activity
+                val intent = Intent(requireContext(), EmptyLearningProgress::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                }
+                startActivity(intent)
+                activity?.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            } else {
+                // Counts are not all zero, open the LearningProgress activity
+                val intent = Intent(requireContext(), LearningProgress::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                }
+                startActivity(intent)
+                activity?.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            }
         }
+
 
     }
 
