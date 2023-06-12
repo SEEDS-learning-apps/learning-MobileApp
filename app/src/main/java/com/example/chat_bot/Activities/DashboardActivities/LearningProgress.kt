@@ -9,6 +9,7 @@ import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
@@ -94,7 +95,11 @@ class LearningProgress : AppCompatActivity() {
 
                         // Show the chart after the data is retrieved
                         chartView.visibility = View.VISIBLE
-                        deletebtn.visibility = View.VISIBLE
+
+                        val delayMillis = 500L
+                        Handler().postDelayed({
+                            deleteButton.visibility = View.VISIBLE
+                        }, delayMillis)
                     }
 
                     deleteButton.setOnClickListener {

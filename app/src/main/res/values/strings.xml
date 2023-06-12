@@ -55,6 +55,9 @@
     <string name="accessCodehere" translatable="false">Code here</string>
     <string name="age_drop_down_text">Your age</string>
     <string name="settings_powerd_by" translatable="false">Powered by SEEDS</string>
+    <string name="learning_statistics">Learning Statistics</string>
+    <string name="empty_statistics">No statistical data is available to show try completing some activities</string>
+
 
     //Home Activity
     <string name="press_back">Press back again to exit</string>
@@ -108,8 +111,6 @@
     <string name="Spanish">Spanish</string>
     <string name="English">English</string>
     <string name="Greek">Greek</string>
-    <string name="learning_statistics">Learning Statistics</string>
-    <string name="empty_statistics">No Statistical data is available to show try Completing some Activities</string>
 
 
     <string-array name="Languages">
