@@ -1,26 +1,31 @@
 package com.example.chat_bot.ui
+
+
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chat_bot.Activities.HomePage.ExerciseFragment
 import com.example.chat_bot.data.Exercise
 import com.example.chat_bot.databinding.ExerciseItemBinding
-
+import com.example.chat_bot.utils.SessionManager
 
 
 class ExerciseHistoryAdapter(val context: ExerciseFragment):  RecyclerView.Adapter<ExerciseHistoryAdapter.exViewholder>(){
 
     var exerciseList: ArrayList<Exercise> = ArrayList()
-
+    lateinit var session: SessionManager
 
     inner class exViewholder(val binding: ExerciseItemBinding) : RecyclerView.ViewHolder(binding.root) {
+
         init {
             binding.deleteButton.setOnClickListener {
                 val position = bindingAdapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     exerciseList.removeAt(position)
                     notifyItemRemoved(position)
+                    session.removeListInPref(exerciseList)
                     context.onExerciseDeleted()
                 }
             }
@@ -28,6 +33,7 @@ class ExerciseHistoryAdapter(val context: ExerciseFragment):  RecyclerView.Adapt
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseHistoryAdapter.exViewholder {
+        session = SessionManager(parent.context)
         return exViewholder(
             ExerciseItemBinding.inflate(
                 LayoutInflater.from(parent.context),

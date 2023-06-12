@@ -224,4 +224,11 @@ class SessionManager {
         return gson.fromJson<List<Exercise>>(jsonString, type)
     }
 
+    fun removeListInPref(exerciseList: ArrayList<Exercise>) {
+        val gson = Gson()
+        val jsonString = gson.toJson(exerciseList)
+        val editor = pref.edit()
+        editor.putString(LIST_KEY, jsonString)
+        editor.apply()
+    }
 }

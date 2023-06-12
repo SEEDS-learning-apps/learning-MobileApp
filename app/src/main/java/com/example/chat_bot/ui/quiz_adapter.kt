@@ -43,7 +43,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
     lateinit var session: SessionManager
     lateinit var topicName: String
     val adapter = ExerciseHistoryAdapter(ExerciseFragment())
-    private lateinit var binding: FragmentExerciseBinding
     var ansList: MutableList<String> = arrayListOf()
     private lateinit var message: String
     var Selected_ansList: MutableList<String> = arrayListOf()
@@ -1090,9 +1089,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
         Log.d("loggg", quiz.toString())
 
-
-        //onBindViewHolder()
-        //Toast.makeText(context, "Set quiz called", Toast.LENGTH_SHORT).show()
         notifyDataSetChanged()
 
     }
@@ -1117,9 +1113,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
             var size: Int = az.size
             size -=1
             Score.text = "You got"+" "+ correct_answers.toString() +" "+ "out of" +" " + size
-
-            var totalScore = size.toString()
-            var obtainedScore = correct_answers.toString()
 
             session.saveTOtalScore(size.toString())
             session.saveObtainedScore(correct_answers.toString())
