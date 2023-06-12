@@ -77,4 +77,11 @@ class DatabaseHelper(context: Context) :
         return count
     }
 
+    fun deleteAllEntries(subject: String) {
+        val db = writableDatabase
+        db.delete(TABLE_NAME, null, null)
+        initializeSubjectCounts(db)
+        db.close()
+    }
+
 }

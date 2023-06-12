@@ -5,21 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activities.DashboardActivities.downloadQuizActivity"
+    tools:context=".Activities.DashboardActivities.EmptyLearningProgress"
     android:background="?attr/backgroundcolor">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/Backbutton_learningprogress"
@@ -38,7 +30,7 @@
             android:layout_centerInParent="true"
             android:text="@string/learning_statistics"
             android:textColor="?attr/textcolor"
-            android:textSize="23dp"
+            android:textSize="23sp"
             android:textStyle="bold" />
 
     </RelativeLayout>
@@ -72,4 +64,4 @@
 
         </LinearLayout>
 
-    </RelativeLayout>
+</RelativeLayout>

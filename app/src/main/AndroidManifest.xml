@@ -19,9 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/WhiteMode"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".Activities.DashboardActivities.EmptyLearningProgress"
-            android:exported="false" />
+
+
+
         <!-- Notification -->
         <activity android:name=".Activities.activity.CreateNotificationActivity" />
         <activity
@@ -37,7 +37,14 @@
             <intent-filter>
                 <action android:name="com.example.chat_bot.NOTIFICATION_RECEIVED" />
             </intent-filter>
-        </receiver> <!-- Dashboard -->
+        </receiver>
+
+        <!-- Dashboard -->
+
+        <activity
+            android:name=".Activities.DashboardActivities.EmptyLearningProgress"
+            android:exported="true" />
+
         <activity
             android:name=".Activities.DashboardActivities.LearningProgress"
             android:exported="false" />

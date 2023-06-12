@@ -29,11 +29,47 @@
             app:lottie_rawRes="@raw/word"
             android:layout_gravity="center"
             app:lottie_colorFilter="?attr/textcolor"/>
+
     </LinearLayout>
 
     <com.anychart.AnyChartView
         android:id="@+id/chart"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <!-- Delete Button -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/delete_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:cardCornerRadius="30dp"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:alpha="0.8"
+        android:clickable="true"
+        android:focusable="true"
+        android:contentDescription="Delete"
+        android:onClick="onDeleteButtonClick">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/dashboard_cardview_background"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/profile_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/exercise_delete_btn" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
 
 </FrameLayout>

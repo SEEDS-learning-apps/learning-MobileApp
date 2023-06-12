@@ -24,7 +24,7 @@ class EmptyLearningProgress : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_emptystatistics)
+        setContentView(R.layout.activity_empty_statistics)
 
         val backbtn = findViewById<ImageView>(R.id.Backbutton_learningprogress)
 

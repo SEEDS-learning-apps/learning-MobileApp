@@ -6,9 +6,16 @@ import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import com.airbnb.lottie.LottieAnimationView
 import com.anychart.AnyChart
 import com.anychart.AnyChartView
@@ -33,6 +40,10 @@ class LearningProgress : AppCompatActivity() {
         chartView = findViewById(R.id.chart)
         chartView.visibility = View.INVISIBLE
 
+
+        val deletebtn = findViewById<CardView>(R.id.delete_button)
+        deletebtn.visibility = View.INVISIBLE
+
         animationView1 = findViewById(R.id.animation_view1)
         animationView2 = findViewById(R.id.animation_view2)
 
@@ -47,6 +58,9 @@ class LearningProgress : AppCompatActivity() {
 
         animationView1.playAnimation()
         animationView2.playAnimation()
+
+        val deleteButton = findViewById<CardView>(R.id.delete_button)
+
 
         // Wait for the animations to finish
         animationView2.addAnimatorListener(object : Animator.AnimatorListener {
@@ -80,6 +94,11 @@ class LearningProgress : AppCompatActivity() {
 
                         // Show the chart after the data is retrieved
                         chartView.visibility = View.VISIBLE
+                        deletebtn.visibility = View.VISIBLE
+                    }
+
+                    deleteButton.setOnClickListener {
+                        onDeleteButtonClick()
                     }
                 }
             }
@@ -99,6 +118,49 @@ class LearningProgress : AppCompatActivity() {
         animationSet.start()
     }
 
+    private fun onDeleteButtonClick() {
+        val context = this@LearningProgress
+
+        // Show a confirmation dialog before deleting
+        AlertDialog.Builder(context)
+            .setTitle("Delete Entries")
+            .setMessage("Are you sure you want to delete all entries?")
+            .setPositiveButton("Delete") { _, _ ->
+                // Launch a coroutine to delete all entries
+                GlobalScope.launch(Dispatchers.IO) {
+                    val dbHelper = DatabaseHelper(context)
+                    val subjects = listOf(
+                        "Business",
+                        "Chemistry",
+                        "Psychology",
+                        "Technology",
+                        "Language",
+                        "Math",
+                        "History",
+                        "Biology",
+                        "Physics",
+                        "Humanities",
+                        "Art and Design"
+                    )
+
+                    // Delete all entries for each subject
+                    subjects.forEach { subject ->
+                        dbHelper.deleteAllEntries(subject)
+                    }
+
+                    withContext(Dispatchers.Main) {
+                        // Start the EmptyActivity
+                        val intent = Intent(context, EmptyLearningProgress::class.java)
+                        startActivity(intent)
+                    }
+                }
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+
+
     private fun applyTheme() {
         val sharedPrefs: SharedPreferences = getSharedPreferences("pref", Context.MODE_PRIVATE)
         val isDarkMode = sharedPrefs.getBoolean("DARK MODE", false)
@@ -109,55 +171,60 @@ class LearningProgress : AppCompatActivity() {
     private fun updateChart(counts: List<Pair<String, Int>>) {
         val filteredCounts = counts.filter { it.second >= 1 }
 
-        val dataEntries = filteredCounts.map { (subject, count) ->
-            ValueDataEntry(subject, count.toDouble())
-        }
+        if (filteredCounts.isNotEmpty()) {
+            val dataEntries = filteredCounts.map { (subject, count) ->
+                ValueDataEntry(subject, count.toDouble())
+            }
 
-        val pie3d = AnyChart.pie3d()
-        pie3d.data(dataEntries)
+            val pie3d = AnyChart.pie3d()
+            pie3d.data(dataEntries)
 
-        pie3d.labels().position("outside")
-        pie3d.labels().format("{%value}")
-        pie3d.labels().fontSize(14)
-        pie3d.labels().fontWeight("bold")
+            pie3d.labels().position("outside")
+            pie3d.labels().format("{%value}")
+            pie3d.labels().fontSize(14)
+            pie3d.labels().fontWeight("bold")
 
-        val chartBackground = pie3d.background()
-        val sharedPrefs: SharedPreferences = getSharedPreferences("pref", Context.MODE_PRIVATE)
-        val isDarkMode = sharedPrefs.getBoolean("DARK MODE", false)
-        if (isDarkMode) {
-            chartBackground.fill(arrayOf("#373737", "#373737", "#283248"))
-            pie3d.title().fontColor("#FFFFFF")
-            pie3d.legend().title().fontColor("#FFFFFF")
-            pie3d.legend().fontColor("#FFFFFF")
-            pie3d.labels().fontColor("#FFFFFF")
+            val chartBackground = pie3d.background()
+            val sharedPrefs: SharedPreferences = getSharedPreferences("pref", Context.MODE_PRIVATE)
+            val isDarkMode = sharedPrefs.getBoolean("DARK MODE", false)
+            if (isDarkMode) {
+                chartBackground.fill(arrayOf("#373737", "#373737", "#283248"))
+                pie3d.title().fontColor("#FFFFFF")
+                pie3d.legend().title().fontColor("#FFFFFF")
+                pie3d.legend().fontColor("#FFFFFF")
+                pie3d.labels().fontColor("#FFFFFF")
+            } else {
+                chartBackground.fill(arrayOf("#EEF5F6", "#C8D5D7", "#67A8D5"))
+                pie3d.title().fontColor("#000000")
+                pie3d.legend().title().fontColor("#000000")
+                pie3d.legend().fontColor("#000000")
+                pie3d.labels().fontColor("#000000")
+            }
+
+            val legend = pie3d.legend()
+            legend.position("centre-bottom")
+            legend.itemsLayout(LegendLayout.HORIZONTAL)
+            legend.align(Align.CENTER)
+            legend.fontSize(10)
+            legend.margin(0, 0, 0, 10)
+
+            val legendTitle = legend.title()
+            legendTitle.enabled(true)
+            legendTitle.text("Learning Statistics")
+            legendTitle.align(Align.TOP)
+            legendTitle.fontSize(25)
+            legendTitle.fontWeight("bold")
+
+            chartView.setChart(pie3d)
+            chartView.visibility = View.VISIBLE
         } else {
-            chartBackground.fill(arrayOf("#EEF5F6", "#C8D5D7", "#67A8D5"))
-            pie3d.title().fontColor("#000000")
-            pie3d.legend().title().fontColor("#000000")
-            pie3d.legend().fontColor("#000000")
-            pie3d.labels().fontColor("#000000")
+            chartView.setChart(null)
+            chartView.visibility = View.GONE
         }
-
-        val legend = pie3d.legend()
-        legend.position("centre-bottom")
-        legend.itemsLayout(LegendLayout.HORIZONTAL)
-        legend.align(Align.CENTER)
-        legend.fontSize(10)
-        legend.margin(0, 0, 0, 10)
-
-        val legendTitle = legend.title()
-        legendTitle.enabled(true)
-        legendTitle.text("Learning Statistics")
-        legendTitle.align(Align.TOP)
-        legendTitle.fontSize(25)
-        legendTitle.fontWeight("bold")
-        legendTitle.margin(0, 0, 10, 0)
-
-        chartView.setChart(pie3d)
-
-        pie3d.animation(true)
-        pie3d.animation().duration(1000)
     }
+
+
+
 
     override fun onBackPressed() {
         super.onBackPressed()
