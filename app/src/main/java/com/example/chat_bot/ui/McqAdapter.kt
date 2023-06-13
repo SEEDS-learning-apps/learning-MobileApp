@@ -162,7 +162,6 @@ class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqVie
 
         if (rbGroup.checkedRadioButtonId == -1) {
 
-            Toast.makeText(context, "please select your answer", Toast.LENGTH_SHORT).show()
             holder.binding.mcqSubmit.isEnabled = false
             rbGroup.clearCheck()
 
@@ -208,28 +207,6 @@ class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqVie
             }
 
     }
-    }
-
-    private fun fire_alert() {
-        val dialogBuilder = AlertDialog.Builder(context)
-
-        // set message of alert dialog
-        dialogBuilder.setMessage("Results")
-            // if the dialog is cancelable
-            .setCancelable(false)
-            // positive button text and action
-            .setPositiveButton("return to chat", DialogInterface.OnClickListener {
-                    dialog, id -> val intent = Intent(context,HomeActivity::class.java)
-                   context.startActivity(intent)
-            })
-
-
-        // create dialog box
-        val alert = dialogBuilder.create()
-        // set title for alert dialog box
-        alert.setTitle("Results")
-        // show alert dialog
-        alert.show()
     }
 
     fun positive_results_alert(az: ArrayList<Mcqs>)

@@ -466,7 +466,9 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         fun bind(position: Int, holder: MatchViewHolder) {
             val matchingActivity = quiz[position]
 
-
+            binding.matchingSubmit.setBackgroundColor(
+                ContextCompat.getColor(context, R.color.Activity_next_btn)
+            )
 
             if (ansList.size>0)
             {
@@ -510,9 +512,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                     holder.binding.st2TXT.text = matchingActivity.statement2
                     holder.binding.st3TXT.text = matchingActivity.statement3
                     holder.binding.st4TXT.text = matchingActivity.statement4
-
-
-                   // holder.binding.ans5.visibility = View.GONE
                     holder.binding.st5.visibility = View.GONE
                 }
             }
@@ -528,17 +527,10 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                 {
 
                     holder.binding.activyText.text = matchingActivity.question
-//                    holder.binding.ans1TXT.text = matchingActivity.answer1
-//                    holder.binding.ans2TXT.text = matchingActivity.answer2
-//                    holder.binding.ans3TXT.text = matchingActivity.answer3
-
                     holder.binding.st1TXT.text = matchingActivity.statement1
                     holder.binding.st2TXT.text = matchingActivity.statement2
                     holder.binding.st3TXT.text = matchingActivity.statement3
-
-//                    holder.binding.ans4.visibility = View.GONE
                     holder.binding.st4.visibility = View.GONE
-//                    holder.binding.ans5.visibility = View.GONE
                     holder.binding.st5.visibility = View.GONE
 
                 }
@@ -553,18 +545,10 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                  if(ansList.size == 2)
                  {
                     holder.binding.activyText.text = matchingActivity.question
-//                    holder.binding.ans1TXT.text = matchingActivity.answer1
-//                    holder.binding.ans2TXT.text = matchingActivity.answer2
-
                     holder.binding.st1TXT.text = matchingActivity.statement1
                     holder.binding.st2TXT.text = matchingActivity.statement2
-
-
-//                    holder.binding.ans3.visibility = View.GONE
                     holder.binding.st3.visibility = View.GONE
-//                    holder.binding.ans4.visibility = View.GONE
                     holder.binding.st4.visibility = View.GONE
-//                    holder.binding.ans5.visibility = View.GONE
                     holder.binding.st5.visibility = View.GONE
                  }
             }
@@ -578,17 +562,10 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                 if (ansList.size == 1)
                 {
                     holder.binding.activyText.text = matchingActivity.question
-//                    holder.binding.ans1TXT.text = matchingActivity.answer1
-
                     holder.binding.st1TXT.text = matchingActivity.statement1
-
-//                    holder.binding.ans2.visibility = View.GONE
                     holder.binding.st2.visibility = View.GONE
-//                    holder.binding.ans3.visibility = View.GONE
                     holder.binding.st3.visibility = View.GONE
-//                    holder.binding.ans4.visibility = View.GONE
                     holder.binding.st4.visibility = View.GONE
-//                    holder.binding.ans5.visibility = View.GONE
                     holder.binding.st5.visibility = View.GONE
                 }
             }
@@ -618,7 +595,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
             holder.binding.progressBar.max = max
             holder.binding.matchingSubmit.isEnabled = false
-
 
             setAnsSpinner(ansList, binding)
 
@@ -683,9 +659,10 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                         if (ansList.size== Selected_ansList.size)
                         {
                             binding.matchingSubmit.isEnabled = true
+                            binding.matchingSubmit.setBackgroundColor(
+                                ContextCompat.getColor(context, R.color.colorPrimaryblue)
+                            )
                         }
-                        Toast.makeText(context, ans1_spinner.text, Toast.LENGTH_SHORT).show()
-
 
                         adapter.notifyDataSetChanged()
 
@@ -707,6 +684,9 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                         if (ansList.size== Selected_ansList.size)
                         {
                             binding.matchingSubmit.isEnabled = true
+                            binding.matchingSubmit.setBackgroundColor(
+                                ContextCompat.getColor(context, R.color.colorPrimaryblue)
+                            )
                         }
 
                         adapter.notifyDataSetChanged()
@@ -728,6 +708,9 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                         if (ansList.size== Selected_ansList.size)
                         {
                             binding.matchingSubmit.isEnabled = true
+                            binding.matchingSubmit.setBackgroundColor(
+                                ContextCompat.getColor(context, R.color.colorPrimaryblue)
+                            )
                         }
 
                         adapter.notifyDataSetChanged()
@@ -749,6 +732,9 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                         if (ansList.size== Selected_ansList.size)
                         {
                             binding.matchingSubmit.isEnabled = true
+                            binding.matchingSubmit.setBackgroundColor(
+                                ContextCompat.getColor(context, R.color.colorPrimaryblue)
+                            )
                         }
 
                         adapter.notifyDataSetChanged()
@@ -771,6 +757,9 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                         if (ansList.size== Selected_ansList.size)
                         {
                             binding.matchingSubmit.isEnabled = true
+                            binding.matchingSubmit.setBackgroundColor(
+                                ContextCompat.getColor(context, R.color.colorPrimaryblue)
+                            )
                         }
 
                         adapter.notifyDataSetChanged()
@@ -816,11 +805,10 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
 
         }
-//
+
         when {
             current_pos == az!!.size -> {
                 holder.binding.matchingSubmit.text = "Finish"
-                   Toast.makeText(context, "quiz done", Toast.LENGTH_SHORT).show()
 
             }
 
@@ -853,7 +841,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
             }
 
             holder.binding.progressBar.max = max
-
 
             holder.binding.btnopenEndedsubmit.setOnClickListener {
                 val answer = holder.binding.opAnsV.text.toString()
