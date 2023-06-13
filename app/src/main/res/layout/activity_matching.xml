@@ -30,6 +30,7 @@
             android:paddingLeft="2dp"
             android:paddingTop="5dp"
             android:paddingRight="2dp"
+            android:textColor="?attr/textcolor"
             android:text="@string/activity1_instructions"
             app:layout_constraintTop_toBottomOf="@+id/activy_heading" />
 
@@ -50,6 +51,7 @@
                 android:layout_weight="1"
                 android:indeterminate="false"
                 android:minHeight="50dp"
+                android:backgroundTint="@color/progressBarColor"
                 android:progress="0" />
 
             <TextView
@@ -59,6 +61,7 @@
                 android:gravity="center"
                 android:padding="15dp"
                 android:textColorHint="#7A8089"
+                android:textColor="?attr/textcolor"
                 android:textSize="14sp"
                 tools:text="0/10" />
 
@@ -124,7 +127,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1:"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textColor="?attr/textcolor"/>
 
 
                     <TextView
@@ -132,11 +136,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Stop thinking that your way is the only way. It is just a different way. "
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textColor="?attr/textcolor"/>
                 </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    style="@style/MatchingInputLayoutStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -149,7 +154,8 @@
                         android:layout_weight="1"
                         android:inputType="none"
                         android:padding="2dp"
-                        android:text="@string/Choose_an_answer" />
+                        android:text="@string/Choose_an_answer"
+                        android:textColor="?attr/textcolor"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -173,18 +179,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2:"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textColor="?attr/textcolor"/>
 
                     <TextView
                         android:id="@+id/st2TXT"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Move beyond stereotypes. Separate description from interpretation and evaluation."
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textColor="?attr/textcolor"/>
                 </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    style="@style/MatchingInputLayoutStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -197,7 +205,8 @@
                         android:layout_weight="1"
                         android:inputType="none"
                         android:padding="2dp"
-                        android:text="@string/Choose_an_answer" />
+                        android:text="@string/Choose_an_answer"
+                        android:textColor="?attr/textcolor"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -221,18 +230,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3:"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textColor="?attr/textcolor"/>
 
                     <TextView
                         android:id="@+id/st3TXT"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="?attr/textcolor"
                         android:text="Move beyond stereotypes. Separate description from interpretation and evaluation." />
 
                 </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    style="@style/MatchingInputLayoutStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -245,7 +256,8 @@
                         android:layout_weight="1"
                         android:inputType="none"
                         android:padding="2dp"
-                        android:text="@string/Choose_an_answer" />
+                        android:text="@string/Choose_an_answer"
+                        android:textColor="?attr/textcolor"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -270,18 +282,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4:"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textColor="?attr/textcolor"/>
 
                     <TextView
                         android:id="@+id/st4TXT"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="?attr/textcolor"
                         android:text="Look at the individual in context. Consider culture, circumstance and character. " />
 
                 </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    style="@style/MatchingInputLayoutStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -294,7 +308,8 @@
                         android:layout_weight="1"
                         android:inputType="none"
                         android:padding="2dp"
-                        android:text="@string/Choose_an_answer" />
+                        android:text="@string/Choose_an_answer"
+                        android:textColor="?attr/textcolor"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -318,18 +333,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="5:"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textColor="?attr/textcolor"/>
 
                     <TextView
                         android:id="@+id/st5TXT"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="?attr/textcolor"
                         android:text="Look at the individual in context. Consider culture, circumstance and character. " />
 
                 </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    style="@style/MatchingInputLayoutStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -342,7 +359,8 @@
                         android:layout_weight="1"
                         android:inputType="none"
                         android:padding="2dp"
-                        android:text="@string/Choose_an_answer" />
+                        android:text="@string/Choose_an_answer"
+                        android:textColor="?attr/textcolor"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
