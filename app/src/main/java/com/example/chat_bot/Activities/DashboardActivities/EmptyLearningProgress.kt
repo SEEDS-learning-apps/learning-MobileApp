@@ -41,6 +41,7 @@ class EmptyLearningProgress : AppCompatActivity() {
         val intent = Intent(this, HomeActivity::class.java)
         intent.putExtra("FRAGMENT_TO_SHOW", 2)
         startActivity(intent)
+        finish()
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 }
