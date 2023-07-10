@@ -3,7 +3,6 @@ package com.example.chat_bot.ui
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import android.util.Log
@@ -14,11 +13,10 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chat_bot.Activities.HomePage.HomeActivity
-import com.example.chat_bot.Activities.activity.TruefalseActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.data.Data
-import com.example.chat_bot.databinding.McqItemBinding
 import com.example.chat_bot.data.Mcqs
+import com.example.chat_bot.databinding.McqItemBinding
 
 
 class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqViewholder>() {
@@ -142,7 +140,6 @@ class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqVie
             holder.binding.feebackSubmit.visibility = View.VISIBLE
 
             holder.binding.feebackSubmit.setOnClickListener {
-                new(holder, position)
                 holder.binding.mcqFeedbackCard.visibility = View.GONE
                 holder.binding.feebackSubmit.visibility = View.GONE
                 holder.binding.mcqSubmit.visibility = View.VISIBLE
@@ -152,62 +149,6 @@ class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqVie
 
     }
 
-    private fun new(holder: mcqViewholder, position: Int)
-    {
-        var rbGroup: RadioGroup = holder.binding.mcqRG
-        holder.binding.progressBar.progress = current_pos
-        holder.binding.tvProgress.text = "$current_pos" + "/" + holder.binding.progressBar.max
-        current_pos++
-        iterator++
-
-        if (rbGroup.checkedRadioButtonId == -1) {
-
-            holder.binding.mcqSubmit.isEnabled = false
-            rbGroup.clearCheck()
-
-        }
-        else
-            holder.binding.mcqSubmit.isEnabled = true
-
-
-
-        if(current_pos <= az!!.size)
-        {
-
-            setMcqs(iterator, current_pos, az)
-
-
-        }
-        else{
-
-                if (haveTFS)
-                {
-
-                    val intent = Intent(context, TruefalseActivity::class.java).apply {
-
-                        // putExtra("filtered_topics", filterd_topics)
-                        putExtra("filtered_trufalses", filterd_trufalses)
-                        putExtra("scores", correct_answers)
-                        // putExtra("total_mcqs", az.size)
-                    }
-                    context.startActivity(intent)
-
-                }
-            else{
-                    positive_results_alert(az)
-            }
-
-        }
-
-        when {
-            current_pos == az!!.size -> {
-                holder.binding.mcqSubmit.text = "Finish"
-             //   Toast.makeText(context, "quiz done", Toast.LENGTH_SHORT).show()
-
-            }
-
-    }
-    }
 
     fun positive_results_alert(az: ArrayList<Mcqs>)
     {

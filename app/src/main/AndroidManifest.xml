@@ -85,31 +85,13 @@
             android:configChanges="locale"
             android:noHistory="true"
             android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".Activities.activity.OpenEnded"
-            android:configChanges="orientation|screenSize"
-            android:exported="false" />
+
         <activity
             android:name=".Activities.activity.QuizActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
-        <activity
-            android:name=".Activities.activity.TruefalseActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.activity.Pic_mataching"
-            android:configChanges="orientation|screenSize"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.activity.MatchingActivity"
-            android:configChanges="orientation|screenSize"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.activity.Video"
-            android:configChanges="orientation|screenSize"
-            android:exported="false" />
+
         <activity
             android:name=".Activities.HomePage.HomeActivity"
             android:configChanges="orientation|screenSize"
@@ -124,9 +106,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Activities.activity.Mcqs_activity"
-            android:exported="true" />
         <activity
             android:name=".Activities.HomePage.MainActivity"
             android:exported="true"
