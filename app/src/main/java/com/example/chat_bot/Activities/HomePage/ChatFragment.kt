@@ -318,10 +318,10 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
         if (topic_namez != "null") {
             Log.d("topic_namez", topic_namez)
-            Log.d("topic_namez", session.getObtainedScore())
-            Log.d("topic_namez", session.getTOtalScore())
+            Log.d("topic_obtainedscore", session.getObtainedScore())
+            Log.d("topic_TotalScore", session.getTotalScore())
             val obtained_score = session.getObtainedScore()
-            val total_score = session.getTOtalScore()
+            val total_score = session.getTotalScore()
 
             val scores =
                 "/activity_done{\"score1\":${obtained_score}, \"score2\":${total_score}, \"topic_id\":\"${session.get_topicID()}\", \"topic_completed\":\"${session.get_topic()}\"}"
@@ -333,7 +333,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             returnedFromquiz = true
              Toast.makeText(context as Activity, scores.toString(), Toast.LENGTH_SHORT).show()
 
-            Log.d("topic_namez", session.get_subject())
+            Log.d("topic_name", session.get_subject())
 
 
             filterd_topics.clear()
@@ -352,18 +352,18 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         if (topic_namez != "null") {
             Log.d("topic_namez", topic_namez)
             Log.d("topic_namez", session.getObtainedScore())
-            Log.d("topic_namez", session.getTOtalScore())
+            Log.d("topic_namez", session.getTotalScore())
             val obtained_score = session.getObtainedScore()
-            val total_score = session.getTOtalScore()
+            val total_score = session.getTotalScore()
 
             val scores =
                 "/activity_done{\"score1\":${obtained_score}, \"score2\":${total_score}, \"topic_id\":\"${session.get_topicID()}\", \"topic_completed\":\"${session.get_topic()}\"}"
             returnedFromquiz = true
 
-            Log.d("topic_namez", scores)
-            Log.d("topic_namezZ", msgBtn.size.toString())
+            Log.d("topic_scores", scores)
+            Log.d("topic_msg", msgBtn.size.toString())
 
-            Log.d("topic_namez", session.get_subject())
+            Log.d("topic_name", session.get_subject())
 
             val dbHelper = DatabaseHelper(context as Activity)
             val subject = session.get_subject()

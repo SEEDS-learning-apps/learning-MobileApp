@@ -8,6 +8,7 @@ import android.os.Looper
 import android.view.View
 import com.example.chat_bot.databinding.ActivityVideoBinding
 
+
 class Video : AppCompatActivity() {
 
     private lateinit var binding: ActivityVideoBinding

@@ -186,9 +186,9 @@ class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqVie
                     val intent = Intent(context, TruefalseActivity::class.java).apply {
 
                         // putExtra("filtered_topics", filterd_topics)
-                        putExtra("filterd_trufalses", filterd_trufalses)
+                        putExtra("filtered_trufalses", filterd_trufalses)
                         putExtra("scores", correct_answers)
-                        putExtra("total_mcqs", az.size)
+                        // putExtra("total_mcqs", az.size)
                     }
                     context.startActivity(intent)
 
@@ -222,6 +222,7 @@ class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqVie
             val intent = Intent(context,HomeActivity::class.java)
             context.startActivity(intent)
             (context as Activity).finish()
+            Log.i("Results btn clicked", intent.toString())
 
         }
         builder.setCanceledOnTouchOutside(false)

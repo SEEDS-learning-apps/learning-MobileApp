@@ -118,13 +118,13 @@ class SessionManager {
         return pref.getString(KEY_subject, subject).toString().also { subject = it }
     }
 
-   fun saveTOtalScore(t_score: String)
+   fun saveTotalScore(t_score: String)
     {
         editor.putString(KEY_TotalScore, t_score)
         editor.commit()
     }
 
-    fun getTOtalScore(): String {
+    fun getTotalScore(): String {
 
         var t_score: String = ""
         return pref.getString(KEY_TotalScore, t_score).toString().also { t_score = it }
@@ -214,7 +214,6 @@ class SessionManager {
         editor.putString(LIST_KEY, jsonString)
         editor.apply()
     }
-
 
     fun readListFromPref(context: Context?): List<Exercise?> {
         val emptyList = Gson().toJson(ArrayList<Exercise>())

@@ -26,7 +26,8 @@
         <activity android:name=".Activities.activity.CreateNotificationActivity" />
         <activity
             android:name=".Activities.activity.Notification_MainActivity"
-            android:exported="true" />
+            android:exported="true"
+            />
         <activity
             android:name=".Activities.Notification.Activity.NotificationManager"
             android:exported="true" />
@@ -43,11 +44,13 @@
 
         <activity
             android:name=".Activities.DashboardActivities.EmptyLearningProgress"
-            android:exported="true" />
+            android:exported="true"
+            android:noHistory="true"/>
 
         <activity
             android:name=".Activities.DashboardActivities.LearningProgress"
-            android:exported="false" />
+            android:exported="true"
+            android:noHistory="true"/>
         <activity
             android:name=".Activities.DashboardActivities.Settings"
             android:exported="false"

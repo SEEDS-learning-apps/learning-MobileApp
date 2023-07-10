@@ -31,7 +31,6 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
     val myresponse: MutableLiveData<Response<LoginData>> = MutableLiveData()
     val op_response: MutableLiveData<Response<openEndedResponse>> = MutableLiveData()
 
-
      fun getAllMcqs() {
 
          viewModelScope.launch {
