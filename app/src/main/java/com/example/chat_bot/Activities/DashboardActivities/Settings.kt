@@ -12,7 +12,7 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.chat_bot.Activities.HomePage.HomeActivity
+import com.example.chat_bot.Activities.HomePage.MainActivity
 import com.example.chat_bot.Activities.activity.Notification_MainActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.Room.Dao.SeedsDao
@@ -227,7 +227,7 @@ class Settings : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        val intent = Intent(this, HomeActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         intent.putExtra("FRAGMENT_TO_SHOW", 2) // Replace 2 with the index of the desired fragment to show
         startActivity(intent)
         finish()

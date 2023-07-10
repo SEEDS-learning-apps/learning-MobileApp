@@ -1,142 +1,91 @@
 package com.example.chat_bot.Activities.HomePage
 
-
-import android.content.Intent
+import android.content.Context
+import android.content.SharedPreferences
+import android.content.res.Resources
 import android.os.Bundle
-import android.provider.AlarmClock.EXTRA_MESSAGE
-import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.chat_bot.Activities.activity.QuizActivity
-import com.example.chat_bot.data.Message
-import com.example.chat_bot.data.Topics
-import com.example.chat_bot.data.msgAdapter
+import androidx.viewpager2.widget.ViewPager2
+import com.example.chat_bot.R
 import com.example.chat_bot.databinding.ActivityMainBinding
-import com.example.chat_bot.utils.Bot_replies
-import com.example.chat_bot.utils.Constants
-import com.example.chat_bot.utils.Constants.LEARN
-import com.example.chat_bot.utils.Constants.RCV_ID
-import com.example.chat_bot.utils.Time.timeStamp
-import kotlinx.coroutines.*
+import com.example.chat_bot.utils.SessionManager
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
-class MainActivity : AppCompatActivity(), msgAdapter.Callbackinter{
 
-    private lateinit var adapter: msgAdapter
-    private val TAG = "MyActivity"
+class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
-    var msgBtn: List<com.example.chat_bot.Rasa.rasaMsg.Button> = arrayListOf()
+    private lateinit var tabLayout: TabLayout
+    private lateinit var viewPager2: ViewPager2
+    private lateinit var session: SessionManager
+    private var backPressedTime: Long = 0
+    private var backToast: Toast? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(android.R.style.Theme_Light_NoTitleBar_Fullscreen)
+        val sharedprefs: SharedPreferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val switchIsTurnedOn = sharedprefs.getBoolean("DARK MODE", false)
+        if (switchIsTurnedOn) {
+            //if true then change app theme to dark mode
+            layoutInflater.context.setTheme(R.style.DarkMode)
+        } else {
+            layoutInflater.context.setTheme(R.style.WhiteMode)
+        }
         super.onCreate(savedInstanceState)
+
+        session = SessionManager(this)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
 
-        recyclerView()
-        clickEvents()
-        customMsg("Hello, Seeds Asssitant here!!, How may i help you?")
+        tabLayout = binding.tabslayout
+        viewPager2 = binding.viewpager
+        viewPager2.adapter = PagerAdapter(this)
 
-        Log.v(TAG, "In main")
+        TabLayoutMediator(tabLayout, viewPager2) { tab, index ->
+            tab.text = when (index) {
+                0 -> "Chat"
+                1 -> applicationContext.resources.getString(R.string.mainpage_ex_heading)
+                2 -> applicationContext.resources.getString(R.string.mainpage_Dashboard_heading)
+                else -> throw Resources.NotFoundException("Position Not Found!!")
+            }
+        }.attach()
+
+        val fragmentIndex = intent.getIntExtra("FRAGMENT_TO_SHOW", -1)
+        if (fragmentIndex >= 0) {
+            // Show the desired fragment
+            viewPager2.setCurrentItem(fragmentIndex, false)
+        }
+
     }
 
-    override fun onStart() {
-        super.onStart()
-        //In case there are messages, scroll to bottom when re-opening app
-        GlobalScope.launch {
-            delay(100)
-            withContext(Dispatchers.Main) {
-                binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
+    override fun onBackPressed() {
+        if (viewPager2.currentItem == 0) {
+            if (backPressedTime + 2000 > System.currentTimeMillis()) {
+                backToast?.cancel()
+                finish()
+                super.onBackPressed()
+                return
+            } else {
+                backToast = Toast.makeText(baseContext, getString(R.string.press_back), Toast.LENGTH_SHORT)
+                backToast?.show()
             }
-        }
-    }
-
-    private fun customMsg(message: String) {
-
-            GlobalScope.launch {
-                delay(1000)
-                withContext(Dispatchers.Main) {
-                    val timeStamp = timeStamp()
-                    adapter.insertMessage(Message(message, RCV_ID, timeStamp, false,"", msgBtn,""))
-                    binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
-                }
-            }
+            backPressedTime = System.currentTimeMillis()
+        } else {
+            viewPager2.setCurrentItem(0, true)
 
         }
 
-        private fun recyclerView() {
-
-            adapter = msgAdapter(this, this.applicationContext)
-            binding.rvMessages.adapter = adapter
-            binding.rvMessages.layoutManager = LinearLayoutManager(applicationContext)
-            Log.v(TAG, "ReCYCLE")
-        }
-
-        private fun clickEvents() {
-            //Send a message
-            binding.btnSend.setOnClickListener {
-                sendMessage()
-            }
-            binding.etMessage.setOnClickListener {
-                GlobalScope.launch {
-                    delay(100)
-                    withContext(Dispatchers.Main) {
-                        binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
-
-                    }
-                }
-            }
-        }
-
-        private fun sendMessage() {
-            val message = binding.etMessage.text.toString()
-            val timeStamp = timeStamp()
-
-            if (message.isNotEmpty()) {
-
-                binding.etMessage.setText("")
-                //Adds it to our local list
-                adapter.insertMessage(Message(message, Constants.SND_ID, timeStamp,false,"",msgBtn,""))
-                binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
-                botResponse(message)
-            }
-        }
-
-        private fun botResponse(message: String) {
-            val timeStamp = timeStamp()
-            GlobalScope.launch {
-                //Fake response delay
-                delay(3000)
-
-                withContext(Dispatchers.Main) {
-                    //Gets the response
-                    val response = Bot_replies.basicResponses(message,false)
-
-                    //Inserts our message into the adapter
-                    adapter.insertMessage(Message(response as String, RCV_ID, timeStamp, false,"", msgBtn,""))
-
-                    //Scrolls us to the position of the latest message
-                    binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
-
-                    when (response) {
-                        LEARN -> {
-
-                            val intent = Intent(this@MainActivity, QuizActivity::class.java).apply {
-                                putExtra(EXTRA_MESSAGE, message)
-                            }
-                            startActivity(intent)
-                        }
-
-                    }
-
-                }
-            }
-        }
-
-    override fun passResultCallback(message: Topics) {
-        TODO("Not yet implemented")
     }
 
 }
+
+
+
+
+
 
 

@@ -93,7 +93,7 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
 
         <activity
-            android:name=".Activities.HomePage.HomeActivity"
+            android:name=".Activities.HomePage.MainActivity"
             android:configChanges="orientation|screenSize"
             android:noHistory="true"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
@@ -106,10 +106,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Activities.HomePage.MainActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+
     </application>
 
 </manifest>

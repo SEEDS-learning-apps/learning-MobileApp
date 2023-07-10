@@ -22,7 +22,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.example.chat_bot.Activities.HomePage.HomeActivity
+import com.example.chat_bot.Activities.HomePage.MainActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.SeedsDatabase
@@ -353,7 +353,7 @@ class Register : AppCompatActivity() {
         if(session.isLoggedIn())
         {
             Log.d("details",session.getUserDetails().toString())
-            val intent = Intent(this, HomeActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
                 .setAction(Intent.ACTION_VIEW)
                 .setData(Uri.parse("success"))
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

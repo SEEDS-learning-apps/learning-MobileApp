@@ -16,7 +16,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.example.chat_bot.Activities.HomePage.HomeActivity
+import com.example.chat_bot.Activities.HomePage.MainActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.Room.Dao.SeedsDao
 import com.example.chat_bot.Room.Entities.OnlineUserData
@@ -238,7 +238,7 @@ class Login : AppCompatActivity() {
     }
 
     private fun goToLoginActivity() {
-        val intent = Intent(this@Login, HomeActivity::class.java)
+        val intent = Intent(this@Login, MainActivity::class.java)
             .setAction(Intent.ACTION_VIEW)
             .setData(Uri.parse("success"))
         startActivity(intent)

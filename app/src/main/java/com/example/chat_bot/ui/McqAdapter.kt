@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chat_bot.Activities.HomePage.HomeActivity
+import com.example.chat_bot.Activities.HomePage.MainActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.data.Data
 import com.example.chat_bot.data.Mcqs
@@ -160,7 +160,7 @@ class McqAdapter (val context: Context) : RecyclerView.Adapter<McqAdapter.mcqVie
         val  button = view.findViewById<Button>(R.id.Results_return_to_chat)
         builder.setView(view)
         button.setOnClickListener {
-            val intent = Intent(context,HomeActivity::class.java)
+            val intent = Intent(context,MainActivity::class.java)
             context.startActivity(intent)
             (context as Activity).finish()
             Log.i("Results btn clicked", intent.toString())

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/activity_step1_scene"
-    tools:context=".Activities.HomePage.MainActivity"
+
     tools:layout_editor_absoluteX="-46dp"
     tools:layout_editor_absoluteY="56dp">
 

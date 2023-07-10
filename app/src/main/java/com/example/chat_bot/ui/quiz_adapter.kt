@@ -14,7 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.chat_bot.Activities.HomePage.ExerciseFragment
-import com.example.chat_bot.Activities.HomePage.HomeActivity
+import com.example.chat_bot.Activities.HomePage.MainActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.data.AllQuestion
 import com.example.chat_bot.data.Exercise
@@ -1028,7 +1028,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
             builder.dismiss()
 
-            val intent = Intent(context, HomeActivity::class.java)
+            val intent = Intent(context, MainActivity::class.java)
              intent.putExtra("Total score",  message)
             intent.putExtra("Obtained", correct_answers)
             context.startActivity(intent)

@@ -12,7 +12,7 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
-import com.example.chat_bot.Activities.HomePage.HomeActivity
+import com.example.chat_bot.Activities.HomePage.MainActivity
 import com.example.chat_bot.Activities.Welcomepage.Login
 import com.example.chat_bot.Activities.activity.CreateNotificationActivity.Companion.ALARM_REPEAT_DAYS
 import com.example.chat_bot.R
@@ -31,7 +31,7 @@ class NotificationReciever : BroadcastReceiver() {
         val selectedDays = intent.getStringArrayExtra(ALARM_REPEAT_DAYS)
         // Step 2: Create an intent to start the appropriate activity
         val targetActivity = if (isLoggedIn) {
-            HomeActivity::class.java
+            MainActivity::class.java
         } else {
             Login::class.java
         }

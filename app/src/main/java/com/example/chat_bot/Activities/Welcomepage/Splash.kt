@@ -9,7 +9,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import com.example.chat_bot.Activities.HomePage.HomeActivity
+import com.example.chat_bot.Activities.HomePage.MainActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.utils.SessionManager
 
@@ -59,7 +59,7 @@ class Splash : AppCompatActivity() {
     }
 
     private fun navigateToHomepage() {
-        val intent = Intent(this, HomeActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
             .setAction(Intent.ACTION_VIEW)
             .setData(Uri.parse("success"))
             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
