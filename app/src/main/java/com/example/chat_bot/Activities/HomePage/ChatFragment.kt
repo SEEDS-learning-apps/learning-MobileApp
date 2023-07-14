@@ -1,5 +1,6 @@
 package com.example.chat_bot.Activities.HomePage
 
+
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues
@@ -49,7 +50,6 @@ import java.util.*
 
 class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callbackinter {
 
-
     private lateinit var selected_topicID: String
     private lateinit var adapter: msgAdapter
     private lateinit var msg: String
@@ -91,8 +91,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     var Quiz_access: Boolean = false
     lateinit var toast: Toast
 
-
-
     ///////////////////////////////////////////
     //////////RASA////////////////////////////
 
@@ -113,7 +111,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             requireContext().setTheme(R.style.WhiteMode)
         }
         binding = FragmentChatBinding.inflate(layoutInflater, container, false)
-
 
         db = this.context?.let { DB(it) }
         viewModel =
@@ -136,7 +133,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         checkAppMode()
         isOnline(context as Activity)
 
-
         val lottieAnimationView = view?.findViewById<LottieAnimationView>(R.id.typingStatus)
 
         // load the animation from the JSON file
@@ -150,7 +146,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
             foc.hideSoftInputFromWindow(binding.etMessage.windowToken, 0)
         }
-
         return binding.root
     }
 
@@ -179,7 +174,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             if (quizez.size > 0) {
                 clearValues()
             }
-
             quizez.addAll(listOf(it))
             var user: HashMap<String, String> = session.getUserDetails()
 
@@ -193,7 +187,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                     quest.add(i)
                     question.addAll((i.allQuestions))
                     question.sortBy { i -> i.sequence }
-
                 }
             }
 
@@ -225,7 +218,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             Toast.makeText(this.requireContext(), "No quiz available", Toast.LENGTH_SHORT).show()
 
         }
-
     }
 
     override fun onPause() {
@@ -233,7 +225,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         isOnline(this.requireContext())
         CheckAccessCode()
         checklang()
-
     }
 
     override fun onResume() {
@@ -273,7 +264,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         super.onViewCreated(view, savedInstanceState)
         recyclerView()
         clickEvents()
@@ -289,11 +279,9 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                 customMsg("Hello, Seeds Assistant here!!, How may i help you?", false, msgBtn)
             }
         }
-
         showLastMessages()
 
         Log.v(TAG, "In main")
-
     }
 
     override fun submitAnswerCallback(openEnded: OpenEnded) {
@@ -301,7 +289,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     }
 
     override fun quizDonez() {
-
         returnedFromquiz == true
         topic_namez = (context as Activity).intent.getSerializableExtra("Total score").toString()
 
@@ -332,7 +319,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
     @SuppressLint("NotifyDataSetChanged")
     private fun quizDone() {
-
         topic_namez = (context as Activity).intent.getSerializableExtra("Total score").toString()
 
         if (topic_namez != "null") {
@@ -348,7 +334,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
             Log.d("topic_scores", scores)
             Log.d("topic_msg", msgBtn.size.toString())
-
             Log.d("topic_name", session.get_subject())
 
             val dbHelper = DatabaseHelper(context as Activity)
@@ -360,7 +345,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             sendMessagee(scores, display = false)
             session.quizDone("nope")
         }
-
     }
 
     private fun checklang() {
@@ -374,7 +358,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         } else url = "https://ig1mceza29.execute-api.eu-central-1.amazonaws.com/"
         Log.d("ChatFragment", "language = $language")
     }
-
 
     private fun suggest_topic(filterd_topicss: ArrayList<Topics>) {
         binding.typingStatus.visibility = View.VISIBLE
@@ -396,13 +379,10 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                         ageGroup = item.ageGroup
                         topicLang = item.language
                         grades = item.grade
-
                     }
-
                     adapter.publishSuggestion(filterd_topicss)
-                    BotResponse().botResponse("please_publish_sugesstion", true, requireContext())
+                    BotResponse().botResponse("please_publish_sugesstion", true, requireContext(), binding, adapter)
                 }
-
             }
         }
     }
@@ -423,8 +403,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
 
             if (language == "en") {
                 customMsg("Sorry this one is not available", false, msgBtn)
-
-
             }
             if (language == "de") {
                 customMsg("Dieses Thema ist leider nicht verfügbar", false, msgBtn)
@@ -432,10 +410,8 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             if (language == "es") {
                 customMsg("Lo sentimos, este tema no está disponible", false, msgBtn)
             }
-            customMsg("Try looking for some other subjects", false, msgBtn)
-
+                customMsg("Try looking for some other subjects", false, msgBtn)
         }
-
     }
 
     private fun fetch_topics(filterd_subjects: MutableList<Subjects>, mk: String) {
@@ -470,7 +446,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                     Log.d("joko", ageGroup)
                     suggest_topic(filterd_topics)
                 }
-
             Log.d("filter_topics", filterd_topics.toString())
         }
         viewModel.getAllTopics()
@@ -538,13 +513,9 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                 Send_filterInfo_toRASA(message._id)
             } else {
                 sendMessagee(message._id, display = false)
-
             }
-
         }
-
         adapter.notifyDataSetChanged()
-
     }
 
     private fun Send_filterInfo_toRASA(_id: String) {
@@ -587,7 +558,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                 delay(3000)
                 withContext(Dispatchers.Main) {
 
-
                     if (quiz.isEmpty()) {
                         Toast.makeText(context, "no quiz available ", Toast.LENGTH_SHORT).show()
                         loadOptions()
@@ -606,13 +576,10 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                         } else {
                             GotoSolveActivities()
                         }
-
                     }
-
                 }
             }
         }
-
     }
 
     private fun loadOptions() {
@@ -671,7 +638,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                 msgBtn
             )
         }
-
     }
 
     private fun GotoSolveActivities() {
@@ -1157,7 +1123,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                 }
             }
             if (!isOnline(this.requireContext())) {
-                BotResponse().botResponse(msg, false, requireContext())
+                BotResponse().botResponse(msg, false, requireContext(), binding, adapter)
                            }
 
         }
@@ -1232,7 +1198,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                     }
                 }
             } else {
-                BotResponse().botResponse(msg, false, requireContext())
+                BotResponse().botResponse(msg, false, requireContext(), binding, adapter)
             }
 
         }

@@ -40,7 +40,9 @@ class BotResponse {
     var istopicfetched: Boolean = false
     var isMaterialReady: Boolean = false
 
-    fun botResponse(message: String, _yo: Boolean, context: Context) {
+    fun botResponse(message: String, _yo: Boolean, context: Context,  binding: FragmentChatBinding, adapter: msgAdapter) {
+        this.binding = binding
+        this.adapter = adapter
         binding.typingStatus.visibility = View.VISIBLE
         binding.typingStatus.playAnimation()
 
@@ -104,7 +106,7 @@ class BotResponse {
                                 islearningstarted = false
                                 process_request(response)
                             }
-                            db!!.insertMessage(
+                            db?.insertMessage(
                                 Message(
                                     response as String,
                                     Constants.RCV_ID,
@@ -118,7 +120,7 @@ class BotResponse {
                             // Inserts our message into the adapter
                             adapter.insertMessage(
                                 Message(
-                                    response,
+                                    response as String,
                                     Constants.RCV_ID,
                                     timeStamp,
                                     false,
