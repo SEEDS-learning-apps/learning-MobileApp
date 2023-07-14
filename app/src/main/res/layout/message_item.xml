@@ -13,7 +13,8 @@
         android:orientation="vertical"
         android:id="@+id/sender_linear"
         android:gravity="right"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="2dp">
 
 
         <TextView
@@ -53,7 +54,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:id="@+id/bot_linear">
+        android:id="@+id/bot_linear"
+        android:layout_marginTop="2dp">
 
         <TextView
             android:id="@+id/tv_bot_message"

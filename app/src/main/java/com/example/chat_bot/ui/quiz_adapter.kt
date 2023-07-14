@@ -66,7 +66,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
             val url = mcq.file
 
-                if (mcq.file.isNotEmpty() && mcq.file.isNotBlank())
+            if (mcq.file.isNotEmpty() && mcq.file.isNotBlank())
                 {
                     holder.binding.imageView.visibility = View.VISIBLE
                     Glide.with(context).load(url).into(holder.binding.imageView)
