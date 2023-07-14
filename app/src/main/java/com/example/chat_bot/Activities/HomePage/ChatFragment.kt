@@ -53,7 +53,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     private lateinit var selected_topicID: String
     private lateinit var adapter: msgAdapter
     private lateinit var msg: String
-    private lateinit var subject: String
     private val TAG = "ChatFragment"
     private lateinit var binding: FragmentChatBinding
     private lateinit var language: String
@@ -93,17 +92,12 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     lateinit var toast: Toast
 
 
+
     ///////////////////////////////////////////
     //////////RASA////////////////////////////
 
     var msgBtn: ArrayList<com.example.chat_bot.Rasa.rasaMsg.Button> = arrayListOf()
-
     var iterator: Int = 0
-
-    //////////////////////////////////////
-
-    var isRasa: Boolean = true
-    private var isVanilla: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -249,14 +243,11 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         isOnline(this.requireContext())
         CheckAccessCode()
         Log.d("ChatFragment", username)
-
     }
 
     private fun checkAppMode(): String {
         var mode: String = session.getAppMode()
         return mode
-
-
     }
 
     fun isOnline(context: Context): Boolean {
@@ -278,7 +269,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                 }
             }
         }
-
         return false
     }
 
@@ -298,7 +288,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             } else {
                 customMsg("Hello, Seeds Assistant here!!, How may i help you?", false, msgBtn)
             }
-
         }
 
         showLastMessages()
@@ -329,12 +318,10 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             val newScores =
                 "/activity_done{\"subject_completed\":\"${session.get_subject()}\"}"
 
-
             returnedFromquiz = true
              Toast.makeText(context as Activity, scores.toString(), Toast.LENGTH_SHORT).show()
 
             Log.d("topic_name", session.get_subject())
-
 
             filterd_topics.clear()
             msgBtn.clear()
@@ -347,7 +334,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
     private fun quizDone() {
 
         topic_namez = (context as Activity).intent.getSerializableExtra("Total score").toString()
-
 
         if (topic_namez != "null") {
             Log.d("topic_namez", topic_namez)
@@ -389,53 +375,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         Log.d("ChatFragment", "language = $language")
     }
 
-    private fun process_request(response: String) {
-
-        fetch_subjects()
-
-    }
-
-    private fun fetch_subjects() {
-
-        viewModel.subjectList.observe(viewLifecycleOwner, Observer {
-            Log.d(ContentValues.TAG, "OnCreate: $it")
-
-            subjects.addAll(it)
-            subjects.size
-
-            if (it.size < 1) {
-                customMsg("Subject List is empty (fetch_subjects)", false, msgBtn)
-                !istopicfetched
-                !isMaterialReady
-                !isSubjectfetched
-                return@Observer
-            } else
-                isSubjectfetched = true
-
-        })
-        viewModel.errorMessage.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(this.requireContext(), "Error fetching subjects", Toast.LENGTH_SHORT)
-                .show()
-            Log.d(ContentValues.TAG, "OnCreate: $it")
-
-            isSubjectfetched = false
-            istopicfetched = false
-
-            if (language == "en") {
-                customMsg("I am facing problems at the moment", false, msgBtn)
-            }
-            if (language == "de") {
-                customMsg("Ich habe derzeit Probleme", false, msgBtn)
-            }
-            if (language == "es") {
-                customMsg("Actualmente tengo problemas", false, msgBtn)
-            }
-
-        })
-
-        viewModel.getAllSubjects()
-
-    }
 
     private fun suggest_topic(filterd_topicss: ArrayList<Topics>) {
         binding.typingStatus.visibility = View.VISIBLE
@@ -461,8 +400,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                     }
 
                     adapter.publishSuggestion(filterd_topicss)
-
-                    botResponse("please_publish_sugesstion", true)
+                    BotResponse().botResponse("please_publish_sugesstion", true, requireContext())
                 }
 
             }
@@ -571,8 +509,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         Log.d("payloadss", payload.toString())
 
         session.save_topic(msg)
-
-
 
         customMsg(msg, false, msgBtn)
 
@@ -776,7 +712,7 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         }
     }
 
-    private fun customMsg(
+    fun customMsg(
         message: String,
         _yo: Boolean,
         buttons: List<com.example.chat_bot.Rasa.rasaMsg.Button>
@@ -1221,12 +1157,11 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                 }
             }
             if (!isOnline(this.requireContext())) {
-                botResponse(msg, false)
-            }
+                BotResponse().botResponse(msg, false, requireContext())
+                           }
 
         }
     }
-
 
     fun VanillasendMessage() {
         var user: HashMap<String, String> = session.getUserDetails()
@@ -1238,8 +1173,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         if (msg.isNotEmpty()) {
 
             binding.etMessage.setText("")
-            //Adds it to our local list
-
 
             db!!.insertMessage(
                 Message(
@@ -1252,7 +1185,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                     username
                 )
             )
-            //  }
 
             adapter.insertMessage(
                 Message(
@@ -1267,7 +1199,6 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
             )
 
             binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
-
 
             if (!isMaterialReady) {
                 if (isSubjectfetched == true) {
@@ -1301,418 +1232,12 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
                     }
                 }
             } else {
-                botResponse(msg, false)
+                BotResponse().botResponse(msg, false, requireContext())
             }
 
         }
     }
 
-    private fun botResponse(message: String, _yo: Boolean) {
-        val timeStamp = Time.timeStamp()
-        binding.typingStatus.visibility = View.VISIBLE
-        binding.typingStatus.playAnimation()
-
-        GlobalScope.launch {
-            //response delay
-            delay(2000)
-            withContext(Dispatchers.Main) {
-
-                if (isVanilla == false) {
-                    if (isRasa) {
-                        if (_yo) {
-                            val response = Bot_replies.basicResponses(message, false)
-                            db!!.insertMessage(
-                                Message(
-                                    response as String,
-                                    Constants.RCV_ID,
-                                    timeStamp,
-                                    false,
-                                    "",
-                                    msgBtn,
-                                    username
-                                )
-                            )
-                            //Inserts our message into the adapter
-                            adapter.insertMessage(
-                                Message(
-                                    response,
-                                    Constants.RCV_ID,
-                                    timeStamp,
-                                    false,
-                                    "",
-                                    msgBtn,
-                                    ""
-                                )
-                            )
-
-                            delay(2000)
-                            adapter.insertMessage(
-                                Message(
-                                    response,
-                                    Constants.RCV_ID,
-                                    timeStamp,
-                                    true,
-                                    "",
-                                    msgBtn,
-                                    ""
-                                )
-                            )
-
-                            binding.typingStatus.cancelAnimation()
-                            binding.typingStatus.visibility = View.GONE
-                            //Scrolls us to the position of the latest message
-                            binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
-                        } else {
-                            var ans: Boolean
-                            //Gets the response
-                            val res: Any = Bot_replies.basicResponses(message, false)
-                            var response = Bot_replies.basicResponses(message, false)
-                            ans = res.toString().contains("12")
-                            if (ans) {
-                                response = res.toString().replace("12", "")
-
-                                islearningstarted = false
-                                process_request(response)
-                            }
-                            Message(
-                                response as String,
-                                Constants.RCV_ID,
-                                timeStamp,
-                                false, "", msgBtn, username
-                            )
-
-
-                            //Inserts our message into the adapter
-                            adapter.insertMessage(
-                                Message(
-                                    response,
-                                    Constants.RCV_ID,
-                                    timeStamp,
-                                    false,
-                                    "",
-                                    msgBtn,
-                                    username
-                                )
-                            )
-
-                            binding.typingStatus.cancelAnimation()
-                            binding.typingStatus.visibility = View.GONE
-
-                            //Scrolls us to the position of the latest message
-                            binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
-
-
-                        }
-                    }
-                } else {
-                    if (language == "de") {
-
-                        if (_yo) {
-                            //Gets the response
-                            val response = Bot_replies_de.basicResponses(message, false)
-                            db!!.insertMessage(
-                                Message(
-                                    response as String,
-                                    Constants.RCV_ID,
-                                    timeStamp,
-                                    false,
-                                    "",
-                                    msgBtn,
-                                    username
-                                )
-                            )
-                            //Inserts our message into the adapter
-                            adapter.insertMessage(
-                                Message(
-                                    response,
-                                    Constants.RCV_ID,
-                                    timeStamp,
-                                    false,
-                                    "",
-                                    msgBtn,
-                                    username
-                                )
-                            )
-
-                            delay(2000)
-                            adapter.insertMessage(
-                                Message(
-                                    response,
-                                    Constants.RCV_ID,
-                                    timeStamp,
-                                    true,
-                                    "",
-                                    msgBtn,
-                                    ""
-                                )
-                            )
-
-                            binding.typingStatus.cancelAnimation()
-                            binding.typingStatus.visibility = View.GONE
-                            //Scrolls us to the position of the latest message
-                            binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
-                        } else {
-                            var ans: Boolean
-                            //Gets the response
-                            val res: Any = Bot_replies_de.basicResponses(message, false)
-                            var response = Bot_replies_de.basicResponses(message, false)
-                            ans = res.toString().contains("12")
-
-                            if (ans) {
-                                response = res.toString().replace("12", "")
-
-                                process_request(response)
-                                islearningstarted == false
-
-                            }
-
-                            when (response) {
-                                Constants.SEEDS -> {
-
-
-                                }
-                            }
-
-                            Message(
-                                response as String,
-                                Constants.RCV_ID,
-                                timeStamp,
-                                false, "", msgBtn, username
-                            )
-
-                            //Inserts our message into the adapter
-                            adapter.insertMessage(
-                                Message(
-                                    response,
-                                    Constants.RCV_ID,
-                                    timeStamp,
-                                    false,
-                                    "",
-                                    msgBtn,
-                                    username
-                                )
-                            )
-
-                            binding.typingStatus.cancelAnimation()
-                            binding.typingStatus.visibility = View.GONE
-
-                            //Scrolls us to the position of the latest message
-                            binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
-
-                        }
-                        return@withContext
-                    }
-
-                    if (language == "es") {
-                        //setbottoGerman()
-
-                        if (_yo) {
-                            //Gets the response
-                            val response = Bot_replies_es.basicResponses(message, false, "")
-                            db!!.insertMessage(
-                                Message(
-                                    response as String,
-                                    Constants.RCV_ID,
-                                    timeStamp,
-                                    false,
-                                    "",
-                                    msgBtn,
-                                    username
-                                )
-                            )
-                            //Inserts our message into the adapter
-                            adapter.insertMessage(
-                                Message(
-                                    response,
-                                    Constants.RCV_ID,
-                                    timeStamp,
-                                    false,
-                                    "",
-                                    msgBtn,
-                                    username
-                                )
-                            )
-
-                            delay(2000)
-                            adapter.insertMessage(
-                                Message(
-                                    response,
-                                    Constants.RCV_ID,
-                                    timeStamp,
-                                    true,
-                                    "",
-                                    msgBtn,
-                                    username
-                                )
-                            )
-
-                            binding.typingStatus.cancelAnimation()
-                            binding.typingStatus.visibility = View.GONE
-                            //Scrolls us to the position of the latest message
-                            binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
-                        } else {
-                            var ans: Boolean
-                            //Gets the response
-                            val res: Any = Bot_replies_es.basicResponses(message, false, "")
-                            var response = Bot_replies_es.basicResponses(message, false, "")
-                            ans = res.toString().contains("12")
-                            if (ans) {
-                                response = res.toString().replace("12", "")
-
-                                islearningstarted == false
-                                process_request(response)
-                            }
-
-                            when (response) {
-                                Constants.SEEDS -> {
-
-
-                                }
-                            }
-
-
-                            //   val status = db!!.insertMessage(
-                            Message(
-                                response as String,
-                                Constants.RCV_ID,
-                                timeStamp,
-                                false, "", msgBtn, ""
-                            )
-                            //   )
-
-                            //Inserts our message into the adapter
-                            adapter.insertMessage(
-                                Message(
-                                    response,
-                                    Constants.RCV_ID,
-                                    timeStamp,
-                                    false,
-                                    "",
-                                    msgBtn,
-                                    username
-                                )
-                            )
-
-                            binding.typingStatus.cancelAnimation()
-                            binding.typingStatus.visibility = View.GONE
-
-                            //Scrolls us to the position of the latest message
-                            binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
-
-
-                        }
-                        return@withContext
-                    }
-
-
-                    if (_yo) {
-                        //Gets the response
-                        val response = Bot_replies.basicResponses(message, false)
-                        db!!.insertMessage(
-                            Message(
-                                response as String,
-                                Constants.RCV_ID,
-                                timeStamp,
-                                false,
-                                "",
-                                msgBtn,
-                                username
-                            )
-                        )
-                        //Inserts our message into the adapter
-                        adapter.insertMessage(
-                            Message(
-                                response,
-                                Constants.RCV_ID,
-                                timeStamp,
-                                false,
-                                "",
-                                msgBtn,
-                                username
-                            )
-                        )
-
-                        delay(2000)
-                        adapter.insertMessage(
-                            Message(
-                                response,
-                                Constants.RCV_ID,
-                                timeStamp,
-                                true,
-                                "",
-                                msgBtn,
-                                username
-                            )
-                        )
-
-                        binding.typingStatus.cancelAnimation()
-                        binding.typingStatus.visibility = View.GONE
-                        //Scrolls us to the position of the latest message
-                        binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
-                    } else {
-                        var ans: Boolean
-                        //Gets the response
-                        val res: Any = Bot_replies.basicResponses(message, false)
-                        var response = Bot_replies.basicResponses(message, false)
-                        ans = res.toString().contains("12")
-                        if (ans) {
-                            response = res.toString().replace("12", "")
-
-                            islearningstarted = false
-                            process_request(response)
-                        }
-
-
-                        //  val status = db!!.insertMessage(
-                        Message(
-                            response as String,
-                            Constants.RCV_ID,
-                            timeStamp,
-                            false, "", msgBtn, username
-                        )
-
-
-                        //Inserts our message into the adapter
-                        adapter.insertMessage(
-                            Message(
-                                response,
-                                Constants.RCV_ID,
-                                timeStamp,
-                                false,
-                                "",
-                                msgBtn,
-                                username
-                            )
-                        )
-
-                        binding.typingStatus.cancelAnimation()
-                        binding.typingStatus.visibility = View.GONE
-
-                        //Scrolls us to the position of the latest message
-                        binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
-
-                        when (response) {
-                            Constants.SEEDS -> {
-
-                            }
-                        }
-
-
-                        if (response.contains("want to study") || response.contains("want to learn")
-                            || response.contains("study") || response.contains("möchte lernen")
-                            || response.contains("lernen wollen")
-                            || response.contains("kennenlernen möchten") || response.contains("learn")
-                        ) {
-
-                        }
-
-                    }
-                }
-
-
-            }
-        }
-    }
 
 
     @SuppressLint("NotifyDataSetChanged")
@@ -1731,14 +1256,12 @@ class ChatFragment : Fragment(), msgAdapter.Callbackinter, quiz_adapter.Callback
         binding.rvMessages.layoutManager = LinearLayoutManager(this.context)
         adapter.notifyDataSetChanged()
 
-
     }
 
     private fun GetuserDetails() {
         val user = session.getUserDetails()
 
         username = user.get("name").toString()
-
     }
 }
 
