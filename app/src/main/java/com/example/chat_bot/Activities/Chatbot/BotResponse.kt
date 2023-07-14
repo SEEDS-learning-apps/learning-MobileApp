@@ -1,4 +1,4 @@
-package com.example.chat_bot.Activities.HomePage
+package com.example.chat_bot.Activities.Chatbot
 
 import android.content.ContentValues
 import android.content.Context
@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import com.example.chat_bot.Activities.HomePage.ChatFragment
 import com.example.chat_bot.Rasa.rasaMsg.Button
 import com.example.chat_bot.data.Message
 import com.example.chat_bot.data.msgAdapter
@@ -17,6 +18,7 @@ import com.example.chat_bot.utils.Bot_replies_es
 import com.example.chat_bot.utils.Constants
 import com.example.chat_bot.utils.DB
 import com.example.chat_bot.utils.Time
+import com.yariksoffice.lingver.Lingver
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -28,6 +30,7 @@ class BotResponse {
     lateinit var binding: FragmentChatBinding
     lateinit var viewModel: SEEDSViewModel
     lateinit var language: String
+    var url: String = ""
 
     var db: DB? = null
     var msgBtn: ArrayList<Button> = arrayListOf()
@@ -40,7 +43,9 @@ class BotResponse {
     var istopicfetched: Boolean = false
     var isMaterialReady: Boolean = false
 
+
     fun botResponse(message: String, _yo: Boolean, context: Context) {
+
         binding.typingStatus.visibility = View.VISIBLE
         binding.typingStatus.playAnimation()
 
@@ -471,5 +476,7 @@ class BotResponse {
 
         viewModel.getAllSubjects()
     }
+
+
 
 }
