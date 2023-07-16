@@ -5,5 +5,4 @@ data class Exercise(
                     var obtainedscore: String,
                     var totalscore:String,
                     var time: String
-
                     )
