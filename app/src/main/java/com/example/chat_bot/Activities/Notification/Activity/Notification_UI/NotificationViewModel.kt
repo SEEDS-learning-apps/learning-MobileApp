@@ -19,10 +19,5 @@ class NotificationViewModel(private val repos: NotificationRepository) :ViewMode
         repos.delete(alarm)
     }
 
-    //this method is not used nor called yet...
-    fun deleteAll()= CoroutineScope(Dispatchers.Main).launch {
-        repos.deleteAllAlarms()
-    }
-
     fun getAllAlarms()=repos.getAllAlarms()
 }

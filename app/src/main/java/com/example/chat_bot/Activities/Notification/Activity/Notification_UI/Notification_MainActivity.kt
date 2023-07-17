@@ -9,12 +9,10 @@ import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.view.KeyEvent
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.chat_bot.Activities.DashboardActivities.Settings
 import com.example.chat_bot.Activities.Notification.Activity.Notification_fragment.NotificationFragment
-import com.example.chat_bot.Activities.Welcomepage.WelcomePage
 import com.example.chat_bot.R
 
 @SuppressLint("ResourceType")

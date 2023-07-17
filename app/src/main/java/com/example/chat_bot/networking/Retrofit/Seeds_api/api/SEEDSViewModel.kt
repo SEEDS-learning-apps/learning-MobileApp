@@ -67,7 +67,6 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
                 }
             })
         }
-
     }
 
     fun getUserDatabyName(username: String) {

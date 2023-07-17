@@ -171,7 +171,7 @@ class CreateNotificationActivity : AppCompatActivity(), CompoundButton.OnChecked
                 intent.putExtra(ALARM_REPEAT_DAYS, selectedDays.toTypedArray())
                 intent.putExtra("selectedDays", selectedDays.toTypedArray())
                 val pendingIntent =
-                    PendingIntent.getBroadcast(context, alarmId, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+                    PendingIntent.getBroadcast(context, alarmId, intent, PendingIntent.FLAG_IMMUTABLE)
                 val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
                 alarmManager.setInexactRepeating(
                     AlarmManager.RTC_WAKEUP,
@@ -188,7 +188,7 @@ class CreateNotificationActivity : AppCompatActivity(), CompoundButton.OnChecked
             val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val intent = Intent(context, NotificationReciever::class.java)
             val pendingIntent =
-                PendingIntent.getBroadcast(context, id, intent,PendingIntent.FLAG_UPDATE_CURRENT)
+                PendingIntent.getBroadcast(context, id, intent,PendingIntent.FLAG_IMMUTABLE)
             alarmManager.cancel(pendingIntent)
         }
 
