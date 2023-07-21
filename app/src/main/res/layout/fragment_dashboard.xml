@@ -201,6 +201,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/LearningCards_cardview"
                     android:layout_width="130dp"
                     android:layout_height="130dp"
                     android:layout_margin="10dp"
@@ -234,7 +235,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="40dp"
                         android:layout_marginBottom="8dp"
-                        android:text="@string/Learning_cards"
+                        android:text="@string/flash_cards"
                         android:textAlignment="center"
                         android:textColor="?attr/textcolor"
                         android:textSize="13sp" />

@@ -67,8 +67,6 @@ class NotificationFragment : Fragment(), KodeinAware {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
 
-
-
         viewModel!!.getAllAlarms().observe(viewLifecycleOwner, Observer {
             //this checks if the recyclerview is empty
             if (it.isEmpty()) {

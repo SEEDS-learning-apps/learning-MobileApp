@@ -52,7 +52,7 @@ class ExerciseFragment : Fragment(), ExerciseHistoryAdapter.ExerciseDeleteListen
 
     private fun recyclerView() {
 
-        val adapter = ExerciseHistoryAdapter(this)
+        val adapter = ExerciseHistoryAdapter(this@ExerciseFragment)
 
         binding.exRv.adapter = adapter
         binding.exRv.layoutManager = LinearLayoutManager(this.context)

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import com.example.chat_bot.Activities.Welcomepage.Login
 import com.example.chat_bot.data.Exercise
+import com.example.chat_bot.data.Topics
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -230,4 +231,20 @@ class SessionManager {
         editor.putString(LIST_KEY, jsonString)
         editor.apply()
     }
+
+//    fun readCardsFromPref(context: Context?): List<Topics?> {
+//        val emptyList = Gson().toJson(ArrayList<Exercise>())
+//        val jsonString = pref.getString(LIST_KEY, emptyList)
+//        val gson = Gson()
+//        val type = object : TypeToken<ArrayList<Exercise?>?>() {}.type
+//        return gson.fromJson<List<Topics>>(jsonString, type)
+//    }
+//
+//    fun removeCardsInPref(exerciseList: ArrayList<Topics>) {
+//        val gson = Gson()
+//        val jsonString = gson.toJson(exerciseList)
+//        val editor = pref.edit()
+//        editor.putString(LIST_KEY, jsonString)
+//        editor.apply()
+//    }
 }

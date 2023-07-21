@@ -43,6 +43,11 @@
         <!-- Dashboard -->
 
         <activity
+            android:name=".Activities.DashboardActivities.LearningCardsActivity"
+            android:exported="true"
+            android:noHistory="true"/>
+
+        <activity
             android:name=".Activities.DashboardActivities.EmptyLearningProgress"
             android:exported="true"
             android:noHistory="true"/>

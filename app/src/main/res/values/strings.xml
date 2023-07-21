@@ -111,6 +111,8 @@
     <string name="Spanish">Spanish</string>
     <string name="English">English</string>
     <string name="Greek">Greek</string>
+    <string name="flash_cards">Flash Cards</string>
+    <string name="no_flash_cards">No activities are completed to display flash cards. Try completing some activities</string>
 
 
     <string-array name="Languages">

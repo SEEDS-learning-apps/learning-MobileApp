@@ -151,6 +151,13 @@ class DashboardFragment : Fragment() {
             }
         }
 
+        bind.LearningCardsCardview.setOnClickListener {
+            val intent = Intent(this.context, LearningCardsActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            }
+            startActivity(intent)
+            activity?.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
 
     }
 
