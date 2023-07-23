@@ -55,8 +55,8 @@ class LearningCardsActivity : AppCompatActivity(), LearningProgressAdapter.Exerc
     private fun recyclerView() {
         val adapter = LearningProgressAdapter(this)
 
-        binding.exRv.adapter = adapter
-        binding.exRv.layoutManager = GridLayoutManager(this,2)
+        binding.flashcardsRv.adapter = adapter
+        binding.flashcardsRv.layoutManager = GridLayoutManager(this,2)
 
         exerciseList = session.readListFromPref(this) as ArrayList<Exercise>
         updateBackgroundVisibility()
@@ -69,7 +69,7 @@ class LearningCardsActivity : AppCompatActivity(), LearningProgressAdapter.Exerc
     }
 
     fun manageViews(hasExercise: Boolean = true) {
-        binding.exRv.visibility = if (hasExercise) View.VISIBLE else View.GONE
+        binding.flashcardsRv.visibility = if (hasExercise) View.VISIBLE else View.GONE
         binding.noExercise.visibility = if (hasExercise) View.GONE else View.VISIBLE
     }
 
@@ -83,11 +83,11 @@ class LearningCardsActivity : AppCompatActivity(), LearningProgressAdapter.Exerc
         if (exerciseList.isEmpty()) {
             binding.backgroundImage.visibility = View.GONE // Hide backgroundImage
             binding.noExercise.visibility = View.VISIBLE // Show "No Exercises" view
-            binding.exRv.visibility = View.GONE // Hide RecyclerView
+            binding.flashcardsRv.visibility = View.GONE // Hide RecyclerView
         } else {
             binding.backgroundImage.visibility = View.VISIBLE // Show backgroundImage
             binding.noExercise.visibility = View.GONE // Hide "No Exercises" view
-            binding.exRv.visibility = View.VISIBLE // Show RecyclerView
+            binding.flashcardsRv.visibility = View.VISIBLE // Show RecyclerView
         }
     }
 

@@ -62,11 +62,11 @@
 
         <!-- RecyclerView for Flash Cards -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/ex_rv"
+            android:id="@+id/flashcards_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:listitem="@layout/learningcards_item"
+            tools:listitem="@layout/flashcards_item"
             tools:itemCount="2"
             android:visibility="visible" />
 
