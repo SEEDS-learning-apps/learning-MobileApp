@@ -1,10 +1,13 @@
 package com.example.chat_bot.Activities.DashboardActivities
 
 import CustomCardAdapter
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.chat_bot.Activities.HomePage.MainActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.data.CardItem
+import com.example.chat_bot.data.Exercise
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackView
 
@@ -22,6 +25,9 @@ class FlashCardDetail : AppCompatActivity() {
         val layoutManager = CardStackLayoutManager(this)
         cardStackView.layoutManager = layoutManager
         cardStackView.adapter = adapter
+
+        val ex = intent.getSerializableExtra("EXERCISE_DETAILS") as Exercise
+
     }
 
     private fun createDummyData(): List<CardItem> {
@@ -31,4 +37,12 @@ class FlashCardDetail : AppCompatActivity() {
         cardItems.add(CardItem(R.drawable.trophy, "Card 3"))
         return cardItems
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, FlashCards::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+    }
+
 }

@@ -1,8 +1,10 @@
 package com.example.chat_bot.ui
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.chat_bot.Activities.DashboardActivities.FlashCardDetail
 import com.example.chat_bot.Activities.DashboardActivities.FlashCards
 import com.example.chat_bot.data.Exercise
 import com.example.chat_bot.databinding.FlashcardsItemBinding
@@ -46,6 +48,14 @@ class LearningProgressAdapter(val context: FlashCards):  RecyclerView.Adapter<Le
         holder.binding.flashCardsSubjectName.text = ex.subjectName
         holder.binding.flashCardsTopicName.text = "Topic: " + ex.topicName
         holder.binding.attemptTime.text = ex.time
+
+        holder.itemView.setOnClickListener {
+            if (exerciseList.isNotEmpty()) {
+                val intent = Intent(context, FlashCardDetail::class.java)
+                intent.putExtra("EXERCISE_DETAILS", ex)
+                context.startActivity(intent)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
