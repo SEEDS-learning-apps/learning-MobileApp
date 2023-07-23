@@ -5,11 +5,15 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.animation.AnimationUtils
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil.setContentView
+import com.example.chat_bot.Activities.DashboardActivities.FlashCardDetail
 import com.example.chat_bot.Activities.Introduction.IntroductionActivity
-import com.example.chat_bot.Activities.activity.Notification_MainActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.databinding.ActivityWelcomepageBinding
 import com.example.chat_bot.utils.SessionManager
@@ -121,7 +125,7 @@ class WelcomePage : AppCompatActivity() {
         infoTextView = findViewById(R.id.infoTextView)
 
         infoTextView.setOnClickListener {
-            val intent = Intent(this@WelcomePage, Seedsinfo::class.java)
+            val intent = Intent(this@WelcomePage, FlashCardDetail::class.java)
             startActivity(intent)
             finish()
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)

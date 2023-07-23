@@ -232,19 +232,4 @@ class SessionManager {
         editor.apply()
     }
 
-//    fun readCardsFromPref(context: Context?): List<Topics?> {
-//        val emptyList = Gson().toJson(ArrayList<Exercise>())
-//        val jsonString = pref.getString(LIST_KEY, emptyList)
-//        val gson = Gson()
-//        val type = object : TypeToken<ArrayList<Exercise?>?>() {}.type
-//        return gson.fromJson<List<Topics>>(jsonString, type)
-//    }
-//
-//    fun removeCardsInPref(exerciseList: ArrayList<Topics>) {
-//        val gson = Gson()
-//        val jsonString = gson.toJson(exerciseList)
-//        val editor = pref.edit()
-//        editor.putString(LIST_KEY, jsonString)
-//        editor.apply()
-//    }
 }

@@ -152,7 +152,7 @@ class DashboardFragment : Fragment() {
         }
 
         bind.LearningCardsCardview.setOnClickListener {
-            val intent = Intent(this.context, LearningCardsActivity::class.java).apply {
+            val intent = Intent(this.context, FlashCards::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             }
             startActivity(intent)

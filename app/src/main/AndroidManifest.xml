@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -17,45 +17,43 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/WhiteMode"
-        android:usesCleartextTraffic="true">
-
-
-
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name=".Activities.DashboardActivities.flashcard_detail"
+            android:exported="false" />
         <!-- Notification -->
         <activity android:name=".Activities.activity.CreateNotificationActivity" />
         <activity
             android:name=".Activities.activity.Notification_MainActivity"
-            android:exported="true"
-            />
+            android:exported="true" />
         <activity
             android:name=".Activities.Notification.Activity.NotificationManager"
             android:exported="true" />
 
         <receiver
             android:name=".Activities.Notification.Activity.Notification_receiver.NotificationReciever"
-            android:permission="android.permission.RECEIVE_BOOT_COMPLETED"
-            android:exported="true">
+            android:exported="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
             <intent-filter>
                 <action android:name="com.example.chat_bot.NOTIFICATION_RECEIVED" />
             </intent-filter>
-        </receiver>
-
-        <!-- Dashboard -->
-
+        </receiver> <!-- Dashboard -->
         <activity
-            android:name=".Activities.DashboardActivities.LearningCardsActivity"
+            android:name=".Activities.DashboardActivities.FlashCardDetail"
             android:exported="true"
-            android:noHistory="true"/>
-
+            android:noHistory="true" />
+        <activity
+            android:name=".Activities.DashboardActivities.FlashCards"
+            android:exported="true"
+            android:noHistory="true" />
         <activity
             android:name=".Activities.DashboardActivities.EmptyLearningProgress"
             android:exported="true"
-            android:noHistory="true"/>
-
+            android:noHistory="true" />
         <activity
             android:name=".Activities.DashboardActivities.LearningProgress"
             android:exported="true"
-            android:noHistory="true"/>
+            android:noHistory="true" />
         <activity
             android:name=".Activities.DashboardActivities.Settings"
             android:exported="false"
@@ -90,13 +88,11 @@
             android:configChanges="locale"
             android:noHistory="true"
             android:windowSoftInputMode="adjustPan" />
-
         <activity
             android:name=".Activities.activity.QuizActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
-
         <activity
             android:name=".Activities.HomePage.MainActivity"
             android:configChanges="orientation|screenSize"
@@ -104,14 +100,13 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name=".Activities.Welcomepage.Splash"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

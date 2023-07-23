@@ -15,7 +15,7 @@ import com.example.chat_bot.databinding.ActivityFlashcardsBinding
 import com.example.chat_bot.ui.LearningProgressAdapter
 import com.example.chat_bot.utils.SessionManager
 
-class LearningCardsActivity : AppCompatActivity(), LearningProgressAdapter.ExerciseDeleteListener {
+class FlashCards : AppCompatActivity(), LearningProgressAdapter.ExerciseDeleteListener {
 
     var exerciseList: ArrayList<Exercise> = arrayListOf()
     val adapter = LearningProgressAdapter(this)

@@ -1,20 +1,14 @@
 package com.example.chat_bot.ui
 
-import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.ColorUtils
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chat_bot.Activities.DashboardActivities.LearningCardsActivity
-import com.example.chat_bot.R
+import com.example.chat_bot.Activities.DashboardActivities.FlashCards
 import com.example.chat_bot.data.Exercise
 import com.example.chat_bot.databinding.FlashcardsItemBinding
 import com.example.chat_bot.utils.SessionManager
-import java.util.Random
 
-class LearningProgressAdapter(val context: LearningCardsActivity):  RecyclerView.Adapter<LearningProgressAdapter.exViewholder>(){
+class LearningProgressAdapter(val context: FlashCards):  RecyclerView.Adapter<LearningProgressAdapter.exViewholder>(){
 
     var exerciseList: ArrayList<Exercise> = ArrayList()
     lateinit var session: SessionManager
@@ -52,8 +46,6 @@ class LearningProgressAdapter(val context: LearningCardsActivity):  RecyclerView
         holder.binding.flashCardsSubjectName.text = ex.subjectName
         holder.binding.flashCardsTopicName.text = "Topic: " + ex.topicName
         holder.binding.attemptTime.text = ex.time
-//        var final_score= "You got "+ " "+ ex.obtainedscore + " "+ "out of"+ " " + ex.totalscore
-//        holder.binding.score1.text = final_score
     }
 
     override fun getItemCount(): Int {
@@ -78,16 +70,6 @@ class LearningProgressAdapter(val context: LearningCardsActivity):  RecyclerView
 
         notifyDataSetChanged()
     }
-
-
-//    private fun getRandomColor(): Int {
-//        val random = Random()
-//        val r = random.nextInt(256)
-//        val g = random.nextInt(256)
-//        val b = random.nextInt(256)
-//        return Color.rgb(r, g, b)
-//    }
-
 
     interface ExerciseDeleteListener {
         fun onExerciseDeleted()
