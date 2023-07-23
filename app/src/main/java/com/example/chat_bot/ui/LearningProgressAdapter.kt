@@ -44,7 +44,7 @@ class LearningProgressAdapter(val context: LearningCardsActivity):  RecyclerView
 
     override fun onBindViewHolder(holder: LearningProgressAdapter.exViewholder, position: Int) {
         val ex = exerciseList[position]
-        holder.binding.flashCardsTopicName.text = ex.topicName
+        holder.binding.flashCardsTopicName.text = ex.subjectName
         holder.binding.attemptTime.text = ex.time
 //        var final_score= "You got "+ " "+ ex.obtainedscore + " "+ "out of"+ " " + ex.totalscore
 //        holder.binding.score1.text = final_score

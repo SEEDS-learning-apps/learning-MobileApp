@@ -40,6 +40,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
     var exerciseList: ArrayList<Exercise> = ArrayList()
     lateinit var session: SessionManager
     lateinit var topicName: String
+    lateinit var subjectName: String
     val adapter = ExerciseHistoryAdapter(ExerciseFragment())
     var ansList: MutableList<String> = arrayListOf()
     private lateinit var message: String
@@ -979,6 +980,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         setQuiz(iterator, current_pos, az)
         this.QuizArray = az
         this.topicName = topicName
+
     }
 
     private fun setQuiz(iterator: Int, currentPos: Int, quizlists: ArrayList<AllQuestion>) {
@@ -1052,8 +1054,9 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         exerciseList = session.readListFromPref(this.context) as ArrayList<Exercise>
 
         val timeStamp = Time.timeStamp()
+        this.subjectName = session.get_subject()
 
-        exerciseList.add(Exercise(topicName, correctAnswers.toString(), totalQues.toString(), timeStamp))
+        exerciseList.add(Exercise(subjectName,topicName, correctAnswers.toString(), totalQues.toString(), timeStamp))
 
         session.writeListInPref(this.context,exerciseList)
 
