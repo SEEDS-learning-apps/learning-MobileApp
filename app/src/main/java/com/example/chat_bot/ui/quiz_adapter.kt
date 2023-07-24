@@ -329,13 +329,10 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                 val radio: RadioButton = group.findViewById(checkedId)
                 Log.i("selectedtext", radio.text.toString())
                 radioTXT = radio.text.toString()
-                // Toast.makeText(context, radioTXT, Toast.LENGTH_SHORT).show()
 
-                // Update the background color based on the checked state
                 val backgroundColor = if (selectedId == -1) {
                     ContextCompat.getColor(context, R.color.Activity_next_btn)
                 } else {
-                    // Use a darker color for selected state
                     ContextCompat.getColor(context, R.color.colorPrimaryblue)
                 }
                 holder.binding.tfSubmit.setBackgroundColor(backgroundColor)
@@ -983,7 +980,23 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         if(quiz[position].q_type == 2){
             question = quiz[position].mcqs
         }
+
         this.answer = quiz[position].answer
+
+        if (quiz[position].q_type == 2) {
+            val option1 = "option1"
+            val option2 = "option2"
+            val option3 = "option3"
+            val option4 = "option4"
+
+            when (quiz[position].answer) {
+                option1 -> answer = quiz[position].option1
+                option2 -> answer = quiz[position].option2
+                option3 -> answer = quiz[position].option3
+                option4 -> answer = quiz[position].option4
+            }
+        }
+
         return quiz[position].q_type
     }
 
