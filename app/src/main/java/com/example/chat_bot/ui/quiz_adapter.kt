@@ -5,6 +5,8 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +24,7 @@ import com.example.chat_bot.data.OpenEnded
 import com.example.chat_bot.databinding.*
 import com.example.chat_bot.utils.SessionManager
 import com.example.chat_bot.utils.Time
+import kotlinx.coroutines.flow.callbackFlow
 
 class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callbackinter):
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -38,6 +41,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
     lateinit var QuizArray: ArrayList <AllQuestion>
     var quiz = mutableListOf<AllQuestion>()
     var exerciseList: ArrayList<Exercise> = ArrayList()
+    var openEndedList: ArrayList<OpenEnded> = ArrayList()
     lateinit var session: SessionManager
     lateinit var topicName: String
     lateinit var subjectName: String
@@ -265,7 +269,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         }
         else
         {
-            positive_results_alert(QuizArray)
+            positive_results_alert(position, QuizArray)
 
         }
 
@@ -435,7 +439,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
         }
         else{
-            positive_results_alert(QuizArray)
+            positive_results_alert(position, QuizArray)
         }
 
         when {
@@ -785,7 +789,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         }
         else
         {
-            positive_results_alert(QuizArray)
+            positive_results_alert(position, QuizArray)
 
         }
 
@@ -821,39 +825,62 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
             holder.binding.progressBar.max = max
 
+            holder.binding.opAnsV.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+                override fun afterTextChanged(s: Editable?) {
+                    // Enable the submit button if at least one character or number is entered
+                    holder.binding.btnopenEndedsubmit.isEnabled = !s.isNullOrEmpty()
+
+                    // Set the background color based on the enabled state
+                    if (holder.binding.btnopenEndedsubmit.isEnabled) {
+                        holder.binding.btnopenEndedsubmit.setBackgroundResource(R.color.colorPrimaryblue)
+                    } else {
+                        holder.binding.btnopenEndedsubmit.setBackgroundResource(R.color.grey)
+                    }
+                }
+            })
+
             holder.binding.btnopenEndedsubmit.setOnClickListener {
-                val answer = holder.binding.opAnsV.text.toString()
-                newOpenEnded(holder, position)
+                if (holder.binding.btnopenEndedsubmit.isEnabled) {
+                    val answer = holder.binding.opAnsV.text.toString()
 
-                Log.d("answers", answer)
-                postSubmission(matchingActivity, answer)
+                    newOpenEnded(holder, position)
+
+                    Log.d("answers", answer)
+                    postSubmission(position, matchingActivity, answer)
+                }
             }
-
         }
-
     }
 
-    private fun postSubmission(matchingActivity: AllQuestion, answer: String) {
 
+    private fun postSubmission(position: Int, matchingActivity: AllQuestion, openendedAnswer: String) {
         val user = session.getUserDetails()
         var teacherID = matchingActivity.userId
         val username = user.get("name")
-        val answer = answer
+        answer = openendedAnswer
         val timeStamp = Time.timeStamp().toString()
         val questionid = matchingActivity._id
 
-        val openEnded = OpenEnded(questionid, timeStamp, answer, username.toString(), teacherID)
+        openEndedList.add(OpenEnded(questionid, timeStamp, answer!!, username.toString(), teacherID))
 
-        Log.d("answer", answer)
 
-        jkt.submitAnswerCallback(openEnded)
 
+        Log.d("opend ended answer", answer!!)
     }
+
 
     private fun newOpenEnded(holder: OpenEndedViewHolder, position: Int)
     {
         current_pos++
         iterator++
+
+        if (quiz[position].q_type == 5) {
+            answer = holder.binding.opAnsV.text.toString()
+        }
 
         holder.binding.opAnsV.text.clear()
         if (haveInto == true)
@@ -880,7 +907,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         }
         else
         {
-            positive_results_alert(QuizArray)
+            positive_results_alert(position, QuizArray)
 
         }
 
@@ -890,6 +917,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
             }
 
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -977,11 +1005,14 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
         this.question = quiz[position].question
 
-        if(quiz[position].q_type == 2){
+        if (quiz[position].q_type == 2) {
             question = quiz[position].mcqs
         }
 
         this.answer = quiz[position].answer
+
+
+
 
         if (quiz[position].q_type == 2) {
             val option1 = "option1"
@@ -999,6 +1030,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
         return quiz[position].q_type
     }
+
 
     fun setQuizList(az: ArrayList<AllQuestion>, topicName: String) {
         setQuiz(iterator, current_pos, az)
@@ -1019,7 +1051,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
     }
 
     @SuppressLint("NotifyDataSetChanged", "SetTextI18n")
-    fun positive_results_alert(az: ArrayList<AllQuestion>)
+    fun positive_results_alert(position: Int, az: ArrayList<AllQuestion>)
     {
         val builder = AlertDialog.Builder(context, R.style.CustomAlertDialog)
             .create()
@@ -1048,7 +1080,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                 "done is"
         }
 
-        saveScores(correct_answers, az.size)
+        saveScores(position,correct_answers, az.size)
         val  button = view.findViewById<Button>(R.id.Results_return_to_chat)
         builder.setView(view)
         button.setOnClickListener {
@@ -1074,7 +1106,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         }
     }
 
-    private fun saveScores(correctAnswers: Int, totalQues: Int) {
+    private fun saveScores(position: Int, correctAnswers: Int, totalQues: Int) {
 
         exerciseList = session.readListFromPref(this.context) as ArrayList<Exercise>
 
