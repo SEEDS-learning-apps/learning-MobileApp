@@ -27,7 +27,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_centerInParent="true"
             android:text="@string/flash_cards"
             android:textColor="?attr/textcolor"

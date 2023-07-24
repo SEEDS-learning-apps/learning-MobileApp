@@ -120,7 +120,7 @@ class SessionManager {
         return pref.getString(KEY_subject, subject).toString().also { subject = it }
     }
 
-    fun save_question(subject: String)
+    fun save_question(subject: String?)
     {
         editor.putString(KEY_question, subject)
         editor.commit()

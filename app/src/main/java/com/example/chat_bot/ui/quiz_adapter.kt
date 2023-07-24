@@ -41,8 +41,8 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
     lateinit var session: SessionManager
     lateinit var topicName: String
     lateinit var subjectName: String
-    lateinit var question: String
-    lateinit var answer: String
+    private var question: String? = null
+    private var answer: String? = null
     val adapter = ExerciseHistoryAdapter(ExerciseFragment())
     var ansList: MutableList<String> = arrayListOf()
     private lateinit var message: String
@@ -119,6 +119,13 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
             binding.mcqOptFour.text = mcq.option4
             binding.mcqPosFeedbackTv.text = mcq.posFeedback
             binding.mcqNegFeedbackTv.text = mcq.negFeedback
+
+            session = SessionManager(context)
+            question = mcq.mcqs
+            if (question != null) {
+                session?.save_question(question)
+                question = session?.get_question()
+            }
 
             clearChecks()
 
@@ -1069,8 +1076,8 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         session.writeListInPref(this.context,exerciseList)
 
         Log.d("Save score", exerciseList.size.toString())
-        Log.d("question of all type", question)
-        Log.d("answer of all type", answer)
+        question?.let { Log.d("question of all type", it) }
+        answer?.let { Log.d("answer of all type", it) }
     }
 
     interface Callbackinter {

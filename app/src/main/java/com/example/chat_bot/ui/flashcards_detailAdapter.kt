@@ -20,7 +20,7 @@ class CustomCardAdapter(private var exerciseList: List<Exercise>) : RecyclerView
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val exercise = exerciseList[position]
-        holder.questionTextView.text = exercise.subjectName
+        holder.questionTextView.text = exercise.question
         holder.answerTextView.text = exercise.answer
     }
 
