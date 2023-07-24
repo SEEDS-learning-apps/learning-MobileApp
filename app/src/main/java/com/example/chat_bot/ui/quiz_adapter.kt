@@ -120,12 +120,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
             binding.mcqPosFeedbackTv.text = mcq.posFeedback
             binding.mcqNegFeedbackTv.text = mcq.negFeedback
 
-            session = SessionManager(context)
-            question = mcq.mcqs
-            if (question != null) {
-                session?.save_question(question)
-                question = session?.get_question()
-            }
+
 
             clearChecks()
 
@@ -984,6 +979,10 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         Log.d("get quiz item", quiz[position].q_type.toString())
 
         this.question = quiz[position].question
+
+        if(quiz[position].q_type == 2){
+            question = quiz[position].mcqs
+        }
         this.answer = quiz[position].answer
         return quiz[position].q_type
     }
