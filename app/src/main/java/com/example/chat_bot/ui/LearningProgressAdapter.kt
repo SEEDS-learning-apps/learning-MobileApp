@@ -52,11 +52,14 @@ class LearningProgressAdapter(val context: FlashCards):  RecyclerView.Adapter<Le
         holder.itemView.setOnClickListener {
             if (exerciseList.isNotEmpty()) {
                 val intent = Intent(context, FlashCardDetail::class.java)
-                intent.putExtra("EXERCISE_DETAILS", ex)
+                intent.putExtra("EXERCISE_DETAILS", exerciseList) // Pass the entire list of exercises
+                intent.putExtra("EXERCISE_SUBJECT", ex.subjectName)
+                intent.putExtra("EXERCISE_TOPIC", ex.topicName)
                 context.startActivity(intent)
             }
         }
     }
+
 
     override fun getItemCount(): Int {
         return exerciseList.size

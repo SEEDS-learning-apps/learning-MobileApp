@@ -12,7 +12,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil.setContentView
-import com.example.chat_bot.Activities.DashboardActivities.FlashCardDetail
 import com.example.chat_bot.Activities.Introduction.IntroductionActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.databinding.ActivityWelcomepageBinding

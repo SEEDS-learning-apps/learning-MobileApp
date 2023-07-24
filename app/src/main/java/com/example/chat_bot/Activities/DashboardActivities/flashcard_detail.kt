@@ -4,9 +4,7 @@ import CustomCardAdapter
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.chat_bot.Activities.HomePage.MainActivity
 import com.example.chat_bot.R
-import com.example.chat_bot.data.CardItem
 import com.example.chat_bot.data.Exercise
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackView
@@ -19,23 +17,28 @@ class FlashCardDetail : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.flashcards_detail_activity)
 
-        cardStackView = findViewById(R.id.cardStackView)
-        adapter = CustomCardAdapter(createDummyData())
+        val exerciseList = intent.getSerializableExtra("EXERCISE_DETAILS") as? ArrayList<Exercise> ?: arrayListOf()
+        val selectedSubject = intent.getStringExtra("EXERCISE_SUBJECT") ?: ""
+        val selectedTopic = intent.getStringExtra("EXERCISE_TOPIC") ?: ""
 
-        val layoutManager = CardStackLayoutManager(this)
-        cardStackView.layoutManager = layoutManager
-        cardStackView.adapter = adapter
+        // Filter the exercises based on the selected subject and topic
+        val filteredExercises = exerciseList.filter { exercise ->
+            exercise.subjectName == selectedSubject && exercise.topicName == selectedTopic
+        }
 
-        val ex = intent.getSerializableExtra("EXERCISE_DETAILS") as Exercise
+        if (filteredExercises.isNotEmpty()) {
+            // Now you can use the filteredExercises list to display the details
+            // For example, you can pass it to the adapter to display the cards
+            adapter = CustomCardAdapter(filteredExercises)
 
-    }
-
-    private fun createDummyData(): List<CardItem> {
-        val cardItems = mutableListOf<CardItem>()
-        cardItems.add(CardItem(R.drawable.seeds_logo, "Card 1"))
-        cardItems.add(CardItem(R.drawable.app_background_light, "Card 2"))
-        cardItems.add(CardItem(R.drawable.trophy, "Card 3"))
-        return cardItems
+            cardStackView = findViewById(R.id.cardStackView)
+            val layoutManager = CardStackLayoutManager(this)
+            cardStackView.layoutManager = layoutManager
+            cardStackView.adapter = adapter
+        } else {
+            // Handle the case where the filteredExercises is empty
+            // For example, display an error message or take appropriate action
+        }
     }
 
     override fun onBackPressed() {
@@ -44,5 +47,4 @@ class FlashCardDetail : AppCompatActivity() {
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
-
 }

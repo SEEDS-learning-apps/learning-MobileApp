@@ -7,5 +7,7 @@ data class Exercise(
                     var topicName: String,
                     var obtainedscore: String,
                     var totalscore:String,
-                    var time: String
+                    var time: String,
+                    var question:String,
+                    var answer: String
                     ): Serializable

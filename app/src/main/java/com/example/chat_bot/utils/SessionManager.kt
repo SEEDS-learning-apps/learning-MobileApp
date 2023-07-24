@@ -38,6 +38,7 @@ class SessionManager {
         val KEY_grade: String = "grade"
         val KEY_topic: String = "topic"
         val KEY_subject: String = "subject"
+        val KEY_question: String = "question"
         val KEY_topicID: String = "KEY_topicID"
         val LIST_KEY = "list_key100"
         val KEY_App_Mode = "appMode"
@@ -117,6 +118,18 @@ class SessionManager {
     {
         var subject: String = ""
         return pref.getString(KEY_subject, subject).toString().also { subject = it }
+    }
+
+    fun save_question(subject: String)
+    {
+        editor.putString(KEY_question, subject)
+        editor.commit()
+    }
+
+    fun get_question(): String
+    {
+        var subject: String = ""
+        return pref.getString(KEY_question, subject).toString().also { subject = it }
     }
 
    fun saveTotalScore(t_score: String)

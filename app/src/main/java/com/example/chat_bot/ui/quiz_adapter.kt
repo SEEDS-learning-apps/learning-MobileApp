@@ -41,6 +41,8 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
     lateinit var session: SessionManager
     lateinit var topicName: String
     lateinit var subjectName: String
+    lateinit var question: String
+    lateinit var answer: String
     val adapter = ExerciseHistoryAdapter(ExerciseFragment())
     var ansList: MutableList<String> = arrayListOf()
     private lateinit var message: String
@@ -973,6 +975,9 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
     override fun getItemViewType(position: Int): Int {
         Log.d("get quiz item", quiz[position].q_type.toString())
+
+        this.question = quiz[position].question
+        this.answer = quiz[position].answer
         return quiz[position].q_type
     }
 
@@ -988,6 +993,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         quiz = quizlists.subList(iterator,currentPos).toMutableList() as ArrayList<AllQuestion>
 
         Log.d("Set quiz", quiz.toString())
+
 
         notifyDataSetChanged()
 
@@ -1056,11 +1062,15 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         val timeStamp = Time.timeStamp()
         this.subjectName = session.get_subject()
 
-        exerciseList.add(Exercise(subjectName,topicName, correctAnswers.toString(), totalQues.toString(), timeStamp))
+
+
+        exerciseList.add(Exercise(subjectName,topicName, correctAnswers.toString(), totalQues.toString(), timeStamp, question, answer))
 
         session.writeListInPref(this.context,exerciseList)
 
         Log.d("Save score", exerciseList.size.toString())
+        Log.d("question of all type", question)
+        Log.d("answer of all type", answer)
     }
 
     interface Callbackinter {
