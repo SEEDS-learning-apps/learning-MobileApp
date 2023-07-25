@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <gradient android:startColor="?attr/Dashboard_backgroundcurve_start" android:centerColor="?attr/Dashboard_backgroundcurve_middle" android:endColor="?attr/flashcard_background_end"  android:type="linear"
+        android:angle="45"/>
+
+</shape>
+

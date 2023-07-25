@@ -5,6 +5,7 @@
     </declare-styleable>
 
     <declare-styleable name="ds">
+        <attr name="flashcard_detail" format="color"/>
         <attr name="Activity_next_btn" format="color"/>
         <attr name="progressBarColor" format="color"/>
         <attr name="backgroundcolor" format="color"/>
@@ -19,6 +20,7 @@
         <attr name="Dashboard_backgroundcurve_start" format="color"/>
         <attr name="Dashboard_backgroundcurve_middle" format="color"/>
         <attr name="Dashboard_backgroundcurve_end" format="color"/>
+        <attr name="flashcard_background_end" format="color"/>
         <attr name="userchat_start_color" format="color"/>
         <attr name="userchat_end_color" format="color"/>
         <attr name="Botchat_start_color" format="color"/>

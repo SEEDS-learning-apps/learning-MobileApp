@@ -48,12 +48,13 @@
     <color name="Dashboard_backgroundcurve_start_light">#67A8D5</color>
     <color name="Dashboard_backgroundcurve_middle_light">#C8D5D7</color>
     <color name="Dashboard_backgroundcurve_end_light">#EEF5F6</color>
+    <color name="flashcard_background_end_light">#AABDCC</color>
     <color name="Dashboard_backgroundpicture_light">#48A3BA</color>
     <color name="Dashboard_Cardviewbackground_start_light">#E6E9E8</color>
     <color name="Dashboard_Cardviewbackground_end_light">#5B97B8</color>
     <color name="Dashboard_profilecardview_start_light">#E6E9E8</color>
     <color name="Dashboard_profilecardview_end_light">#5BAEB8</color>
-
+    <color name="flashcard_light">#124F9D</color>
 
     <!--   Dark theme Buttons-->
     <color name="Button_start_dark">#99C4E3</color>
@@ -75,4 +76,5 @@
     <color name="Dashboard_Cardviewbackground_end_dark">#0F3E63</color>
     <color name="Dashboard_profilecardview_start_dark">#66849B</color>
     <color name="Dashboard_profilecardview_end_dark">#113A5B</color>
+    <color name="flashcard_dark">#323333</color>
 </resources>

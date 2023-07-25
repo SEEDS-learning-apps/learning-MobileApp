@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/dashboard_cardview_background">
+    android:background="@drawable/flashcard_detail_background">
 
 
     <RelativeLayout
@@ -68,6 +68,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="25dp"
+            android:textColor="?attr/textcolor"
             android:background="@drawable/background_signout"
             android:text="@string/Next" />
     </RelativeLayout>
