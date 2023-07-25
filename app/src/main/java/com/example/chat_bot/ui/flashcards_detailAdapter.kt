@@ -4,13 +4,23 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chat_bot.R
+import com.example.chat_bot.data.AllQuestion
 import com.example.chat_bot.data.Exercise
 
 class CustomCardAdapter(private var exerciseList: List<Exercise>) : RecyclerView.Adapter<CustomCardAdapter.ViewHolder>() {
 
+    var quiz = mutableListOf<AllQuestion>()
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val questionTextView: TextView = itemView.findViewById(R.id.questionTextView)
         val answerTextView: TextView = itemView.findViewById(R.id.answerTextView)
+        val answer1: TextView = itemView.findViewById(R.id.answer)
+        val question2: TextView = itemView.findViewById(R.id.matchquestion2)
+        val question3: TextView = itemView.findViewById(R.id.matchquestion3)
+        val question4: TextView = itemView.findViewById(R.id.matchquestion4)
+        val answer2: TextView = itemView.findViewById(R.id.matchAnswer2)
+        val answer3: TextView = itemView.findViewById(R.id.matchAnswer3)
+        val answer4: TextView = itemView.findViewById(R.id.matchAnswer4)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,6 +32,31 @@ class CustomCardAdapter(private var exerciseList: List<Exercise>) : RecyclerView
         val exercise = exerciseList[position]
         holder.questionTextView.text = exercise.question
         holder.answerTextView.text = exercise.answer
+
+        if (exercise.questionType == "4") {
+            holder.answer1.text = "1) "+ exercise.statment1 +":"
+            holder.answerTextView.text = exercise.answer1
+            holder.question2.text = "2) "+ exercise.statment2 +":"
+            holder.answer2.text = exercise.answer2
+            holder.question2.visibility = View.VISIBLE
+            holder.answer2.visibility = View.VISIBLE
+            holder.question3.text = "3) "+ exercise.statment3 +":"
+            holder.answer3.text = exercise.answer3
+            holder.question3.visibility = View.VISIBLE
+            holder.answer3.visibility = View.VISIBLE
+            holder.question4.text = "4) "+ exercise.statment2 +":"
+            holder.answer4.text = exercise.answer4
+            holder.question4.visibility = View.VISIBLE
+            holder.answer4.visibility = View.VISIBLE
+        } else {
+            holder.question2.visibility = View.GONE
+            holder.answer2.visibility = View.GONE
+            holder.question3.visibility = View.GONE
+            holder.answer3.visibility = View.GONE
+            holder.question4.visibility = View.GONE
+            holder.answer4.visibility = View.GONE
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -33,4 +68,11 @@ class CustomCardAdapter(private var exerciseList: List<Exercise>) : RecyclerView
         this.exerciseList = exerciseList
         notifyDataSetChanged()
     }
+
+    fun setQuizData(quizList: List<AllQuestion>) {
+        quiz.clear()
+        quiz.addAll(quizList)
+        notifyDataSetChanged()
+    }
+
 }

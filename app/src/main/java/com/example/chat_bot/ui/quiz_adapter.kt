@@ -24,7 +24,6 @@ import com.example.chat_bot.data.OpenEnded
 import com.example.chat_bot.databinding.*
 import com.example.chat_bot.utils.SessionManager
 import com.example.chat_bot.utils.Time
-import kotlinx.coroutines.flow.callbackFlow
 
 class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callbackinter):
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -51,6 +50,17 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
     var ansList: MutableList<String> = arrayListOf()
     private lateinit var message: String
     var Selected_ansList: MutableList<String> = arrayListOf()
+    private var questionType: String? = null
+
+    // for matching activity
+    private var statment1: String? = null
+    private var answer1: String? = null
+    private var statment2: String? = null
+    private var answer2: String? = null
+    private var statment3: String? = null
+    private var answer3: String? = null
+    private var statment4: String? = null
+    private var answer4: String? = null
 
 
     companion object {
@@ -1010,9 +1020,18 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         }
 
         this.answer = quiz[position].answer
+        this.questionType = quiz[position].q_type.toString()
 
-
-
+        if (quiz[position].q_type == 4) {
+            statment1 = quiz[position].statement1
+            statment2 = quiz[position].statement2
+            statment3 = quiz[position].statement3
+            statment4 = quiz[position].statement4
+            answer1 = quiz[position].answer1
+            answer2 = quiz[position].answer2
+            answer3 = quiz[position].answer3
+            answer4 = quiz[position].answer4
+        }
 
         if (quiz[position].q_type == 2) {
             val option1 = "option1"
@@ -1115,7 +1134,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
 
 
-        exerciseList.add(Exercise(subjectName,topicName, correctAnswers.toString(), totalQues.toString(), timeStamp, question, answer))
+        exerciseList.add(Exercise(questionType,subjectName,topicName, correctAnswers.toString(), totalQues.toString(), timeStamp, question, answer,statment1,answer1,statment2,answer2,statment3,answer3,statment4,answer4))
 
         session.writeListInPref(this.context,exerciseList)
 

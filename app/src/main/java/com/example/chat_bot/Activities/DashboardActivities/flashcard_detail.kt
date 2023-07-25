@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.chat_bot.R
+import com.example.chat_bot.data.AllQuestion
 import com.example.chat_bot.data.Exercise
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackView
@@ -12,6 +13,7 @@ import com.yuyakaido.android.cardstackview.CardStackView
 class FlashCardDetail : AppCompatActivity() {
     private lateinit var cardStackView: CardStackView
     private lateinit var adapter: CustomCardAdapter
+    private var quizList: List<AllQuestion> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +32,7 @@ class FlashCardDetail : AppCompatActivity() {
             // Now you can use the filteredExercises list to display the details
             // For example, you can pass it to the adapter to display the cards
             adapter = CustomCardAdapter(filteredExercises)
+            adapter.setQuizData(quizList)
 
             cardStackView = findViewById(R.id.cardStackView)
             val layoutManager = CardStackLayoutManager(this)
