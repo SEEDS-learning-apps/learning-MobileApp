@@ -1134,13 +1134,14 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
 
 
-        exerciseList.add(Exercise(questionType,subjectName,topicName, correctAnswers.toString(), totalQues.toString(), timeStamp, question, answer,statment1,answer1,statment2,answer2,statment3,answer3,statment4,answer4))
+        exerciseList.add(Exercise(questionType,max,subjectName,topicName, correctAnswers.toString(), totalQues.toString(), timeStamp, question, answer,statment1,answer1,statment2,answer2,statment3,answer3,statment4,answer4))
 
         session.writeListInPref(this.context,exerciseList)
 
         Log.d("Save score", exerciseList.size.toString())
         question?.let { Log.d("question of all type", it) }
         answer?.let { Log.d("answer of all type", it) }
+        Log.d("Quiz maximum size", max.toString())
     }
 
     interface Callbackinter {

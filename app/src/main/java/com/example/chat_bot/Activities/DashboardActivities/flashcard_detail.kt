@@ -5,18 +5,16 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import com.example.chat_bot.R
 import com.example.chat_bot.data.AllQuestion
 import com.example.chat_bot.data.Exercise
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
-import com.yuyakaido.android.cardstackview.CardStackListener
 import com.yuyakaido.android.cardstackview.CardStackView
 import com.yuyakaido.android.cardstackview.Direction
 
-class FlashCardDetail : AppCompatActivity(), CardStackListener {
+class FlashCardDetail : AppCompatActivity() {
     private lateinit var cardStackView: CardStackView
     private lateinit var adapter: CustomCardAdapter
     private var quizList: List<AllQuestion> = mutableListOf()
@@ -38,12 +36,10 @@ class FlashCardDetail : AppCompatActivity(), CardStackListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.flashcards_detail_activity)
 
-
         cardStackLayoutManager = CardStackLayoutManager(this)
 
         val previousButton: AppCompatButton = findViewById(R.id.previousbtn)
         val nextButton: AppCompatButton = findViewById(R.id.Nextbtn)
-
 
         previousButton.setOnClickListener {
             navigateToPreviousCard()
@@ -62,32 +58,32 @@ class FlashCardDetail : AppCompatActivity(), CardStackListener {
             exercise.subjectName == selectedSubject && exercise.topicName == selectedTopic
         }
 
-        val position: Int = 0
         if (filteredExercises.isNotEmpty()) {
+            val exercise = filteredExercises[0]
 
-            // Assuming exerciseList contains the list of Exercise items
             // Create an Exercise instance with the data you want for the cards
             val sharedExercise = Exercise(
-                exerciseList[position].questionType ,
-                exerciseList[position].subjectName,
-                exerciseList[position].topicName,
-                exerciseList[position].obtainedscore,
-                exerciseList[position].totalscore,
-                exerciseList[position].time,
-                exerciseList[position].question,
-                exerciseList[position].answer,
-                exerciseList[position].statment1,
-                exerciseList[position].answer1,
-                exerciseList[position].statment2,
-                exerciseList[position].answer2,
-                exerciseList[position].statment3,
-                exerciseList[position].answer3,
-                exerciseList[position].statment4,
-                exerciseList[position].answer4
+                exercise.questionType,
+                exercise.quizSize,
+                exercise.subjectName,
+                exercise.topicName,
+                exercise.obtainedscore,
+                exercise.totalscore,
+                exercise.time,
+                exercise.question,
+                exercise.answer,
+                exercise.statment1,
+                exercise.answer1,
+                exercise.statment2,
+                exercise.answer2,
+                exercise.statment3,
+                exercise.answer3,
+                exercise.statment4,
+                exercise.answer4
             )
 
-            // Create six cards with the same data by adding the sharedExercise multiple times
-            val customExercises = MutableList(6) { sharedExercise }
+            // Create a list of exercises with 'exercise.quizSize' instances of sharedExercise
+            customExercises = MutableList(exercise.quizSize) { sharedExercise }
 
             // Initialize the adapter before using it
             adapter = CustomCardAdapter(customExercises)
@@ -103,9 +99,10 @@ class FlashCardDetail : AppCompatActivity(), CardStackListener {
     }
 
     private fun navigateToPreviousCard() {
-
-                cardStackView.rewind()
-
+        if (currentPosition > 0) {
+            currentPosition--
+            cardStackView.rewind()
+        }
     }
 
     private fun navigateToNextCard() {
@@ -115,7 +112,6 @@ class FlashCardDetail : AppCompatActivity(), CardStackListener {
         }
     }
 
-
     override fun onBackPressed() {
         super.onBackPressed()
         val intent = Intent(this, FlashCards::class.java)
@@ -123,28 +119,5 @@ class FlashCardDetail : AppCompatActivity(), CardStackListener {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 
-    override fun onCardDragging(direction: Direction?, ratio: Float) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onCardSwiped(direction: Direction?) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onCardRewound() {
-        TODO("Not yet implemented")
-    }
-
-    override fun onCardCanceled() {
-        TODO("Not yet implemented")
-    }
-
-    override fun onCardAppeared(view: View?, position: Int) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onCardDisappeared(view: View?, position: Int) {
-        TODO("Not yet implemented")
-    }
+    // Implement the CardStackListener methods here, if needed
 }
-

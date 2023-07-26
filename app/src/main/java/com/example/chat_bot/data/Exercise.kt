@@ -4,6 +4,7 @@ import java.io.Serializable
 
 data class Exercise(
     var questionType: String? = null,
+    var quizSize:Int,
     var subjectName: String = "",
     var topicName: String = "",
     var obtainedscore: String = "",
