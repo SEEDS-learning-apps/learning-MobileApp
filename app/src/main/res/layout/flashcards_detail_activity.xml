@@ -43,7 +43,7 @@
         <!-- Add buttons or other views for navigation or interaction -->
         <!-- For example, you can have "Like" and "Dislike" buttons below the CardStackView -->
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnLike"
+            android:id="@+id/previousbtn"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -59,7 +59,7 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnDislike"
+            android:id="@+id/Nextbtn"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

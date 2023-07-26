@@ -10,6 +10,7 @@ import com.example.chat_bot.data.Exercise
 class CustomCardAdapter(private var exerciseList: List<Exercise>) : RecyclerView.Adapter<CustomCardAdapter.ViewHolder>() {
 
     var quiz = mutableListOf<AllQuestion>()
+    var position: Int? = null
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val questionTextView: TextView = itemView.findViewById(R.id.questionTextView)
@@ -24,7 +25,8 @@ class CustomCardAdapter(private var exerciseList: List<Exercise>) : RecyclerView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.flashcards_detailitem, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.flashcards_detailitem, parent, false)
         return ViewHolder(view)
     }
 
@@ -33,46 +35,77 @@ class CustomCardAdapter(private var exerciseList: List<Exercise>) : RecyclerView
         holder.questionTextView.text = exercise.question
         holder.answerTextView.text = exercise.answer
 
-        if (exercise.questionType == "4") {
-            holder.answer1.text = "1) "+ exercise.statment1 +":"
-            holder.answerTextView.text = exercise.answer1
-            holder.question2.text = "2) "+ exercise.statment2 +":"
-            holder.answer2.text = exercise.answer2
-            holder.question2.visibility = View.VISIBLE
-            holder.answer2.visibility = View.VISIBLE
-            holder.question3.text = "3) "+ exercise.statment3 +":"
-            holder.answer3.text = exercise.answer3
-            holder.question3.visibility = View.VISIBLE
-            holder.answer3.visibility = View.VISIBLE
-            holder.question4.text = "4) "+ exercise.statment2 +":"
-            holder.answer4.text = exercise.answer4
-            holder.question4.visibility = View.VISIBLE
-            holder.answer4.visibility = View.VISIBLE
-        } else {
-            holder.question2.visibility = View.GONE
-            holder.answer2.visibility = View.GONE
-            holder.question3.visibility = View.GONE
-            holder.answer3.visibility = View.GONE
-            holder.question4.visibility = View.GONE
-            holder.answer4.visibility = View.GONE
+        when (exercise.questionType) {
+            "4" -> {
+                holder.question2.visibility = View.VISIBLE
+                holder.answer2.visibility = View.VISIBLE
+                holder.question3.visibility = View.VISIBLE
+                holder.answer3.visibility = View.VISIBLE
+                holder.question4.visibility = View.VISIBLE
+                holder.answer4.visibility = View.VISIBLE
+
+                holder.answer1.text = "1) " + exercise.statment1 + ":"
+                holder.answerTextView.text = exercise.answer1
+                holder.question2.text = "2) " + exercise.statment2 + ":"
+                holder.answer2.text = exercise.answer2
+                holder.question3.text = "3) " + exercise.statment3 + ":"
+                holder.answer3.text = exercise.answer3
+                holder.question4.text = "4) " + exercise.statment4 + ":"
+                holder.answer4.text = exercise.answer4
+            }
+
+            "2" -> {
+                holder.question2.visibility = View.GONE
+                holder.answer2.visibility = View.GONE
+                holder.question3.visibility = View.GONE
+                holder.answer3.visibility = View.GONE
+                holder.question4.visibility = View.GONE
+                holder.answer4.visibility = View.GONE
+                holder.questionTextView.text = exercise.question
+                holder.answerTextView.text = exercise.answer
+
+                // Customize the layout for question type 2 as needed
+            }
+
+            "3" -> {
+                holder.question2.visibility = View.GONE
+                holder.answer2.visibility = View.GONE
+                holder.question3.visibility = View.GONE
+                holder.answer3.visibility = View.GONE
+                holder.question4.visibility = View.GONE
+                holder.answer4.visibility = View.GONE
+                holder.questionTextView.text = exercise.question
+                holder.answerTextView.text = exercise.answer
+            }
+
+            else -> {
+                holder.question2.visibility = View.GONE
+                holder.answer2.visibility = View.GONE
+                holder.question3.visibility = View.GONE
+                holder.answer3.visibility = View.GONE
+                holder.question4.visibility = View.GONE
+                holder.answer4.visibility = View.GONE
+                holder.questionTextView.text = exercise.question
+                holder.answerTextView.text = exercise.answer
+                // Handle other question types here
+            }
+        }
+    }
+        override fun getItemCount(): Int {
+            return exerciseList.size
+        }
+
+        // Add this method to update the data in the adapter
+        fun setData(exerciseList: List<Exercise>) {
+            this.exerciseList = exerciseList
+            notifyDataSetChanged()
+        }
+
+        fun setQuizData(quizList: List<AllQuestion>) {
+            quiz.clear()
+            quiz.addAll(quizList)
+            notifyDataSetChanged()
         }
 
     }
 
-    override fun getItemCount(): Int {
-        return exerciseList.size
-    }
-
-    // Add this method to update the data in the adapter
-    fun setData(exerciseList: List<Exercise>) {
-        this.exerciseList = exerciseList
-        notifyDataSetChanged()
-    }
-
-    fun setQuizData(quizList: List<AllQuestion>) {
-        quiz.clear()
-        quiz.addAll(quizList)
-        notifyDataSetChanged()
-    }
-
-}
