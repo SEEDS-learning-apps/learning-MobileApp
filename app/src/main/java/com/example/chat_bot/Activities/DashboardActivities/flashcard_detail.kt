@@ -21,6 +21,7 @@ class FlashCardDetail : AppCompatActivity() {
     private var customExercises: MutableList<Exercise> = mutableListOf()
     private var currentPosition: Int = 0
     private var cardStackLayoutManager: CardStackLayoutManager? = null
+    private var isMaxLimitReached = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val sharedprefs: SharedPreferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE)
@@ -42,7 +43,7 @@ class FlashCardDetail : AppCompatActivity() {
         val nextButton: AppCompatButton = findViewById(R.id.Nextbtn)
 
         previousButton.setOnClickListener {
-            navigateToPreviousCard()
+           cardStackView.rewind()
         }
 
         nextButton.setOnClickListener {
@@ -93,24 +94,26 @@ class FlashCardDetail : AppCompatActivity() {
             cardStackView.layoutManager = layoutManager
             cardStackView.adapter = adapter
         } else {
-            // Handle the case where the filteredExercises is empty
-            // For example, display an error message or take appropriate action
-        }
-    }
 
-    private fun navigateToPreviousCard() {
-        if (currentPosition > 0) {
-            currentPosition--
-            cardStackView.rewind()
         }
     }
 
     private fun navigateToNextCard() {
-        if (currentPosition < adapter.itemCount - 1) {
+        if (currentPosition < customExercises.size) {
             currentPosition++
             cardStackView.swipe()
+            // Check if the maximum limit is reached after the swipe
+            if (currentPosition >= customExercises.size) {
+                // Maximum limit is reached, change the button text to "Close"
+                val nextButton: AppCompatButton = findViewById(R.id.Nextbtn)
+                nextButton.text = "Close"
+            }
+        } else {
+            // If the maximum limit is reached, execute the onBackPressed function
+            onBackPressed()
         }
     }
+
 
     override fun onBackPressed() {
         super.onBackPressed()
@@ -119,5 +122,4 @@ class FlashCardDetail : AppCompatActivity() {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
 
-    // Implement the CardStackListener methods here, if needed
 }
