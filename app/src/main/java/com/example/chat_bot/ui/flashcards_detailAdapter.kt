@@ -60,6 +60,30 @@ class CustomCardAdapter(private var exerciseList: List<Exercise>) : RecyclerView
                 holder.answer3.text = exercise.answer3
                 holder.question4.text = "4) " + exercise.statment4 + ":"
                 holder.answer4.text = exercise.answer4
+
+                val image = exercise
+
+                val url = image?.file
+
+                if (image?.file?.isNotEmpty() == true && image.file.isNotBlank()) {
+                    holder.imageView.visibility = View.VISIBLE
+                    Glide.with(holder.imageView.context).load(url).into(holder.imageView)
+                } else {
+
+                }
+
+                if (image?.link != null && image.link != "null") {
+                    holder.introURL.visibility = View.VISIBLE
+//            holder.introURL.text(image.link)
+                    holder.introURL.setOnClickListener {
+                        // Add the logic for handling the click event here
+                        // For example, you can open the link in a web browser
+                        val urlIntent = Intent(Intent.ACTION_VIEW, Uri.parse(image.link))
+                        holder.itemView.context.startActivity(urlIntent)
+                    }
+                } else {
+                    holder.introURL.visibility = View.GONE
+                }
             }
 
             "2" -> {
@@ -107,6 +131,30 @@ class CustomCardAdapter(private var exerciseList: List<Exercise>) : RecyclerView
                 holder.answer4.visibility = View.GONE
                 holder.questionTextView.text = exercise.question
                 holder.answerTextView.text = exercise.answer
+
+                val image = exercise
+
+                val url = image?.file
+
+                if (image?.file?.isNotEmpty() == true && image.file.isNotBlank()) {
+                    holder.imageView.visibility = View.VISIBLE
+                    Glide.with(holder.imageView.context).load(url).into(holder.imageView)
+                } else {
+
+                }
+
+                if (image?.link != null && image.link != "null") {
+                    holder.introURL.visibility = View.VISIBLE
+//            holder.introURL.text(image.link)
+                    holder.introURL.setOnClickListener {
+                        // Add the logic for handling the click event here
+                        // For example, you can open the link in a web browser
+                        val urlIntent = Intent(Intent.ACTION_VIEW, Uri.parse(image.link))
+                        holder.itemView.context.startActivity(urlIntent)
+                    }
+                } else {
+                    holder.introURL.visibility = View.GONE
+                }
             }
 
             else -> {
@@ -119,32 +167,33 @@ class CustomCardAdapter(private var exerciseList: List<Exercise>) : RecyclerView
                 holder.questionTextView.text = exercise.question
                 holder.answerTextView.text = exercise.answer
 
-            }
-        }
+                val image = exercise
 
-        val image = quiz.getOrNull(position)
+                val url = image?.file
 
-        val url = image?.file
+                if (image?.file?.isNotEmpty() == true && image.file.isNotBlank()) {
+                    holder.imageView.visibility = View.VISIBLE
+                    Glide.with(holder.imageView.context).load(url).into(holder.imageView)
+                } else {
 
-        if (image?.file?.isNotEmpty() == true && image.file.isNotBlank()) {
-            holder.imageView.visibility = View.VISIBLE
-            Glide.with(holder.imageView.context).load(url).into(holder.imageView)
-        } else {
+                }
 
-        }
-
-        if (image?.link != null && image.link != "null") {
-            holder.introURL.visibility = View.VISIBLE
+                if (image?.link != null && image.link != "null") {
+                    holder.introURL.visibility = View.VISIBLE
 //            holder.introURL.text(image.link)
-            holder.introURL.setOnClickListener {
-                // Add the logic for handling the click event here
-                // For example, you can open the link in a web browser
-                val urlIntent = Intent(Intent.ACTION_VIEW, Uri.parse(image.link))
-                holder.itemView.context.startActivity(urlIntent)
+                    holder.introURL.setOnClickListener {
+                        // Add the logic for handling the click event here
+                        // For example, you can open the link in a web browser
+                        val urlIntent = Intent(Intent.ACTION_VIEW, Uri.parse(image.link))
+                        holder.itemView.context.startActivity(urlIntent)
+                    }
+                } else {
+                    holder.introURL.visibility = View.GONE
+                }
+
             }
-        } else {
-            holder.introURL.visibility = View.GONE
         }
+
     }
         override fun getItemCount(): Int {
             return exerciseList.size
