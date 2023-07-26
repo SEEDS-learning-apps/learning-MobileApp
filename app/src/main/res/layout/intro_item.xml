@@ -25,6 +25,7 @@
                 android:text="Intro Dummy Text"
                 android:textAlignment="center"
                 android:textSize="24sp"
+                android:textColor="?attr/textcolor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
