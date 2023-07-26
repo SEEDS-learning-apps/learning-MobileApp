@@ -18,7 +18,7 @@
         android:background="@drawable/dashboard_cardview_background">
 
         <ImageView
-            android:id="@+id/imageView12"
+            android:id="@+id/flashcardDetail_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0.03"
@@ -30,6 +30,36 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             app:tint="?attr/textcolor"/>
+
+        <TextView
+            android:id="@+id/introURL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:autoLink="web"
+            android:padding="15dp"
+            android:gravity="center"
+            android:clickable="true"
+            android:text="https://news.hofstede-insights.com/news/what-do-we-mean-by-culture"
+            android:textColor="@color/seed_light_blue"
+            android:textSize="24sp"
+            android:textStyle="italic"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/imageView" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_baseline_broken_image_24"
+            app:layout_constraintBottom_toTopOf="@+id/question"
+            android:visibility="gone"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/question"

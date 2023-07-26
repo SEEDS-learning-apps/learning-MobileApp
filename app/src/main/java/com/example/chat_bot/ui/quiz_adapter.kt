@@ -1131,10 +1131,12 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
         val timeStamp = Time.timeStamp()
         this.subjectName = session.get_subject()
+        val file = quiz[position].file
+        val link = quiz[position].link
 
 
 
-        exerciseList.add(Exercise(questionType,max,subjectName,topicName, correctAnswers.toString(), totalQues.toString(), timeStamp, question, answer,statment1,answer1,statment2,answer2,statment3,answer3,statment4,answer4))
+        exerciseList.add(Exercise(questionType,max,subjectName,topicName, correctAnswers.toString(), totalQues.toString(), timeStamp, question, answer,statment1,answer1,statment2,answer2,statment3,answer3,statment4,answer4,link,file))
 
         session.writeListInPref(this.context,exerciseList)
 

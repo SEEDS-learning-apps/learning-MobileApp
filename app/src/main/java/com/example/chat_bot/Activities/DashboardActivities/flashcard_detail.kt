@@ -84,7 +84,9 @@ class FlashCardDetail : AppCompatActivity() {
                 exercise.statment3,
                 exercise.answer3,
                 exercise.statment4,
-                exercise.answer4
+                exercise.answer4,
+                exercise.link,
+                exercise.file
             )
 
             // Create a list of exercises with 'exercise.quizSize' instances of sharedExercise

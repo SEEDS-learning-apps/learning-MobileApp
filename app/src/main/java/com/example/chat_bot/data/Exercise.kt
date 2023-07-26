@@ -19,5 +19,7 @@ data class Exercise(
     var statment3: String? = null,
     var answer3: String? = null,
     var statment4: String? = null,
-    var answer4: String? = null
+    var answer4: String? = null,
+    val link: String?,
+    val file: String?
 ):Serializable
