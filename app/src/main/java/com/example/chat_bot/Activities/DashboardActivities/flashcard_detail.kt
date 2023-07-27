@@ -19,7 +19,7 @@ class FlashCardDetail : AppCompatActivity() {
     private lateinit var cardStackView: CardStackView
     private lateinit var adapter: CustomCardAdapter
     private var quizList: List<AllQuestion> = mutableListOf()
-    private var customExercises: MutableList<Exercise> = mutableListOf()
+    private var numberOfQuestions: Int = 0
     private var currentPosition: Int = 0
     private var cardStackLayoutManager: CardStackLayoutManager? = null
     private var isMaxLimitReached = false
@@ -64,37 +64,10 @@ class FlashCardDetail : AppCompatActivity() {
         }
 
         if (filteredExercises.isNotEmpty()) {
-            val exercise = filteredExercises[0]
-
-            // Create an Exercise instance with the data you want for the cards
-            val sharedExercise = Exercise(
-                exercise.questionType,
-                exercise.quizSize,
-                exercise.subjectName,
-                exercise.topicName,
-                exercise.obtainedscore,
-                exercise.totalscore,
-                exercise.time,
-                exercise.question,
-                exercise.answer,
-                exercise.statment1,
-                exercise.answer1,
-                exercise.statment2,
-                exercise.answer2,
-                exercise.statment3,
-                exercise.answer3,
-                exercise.statment4,
-                exercise.answer4,
-                exercise.link,
-                exercise.file
-            )
-
-            // Create a list of exercises with 'exercise.quizSize' instances of sharedExercise
-            customExercises = MutableList(exercise.quizSize) { sharedExercise }
-
+            numberOfQuestions = filteredExercises[0].questions.size
 
             // Initialize the adapter before using it
-            adapter = CustomCardAdapter(customExercises)
+            adapter = CustomCardAdapter(filteredExercises[0])
 
             cardStackView = findViewById(R.id.cardStackView)
             val layoutManager = CardStackLayoutManager(this)
@@ -106,11 +79,11 @@ class FlashCardDetail : AppCompatActivity() {
     }
 
     private fun navigateToNextCard() {
-        if (!isMaxLimitReached && currentPosition < customExercises.size ) {
+        if (!isMaxLimitReached && currentPosition < numberOfQuestions ) {
             currentPosition++
             cardStackView.swipe()
             // Check if the maximum limit is reached after the swipe
-            if (currentPosition >= customExercises.size ) {
+            if (currentPosition >= numberOfQuestions ) {
                 // Maximum limit is reached, change the button text to "Close"
                 val nextButton: AppCompatButton = findViewById(R.id.Nextbtn)
                 nextButton.text = "Close"

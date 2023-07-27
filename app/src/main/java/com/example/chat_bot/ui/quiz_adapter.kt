@@ -18,9 +18,7 @@ import com.bumptech.glide.Glide
 import com.example.chat_bot.Activities.HomePage.ExerciseFragment
 import com.example.chat_bot.Activities.HomePage.MainActivity
 import com.example.chat_bot.R
-import com.example.chat_bot.data.AllQuestion
-import com.example.chat_bot.data.Exercise
-import com.example.chat_bot.data.OpenEnded
+import com.example.chat_bot.data.*
 import com.example.chat_bot.databinding.*
 import com.example.chat_bot.utils.SessionManager
 import com.example.chat_bot.utils.Time
@@ -37,7 +35,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
     private var correct_answers: Int = 0
     private var haveInto: Boolean = false
     var max: Int = 0
-    lateinit var QuizArray: ArrayList <AllQuestion>
+    lateinit var QuizArray: ArrayList<AllQuestion>
     var quiz = mutableListOf<AllQuestion>()
     var exerciseList: ArrayList<Exercise> = ArrayList()
     var openEndedList: ArrayList<OpenEnded> = ArrayList()
@@ -1099,6 +1097,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                 "done is"
         }
 
+        Log.d("rag - all question, ", az.toString()) // AllQuestions [AllQuestion]
         saveScores(position,correct_answers, az.size)
         val  button = view.findViewById<Button>(R.id.Results_return_to_chat)
         builder.setView(view)
@@ -1125,18 +1124,40 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         }
     }
 
-    private fun saveScores(position: Int, correctAnswers: Int, totalQues: Int) {
+    private fun getAnswer(question: AllQuestion): String {
+        return if (question.q_type == 2) when(question.answer) {
+            "option1" -> question.option1
+            "option2" -> question.option2
+            "option3" -> question.option3
+            "option4" -> question.option4
+            else -> "Not Found"
+        } else question.answer
+    }
 
+    private fun saveScores(position: Int, correctAnswers: Int, totalQues: Int) {
         exerciseList = session.readListFromPref(this.context) as ArrayList<Exercise>
 
         val timeStamp = Time.timeStamp()
         this.subjectName = session.get_subject()
-        val file = quiz[position].file
-        val link = quiz[position].link
 
+        val questions: MutableList<Question> = mutableListOf()
+        for ( item in QuizArray ) {
+            questions.add(
+                Question(
+                    if (item.q_type == 2) item.mcqs else item.question, getAnswer(item), item.statement1, item.answer1, item.statement2, item.answer2, item.statement3, item.answer3, item.statement4, item.answer4, item.link, item.file
+                )
+            )
+        }
 
+        for (item in exerciseList.indices) {
+            if (exerciseList[item].subjectName == subjectName && exerciseList[item].topicName == topicName) {
+                exerciseList.removeAt(item)
+            }
+        }
 
-        exerciseList.add(Exercise(questionType,max,subjectName,topicName, correctAnswers.toString(), totalQues.toString(), timeStamp, question, answer,statment1,answer1,statment2,answer2,statment3,answer3,statment4,answer4,link,file))
+        exerciseList.add(
+            Exercise(questionType,max,subjectName,topicName, correctAnswers.toString(), totalQues.toString(), timeStamp, questions)
+        )
 
         session.writeListInPref(this.context,exerciseList)
 
