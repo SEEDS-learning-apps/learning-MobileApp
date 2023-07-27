@@ -1,4 +1,7 @@
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Typeface
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +20,7 @@ class CustomCardAdapter(private var exercise: Exercise) : RecyclerView.Adapter<C
     var position: Int? = null
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val question: TextView = itemView.findViewById(R.id.question)
         val questionTextView: TextView = itemView.findViewById(R.id.questionTextView)
         val answerTextView: TextView = itemView.findViewById(R.id.answerTextView)
         val answer1: TextView = itemView.findViewById(R.id.answer)
@@ -40,6 +44,7 @@ class CustomCardAdapter(private var exercise: Exercise) : RecyclerView.Adapter<C
             val question = exercise.questions[position]
             holder.questionTextView.text = question.question
             holder.answerTextView.text = question.answer
+
             holder.question2.visibility = View.GONE
             holder.answer2.visibility = View.GONE
             holder.question3.visibility = View.GONE
@@ -86,12 +91,19 @@ class CustomCardAdapter(private var exercise: Exercise) : RecyclerView.Adapter<C
             }
 
             if (question.link != null && question.link != "null") {
-                holder.introURL.visibility = View.VISIBLE
-                holder.introURL.setOnClickListener {
+                holder.question.text = "Click the link below to read the text and continue"
+                holder.questionTextView.text = question.link
+                holder.questionTextView.setTextColor(Color.BLUE)
+                holder.questionTextView.paintFlags = holder.questionTextView.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+                holder.answer1.visibility = View.GONE
+
+                holder.questionTextView.setTypeface(null, Typeface.NORMAL)
+
+                holder.questionTextView.setOnClickListener {
                     val urlIntent = Intent(Intent.ACTION_VIEW, Uri.parse(question.link))
                     holder.itemView.context.startActivity(urlIntent)
                 }
-            } else {
+            }  else {
                 holder.introURL.visibility = View.GONE
             }
         }
