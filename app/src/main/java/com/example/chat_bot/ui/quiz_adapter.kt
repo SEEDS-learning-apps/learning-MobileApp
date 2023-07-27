@@ -1144,14 +1144,17 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         for ( item in QuizArray ) {
             questions.add(
                 Question(
-                    if (item.q_type == 2) item.mcqs else item.question, getAnswer(item), item.statement1, item.answer1, item.statement2, item.answer2, item.statement3, item.answer3, item.statement4, item.answer4, item.link, item.file
+                    if (item.q_type == 2) item.mcqs else item.question, getAnswer(item), item.statement1,
+                    item.answer1, item.statement2, item.answer2, item.statement3, item.answer3, item.statement4, item.answer4, item.link, item.file
                 )
             )
         }
 
-        for (item in exerciseList.indices) {
-            if (exerciseList[item].subjectName == subjectName && exerciseList[item].topicName == topicName) {
-                exerciseList.removeAt(item)
+        val iterator = exerciseList.iterator()
+        while (iterator.hasNext()) {
+            val item = iterator.next()
+            if (item.subjectName == subjectName && item.topicName == topicName) {
+                iterator.remove()
             }
         }
 

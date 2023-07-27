@@ -10,12 +10,10 @@ import com.bumptech.glide.Glide
 import com.example.chat_bot.R
 import com.example.chat_bot.data.AllQuestion
 import com.example.chat_bot.data.Exercise
-
-
+import com.example.chat_bot.ui.quiz_adapter
 
 class CustomCardAdapter(private var exercise: Exercise) : RecyclerView.Adapter<CustomCardAdapter.ViewHolder>() {
 
-    var quiz = mutableListOf<AllQuestion>()
     var position: Int? = null
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,13 +36,21 @@ class CustomCardAdapter(private var exercise: Exercise) : RecyclerView.Adapter<C
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val question = exercise.questions[position]
-        holder.questionTextView.text = question.question
-        holder.answerTextView.text = question.answer
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+            val question = exercise.questions[position]
+            holder.questionTextView.text = question.question
+            holder.answerTextView.text = question.answer
+            holder.question2.visibility = View.GONE
+            holder.answer2.visibility = View.GONE
+            holder.question3.visibility = View.GONE
+            holder.answer3.visibility = View.GONE
+            holder.question4.visibility = View.GONE
+            holder.answer4.visibility = View.GONE
 
-        when (exercise.questionType) {
-            "4" -> {
+            if (exercise.questionType == "4" && question.statment1?.isNotBlank() == true && question.statment2?.isNotBlank() == true &&
+                question.statment3?.isNotBlank() == true && question.statment4?.isNotBlank() == true
+            ) {
+                // Show additional views for type "4" questions
                 holder.question2.visibility = View.VISIBLE
                 holder.answer2.visibility = View.VISIBLE
                 holder.question3.visibility = View.VISIBLE
@@ -60,133 +66,37 @@ class CustomCardAdapter(private var exercise: Exercise) : RecyclerView.Adapter<C
                 holder.answer3.text = question.answer3
                 holder.question4.text = "4) " + question.statment4 + ":"
                 holder.answer4.text = question.answer4
-
-                val url = question?.file
-
-                if (question?.file?.isNotEmpty() == true && question.file.isNotBlank()) {
-                    holder.imageView.visibility = View.VISIBLE
-                    Glide.with(holder.imageView.context).load(url).into(holder.imageView)
-                } else {
-
+            }else {
+                    // Hide additional views for non-type 4 questions
+                    holder.question2.visibility = View.GONE
+                    holder.answer2.visibility = View.GONE
+                    holder.question3.visibility = View.GONE
+                    holder.answer3.visibility = View.GONE
+                    holder.question4.visibility = View.GONE
+                    holder.answer4.visibility = View.GONE
                 }
 
-                if (question?.link != null && question.link != "null") {
-                    holder.introURL.visibility = View.VISIBLE
-//            holder.introURL.text(image.link)
-                    holder.introURL.setOnClickListener {
-                        // Add the logic for handling the click event here
-                        // For example, you can open the link in a web browser
-                        val urlIntent = Intent(Intent.ACTION_VIEW, Uri.parse(question.link))
-                        holder.itemView.context.startActivity(urlIntent)
-                    }
-                } else {
-                    holder.introURL.visibility = View.GONE
-                }
+            val url = question.file
+
+            if (question.file?.isNotEmpty() == true && question.file.isNotBlank()) {
+                holder.imageView.visibility = View.VISIBLE
+                Glide.with(holder.imageView.context).load(url).into(holder.imageView)
+            } else {
+                holder.imageView.visibility = View.GONE
             }
 
-            "2" -> {
-                holder.question2.visibility = View.GONE
-                holder.answer2.visibility = View.GONE
-                holder.question3.visibility = View.GONE
-                holder.answer3.visibility = View.GONE
-                holder.question4.visibility = View.GONE
-                holder.answer4.visibility = View.GONE
-                holder.questionTextView.text = question.question
-                holder.answerTextView.text = question.answer
-
-                val url = question?.file
-
-                if (question?.file?.isNotEmpty() == true && question.file.isNotBlank()) {
-                    holder.imageView.visibility = View.VISIBLE
-                    Glide.with(holder.imageView.context).load(url).into(holder.imageView)
-                } else {
-
+            if (question.link != null && question.link != "null") {
+                holder.introURL.visibility = View.VISIBLE
+                holder.introURL.setOnClickListener {
+                    val urlIntent = Intent(Intent.ACTION_VIEW, Uri.parse(question.link))
+                    holder.itemView.context.startActivity(urlIntent)
                 }
-
-                if (question?.link != null && question.link != "null") {
-                    holder.introURL.visibility = View.VISIBLE
-//            holder.introURL.text(image.link)
-                    holder.introURL.setOnClickListener {
-                        // Add the logic for handling the click event here
-                        // For example, you can open the link in a web browser
-                        val urlIntent = Intent(Intent.ACTION_VIEW, Uri.parse(question.link))
-                        holder.itemView.context.startActivity(urlIntent)
-                    }
-                } else {
-                    holder.introURL.visibility = View.GONE
-                }
-                // Customize the layout for question type 2 as needed
-            }
-
-            "3" -> {
-                holder.question2.visibility = View.GONE
-                holder.answer2.visibility = View.GONE
-                holder.question3.visibility = View.GONE
-                holder.answer3.visibility = View.GONE
-                holder.question4.visibility = View.GONE
-                holder.answer4.visibility = View.GONE
-                holder.questionTextView.text = question.question
-                holder.answerTextView.text = question.answer
-
-                val url = question?.file
-
-                if (question?.file?.isNotEmpty() == true && question.file.isNotBlank()) {
-                    holder.imageView.visibility = View.VISIBLE
-                    Glide.with(holder.imageView.context).load(url).into(holder.imageView)
-                } else {
-
-                }
-
-                if (question?.link != null && question.link != "null") {
-                    holder.introURL.visibility = View.VISIBLE
-//            holder.introURL.text(image.link)
-                    holder.introURL.setOnClickListener {
-                        // Add the logic for handling the click event here
-                        // For example, you can open the link in a web browser
-                        val urlIntent = Intent(Intent.ACTION_VIEW, Uri.parse(question.link))
-                        holder.itemView.context.startActivity(urlIntent)
-                    }
-                } else {
-                    holder.introURL.visibility = View.GONE
-                }
-            }
-
-            else -> {
-                holder.question2.visibility = View.GONE
-                holder.answer2.visibility = View.GONE
-                holder.question3.visibility = View.GONE
-                holder.answer3.visibility = View.GONE
-                holder.question4.visibility = View.GONE
-                holder.answer4.visibility = View.GONE
-                holder.questionTextView.text = question.question
-                holder.answerTextView.text = question.answer
-
-                val url = question?.file
-
-                if (question?.file?.isNotEmpty() == true && question.file.isNotBlank()) {
-                    holder.imageView.visibility = View.VISIBLE
-                    Glide.with(holder.imageView.context).load(url).into(holder.imageView)
-                } else {
-
-                }
-
-                if (question?.link != null && question.link != "null") {
-                    holder.introURL.visibility = View.VISIBLE
-//            holder.introURL.text(image.link)
-                    holder.introURL.setOnClickListener {
-                        // Add the logic for handling the click event here
-                        // For example, you can open the link in a web browser
-                        val urlIntent = Intent(Intent.ACTION_VIEW, Uri.parse(question.link))
-                        holder.itemView.context.startActivity(urlIntent)
-                    }
-                } else {
-                    holder.introURL.visibility = View.GONE
-                }
-
+            } else {
+                holder.introURL.visibility = View.GONE
             }
         }
 
-    }
+
         override fun getItemCount(): Int {
             return exercise.questions.size
         }

@@ -143,7 +143,7 @@
             android:layout_marginTop="32dp"
             android:padding="5dp"
             android:text="Answer:"
-
+            android:visibility="gone"
             android:textAlignment="textStart"
             android:textColor="?attr/textcolor"
             android:textSize="18sp"
@@ -161,6 +161,7 @@
             android:layout_alignEnd="@+id/questionTextView"
             android:maxLines="3"
             android:padding="5dp"
+            android:visibility="gone"
             android:ellipsize="end"
             android:text="answer displayed"
             android:textAlignment="center"
@@ -184,7 +185,7 @@
             android:layout_marginTop="32dp"
             android:padding="5dp"
             android:text="Answer:"
-
+            android:visibility="gone"
             android:textAlignment="textEnd"
             android:textColor="?attr/textcolor"
             android:textSize="18sp"
@@ -222,7 +223,7 @@
             android:layout_marginTop="32dp"
             android:padding="5dp"
             android:text="Answer:"
-
+            android:visibility="gone"
             android:textAlignment="textEnd"
             android:textColor="?attr/textcolor"
             android:textSize="18sp"
@@ -245,6 +246,7 @@
             android:textColor="?attr/textcolor"
             android:textSize="18sp"
             android:ellipsize="end"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/matchquestion4"
             app:layout_constraintEnd_toEndOf="@+id/flashcardDetail_background"
             app:layout_constraintHorizontal_bias="0.0"

@@ -18,19 +18,17 @@ import com.yuyakaido.android.cardstackview.Direction
 class FlashCardDetail : AppCompatActivity() {
     private lateinit var cardStackView: CardStackView
     private lateinit var adapter: CustomCardAdapter
-    private var quizList: List<AllQuestion> = mutableListOf()
     private var numberOfQuestions: Int = 0
     private var currentPosition: Int = 0
     private var cardStackLayoutManager: CardStackLayoutManager? = null
     private var isMaxLimitReached = false
-    private var firstPosition: Int? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val sharedprefs: SharedPreferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE)
 
         val switchIsTurnedOn = sharedprefs.getBoolean("DARK MODE", false)
         if (switchIsTurnedOn) {
-            //if true then change app theme to dark mode
             layoutInflater.context.setTheme(R.style.DarkMode)
         } else {
             layoutInflater.context.setTheme(R.style.WhiteMode)
@@ -52,6 +50,7 @@ class FlashCardDetail : AppCompatActivity() {
 
         nextButton.setOnClickListener {
             navigateToNextCard()
+            cardStackView.swipe()
         }
 
         val exerciseList = intent.getSerializableExtra("EXERCISE_DETAILS") as? ArrayList<Exercise> ?: arrayListOf()
@@ -81,7 +80,6 @@ class FlashCardDetail : AppCompatActivity() {
     private fun navigateToNextCard() {
         if (!isMaxLimitReached && currentPosition < numberOfQuestions ) {
             currentPosition++
-            cardStackView.swipe()
             // Check if the maximum limit is reached after the swipe
             if (currentPosition >= numberOfQuestions ) {
                 // Maximum limit is reached, change the button text to "Close"
@@ -90,27 +88,21 @@ class FlashCardDetail : AppCompatActivity() {
                 isMaxLimitReached = true
             }
         } else {
-            // If the maximum limit is reached, execute the onBackPressed function
             onBackPressed()
         }
-
-        val previousButton: AppCompatButton = findViewById(R.id.previousbtn)
-           }
-
+    }
 
     private fun navigateToPreviousCard() {
         if (isMaxLimitReached && currentPosition > 0) {
             while (currentPosition > 0) {
                 currentPosition--
             }
-            // Change the button text back to "Next" after rewinding to the first card
             val nextButton: AppCompatButton = findViewById(R.id.Nextbtn)
             nextButton.text = "Next"
             isMaxLimitReached = false
         }
 
     }
-
 
     override fun onBackPressed() {
         super.onBackPressed()
