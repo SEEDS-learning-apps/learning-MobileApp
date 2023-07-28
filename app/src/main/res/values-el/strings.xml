@@ -16,9 +16,17 @@
     <string name="splash_text">Η μάθηση είναι για όλες και όλους</string>
     <string name="splas_web" translatable="false">www.seeds.com</string>
     <string name="Grade_register">Βαθμός</string>
+    <string name="Profile">Προφίλ</string>
     <string name="Learning_progress">Πρόοδος μάθησης</string>
+    <string name="Learning_cards">Κάρτες εκμάθησης</string>
+    <string name="Download_materials">Λήψη υλικών</string>
+    <string name="Access_code">Κωδικός πρόσβασης</string>
+    <string name="Settings">Ρυθμίσεις</string>
+    <string name="Help">Βοήθεια</string>
     <string name="Signout">Υπογράψτε έξω</string>
     <string name="Hello">Γεια σας</string>
+    <string name="learning_statistics">Εκμάθηση στατιστικής</string>
+    <string name="empty_statistics">Δεν υπάρχουν διαθέσιμα στατιστικά στοιχεία που να δείχνουν την προσπάθεια ολοκλήρωσης ορισμένων δραστηριοτήτων</string>
     <string name="press_back">Πιέστε ξανά back για έξοδο</string>
     <string name="material_language">Υλικό Γλώσσα</string>
     <string name="interface_language">Γλώσσα διεπαφής</string>
@@ -26,6 +34,8 @@
     <string name="create_password">Επιλέξτε κωδικό</string>
     <string name="Register_btn">Εγγραφή</string>
     <string name="username_register">Πληκτρολογήστε ένα όνομα χρήστη</string>
+    <string name="flash_cards">Κάρτες Flash</string>
+    <string name="no_flash_cards">Δεν ολοκληρώνονται δραστηριότητες για την προβολή των καρτών flash. Δοκιμάστε να ολοκληρώσετε κάποιες δραστηριότητες</string>
     <string name="lang_drop_down_label">γλώσσες</string>
     <string name="lang_drop_down_text">Επιλογή γλώσσας</string>
     <string name="register_account">Δημιούργησε έναν λογαριασμό</string>
@@ -54,8 +64,12 @@
     <string name="Done">Τέλος</string>
     <string name="messageEdittext_hint">Γράψε ένα μήνυμα…</string>
     <string name="sendBTN_txt">Αποστολή</string>
+    <string name="ok">Εντάξει</string>
     <string name="Next">Επόμενο</string>
     <string name="Setting_changelanguage">Επιλογή γλώσσας</string>
+    <string name="feedback">Ανατροφοδότηση</string>
+    <string name="contact_us">Επικοινωνήστε μαζί μας</string>
+    <string name="no_exercises_completed_yet">Δεν έχουν ολοκληρωθεί ακόμη οι ασκήσεις</string>
     <string name="mainpage_ex_heading">Ασκήσεις</string>
     <string name="mainpage_settings_heading">Ρυθμίσεις</string>
     <string name="mainpage_Dashboard_heading">Ταμπλό</string>
@@ -66,6 +80,7 @@
     <string name="AccountRegister">Εγγραφή Λογαριασμού</string>
     <string name="Downloaded_Materials">Κατεβασμένα υλικά</string>
     <string name="Setting_changeMateriallanguage">Γλώσσα υλικού</string>
+    <string name="Dashboard_changelanguage">Γλώσσα διεπαφής</string>
     <string name="Select_material_language">Επιλέξτε τη γλώσσα του υλικού</string>
     <string name="Download">Λήψη</string>
     <string name="no_downloads_available">Δεν υπάρχουν διαθέσιμα κατεβασμένα υλικά!</string>
@@ -83,6 +98,10 @@
     <string name="GET_STARTED">ξεκινήστε</string>
     <string name="Already_User">ήδη χρήστης</string>
     <string name="what_is_seeds">Τι είναι το SEEDS;</string>
+    <string name="demo_date">Δευτέρα</string>
+    <string name="Notification">Ειδοποίηση</string>
+    <string name="empty_rec_text">Δεν έχουν δημιουργηθεί ακόμη ειδοποιήσεις  Κάντε κλικ στο εικονίδιο + στην επάνω δεξιά γωνία για να δημιουργήσετε μια νέα ειδοποίηση</string>
+    <string name="dark_mode">Σκοτεινή λειτουργία</string>
     <string name="Languages">Γλώσσες</string>
     <string name="lets_go">ΠΆΜΕ</string>
     <string name="skip">Παράλειψη</string>
