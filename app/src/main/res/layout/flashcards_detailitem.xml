@@ -7,7 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="15dp"
+    android:padding="10dp">
 
 
 
@@ -17,6 +18,7 @@
         android:padding="20dp"
         android:background="@drawable/dashboard_cardview_background">
 
+
         <ImageView
             android:id="@+id/flashcardDetail_background"
             android:layout_width="match_parent"
@@ -25,29 +27,11 @@
             android:src="@drawable/flash_cards"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:tint="?attr/textcolor"/>
-
-        <TextView
-            android:id="@+id/introURL"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autoLink="web"
-            android:clickable="true"
-            android:gravity="center"
-            android:padding="15dp"
-            android:text="https://news.hofstede-insights.com/news/what-do-we-mean-by-culture"
-            android:textColor="@color/seed_light_blue"
-            android:textSize="12sp"
-            android:textStyle="italic"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/imageView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/flashcardDetail_background" />
+            app:tint="?attr/textcolor" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -65,7 +49,6 @@
             android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/answerTextView"
             android:padding="15dp"
             android:text="Question?"
             android:textAlignment="center"
@@ -83,7 +66,7 @@
             android:text="question displayed"
             android:textAlignment="center"
             android:textColor="?attr/textcolor"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -92,6 +75,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.452" />
 
+
         <TextView
             android:id="@+id/answer"
             android:layout_width="wrap_content"
@@ -99,37 +83,14 @@
             android:layout_below="@+id/questionTextView"
             android:layout_alignStart="@+id/questionTextView"
             android:layout_alignEnd="@+id/questionTextView"
-            android:layout_marginStart="32dp"
             android:padding="5dp"
             android:text="Answer:"
-            android:textAlignment="textStart"
-            android:textColor="?attr/textcolor"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/question"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/questionTextView"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/answerTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/questionTextView"
-            android:layout_alignStart="@+id/questionTextView"
-            android:layout_alignEnd="@+id/questionTextView"
-            android:ellipsize="end"
-            android:maxLines="3"
-            android:padding="5dp"
-            android:text="answer displayed"
             android:textAlignment="center"
             android:textColor="?attr/textcolor"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/questionTextView"
-            app:layout_constraintHorizontal_bias="0.202"
-            app:layout_constraintStart_toEndOf="@id/answer"
+            app:layout_constraintEnd_toEndOf="@+id/questionTextView"
+            app:layout_constraintStart_toStartOf="@+id/questionTextView"
             app:layout_constraintTop_toBottomOf="@+id/questionTextView"
             app:layout_constraintVertical_bias="0.0" />
 
@@ -140,40 +101,17 @@
             android:layout_below="@+id/questionTextView"
             android:layout_alignStart="@+id/questionTextView"
             android:layout_alignEnd="@+id/questionTextView"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:padding="5dp"
             android:text="Answer:"
-            android:visibility="gone"
-            android:textAlignment="textStart"
-            android:textColor="?attr/textcolor"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/answer"
-            app:layout_constraintTop_toBottomOf="@+id/answer"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/matchAnswer2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/questionTextView"
-            android:layout_alignStart="@+id/questionTextView"
-            android:layout_alignEnd="@+id/questionTextView"
-            android:maxLines="3"
-            android:padding="5dp"
-            android:visibility="gone"
-            android:ellipsize="end"
-            android:text="answer displayed"
             android:textAlignment="center"
             android:textColor="?attr/textcolor"
             android:textSize="18sp"
-
-            app:layout_constraintBottom_toBottomOf="@+id/matchquestion2"
-            app:layout_constraintEnd_toEndOf="@id/questionTextView"
-            app:layout_constraintHorizontal_bias="0.202"
-            app:layout_constraintStart_toEndOf="@id/answer"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/questionTextView"
+            app:layout_constraintStart_toStartOf="@+id/questionTextView"
             app:layout_constraintTop_toBottomOf="@+id/answer"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/matchquestion3"
@@ -182,36 +120,18 @@
             android:layout_below="@+id/questionTextView"
             android:layout_alignStart="@+id/questionTextView"
             android:layout_alignEnd="@+id/questionTextView"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:padding="5dp"
             android:text="Answer:"
-            android:visibility="gone"
-            android:textAlignment="textEnd"
-            android:textColor="?attr/textcolor"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/matchquestion2"
-            app:layout_constraintTop_toBottomOf="@+id/matchquestion2"
-            app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/matchAnswer3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/questionTextView"
-            android:maxLines="3"
-            android:padding="5dp"
-            android:text="answer displayed"
             android:textAlignment="center"
             android:textColor="?attr/textcolor"
             android:textSize="18sp"
-            android:ellipsize="end"
-            app:layout_constraintStart_toStartOf="@+id/matchAnswer2"
-            app:layout_constraintEnd_toEndOf="@+id/matchAnswer2"
-            app:layout_constraintTop_toTopOf="@+id/matchquestion3"
-            app:layout_constraintBottom_toBottomOf="@+id/matchquestion3"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintHorizontal_bias="0.5" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/questionTextView"
+            app:layout_constraintStart_toStartOf="@+id/questionTextView"
+            app:layout_constraintTop_toBottomOf="@+id/matchquestion2"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/matchquestion4"
@@ -220,38 +140,38 @@
             android:layout_below="@+id/questionTextView"
             android:layout_alignStart="@+id/questionTextView"
             android:layout_alignEnd="@+id/questionTextView"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:padding="5dp"
             android:text="Answer:"
-            android:visibility="gone"
-            android:textAlignment="textEnd"
+            android:textAlignment="center"
             android:textColor="?attr/textcolor"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/matchquestion3"
+            app:layout_constraintEnd_toEndOf="@+id/questionTextView"
+            app:layout_constraintStart_toStartOf="@+id/questionTextView"
             app:layout_constraintTop_toBottomOf="@+id/matchquestion3"
             app:layout_constraintVertical_bias="0.0" />
 
+
         <TextView
-            android:id="@+id/matchAnswer4"
+            android:id="@+id/matchquestion5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/questionTextView"
             android:layout_alignStart="@+id/questionTextView"
             android:layout_alignEnd="@+id/questionTextView"
-            android:maxLines="3"
+            android:layout_marginTop="24dp"
             android:padding="5dp"
-            android:text="answer displayed"
+            android:text="Answer:"
+            android:visibility="gone"
             android:textAlignment="center"
             android:textColor="?attr/textcolor"
             android:textSize="18sp"
-            android:ellipsize="end"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/matchquestion4"
-            app:layout_constraintEnd_toEndOf="@+id/flashcardDetail_background"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/matchAnswer3"
-            app:layout_constraintTop_toTopOf="@+id/matchquestion4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/questionTextView"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="@+id/questionTextView"
+            app:layout_constraintTop_toBottomOf="@+id/matchquestion4"
             app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

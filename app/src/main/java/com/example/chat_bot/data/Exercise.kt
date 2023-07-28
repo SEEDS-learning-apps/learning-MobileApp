@@ -13,6 +13,8 @@ data class Question(
     var answer3: String? = null,
     var statment4: String? = null,
     var answer4: String? = null,
+    var statment5: String? = null,
+    var answer5: String? = null,
     val link: String?,
     val file: String?
 ): Serializable

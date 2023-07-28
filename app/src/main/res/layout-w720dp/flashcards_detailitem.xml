@@ -1,0 +1,181 @@
+<!-- item_card.xml -->
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="15dp"
+    android:padding="100dp">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:background="@drawable/dashboard_cardview_background">
+
+        <ImageView
+            android:id="@+id/flashcardDetail_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.03"
+            android:src="@drawable/flash_cards"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:tint="?attr/textcolor"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/ic_baseline_broken_image_24"
+            app:layout_constraintBottom_toTopOf="@+id/question"
+            app:layout_constraintDimensionRatio="1:1"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="Question?"
+            android:textAlignment="center"
+            android:textColor="?attr/textcolor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/questionTextView"
+            tools:layout_editor_absoluteX="20dp" />
+
+        <TextView
+            android:id="@+id/questionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="5"
+            android:padding="15dp"
+            android:text="question displayed"
+            android:textAlignment="center"
+            android:textColor="?attr/textcolor"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.151"
+            app:layout_constraintStart_toEndOf="@+id/question"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.452" />
+
+
+        <TextView
+            android:id="@+id/answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/questionTextView"
+            android:layout_alignStart="@+id/questionTextView"
+            android:layout_alignEnd="@+id/questionTextView"
+            android:padding="5dp"
+            android:maxLines="5"
+            android:text="Answer:"
+            android:textAlignment="center"
+            android:textColor="?attr/textcolor"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/question"
+            app:layout_constraintStart_toStartOf="@+id/flashcardDetail_background"
+            app:layout_constraintTop_toBottomOf="@+id/questionTextView"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <TextView
+            android:id="@+id/matchquestion2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/questionTextView"
+            android:layout_alignStart="@+id/questionTextView"
+            android:layout_alignEnd="@+id/questionTextView"
+            android:layout_marginTop="32dp"
+            android:maxLines="5"
+            android:padding="5dp"
+            android:text="Answer:"
+            android:textAlignment="center"
+            android:textColor="?attr/textcolor"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/questionTextView"
+            app:layout_constraintStart_toStartOf="@+id/questionTextView"
+            app:layout_constraintTop_toBottomOf="@+id/answer"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/matchquestion3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/questionTextView"
+            android:layout_alignStart="@+id/questionTextView"
+            android:layout_alignEnd="@+id/questionTextView"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:maxLines="5"
+            android:padding="5dp"
+            android:text="Answer:"
+            android:textAlignment="center"
+            android:textColor="?attr/textcolor"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/questionTextView"
+            app:layout_constraintStart_toStartOf="@+id/questionTextView"
+            app:layout_constraintTop_toBottomOf="@+id/matchquestion2"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/matchquestion4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/questionTextView"
+            android:layout_alignStart="@+id/questionTextView"
+            android:layout_alignEnd="@+id/questionTextView"
+            android:layout_marginTop="32dp"
+            android:maxLines="5"
+            android:padding="5dp"
+            android:text="Answer:"
+            android:textAlignment="center"
+            android:textColor="?attr/textcolor"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/flashcardDetail_background"
+            app:layout_constraintStart_toStartOf="@+id/flashcardDetail_background"
+            app:layout_constraintTop_toBottomOf="@+id/matchquestion3"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/matchquestion5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/questionTextView"
+            android:layout_alignStart="@+id/questionTextView"
+            android:layout_alignEnd="@+id/questionTextView"
+            android:layout_marginTop="32dp"
+            android:maxLines="5"
+            android:padding="5dp"
+            android:text="Answer:"
+            android:textAlignment="center"
+            android:textColor="?attr/textcolor"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/flashcardDetail_background"
+            app:layout_constraintStart_toStartOf="@+id/flashcardDetail_background"
+            app:layout_constraintTop_toBottomOf="@+id/matchquestion4"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

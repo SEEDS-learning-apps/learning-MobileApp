@@ -1144,7 +1144,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         for ( item in QuizArray ) {
             questions.add(
                 Question(
-                    if (item.q_type == 2) item.mcqs else item.question, getAnswer(item), item.statement1, item.answer1, item.statement2, item.answer2, item.statement3, item.answer3, item.statement4, item.answer4, item.link, item.file
+                    if (item.q_type == 2) item.mcqs else item.question, getAnswer(item), item.statement1, item.answer1, item.statement2, item.answer2, item.statement3, item.answer3, item.statement4, item.answer4, item.statement5,item.answer5,item.link, item.file
                 )
             )
         }
