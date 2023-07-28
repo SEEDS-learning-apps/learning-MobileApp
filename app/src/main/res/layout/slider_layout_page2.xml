@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="CHATBOT"
+            android:text="@string/chatbot"
             android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -50,7 +50,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/page2_heading"
-            android:text = "You can chat with our inbuilt chatbot to get desired subjects and exercises"
+            android:text = "@string/intro_page2"
             android:textSize="15dp"
             android:textColor="?attr/textcolor"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

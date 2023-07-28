@@ -171,7 +171,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:padding="10dp"
-                android:text="Frequently asked questions?"
+                android:text="@string/frequently_asked_questions"
                 android:textColor="?attr/textcolor"
                 android:textSize="18dp" />
 

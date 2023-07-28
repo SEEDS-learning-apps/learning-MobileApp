@@ -171,10 +171,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:padding="10dp"
-                android:text="Notification"
+                android:text="@string/notification"
                 android:textColor="?attr/textcolor"
-                android:textSize="18dp"
-                />
+                android:textSize="18dp" />
 
             <ImageView
                 android:layout_width="30dp"

@@ -104,4 +104,13 @@
     <string name="seeds_info">SEEDS es un proyecto de apoyo al aprendizaje y la educación al margen de la esfera digital. Debido a la falta de acceso a las instituciones educativas y al escaso o nulo equipamiento (tabletas, o portátiles y PC) con las tecnologías digitales necesarias, los jóvenes tienen dificultades para seguir las clases. Las TIC y, sobre todo, el smartphone pueden utilizarse aquí para paliar este déficit. Hay que tener en cuenta las necesidades y los retos del grupo destinatario (es decir, nada de smartphones actualizados con software anticuado). Nuestra idea es comunicar contenidos de aprendizaje a personas vulnerables de una forma nueva mediante el uso de chat bots.</string>
     <string name="login_existing_account">¿Ya es usuario? Inicie sesión aquí.</string>
     <string name="create_account">Crear una cuenta</string>
+    <string name="notification">Notificación</string>
+    <string name="frequently_asked_questions">¿Preguntas frecuentes?</string>
+    <string name="previous">Anterior</string>
+    <string name="intro_page1">SEEDS es una aplicación de aprendizaje electrónico que te ayuda a aprender desde casa y cuyos contenidos son actualizados regularmente por los profesores.</string>
+    <string name="intro_page2">Puedes chatear con nuestro chatbot incorporado para obtener los temas y ejercicios deseados</string>
+    <string name="learning_statistics1">ESTADÍSTICAS DE APRENDIZAJE</string>
+    <string name="intro_page3">Las estadísticas del usuario están disponibles en el panel de control del estudiante, que muestra el porcentaje total de asignaturas completadas por el estudiante.</string>
+    <string name="introduction_video">Vídeo de introducción</string>
+    <string name="intro_video">El vídeo de introducción anterior muestra una demostración de la funcionalidad de la aplicación</string>
 </resources>

@@ -113,6 +113,17 @@
     <string name="Greek">Greek</string>
     <string name="flash_cards">Flash Cards</string>
     <string name="no_flash_cards">No activities are completed to display flash cards. Try completing some activities</string>
+    <string name="notification">Notification</string>
+    <string name="frequently_asked_questions">Frequently asked questions?</string>
+    <string name="previous">Previous</string>
+    <string name="e_learning">E-LEARNING</string>
+    <string name="intro_page1">SEEDS is an E learning app which helps you to learn from your home and contents updated by the teachers regularly</string>
+    <string name="chatbot">CHATBOT</string>
+    <string name="intro_page2">You can chat with our inbuilt chatbot to get desired subjects and exercises</string>
+    <string name="learning_statistics1">LEARNING STATISTICS</string>
+    <string name="intro_page3">User statistics is available in the student dashboard which display the overall percentage of the subjects already completed by the student</string>
+    <string name="introduction_video">Introduction video</string>
+    <string name="intro_video">The Introduction video above displays a demo of functionality of the app</string>
 
 
     <string-array name="Languages">

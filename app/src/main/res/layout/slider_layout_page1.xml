@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="E-LEARNING"
+            android:text="@string/e_learning"
             android:textColor="?attr/textcolor"
             android:textSize="20dp"
             android:textStyle="bold"
@@ -50,7 +50,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/page1_heading"
-            android:text = "SEEDS is an E learning app which helps you to learn from your home and contents updated by the teachers regularly"
+            android:text = "@string/intro_page1"
             android:textSize="15dp"
             android:textColor="?attr/textcolor"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
