@@ -1,23 +1,20 @@
 package com.example.chat_bot.Activities.DashboardActivities
 
-import CustomCardAdapter
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import com.example.chat_bot.R
-import com.example.chat_bot.data.AllQuestion
 import com.example.chat_bot.data.Exercise
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackView
-import com.yuyakaido.android.cardstackview.Direction
+import flashcardDetailAdapter
 
 class FlashCardDetail : AppCompatActivity() {
     private lateinit var cardStackView: CardStackView
-    private lateinit var adapter: CustomCardAdapter
+    private lateinit var adapter: flashcardDetailAdapter
     private var numberOfQuestions: Int = 0
     private var currentPosition: Int = 0
     private var cardStackLayoutManager: CardStackLayoutManager? = null
@@ -66,7 +63,7 @@ class FlashCardDetail : AppCompatActivity() {
             numberOfQuestions = filteredExercises[0].questions.size
 
             // Initialize the adapter before using it
-            adapter = CustomCardAdapter(filteredExercises[0])
+            adapter = flashcardDetailAdapter(filteredExercises[0])
 
             cardStackView = findViewById(R.id.cardStackView)
             val layoutManager = CardStackLayoutManager(this)

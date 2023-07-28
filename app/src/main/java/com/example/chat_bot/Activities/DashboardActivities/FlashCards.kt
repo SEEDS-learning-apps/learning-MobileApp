@@ -12,13 +12,13 @@ import com.example.chat_bot.Activities.HomePage.MainActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.data.Exercise
 import com.example.chat_bot.databinding.ActivityFlashcardsBinding
-import com.example.chat_bot.ui.LearningProgressAdapter
+import com.example.chat_bot.ui.FlashcardAdapter
 import com.example.chat_bot.utils.SessionManager
 
-class FlashCards : AppCompatActivity(), LearningProgressAdapter.ExerciseDeleteListener {
+class FlashCards : AppCompatActivity(), FlashcardAdapter.ExerciseDeleteListener {
 
     var exerciseList: ArrayList<Exercise> = arrayListOf()
-    val adapter = LearningProgressAdapter(this)
+    val adapter = FlashcardAdapter(this)
     private lateinit var binding: ActivityFlashcardsBinding
     lateinit var session: SessionManager
 
@@ -53,7 +53,7 @@ class FlashCards : AppCompatActivity(), LearningProgressAdapter.ExerciseDeleteLi
     }
 
     private fun recyclerView() {
-        val adapter = LearningProgressAdapter(this)
+        val adapter = FlashcardAdapter(this)
 
         binding.flashcardsRv.adapter = adapter
         binding.flashcardsRv.layoutManager = GridLayoutManager(this,2)
