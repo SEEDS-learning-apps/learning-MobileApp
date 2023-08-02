@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            android:text="Question?"
+            android:text="Question:"
             android:textAlignment="center"
             android:textColor="?attr/textcolor"
             android:textSize="24sp"

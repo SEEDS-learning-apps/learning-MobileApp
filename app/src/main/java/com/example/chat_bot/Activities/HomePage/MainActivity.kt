@@ -47,8 +47,8 @@ class MainActivity : AppCompatActivity() {
 
         TabLayoutMediator(tabLayout, viewPager2) { tab, index ->
             tab.text = when (index) {
-                0 -> "Chat"
-                1 -> applicationContext.resources.getString(R.string.mainpage_ex_heading)
+                0 -> applicationContext.resources.getString(R.string.chat)
+                1 -> applicationContext.resources.getString(R.string.mainpage_History_heading)
                 2 -> applicationContext.resources.getString(R.string.mainpage_Dashboard_heading)
                 else -> throw Resources.NotFoundException("Position Not Found!!")
             }

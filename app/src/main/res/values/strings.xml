@@ -68,7 +68,7 @@
     <string name="contact_us">Contact us</string>
     <string name="seeds_website">https://seeds.wineme.wiwi.uni-siegen.de/</string>
     <string name="no_exercises_completed_yet">No exercises completed yet</string>
-    <string name="mainpage_ex_heading">Exercises</string>
+    <string name="mainpage_History_heading">History</string>
     <string name="mainpage_Dashboard_heading">Dashboard</string>
     <string name="messageEdittext_hint">Type a message...</string>
 
@@ -124,6 +124,7 @@
     <string name="intro_page3">User statistics is available in the student dashboard which display the overall percentage of the subjects already completed by the student</string>
     <string name="introduction_video">Introduction video</string>
     <string name="intro_video">The Introduction video above displays a demo of functionality of the app</string>
+    <string name="chat">Chat</string>
 
 
     <string-array name="Languages">

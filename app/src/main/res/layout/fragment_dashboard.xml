@@ -162,7 +162,7 @@
                     android:layout_height="130dp"
                     android:layout_margin="10dp"
                     app:cardCornerRadius="30dp"
-                    >
+                    app:cardBackgroundColor="?attr/Dashboard_cardviewBackground">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -205,7 +205,8 @@
                     android:layout_width="130dp"
                     android:layout_height="130dp"
                     android:layout_margin="10dp"
-                    app:cardCornerRadius="30dp">
+                    app:cardCornerRadius="30dp"
+                    app:cardBackgroundColor="?attr/Dashboard_cardviewBackground">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -218,12 +219,12 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_marginTop="20dp"
-                        android:layout_marginBottom="35dp"
+                        android:layout_marginBottom="37dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/learning_cards"
+                        app:srcCompat="@drawable/flash_cards"
                         app:tint="?attr/textcolor"/>
 
                     </LinearLayout>
@@ -256,7 +257,8 @@
                     android:layout_width="130dp"
                     android:layout_height="130dp"
                     android:layout_margin="10dp"
-                    app:cardCornerRadius="30dp">
+                    app:cardCornerRadius="30dp"
+                    app:cardBackgroundColor="?attr/Dashboard_cardviewBackground">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -317,7 +319,8 @@
                     app:cardCornerRadius="30dp"
                     android:clickable="true"
                     android:focusableInTouchMode="true"
-                    android:focusable="true">
+                    android:focusable="true"
+                    app:cardBackgroundColor="?attr/Dashboard_cardviewBackground">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -369,7 +372,8 @@
                     android:layout_width="130dp"
                     android:layout_height="130dp"
                     android:layout_margin="10dp"
-                    app:cardCornerRadius="30dp">
+                    app:cardCornerRadius="30dp"
+                    app:cardBackgroundColor="?attr/Dashboard_cardviewBackground">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -412,7 +416,8 @@
                     android:layout_width="130dp"
                     android:layout_height="130dp"
                     android:layout_margin="10dp"
-                    app:cardCornerRadius="30dp">
+                    app:cardCornerRadius="30dp"
+                    app:cardBackgroundColor="?attr/Dashboard_cardviewBackground">
 
                     <LinearLayout
                         android:layout_width="match_parent"
