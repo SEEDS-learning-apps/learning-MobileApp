@@ -127,7 +127,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/person_foreground"
-                        app:tint="?attr/textcolor"/>
+                        app:tint="?attr/dashboard_textcolor"/>
 
                     </LinearLayout>
                     <TextView
@@ -139,7 +139,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="@string/Profile"
                         android:textAlignment="center"
-                        android:textColor="?attr/textcolor"
+                        android:textColor="?attr/dashboard_textcolor"
                         android:textSize="15sp" />
 
 
@@ -182,7 +182,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:srcCompat="@drawable/statistics_icon"
-                            app:tint="?attr/textcolor"/>
+                            app:tint="?attr/dashboard_textcolor"/>
                     </LinearLayout>
 
                     <TextView
@@ -194,7 +194,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="@string/Learning_progress"
                         android:textAlignment="center"
-                        android:textColor="?attr/textcolor"
+                        android:textColor="?attr/dashboard_textcolor"
                         android:textSize="13sp" />
 
 
@@ -218,14 +218,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="37dp"
+                        android:layout_marginTop="23dp"
+                        android:layout_marginBottom="40dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/flash_cards"
-                        app:tint="?attr/textcolor"/>
+                        app:tint="?attr/dashboard_textcolor"/>
 
                     </LinearLayout>
 
@@ -238,7 +238,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="@string/flash_cards"
                         android:textAlignment="center"
-                        android:textColor="?attr/textcolor"
+                        android:textColor="?attr/dashboard_textcolor"
                         android:textSize="13sp" />
 
                 </androidx.cardview.widget.CardView>
@@ -278,7 +278,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/download"
-                        app:tint="?attr/textcolor"/>
+                        app:tint="?attr/dashboard_textcolor"/>
 
                         <ImageView
                             android:id="@+id/Dasboard_background"
@@ -300,13 +300,12 @@
                         android:id="@+id/Download_materials"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:layout_gravity="center"
                         android:layout_marginTop="40dp"
                         android:layout_marginBottom="8dp"
                         android:text="@string/Download_materials"
                         android:textAlignment="center"
-                        android:textColor="?attr/textcolor"
+                        android:textColor="?attr/dashboard_textcolor"
                         android:textSize="13sp" />
 
                 </androidx.cardview.widget.CardView>
@@ -341,7 +340,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/access_code_icon"
-                        app:tint="?attr/textcolor"/>
+                        app:tint="?attr/dashboard_textcolor"/>
                     </LinearLayout>
 
                     <TextView
@@ -353,7 +352,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="@string/Access_code"
                         android:textAlignment="center"
-                        android:textColor="?attr/textcolor"
+                        android:textColor="?attr/dashboard_textcolor"
                         android:textSize="13sp" />
 
                 </androidx.cardview.widget.CardView>
@@ -393,7 +392,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/settings_icon"
-                        app:tint="?attr/textcolor"/>
+                        app:tint="?attr/dashboard_textcolor"/>
 
                     </LinearLayout>
 
@@ -406,7 +405,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="@string/Settings"
                         android:textAlignment="center"
-                        android:textColor="?attr/textcolor"
+                        android:textColor="?attr/dashboard_textcolor"
                         android:textSize="15sp" />
 
                 </androidx.cardview.widget.CardView>
@@ -437,7 +436,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/help_icon"
-                        app:tint="?attr/textcolor"/>
+                        app:tint="?attr/dashboard_textcolor"/>
 
                     </LinearLayout>
 
@@ -450,7 +449,7 @@
                         android:layout_marginBottom="8dp"
                         android:text="@string/Help"
                         android:textAlignment="center"
-                        android:textColor="?attr/textcolor"
+                        android:textColor="?attr/dashboard_textcolor"
                         android:textSize="15sp" />
 
                 </androidx.cardview.widget.CardView>

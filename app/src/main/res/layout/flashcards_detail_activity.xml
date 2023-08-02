@@ -38,6 +38,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="80dp"
             android:layout_marginBottom="80dp"
+
             />
 
         <!-- Add buttons or other views for navigation or interaction -->

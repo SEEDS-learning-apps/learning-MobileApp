@@ -31,6 +31,7 @@
         <attr name="Botchat_end_color" format="color"/>
         <attr name="cardgroundcolor" format="color"/>
         <attr name="textcolor" format="color"/>
+        <attr name="dashboard_textcolor" format="color"/>
         <attr name="Notification_textcolor" format="color"/>
         <attr name="toastcolor" format="color"/>
         <attr name="CreateAlarmIconColor" format="color"/>

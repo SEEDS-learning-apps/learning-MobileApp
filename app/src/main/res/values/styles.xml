@@ -62,6 +62,7 @@
         <item name="colorPrimary">@color/seed_light_blue</item>
         <item name="backgroundcolor">@color/background</item>
         <item name="textcolor">@color/mild_black</item>
+        <item name="dashboard_textcolor">@color/mild_black</item>
         <item name="flashcard_detail">@color/flashcard_light</item>
         <item name="flashcard_background_end">@color/flashcard_background_end_light</item>
         <item name="backgroundColor">@color/background</item>
@@ -102,6 +103,7 @@
         <item name="backgroundColor">#232323</item>
         <item name="toastcolor">@color/black</item>
         <item name="textcolor">@color/background</item>
+        <item name="dashboard_textcolor">#DEEFF7</item>
         <item name="background">@color/white</item>
         <item name="flashcard_detail">@color/flashcard_dark</item>
         <item name="flashcard_background_end">@color/Dashboard_backgroundcurve_end_dark</item>

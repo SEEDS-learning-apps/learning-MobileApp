@@ -32,8 +32,8 @@
     <!--   light theme Buttons-->
     <color name="Button_start_light">#37adfd</color>
     <color name="Button_end_light">#2ce5fd</color>
-    <color name="chat_Button_start_light">#599FCF</color>
-    <color name="chat_Button_end_light">#0A7DCF</color>
+    <color name="chat_Button_start_light">#096DD1</color>
+    <color name="chat_Button_end_light">#36BBF9</color>
     <color name="custom_Button_start_light">#2AF598</color>
     <color name="custom_Button_end_light">#009EFD</color>
     <color name="mild_black">#1F1F1F</color>
@@ -42,7 +42,7 @@
     <color name="user_chat_end_light">#285064</color>
     <color name="bot_chat_start_light">#6A6A6B</color>
     <color name="bot_chat_end_light">#414142</color>
-    <color name="Dashboard_cardviewBackground_light" >#F0F4F3</color>
+    <color name="Dashboard_cardviewBackground_light" >#A7E2F0</color>
     <color name="Dashboard_backgroundcolor_start_light" >#E0EDF4</color>
     <color name="Dashboard_backgroundcolor_end_light" >#4193BB</color>
     <color name="Dashboard_backgroundcurve_start_light">#67A8D5</color>
@@ -69,16 +69,16 @@
     <color name="user_chat_end_dark">#5794B1</color>
     <color name="bot_chat_start_dark">#858585</color>
     <color name="bot_chat_end_dark">#545455</color>
-    <color name="Dashboard_cardviewBackground_dark" >#202C53</color>
-    <color name="Dashboard_backgroundcolor_start_dark" >#414040</color>
-    <color name="Dashboard_backgroundcolor_end_dark" >#0B0B0E</color>
-    <color name="Dashboard_backgroundcurve_start_dark">#283248</color>
-    <color name="Dashboard_backgroundcurve_middle_dark">#373737</color>
+    <color name="Dashboard_cardviewBackground_dark" >#262934</color>
+    <color name="Dashboard_backgroundcolor_start_dark" >#1F1F20</color>
+    <color name="Dashboard_backgroundcolor_end_dark" >#303030</color>
+    <color name="Dashboard_backgroundcurve_start_dark">#0F1522</color>
+    <color name="Dashboard_backgroundcurve_middle_dark">#343434</color>
     <color name="Dashboard_backgroundcurve_end_dark">#0E0E0E</color>
     <color name="Dashboard_backgroundpicture_dark">#79797A</color>
-    <color name="Dashboard_Cardviewbackground_start_dark">#595A66</color>
-    <color name="Dashboard_Cardviewbackground_end_dark">#113257</color>
-    <color name="Dashboard_profilecardview_start_dark">#66849B</color>
-    <color name="Dashboard_profilecardview_end_dark">#113A5B</color>
+    <color name="Dashboard_Cardviewbackground_start_dark">#577185</color>
+    <color name="Dashboard_Cardviewbackground_end_dark">#081426</color>
+    <color name="Dashboard_profilecardview_start_dark">#577185</color>
+    <color name="Dashboard_profilecardview_end_dark">#0B2133</color>
     <color name="flashcard_dark">#323333</color>
 </resources>
