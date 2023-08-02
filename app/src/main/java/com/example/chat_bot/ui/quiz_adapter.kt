@@ -15,7 +15,7 @@ import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.chat_bot.Activities.HomePage.ExerciseFragment
+import com.example.chat_bot.Activities.HomePage.HistoryFragment
 import com.example.chat_bot.Activities.HomePage.MainActivity
 import com.example.chat_bot.R
 import com.example.chat_bot.data.*
@@ -44,7 +44,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
     lateinit var subjectName: String
     private var question: String? = null
     private var answer: String? = null
-    val adapter = ExerciseHistoryAdapter(ExerciseFragment())
+    val adapter = ExerciseHistoryAdapter(HistoryFragment())
     var ansList: MutableList<String> = arrayListOf()
     private lateinit var message: String
     var Selected_ansList: MutableList<String> = arrayListOf()

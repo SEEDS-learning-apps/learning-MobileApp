@@ -11,16 +11,16 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chat_bot.R
 import com.example.chat_bot.data.Exercise
-import com.example.chat_bot.databinding.FragmentExerciseBinding
+import com.example.chat_bot.databinding.FragmentHistoryBinding
 import com.example.chat_bot.ui.ExerciseHistoryAdapter
 import com.example.chat_bot.utils.SessionManager
 
 
-class ExerciseFragment : Fragment(), ExerciseHistoryAdapter.ExerciseDeleteListener {
+class HistoryFragment : Fragment(), ExerciseHistoryAdapter.ExerciseDeleteListener {
 
     var exerciseList: ArrayList<Exercise> = arrayListOf()
     val adapter = ExerciseHistoryAdapter(this)
-    private lateinit var binding: FragmentExerciseBinding
+    private lateinit var binding: FragmentHistoryBinding
     lateinit var session: SessionManager
 
     override fun onCreateView(
@@ -38,7 +38,7 @@ class ExerciseFragment : Fragment(), ExerciseHistoryAdapter.ExerciseDeleteListen
         }
 
         // Inflate the layout for this fragment
-        binding = FragmentExerciseBinding.inflate(layoutInflater, container, false)
+        binding = FragmentHistoryBinding.inflate(layoutInflater, container, false)
         session = SessionManager(context as Activity)
         return binding.root
     }
@@ -52,7 +52,7 @@ class ExerciseFragment : Fragment(), ExerciseHistoryAdapter.ExerciseDeleteListen
 
     private fun recyclerView() {
 
-        val adapter = ExerciseHistoryAdapter(this@ExerciseFragment)
+        val adapter = ExerciseHistoryAdapter(this@HistoryFragment)
 
         binding.exRv.adapter = adapter
         binding.exRv.layoutManager = LinearLayoutManager(this.context)

@@ -12,7 +12,7 @@ class PagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fr
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0 -> {ChatFragment()}
-            1 -> {ExerciseFragment()}
+            1 -> {HistoryFragment()}
             2 -> { DashboardFragment()
             }
             else ->{throw Resources.NotFoundException("Position Not Found!!")}
