@@ -8,9 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
 import androidx.compose.ui.platform.textInputServiceFactory
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.recyclerview.widget.RecyclerView
+import com.example.chat_bot.R
 
 import com.example.chat_bot.Rasa.rasaMsg.BotResponse
 import com.example.chat_bot.databinding.MessageItemBinding
@@ -34,22 +36,22 @@ class msgAdapter(val jkt: Callbackinter, val context: Context) :  RecyclerView.A
     lateinit var topic6: Topics
     lateinit var topic7: Topics
     lateinit var topic8: Topics
-
-
-    // Contains all the views
-    //private lateinit var binding:MessageItemBinding
+    lateinit var suggesstionBtn1: AppCompatButton
+    lateinit var suggesstionBtn2: AppCompatButton
+    lateinit var suggesstionBtn3: AppCompatButton
+    lateinit var suggesstionBtn4: AppCompatButton
+    lateinit var suggesstionBtn5: AppCompatButton
+    lateinit var suggesstionBtn6: AppCompatButton
+    lateinit var suggesstionBtnNXT: AppCompatButton
+    lateinit var suggesstionBtnStop: AppCompatButton
 
     @SuppressLint("NotifyDataSetChanged")
     inner class msgViewholder(val binding: MessageItemBinding): RecyclerView.ViewHolder(binding.root){
 
         init {
             itemView.setOnClickListener{
-
                 Log.d("dangle", itemView.toString())
                 itemViewType
-//                msgList.removeAt(absoluteAdapterPosition)
-//                notifyDataSetChanged()
-//                context.applicationContext
             }
         }
     }
@@ -64,6 +66,17 @@ class msgAdapter(val jkt: Callbackinter, val context: Context) :  RecyclerView.A
 
         Log.d("adapter", "messages start= ${msgList.size}")
         Log.d("adapter", "item type= ${getItemViewType(position)}")
+
+
+        suggesstionBtn1 = holder.binding.suggesstionBtn1 as AppCompatButton
+        suggesstionBtn2 = holder.binding.suggesstionBtn2 as AppCompatButton
+        suggesstionBtn3 = holder.binding.suggesstionBtn3 as AppCompatButton
+        suggesstionBtn4 = holder.binding.suggesstionBtn4 as AppCompatButton
+        suggesstionBtn5 = holder.binding.suggesstionBtn5 as AppCompatButton
+        suggesstionBtn6 = holder.binding.suggesstionBtn6 as AppCompatButton
+        suggesstionBtnNXT = holder.binding.suggesstionBtnNXT as AppCompatButton
+        suggesstionBtnStop = holder.binding.suggesstionBtnStop as AppCompatButton
+
 
         holder.binding.suggestionView.visibility= View.GONE
         when (current_msg.msgId){
@@ -168,14 +181,14 @@ class msgAdapter(val jkt: Callbackinter, val context: Context) :  RecyclerView.A
 
             tops.buttons[0].title
 
-            holder.binding.suggesstionBtn1.apply { text = tops.buttons[0].title }.toString()
-            holder.binding.suggesstionBtn2.apply { text = tops.buttons[1].title }.toString()
-            holder.binding.suggesstionBtn3.apply { text = tops.buttons[2].title }.toString()
-            holder.binding.suggesstionBtn4.apply { text = tops.buttons[3].title }.toString()
-            holder.binding.suggesstionBtn5.apply { text = tops.buttons[4].title }.toString()
-            holder.binding.suggesstionBtn6.apply { text = tops.buttons[5].title }.toString()
-            holder.binding.suggesstionBtnNXT.apply { text = tops.buttons[6].title }.toString()
-            holder.binding.suggesstionBtnStop.apply { text = tops.buttons[7].title }.toString()
+            suggesstionBtn1.apply { text = tops.buttons[0].title }.toString()
+            suggesstionBtn2.apply { text = tops.buttons[1].title }.toString()
+            suggesstionBtn3.apply { text = tops.buttons[2].title }.toString()
+            suggesstionBtn4.apply { text = tops.buttons[3].title }.toString()
+            suggesstionBtn5.apply { text = tops.buttons[4].title }.toString()
+            suggesstionBtn6.apply { text = tops.buttons[5].title }.toString()
+            suggesstionBtnNXT.apply { text = tops.buttons[6].title }.toString()
+            suggesstionBtnStop.apply { text = tops.buttons[7].title }.toString()
 
 
             holder.binding.suggesstionBtn1.setOnClickListener { jkt.passResultCallback(
@@ -249,13 +262,13 @@ class msgAdapter(val jkt: Callbackinter, val context: Context) :  RecyclerView.A
 
             tops.buttons[0].title
 
-            holder.binding.suggesstionBtn1.apply { text = tops.buttons[0].title }.toString()
-            holder.binding.suggesstionBtn2.apply { text = tops.buttons[1].title }.toString()
-            holder.binding.suggesstionBtn3.apply { text = tops.buttons[2].title }.toString()
-            holder.binding.suggesstionBtn4.apply { text = tops.buttons[3].title }.toString()
-            holder.binding.suggesstionBtn5.apply { text = tops.buttons[4].title }.toString()
-            holder.binding.suggesstionBtn6.apply { text = tops.buttons[5].title }.toString()
-            holder.binding.suggesstionBtnNXT.apply { text = tops.buttons[6].title }.toString()
+            suggesstionBtn1.apply { text = tops.buttons[0].title }.toString()
+            suggesstionBtn2.apply { text = tops.buttons[1].title }.toString()
+            suggesstionBtn3.apply { text = tops.buttons[2].title }.toString()
+            suggesstionBtn4.apply { text = tops.buttons[3].title }.toString()
+            suggesstionBtn5.apply { text = tops.buttons[4].title }.toString()
+            suggesstionBtn6.apply { text = tops.buttons[5].title }.toString()
+            suggesstionBtnNXT.apply { text = tops.buttons[6].title }.toString()
 
 
             holder.binding.suggesstionBtn1.setOnClickListener { jkt.passResultCallback(
@@ -324,12 +337,12 @@ class msgAdapter(val jkt: Callbackinter, val context: Context) :  RecyclerView.A
 
             tops.buttons[0].title
 
-            holder.binding.suggesstionBtn1.apply { text = tops.buttons[0].title }.toString()
-            holder.binding.suggesstionBtn2.apply { text = tops.buttons[1].title }.toString()
-            holder.binding.suggesstionBtn3.apply { text = tops.buttons[2].title }.toString()
-            holder.binding.suggesstionBtn4.apply { text = tops.buttons[3].title }.toString()
-            holder.binding.suggesstionBtn5.apply { text = tops.buttons[4].title }.toString()
-            holder.binding.suggesstionBtn6.apply { text = tops.buttons[5].title }.toString()
+            suggesstionBtn1.apply { text = tops.buttons[0].title }.toString()
+            suggesstionBtn2.apply { text = tops.buttons[1].title }.toString()
+            suggesstionBtn3.apply { text = tops.buttons[2].title }.toString()
+            suggesstionBtn4.apply { text = tops.buttons[3].title }.toString()
+            suggesstionBtn5.apply { text = tops.buttons[4].title }.toString()
+            suggesstionBtn6.apply { text = tops.buttons[5].title }.toString()
 
 
             holder.binding.suggesstionBtn1.setOnClickListener { jkt.passResultCallback(
@@ -396,11 +409,11 @@ class msgAdapter(val jkt: Callbackinter, val context: Context) :  RecyclerView.A
             topic5 = filterd_topics[4]
 
 
-            holder.binding.suggesstionBtn1.apply { text = tops.buttons[0].title }.toString()
-            holder.binding.suggesstionBtn2.apply { text = tops.buttons[1].title }.toString()
-            holder.binding.suggesstionBtn3.apply { text = tops.buttons[2].title }.toString()
-            holder.binding.suggesstionBtn4.apply { text = tops.buttons[3].title }.toString()
-            holder.binding.suggesstionBtn5.apply { text = tops.buttons[4].title }.toString()
+            suggesstionBtn1.apply { text = tops.buttons[0].title }.toString()
+            suggesstionBtn2.apply { text = tops.buttons[1].title }.toString()
+            suggesstionBtn3.apply { text = tops.buttons[2].title }.toString()
+            suggesstionBtn4.apply { text = tops.buttons[3].title }.toString()
+            suggesstionBtn5.apply { text = tops.buttons[4].title }.toString()
 
 
 
@@ -461,13 +474,13 @@ class msgAdapter(val jkt: Callbackinter, val context: Context) :  RecyclerView.A
 
 
             topicOne =
-                holder.binding.suggesstionBtn1.apply { text = tops.buttons[0].title }.toString()
+                suggesstionBtn1.apply { text = tops.buttons[0].title }.toString()
             topictwo =
-                holder.binding.suggesstionBtn2.apply { text = tops.buttons[1].title }.toString()
+               suggesstionBtn2.apply { text = tops.buttons[1].title }.toString()
             topicthree =
-                holder.binding.suggesstionBtn3.apply { text = tops.buttons[2].title }.toString()
+               suggesstionBtn3.apply { text = tops.buttons[2].title }.toString()
             topicfour =
-                holder.binding.suggesstionBtn4.apply { text = tops.buttons[3].title }.toString()
+                suggesstionBtn4.apply { text = tops.buttons[3].title }.toString()
 
             holder.binding.suggesstionBtn5.visibility = View.GONE
             holder.binding.suggesstionBtn6.visibility = View.GONE
@@ -531,10 +544,9 @@ class msgAdapter(val jkt: Callbackinter, val context: Context) :  RecyclerView.A
             topic2 = filterd_topics[1]
             topic3 = filterd_topics[2]
 
-
-            holder.binding.suggesstionBtn1.apply { text = tops.buttons[0].title }.toString()
-            holder.binding.suggesstionBtn2.apply { text = tops.buttons[1].title }.toString()
-            holder.binding.suggesstionBtn3.apply { text = tops.buttons[2].title }.toString()
+            suggesstionBtn1.apply { text = tops.buttons[0].title }.toString()
+            suggesstionBtn2.apply { text = tops.buttons[1].title }.toString()
+            suggesstionBtn3.apply { text = tops.buttons[2].title }.toString()
             holder.binding.suggesstionBtn4.visibility = View.GONE
             holder.binding.suggesstionBtn5.visibility = View.GONE
             holder.binding.suggesstionBtn6.visibility = View.GONE
@@ -577,9 +589,8 @@ class msgAdapter(val jkt: Callbackinter, val context: Context) :  RecyclerView.A
             topic2 = filterd_topics[1]
 
 
-
-            holder.binding.suggesstionBtn1.apply { text = tops.buttons[0].title }.toString()
-            holder.binding.suggesstionBtn2.apply { text = tops.buttons[1].title }.toString()
+            suggesstionBtn1.apply { text = tops.buttons[0].title }.toString()
+            suggesstionBtn2.apply { text = tops.buttons[1].title }.toString()
             holder.binding.suggesstionBtn3.visibility = View.GONE
             holder.binding.suggesstionBtn4.visibility = View.GONE
             holder.binding.suggesstionBtn5.visibility = View.GONE
@@ -621,8 +632,8 @@ class msgAdapter(val jkt: Callbackinter, val context: Context) :  RecyclerView.A
         else  if (filterd_topics.size == 1)
         {
             topic1 = filterd_topics[0]
-
-            topicOne = holder.binding.suggesstionBtn1.apply { text = topic1.topic }.toString()
+            suggesstionBtn1 = holder.binding.suggesstionBtn1 as AppCompatButton
+            suggesstionBtn1.apply { text = topic1.topic }.toString()
             holder.binding.suggesstionBtn2.visibility = View.GONE
             holder.binding.suggesstionBtn3.visibility = View.GONE
             holder.binding.suggesstionBtn4.visibility = View.GONE
