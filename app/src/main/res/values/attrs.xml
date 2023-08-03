@@ -5,13 +5,17 @@
     </declare-styleable>
 
     <declare-styleable name="ds">
-
+        <attr name="chat_background_start" format="color"/>
+        <attr name="chat_background_middle" format="color"/>
+        <attr name="chat_background_end" format="color"/>
+        <attr name="chat_background_image" format="color"/>
         <attr name="chat_button_background_start" format="color"/>
         <attr name="chat_button_background_end" format="color"/>
         <attr name="flashcard_detail" format="color"/>
         <attr name="Activity_next_btn" format="color"/>
         <attr name="progressBarColor" format="color"/>
         <attr name="backgroundcolor" format="color"/>
+        <attr name="history_backgroundcolor" format="color"/>
         <attr name="Notification_backgroundcolor" format="color"/>
         <attr name="Dashboard_cardviewBackground" format="color"/>
         <attr name="Dashboard_backgroundpicture" format="color"/>

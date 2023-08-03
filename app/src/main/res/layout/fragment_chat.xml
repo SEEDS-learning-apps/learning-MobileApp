@@ -12,15 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="?attr/backgroundColor">
+        android:background="@drawable/chat_background">
 
         <ImageView
             android:id="@+id/Dashboard_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.2"
+            android:alpha="0.25"
             android:layout_gravity="center"
-            android:src="@drawable/education_tree" />
+            android:src="@drawable/education_tree_2"
+            app:tint="?attr/chat_background_image" />
     </LinearLayout>
 
     <LinearLayout
