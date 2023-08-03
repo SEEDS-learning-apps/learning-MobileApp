@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/activity_step1_scene"
-    android:background="?attr/backgroundcolor"
+    android:background="?attr/history_backgroundcolor"
     tools:layout_editor_absoluteX="-46dp"
     tools:layout_editor_absoluteY="56dp">
 
@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="?attr/backgroundcolor" />
+        app:tint="?attr/history_backgroundcolor" />
 
     <ImageView
         android:id="@+id/blue_seeds_logo"

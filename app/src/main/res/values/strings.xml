@@ -29,7 +29,9 @@
     //Description
     <string name="lets_go">LET\'S GO</string>
     <string name="skip">Skip</string>
-    <string name="seeds_info">SEEDS is a project for supporting learning and education on the fringe of the digital sphere. Due to the lack of access to educational institutions and little or no equipment (Tablets, or Laptops and PCs) with necessary digital technologies, young people found it difficult to follow classes. ICT and above all the smartphone can be used here to mitigate this deficit. The needs and challenges of the target group must be taken into account (i.e. no up-to-date smartphones with outdated software). Our idea is to communicate learning content to vulnerable people in a new way by using chat bots.</string>
+    <string name="seeds_info">The corona pandemic has highlighted significant educational inequalities, where the shift to digital learning has left vulnerable groups, including people with migration or refugee backgrounds and non-native speakers, even further behind in terms of education. Limited access to digital technologies and a perceived closed education system will hinder their engagement in learning opportunities and societal participation. To address this issue, the SEEDS project proposes a combination of social and digital outreach, utilizing chatbots as a bridge between cultural mediators, social workers, and educational institutions. The project aims to create learning materials that can be accessed and tracked through a mobile device, via the chatbot system. The project promotes participatory action research and networked evaluation to identify appropriate contents and testing scenarios across Europe.
+        Project funding: Erasmus+ Strategic Partnership
+        Project duration: 2021-2023</string>
     <string name="login_existing_account">Already an User? Login here.</string>
     <string name="create_account">Create Account</string>
 
