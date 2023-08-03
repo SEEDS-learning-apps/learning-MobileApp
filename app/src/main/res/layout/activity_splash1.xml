@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.Welcomepage.Splash"
-    android:background="@color/background">
+    android:background="?attr/history_backgroundcolor" >
 
     <ImageView
         android:layout_width="wrap_content"

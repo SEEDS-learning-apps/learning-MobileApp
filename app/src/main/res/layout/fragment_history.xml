@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/backgroundcolor"
-    tools:context=".Activities.HomePage.HistoryFragment">
+    android:background="?attr/history_backgroundcolor"
+    tools:context=".Activities.HomePage.HistoryFragment"
+    >
+
 
     <RelativeLayout
         android:layout_width="match_parent"
