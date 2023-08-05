@@ -60,9 +60,9 @@ class IntroductionActivity : AppCompatActivity() {
             override fun run() {
                 runOnUiThread {
                     val currentIndex = slideViewPager.currentItem
-                    if (currentIndex == viewPagerAdapter.count - 2) {
+                    if (currentIndex == viewPagerAdapter.count - 1) {
+                        // Stop auto-scrolling on the video page
                         stopAutoScroll()
-                        isLastPageReached = true
                     }
                     val nextIndex = if (currentIndex == viewPagerAdapter.count - 1) 0 else currentIndex + 1
                     slideViewPager.setCurrentItem(nextIndex, true)
@@ -70,6 +70,7 @@ class IntroductionActivity : AppCompatActivity() {
             }
         }, DELAY_MS, PERIOD_MS)
     }
+
 
     private fun stopAutoScroll() {
         timer?.cancel()
@@ -162,10 +163,16 @@ class IntroductionActivity : AppCompatActivity() {
         override fun onPageSelected(position: Int) {
             currentPage.value = position
 
-            if (isLastPageReached && position < viewPagerAdapter.count - 1) {
-                startAutoScroll()
-                isLastPageReached = false
+            if (position == viewPagerAdapter.count - 1) {
+                stopAutoScroll()
             }
+
+            // Start auto-scrolling again if needed
+            if (!isLastPageReached && position == 0) {
+                startAutoScroll()
+            }
+
+            // Update the isLastPageReached flag
             isLastPageReached = position == viewPagerAdapter.count - 1
         }
 
