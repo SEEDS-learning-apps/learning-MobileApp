@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.viewpager.widget.ViewPager
@@ -146,7 +147,7 @@ class IntroductionActivity : AppCompatActivity() {
             indicators[i] = TextView(this)
             indicators[i]?.text = HtmlCompat.fromHtml("&#8226", HtmlCompat.FROM_HTML_MODE_LEGACY)
             indicators[i]?.textSize = 35f
-            indicators[i]?.setTextColor(resources.getColor(R.color.inactive, applicationContext.theme))
+            indicators[i]?.setTextColor(ContextCompat.getColor(applicationContext, R.color.inactive))
             indicatorLayout.addView(indicators[i])
         }
 
