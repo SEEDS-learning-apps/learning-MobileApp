@@ -4,7 +4,7 @@ The SEEDS Android app is a cutting-edge educational platform crafted with Kotlin
 
 By seamlessly blending technology and education, SEEDS redefines the boundaries of remote learning, fostering a holistic approach that empowers students across diverse geographies.
 
-![Coded in Kotlin](https://img.shields.io/badge/Coded%20in-Kotlin-blueviolet) [![Open Source](https://img.shields.io/badge/Open%20Source-Yes-green.svg)](https://opensource.org/) [![License](https://img.shields.io/badge/License-Educational%20Community%20License%202.0-blue.svg)](https://opensource.org/licenses/ECL-2.0)
+[![Coded in Kotlin](https://img.shields.io/badge/Coded%20in-Kotlin-blueviolet)](https://kotlinlang.org/) [![Open Source](https://img.shields.io/badge/Open%20Source-Yes-green.svg)](https://opensource.org/) [![License](https://img.shields.io/badge/License-Educational%20Community%20License%202.0-blue.svg)](https://opensource.org/licenses/ECL-2.0)
 
 ## Table of contents
 1. [Project Objectives](#projectobjectives)
@@ -14,8 +14,8 @@ By seamlessly blending technology and education, SEEDS redefines the boundaries 
 5. [Libraries and Framework](#libraries-and-framework) 
 6. [Comprehensive Data Storage Approach in the SEEDS Android App](#comprehensive-data-storage-approach-in-the-seeds-android-app)
 7. [Resources](#resources)
-8. [Screenshots](#screenshots)
-9. [App Configuration](#app-configuration)
+8. [App Configuration](#app-configuration)
+9. [Screenshots](#screenshots) 
 10. [License](#license)
 11. [Contact](#contact)
    
@@ -197,7 +197,7 @@ android {
     namespace 'com.example.chat_bot'
 }
 
----
+```
 
 ## License
 
