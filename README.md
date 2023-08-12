@@ -15,8 +15,9 @@ By seamlessly blending technology and education, SEEDS redefines the boundaries 
 6. [Comprehensive Data Storage Approach in the SEEDS Android App](#comprehensive-data-storage-approach-in-the-seeds-android-app)
 7. [Resources](#resources)
 8. [Screenshots](#screenshots)
-9. [License](#license)
-10. [Contact](#contact)
+9. [App Configuration](#app-configuration)
+10. [License](#license)
+11. [Contact](#contact)
    
 ## Project Objectives
 The primary objective of the SEEDS project is to transcend the challenges presented by post-pandemic education. Beyond this, the project aims to amplify the learning experience through meticulous design strategies. By integrating an interactive user interface (UI) and an extensive range of features, the application is meticulously crafted to foster an engaging and dynamic learning process. Rooted in a user-centric approach, the app actively encourages participation and exploration, effectively transforming education into an enriching journey.
@@ -144,22 +145,63 @@ The `res` folder is a crucial directory in the SEEDS Android app project, housin
 
 The resources stored in the `res` folder play a pivotal role in shaping the app's visual identity, interactivity, and overall user experience.
 
+
+## App Configuration
+
+Here's an overview of the app configuration in the `build.gradle` file:
+
+```groovy
+android {
+    compileSdk 33
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+
+    defaultConfig {
+        applicationId "com.seeds.chat_bot"
+        minSdk 23
+        targetSdk 29
+        versionCode 5
+        versionName "1.4"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+    }
+
+    packagingOptions {
+        packagingOptions {
+            resources.excludes.add("META-INF/*")
+        }
+    }
+    
+    namespace 'com.example.chat_bot'
+}
+
+---
+
 ## License
 
 This project is licensed under the [Educational Community License, Version 2.0 (ECL-2.0)](https://opensource.org/licenses/ECL-2.0).
 
 You can find the full text of the license in the [LICENSE](LICENSE) file of this repository.
-
-
-## Room Database
-
-- path: chat_bot\Room
-- type converters: Room\Converters\ (datatype converters for room database)
-- Database relations Room\Relations (Database joins and relations declaration)
-
-## Resources
-Res folder contains all resources such as font, images, strings, animations, layout (XML files)
-
-## Pre-made responses
-Utils folder contains all the utilities used in the system such as pre made responses in all languages (English, Spanish, Greek and German), Login and logout session managers e.t.c
 
