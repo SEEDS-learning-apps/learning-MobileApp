@@ -8,9 +8,10 @@ By seamlessly blending technology and education, SEEDS redefines the boundaries 
 2. [Getting Started](#getting-started)
 3. [Features](#features)
 4. [Libraries and Framework](#Libraries-and-Framework)
-5. [Screenshots](#screenshots)
-6. [License](#license)
-7. [Contact](#contact)
+5. [Comprehensive Data Storage Approach in the SEEDS Android App](#Comprehensive-Data-Storage-Approach-in-the-SEEDS-Android-App)
+6. [Screenshots](#screenshots)
+7. [License](#license)
+8. [Contact](#contact)
    
 ## Project Objectives
 The primary objective of the SEEDS project is to transcend the challenges presented by post-pandemic education. Beyond this, the project aims to amplify the learning experience through meticulous design strategies. By integrating an interactive user interface (UI) and an extensive range of features, the application is meticulously crafted to foster an engaging and dynamic learning process. Rooted in a user-centric approach, the app actively encourages participation and exploration, effectively transforming education into an enriching journey.
@@ -86,7 +87,14 @@ Jetpack Compose is a modern UI toolkit for building native Android user interfac
 
 - **KodeinAware (Kodein Dependency Injection)**: KodeinAware is a component of Kodein, a dependency injection framework. It enables Android developers to manage and inject dependencies efficiently, enhancing modularization and maintainability in app architecture.
 
-## Network calls
+## Comprehensive Data Storage Approach in the SEEDS Android App
+The SEEDS Android app employs a multifaceted data storage strategy to ensure efficient user experiences and seamless access to learning materials. These storage options work in harmony to enhance user engagement and provide a personalized learning journey:
+
+- **Room Persistence Library**: SEEDS utilizes the Room Persistence Library as a robust solution for managing local data storage. This library facilitates the storage of user progress, completed activities, and personalized settings within a structured SQLite database. The Room library streamlines CRUD operations, ensuring efficient interaction with stored data and seamless continuity in the user's learning journey.
+
+- **Shared Preferences**: The app leverages Shared Preferences to store lightweight key-value pairs. This approach efficiently manages user preferences, language selections, notification settings, and other individual choices. Shared Preferences enable quick access to these configurations across app sessions, delivering a tailored experience without unnecessary repetition.
+
+- **Session Manager**: The Session Manager optimizes user authentication and session handling. By maintaining the user's login state, it enhances security and simplifies user access. This feature minimizes the need for repeated logins and ensures secure entry into the app, providing consistent access to personalized content and features.
 
 - Retrofit
 path: networking\Retrofit\Seeds_api\api
