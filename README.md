@@ -4,7 +4,7 @@ The SEEDS Android app is a cutting-edge educational platform crafted with Kotlin
 
 By seamlessly blending technology and education, SEEDS redefines the boundaries of remote learning, fostering a holistic approach that empowers students across diverse geographies.
 
-![Coded in Kotlin](https://img.shields.io/badge/Coded%20in-Kotlin-blueviolet) [![Open Source](https://img.shields.io/badge/Open%20Source-Yes-green.svg)](https://opensource.org/) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+![Coded in Kotlin](https://img.shields.io/badge/Coded%20in-Kotlin-blueviolet) [![Open Source](https://img.shields.io/badge/Open%20Source-Yes-green.svg)](https://opensource.org/) [![License](https://img.shields.io/badge/License-Educational%20Community%20License%202.0-blue.svg)](https://opensource.org/licenses/ECL-2.0)
 
 ## Table of contents
 1. [Project Objectives](#projectobjectives)
@@ -143,6 +143,12 @@ The `res` folder is a crucial directory in the SEEDS Android app project, housin
 - **Layouts (XML files):** These XML files define the structure and arrangement of UI components, ensuring a cohesive and user-friendly interface.
 
 The resources stored in the `res` folder play a pivotal role in shaping the app's visual identity, interactivity, and overall user experience.
+
+## License
+
+This project is licensed under the [Educational Community License, Version 2.0 (ECL-2.0)](https://opensource.org/licenses/ECL-2.0).
+
+You can find the full text of the license in the [LICENSE](LICENSE) file of this repository.
 
 
 ## Room Database
