@@ -94,31 +94,29 @@ This architecture ensures code readability, maintainability, and extensibility, 
 ## Libraries and Framework
 Discover the powerful technologies that underpin the seamless functionality of the SEEDS Android application:
 
-- **Rasa**: Rasa libraries power a chatbot for natural language interactions, offering dynamic conversations and personalized learning recommendations.
+- **[Rasa](https://rasa.com/)**: Rasa libraries power a chatbot for natural language interactions, offering dynamic conversations and personalized learning recommendations.
 
-- **AndroidX Core KTX**: Provides core functionality enhancements and utilities.
+- **[AndroidX Core KTX](https://developer.android.com/kotlin/ktx)**: Provides core functionality enhancements and utilities.
 
-- **Android Jetpack Libraries**: Utilizing Navigation, LiveData, and ViewModel components, Jetpack enhances app navigation, data management, and UI design for efficiency.
+- **[Android Jetpack Libraries](https://developer.android.com/jetpack)**: Utilizing Navigation, LiveData, and ViewModel components, Jetpack enhances app navigation, data management, and UI design for efficiency.
 
-- **Room Persistence Library**: Room simplifies local data storage, optimizing the management of user progress and completed activities.
+- **[Room Persistence Library](https://developer.android.com/topic/libraries/architecture/room)**: Room simplifies local data storage, optimizing the management of user progress and completed activities.
 
-- **Retrofit**: This library streamlines network requests and API communication, ensuring effective interaction with backend services for accessing learning materials.
+- **[Retrofit](https://square.github.io/retrofit/)**: This library streamlines network requests and API communication, ensuring effective interaction with backend services for accessing learning materials.
 
-- **Glide**:
-Glide is an image loading and caching library that efficiently handles the loading, caching, and displaying of images, reducing the complexity of managing images in your app while optimizing performance and memory usage.
+- **[Glide](https://bumptech.github.io/glide/)**: Glide is an image loading and caching library that efficiently handles the loading, caching, and displaying of images, reducing the complexity of managing images in your app while optimizing performance and memory usage.
 
-- **Jetpack Compose**:
-Jetpack Compose is a modern UI toolkit for building native Android user interfaces using a declarative and functional approach. It simplifies UI development by enabling you to describe the UI in a more intuitive and concise manner, enhancing productivity and flexibility in creating interactive and dynamic UI components.
+- **[Jetpack Compose](https://developer.android.com/jetpack/compose)**: Jetpack Compose is a modern UI toolkit for building native Android user interfaces using a declarative and functional approach. It simplifies UI development by enabling you to describe the UI in a more intuitive and concise manner, enhancing productivity and flexibility in creating interactive and dynamic UI components.
 
-- **ViewPager2**: ViewPager2 simplifies the creation of swipeable layouts, enabling you to display fragments or views that users can navigate by swiping left or right.
+- **[ViewPager2](https://developer.android.com/guide/navigation/gesturenav)**: ViewPager2 simplifies the creation of swipeable layouts, enabling you to display fragments or views that users can navigate by swiping left or right.
 
-- **Lottie**: By integrating Json animations, Lottie adds captivating visuals to the app's introduction and elevates user engagement.
+- **[Lottie](https://airbnb.io/lottie/)**: By integrating Json animations, Lottie adds captivating visuals to the app's introduction and elevates user engagement.
 
-- **AnyChart**: AnyChart is a JavaScript-based charting library that provides a wide range of interactive and customizable charts, graphs, and visualizations for web and mobile applications.
+- **[AnyChart](https://www.anychart.com/)**: AnyChart is a JavaScript-based charting library that provides a wide range of interactive and customizable charts, graphs, and visualizations for web and mobile applications.
 
-- **Lingver**: Lingver is a library facilitating language localization in Android apps, enabling seamless language switching and enhancing user accessibility by allowing users to interact with app content in their preferred language.
+- **[Lingver](https://github.com/ligi/Lingver)**: Lingver is a library facilitating language localization in Android apps, enabling seamless language switching and enhancing user accessibility by allowing users to interact with app content in their preferred language.
 
-- **KodeinAware (Kodein Dependency Injection)**: KodeinAware is a component of Kodein, a dependency injection framework. It enables Android developers to manage and inject dependencies efficiently, enhancing modularization and maintainability in app architecture.
+- **[KodeinAware (Kodein Dependency Injection)](https://github.com/Kodein-Framework/Kodein-DI)**: KodeinAware is a component of Kodein, a dependency injection framework. It enables Android developers to manage and inject dependencies efficiently, enhancing modularization and maintainability in app architecture.
 
 ## Comprehensive Data Storage Approach in the SEEDS Android App
 The SEEDS Android app employs a multifaceted data storage strategy to ensure efficient user experiences and seamless access to learning materials. These storage options work in harmony to enhance user engagement and provide a personalized learning journey:
