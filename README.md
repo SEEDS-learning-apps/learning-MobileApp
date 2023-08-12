@@ -1,17 +1,17 @@
-## SEEDS learning app
+## SEEDS Learning Application
 ![Seeds_Logo.png](https://github.com/SEEDS-learning-apps/learning-MobileApp/blob/masters-thesis-sakthidaran/app/src/main/res/drawable-xxxhdpi/seeds_logo.png)
 The SEEDS Android app is a cutting-edge educational platform crafted with Kotlin programming language. It's meticulously designed to revolutionize distance learning, offering students an intuitive and engaging learning experience. Formed through a dynamic collaboration between three distinguished institutions - Universität Siegen, University of Alicante in Spain, and Openlabs in Athens - SEEDS represents a powerful consortium. This collective effort was nurtured by the support of the Erasmus program of the European Union.
 
 By seamlessly blending technology and education, SEEDS redefines the boundaries of remote learning, fostering a holistic approach that empowers students across diverse geographies.
 
-[![Open Source](https://img.shields.io/badge/Open%20Source-Yes-green.svg)](https://opensource.org/) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+![Coded in Kotlin](https://img.shields.io/badge/Coded%20in-Kotlin-blueviolet) [![Open Source](https://img.shields.io/badge/Open%20Source-Yes-green.svg)](https://opensource.org/) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Table of contents
-1. [Project Objectives](#ProjectObjectives)
+1. [Project Objectives](#projectobjectives)
 2. [Getting Started](#getting-started)
 3. [Features](#features)
-4. [Libraries and Framework](#Libraries-and-Framework)
-5. [Comprehensive Data Storage Approach in the SEEDS Android App](#Comprehensive-Data-Storage-Approach-in-the-SEEDS-Android-App)
+4. [Libraries and Framework](#libraries-and-framework) 
+5. [Comprehensive Data Storage Approach in the SEEDS Android App](#comprehensive-data-storage-approach-in-the-seeds-android-app)
 6. [Screenshots](#screenshots)
 7. [License](#license)
 8. [Contact](#contact)
