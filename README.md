@@ -112,9 +112,9 @@ Discover the powerful technologies that underpin the seamless functionality of t
 
 - **[Lottie](https://airbnb.io/lottie/)**: By integrating Json animations, Lottie adds captivating visuals to the app's introduction and elevates user engagement.
 
-- **[AnyChart](https://www.anychart.com/)**: AnyChart is a JavaScript-based charting library that provides a wide range of interactive and customizable charts, graphs, and visualizations for web and mobile applications.
+- **[AnyChart](https://github.com/AnyChart/AnyChart-Android)**: AnyChart is a JavaScript-based charting library that provides a wide range of interactive and customizable charts, graphs, and visualizations for web and mobile applications.
 
-- **[Lingver](https://github.com/ligi/Lingver)**: Lingver is a library facilitating language localization in Android apps, enabling seamless language switching and enhancing user accessibility by allowing users to interact with app content in their preferred language.
+- **[Lingver](https://github.com/YarikSOffice/Lingver)**: Lingver is a library facilitating language localization in Android apps, enabling seamless language switching and enhancing user accessibility by allowing users to interact with app content in their preferred language.
 
 - **[KodeinAware (Kodein Dependency Injection)](https://github.com/Kodein-Framework/Kodein-DI)**: KodeinAware is a component of Kodein, a dependency injection framework. It enables Android developers to manage and inject dependencies efficiently, enhancing modularization and maintainability in app architecture.
 
