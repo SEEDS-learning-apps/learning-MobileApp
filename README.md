@@ -1,5 +1,5 @@
 ## SEEDS learning app
-![Seeds_logo](seeds_logo.png)
+![Seeds_Logo.png](https://github.com/SEEDS-learning-apps/learning-MobileApp/blob/masters-thesis-sakthidaran/app/src/main/res/drawable-xxxhdpi/seeds_logo.png)
 The SEEDS Android app is a cutting-edge educational platform crafted with Kotlin programming language. It's meticulously designed to revolutionize distance learning, offering students an intuitive and engaging learning experience. Formed through a dynamic collaboration between three distinguished institutions - Universität Siegen, University of Alicante in Spain, and Openlabs in Athens - SEEDS represents a powerful consortium. This collective effort was nurtured by the support of the Erasmus program of the European Union.
 
 By seamlessly blending technology and education, SEEDS redefines the boundaries of remote learning, fostering a holistic approach that empowers students across diverse geographies.
