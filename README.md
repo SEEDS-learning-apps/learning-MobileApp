@@ -7,7 +7,7 @@ By seamlessly blending technology and education, SEEDS redefines the boundaries 
 1. [Project Objectives](#ProjectObjectives)
 2. [Getting Started](#getting-started)
 3. [Features](#features)
-4. [Libraries and Framework](#Libraries and Framework)
+4. [Libraries and Framework](#Libraries-and-Framework)
 5. [Screenshots](#screenshots)
 6. [License](#license)
 7. [Contact](#contact)
@@ -20,6 +20,8 @@ Furthermore, the project caters to the diverse linguistic backgrounds of learner
 Through the seamless fusion of educational principles and technological advancements, the SEEDS project aspires to cultivate an environment where learners can excel, thereby shaping the trajectory of accessible and impactful global education.
 
 ## Getting Started
+Welcome to the SEEDS Android application repository! Whether you're a student eager to enhance your learning experience or a developer interested in contributing, this guide will help you get started. The SEEDS app is designed to revolutionize distance learning, making it more intuitive and interactive. Here's how you can begin your journey with us:
+
 - **Download the App**: To access the SEEDS Android application, you can download the project package from the provided link. This ensures you're getting the official and up-to-date version of the app.
 
 - **Choose Your Language**: Once you've downloaded the app, open it and select your preferred language from the available options: English, German, Spanish, or Greek. This selection ensures you engage with the content in a language that suits you best.
@@ -31,6 +33,8 @@ Through the seamless fusion of educational principles and technological advancem
 - **Unlock Private Content**: If your teachers have shared private content, you can access it by using the Access Code they provide. This ensures you receive personalized educational content that aligns with your learning goals.
 
 ## Features
+Discover the diverse and innovative features that define the SEEDS Android application:
+
 - **Tailored Onboarding Experience for New and Returning Users**: Upon launching the SEEDS app, users are met with a personalized experience that adapts to their status. New users are prompted with an enticing choice: "New User" Opting for this, they're treated to a captivating introduction enhanced by Json animations and an informative view that outlines the app's features. This immersive preview is followed by effortless navigation to the registration screen to establish their account. In contrast, returning users can select the option "Already a User" which swiftly guided them to the login screen, acknowledging their familiarity with the app. This dual approach optimizes user engagement, fostering an inclusive and efficient learning journey.
 
 - **Enhancing Accessibility with Multilingual Support in the SEEDS App**: SEEDS app empowers users with language flexibility. The language change feature lets users switch between English, German, Spanish, and Greek, ensuring a personalized learning experience in their preferred language. This adaptable feature exemplifies SEEDS' commitment to inclusivity and accessibility for learners worldwide.
@@ -54,9 +58,11 @@ Through the seamless fusion of educational principles and technological advancem
 - **Personalized Theme Selection**: Recognizing the significance of user comfort, the app introduces theme customization. Choose between light and dark modes to create a personalized visual experience that aligns with your preference and reduces eye strain during extended study sessions.
 
 ## Libraries and Framework
+Discover the powerful technologies that underpin the seamless functionality of the SEEDS Android application:
+
 - **Rasa**: Rasa libraries power a chatbot for natural language interactions, offering dynamic conversations and personalized learning recommendations.
 
-- AndroidX Core KTX: Provides core functionality enhancements and utilities.
+- **AndroidX Core KTX**: Provides core functionality enhancements and utilities.
 
 - **Android Jetpack Libraries**: Utilizing Navigation, LiveData, and ViewModel components, Jetpack enhances app navigation, data management, and UI design for efficiency.
 
