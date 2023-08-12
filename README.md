@@ -10,11 +10,12 @@ By seamlessly blending technology and education, SEEDS redefines the boundaries 
 1. [Project Objectives](#projectobjectives)
 2. [Getting Started](#getting-started)
 3. [Features](#features)
-4. [Libraries and Framework](#libraries-and-framework) 
-5. [Comprehensive Data Storage Approach in the SEEDS Android App](#comprehensive-data-storage-approach-in-the-seeds-android-app)
-6. [Screenshots](#screenshots)
-7. [License](#license)
-8. [Contact](#contact)
+4. [App Architecture](#app-architecture)
+5. [Libraries and Framework](#libraries-and-framework) 
+6. [Comprehensive Data Storage Approach in the SEEDS Android App](#comprehensive-data-storage-approach-in-the-seeds-android-app)
+7. [Screenshots](#screenshots)
+8. [License](#license)
+9. [Contact](#contact)
    
 ## Project Objectives
 The primary objective of the SEEDS project is to transcend the challenges presented by post-pandemic education. Beyond this, the project aims to amplify the learning experience through meticulous design strategies. By integrating an interactive user interface (UI) and an extensive range of features, the application is meticulously crafted to foster an engaging and dynamic learning process. Rooted in a user-centric approach, the app actively encourages participation and exploration, effectively transforming education into an enriching journey.
@@ -61,6 +62,33 @@ Discover the diverse and innovative features that define the SEEDS Android appli
 
 - **Personalized Theme Selection**: Recognizing the significance of user comfort, the app introduces theme customization. Choose between light and dark modes to create a personalized visual experience that aligns with your preference and reduces eye strain during extended study sessions.
 
+## App Architecture
+
+The SEEDS Android app is meticulously designed using the Model-View-ViewModel (MVVM) architecture to ensure an organized, scalable, and maintainable codebase. This architecture promotes the separation of concerns, making the development, testing, and maintenance of the app more efficient.
+
+### Key Architectural Components
+
+- **Model-View-ViewModel (MVVM):** The app follows the MVVM architecture, separating the user interface (View), business logic (ViewModel), and data (Model). This enhances code organization and reusability.
+
+- **ViewModel:** The ViewModel manages data presentation and business logic, keeping the UI independent of data operations. It communicates with repositories for data retrieval and manipulation.
+
+- **Repository Pattern:** Repositories abstract data sources and provide a consistent API to ViewModel. They manage data from various sources, like networks and local databases, ensuring data integrity.
+
+- **Room Database:** Local data storage is handled using the Room Persistence Library, which simplifies database management and interaction, maintaining data consistency.
+
+- **Retrofit for Networking:** Retrofit facilitates network requests, enabling seamless communication with remote APIs and efficient data retrieval.
+
+- **Dependency Injection:** Kodein is used for dependency injection, enhancing modularity and reducing tight coupling between components.
+
+- **LiveData and Observables:** LiveData and observables establish data-driven connections between ViewModel and UI, ensuring real-time updates.
+
+- **View Binding:** View Binding simplifies the interaction between UI components and code by generating binding classes for XML layouts.
+
+- **Navigation Component:** The Navigation component streamlines app navigation, providing a structured way to move between screens and enhancing the user experience.
+
+This architecture ensures code readability, maintainability, and extensibility, allowing for efficient feature development and easy integration of new functionalities as the app evolves.
+
+
 ## Libraries and Framework
 Discover the powerful technologies that underpin the seamless functionality of the SEEDS Android application:
 
@@ -98,9 +126,6 @@ The SEEDS Android app employs a multifaceted data storage strategy to ensure eff
 - **Shared Preferences**: The app leverages Shared Preferences to store lightweight key-value pairs. This approach efficiently manages user preferences, language selections, notification settings, and other individual choices. Shared Preferences enable quick access to these configurations across app sessions, delivering a tailored experience without unnecessary repetition.
 
 - **Session Manager**: The Session Manager optimizes user authentication and session handling. By maintaining the user's login state, it enhances security and simplifies user access. This feature minimizes the need for repeated logins and ensures secure entry into the app, providing consistent access to personalized content and features.
-
-- Retrofit
-path: networking\Retrofit\Seeds_api\api
 
 ## Room Database
 
