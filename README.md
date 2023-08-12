@@ -7,7 +7,7 @@ By seamlessly blending technology and education, SEEDS redefines the boundaries 
 1. [Project Objectives](#ProjectObjectives)
 2. [Getting Started](#getting-started)
 3. [Features](#features)
-4. [Usage](#usage)
+4. [Libraries and Framework](#Libraries and Framework)
 5. [Screenshots](#screenshots)
 6. [License](#license)
 7. [Contact](#contact)
@@ -33,11 +33,15 @@ Through the seamless fusion of educational principles and technological advancem
 ## Features
 - **Tailored Onboarding Experience for New and Returning Users**: Upon launching the SEEDS app, users are met with a personalized experience that adapts to their status. New users are prompted with an enticing choice: "New User" Opting for this, they're treated to a captivating introduction enhanced by Json animations and an informative view that outlines the app's features. This immersive preview is followed by effortless navigation to the registration screen to establish their account. In contrast, returning users can select the option "Already a User" which swiftly guided them to the login screen, acknowledging their familiarity with the app. This dual approach optimizes user engagement, fostering an inclusive and efficient learning journey.
 
+- **Enhancing Accessibility with Multilingual Support in the SEEDS App**: SEEDS app empowers users with language flexibility. The language change feature lets users switch between English, German, Spanish, and Greek, ensuring a personalized learning experience in their preferred language. This adaptable feature exemplifies SEEDS' commitment to inclusivity and accessibility for learners worldwide.
+
 - **Tab Layout for Organized Navigation**: The app's intuitive tab layout streamlines your experience, dividing content into three distinct screens. The first tab hosts the chatbot interface, providing seamless interactions and delivering subject-specific activities. The second tab showcases a history of completed activities, offering insights into your learning progress. The final tab features your student dashboard, a hub of statistics and insights into your learning journey.
 
 - **Interactive Chatbot**: Within the chatbot interface, you can engage in dynamic conversations. The chatbot recommends activities tailored to the subject and topic you've selected, ensuring a personalized learning experience that adapts to your academic needs.
 
 - **Diverse Activity Types**: The app offers a range of engaging activity types to cater to various learning styles. Choose from multiple options, including multiple-choice questions (MCQs), true or false questions, matching activities, and open-ended questions. This diversity ensures a comprehensive and well-rounded learning process.
+
+- **Activity Progress Tracking and Scoring in SEEDS App's History Tab**: Embedded within the app's tab layout, the history tab meticulously displays completed activities in sequential order, detailing scores achieved for each. This feature allows users to track their progress and grasp proficiency across varied activity formats, reflecting the SEEDS project's commitment to fostering an insightful and impactful learning experience.
 
 - **Student Dashboard and Activity Statistics**: The SEEDS app offers a comprehensive student dashboard that provides a personalized overview of your learning journey. Within the dashboard, you can access detailed statistics regarding completed activities, track your progress, and monitor your overall performance, empowering you to take ownership of your learning path.
 
@@ -49,6 +53,32 @@ Through the seamless fusion of educational principles and technological advancem
 
 - **Personalized Theme Selection**: Recognizing the significance of user comfort, the app introduces theme customization. Choose between light and dark modes to create a personalized visual experience that aligns with your preference and reduces eye strain during extended study sessions.
 
+## Libraries and Framework
+- **Rasa**: Rasa libraries power a chatbot for natural language interactions, offering dynamic conversations and personalized learning recommendations.
+
+- AndroidX Core KTX: Provides core functionality enhancements and utilities.
+
+- **Android Jetpack Libraries**: Utilizing Navigation, LiveData, and ViewModel components, Jetpack enhances app navigation, data management, and UI design for efficiency.
+
+- **Room Persistence Library**: Room simplifies local data storage, optimizing the management of user progress and completed activities.
+
+- **Retrofit**: This library streamlines network requests and API communication, ensuring effective interaction with backend services for accessing learning materials.
+
+- **Glide**:
+Glide is an image loading and caching library that efficiently handles the loading, caching, and displaying of images, reducing the complexity of managing images in your app while optimizing performance and memory usage.
+
+- **Jetpack Compose**:
+Jetpack Compose is a modern UI toolkit for building native Android user interfaces using a declarative and functional approach. It simplifies UI development by enabling you to describe the UI in a more intuitive and concise manner, enhancing productivity and flexibility in creating interactive and dynamic UI components.
+
+- **ViewPager2**: ViewPager2 simplifies the creation of swipeable layouts, enabling you to display fragments or views that users can navigate by swiping left or right.
+
+- **Lottie**: By integrating Json animations, Lottie adds captivating visuals to the app's introduction and elevates user engagement.
+
+- **AnyChart**: AnyChart is a JavaScript-based charting library that provides a wide range of interactive and customizable charts, graphs, and visualizations for web and mobile applications.
+
+- **Lingver**: Lingver is a library facilitating language localization in Android apps, enabling seamless language switching and enhancing user accessibility by allowing users to interact with app content in their preferred language.
+
+- **KodeinAware (Kodein Dependency Injection)**: KodeinAware is a component of Kodein, a dependency injection framework. It enables Android developers to manage and inject dependencies efficiently, enhancing modularization and maintainability in app architecture.
 
 ## Network calls
 
