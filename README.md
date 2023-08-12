@@ -13,9 +13,10 @@ By seamlessly blending technology and education, SEEDS redefines the boundaries 
 4. [App Architecture](#app-architecture)
 5. [Libraries and Framework](#libraries-and-framework) 
 6. [Comprehensive Data Storage Approach in the SEEDS Android App](#comprehensive-data-storage-approach-in-the-seeds-android-app)
-7. [Screenshots](#screenshots)
-8. [License](#license)
-9. [Contact](#contact)
+7. [Resources](#resources)
+8. [Screenshots](#screenshots)
+9. [License](#license)
+10. [Contact](#contact)
    
 ## Project Objectives
 The primary objective of the SEEDS project is to transcend the challenges presented by post-pandemic education. Beyond this, the project aims to amplify the learning experience through meticulous design strategies. By integrating an interactive user interface (UI) and an extensive range of features, the application is meticulously crafted to foster an engaging and dynamic learning process. Rooted in a user-centric approach, the app actively encourages participation and exploration, effectively transforming education into an enriching journey.
@@ -126,6 +127,23 @@ The SEEDS Android app employs a multifaceted data storage strategy to ensure eff
 - **Shared Preferences**: The app leverages Shared Preferences to store lightweight key-value pairs. This approach efficiently manages user preferences, language selections, notification settings, and other individual choices. Shared Preferences enable quick access to these configurations across app sessions, delivering a tailored experience without unnecessary repetition.
 
 - **Session Manager**: The Session Manager optimizes user authentication and session handling. By maintaining the user's login state, it enhances security and simplifies user access. This feature minimizes the need for repeated logins and ensures secure entry into the app, providing consistent access to personalized content and features.
+
+## Resources
+
+The `res` folder is a crucial directory in the SEEDS Android app project, housing a variety of essential resources that contribute to the app's appearance, functionality, and user experience. It contains a diverse range of assets, including:
+
+- **Fonts:** Typography choices are stored here to maintain consistent text styling throughout the app.
+
+- **Images:** Visual elements, icons, and images utilized in the app's interface are stored in this directory.
+
+- **Strings:** Text strings used within the app's UI, like labels, prompts, and messages, are organized here for easy localization and management.
+
+- **Animations:** Animated elements, including Lottie animations, are stored in this folder to enhance the app's visual dynamism.
+
+- **Layouts (XML files):** These XML files define the structure and arrangement of UI components, ensuring a cohesive and user-friendly interface.
+
+The resources stored in the `res` folder play a pivotal role in shaping the app's visual identity, interactivity, and overall user experience.
+
 
 ## Room Database
 
