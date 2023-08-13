@@ -273,6 +273,42 @@ Flashcards are intelligently generated based on the user's completed activities,
   </table>
 </div>
 
+### Settings and Help Menus
+The Settings and Help menus in the app provide users with additional control and support. The Settings menu offers a range of customizable options to tailor the app experience to individual preferences. Users can adjust the material and interface language, ensuring content is presented in their preferred language. Notification settings allow users to control how they receive updates and alerts. Additionally, the option to change the app's theme enhances personalization, contributing to a more comfortable and engaging interaction with the app. The Help menu serves as a resource for users seeking assistance or information
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260274080-d3a984cf-9096-4f3f-806f-6a8f09df689d.png" width="400"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260274087-049c3975-2c9f-4204-a189-d9bbe8d936d1.png" width="400"></td>
+    </tr>
+  </table>
+</div>
+
+### Theme change
+The theme change feature, accessible from the settings menu, empowers users to effortlessly switch between light and dark modes. This modification affects the entire app, dynamically altering the visual appearance of every screen to align with the chosen theme. By offering this seamless transition, users can adapt the app's aesthetics to match their preferences and create a cohesive user experience across all interactions. The images below are some examples of how the screens look in different themes.
+<div align="center">
+  <!-- Top Row of Images -->
+  <table>
+    <tr>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260272242-187badb6-cd2f-43ad-af5a-6adfef5d88fc.png" width="250"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260274523-9c07ff6a-81ed-4b7f-b542-1099227c1274.png" width="250"></td>
+    </tr>
+  </table>
+  
+  <!-- Gap between Rows -->
+  <div style="height: 20px;"></div>
+  
+  <!-- Bottom Row of Images -->
+  <table>
+    <tr>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260272243-c255fc02-b5a7-4aa9-b368-801c87425f2a.png" width="250"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260274089-7fdf3382-5384-49ac-b893-c33b7c28364f.png" width="250"></td>
+    </tr>
+  </table>
+</div>
+
+
+
 ## License
 
 This project is licensed under the [Educational Community License, Version 2.0 (ECL-2.0)](https://opensource.org/licenses/ECL-2.0).
