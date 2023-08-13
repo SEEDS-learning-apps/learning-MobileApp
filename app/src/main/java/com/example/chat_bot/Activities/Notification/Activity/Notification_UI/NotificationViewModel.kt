@@ -2,7 +2,7 @@ package com.example.chat_bot.Activities.Notification.Activity.Notification_UI
 
 import androidx.lifecycle.ViewModel
 import com.example.chat_bot.Activities.Notification.Activity.Notification_data.entities.Notifications
-import com.crushtech.timelyapp.data.repository.NotificationRepository
+import com.example.chat_bot.Activities.Notification.Activity.Notification_data.repository.NotificationRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

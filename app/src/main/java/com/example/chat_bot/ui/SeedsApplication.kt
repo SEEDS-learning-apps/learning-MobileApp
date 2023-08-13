@@ -1,7 +1,7 @@
 package com.example.chat_bot.ui
 
 import android.app.Application
-import com.crushtech.timelyapp.data.repository.NotificationRepository
+import com.example.chat_bot.Activities.Notification.Activity.Notification_data.repository.NotificationRepository
 import com.example.chat_bot.Activities.Notification.Activity.Notification_UI.NotificationViewModelFactory
 import com.example.chat_bot.Activities.Notification.Activity.Notification_data.database.NotificationDatabase
 import com.yariksoffice.lingver.Lingver

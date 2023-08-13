@@ -2,7 +2,7 @@ package com.example.chat_bot.Activities.Notification.Activity.Notification_UI
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.crushtech.timelyapp.data.repository.NotificationRepository
+import com.example.chat_bot.Activities.Notification.Activity.Notification_data.repository.NotificationRepository
 
 
 @Suppress("UNCHECKED_CAST")

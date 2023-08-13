@@ -31,24 +31,6 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
     val myresponse: MutableLiveData<Response<LoginData>> = MutableLiveData()
     val op_response: MutableLiveData<Response<openEndedResponse>> = MutableLiveData()
 
-     fun getAllMcqs() {
-
-         viewModelScope.launch {
-             val response = repository.getAllMcqs()
-             response.enqueue(object : Callback<McqsList> {
-                 override fun onResponse(call: Call<McqsList>, response: Response<McqsList>) {
-                     if (response?.body() != null)
-                     {mcqList.postValue(response.body())}
-
-                 }
-                 override fun onFailure(call: Call<McqsList>, t: Throwable) {
-                     errorMessage.postValue(t.message.toString())
-
-                 }
-             })
-         }
-
-    }
      fun getQuiz(topidID: String) {
 
         viewModelScope.launch {
@@ -159,26 +141,6 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
 
     }
 
-     fun getAllTF() {
-        val response = repository.getAllTF()
-        response.enqueue(object : Callback<trufalses> {
-            override fun onResponse(call: Call<trufalses>, response: Response<trufalses>) {
-                if (response?.body() != null)
-                {
-                    response.body().toString()
-
-
-                    tfList.postValue(response.body())
-
-
-
-                }
-            }
-            override fun onFailure(call: Call<trufalses>, t: Throwable) {
-                errorMessage.postValue(t.cause.toString())
-            }
-        })
-    }
     fun create_user(user: Userinfo)
     {
         viewModelScope.launch {

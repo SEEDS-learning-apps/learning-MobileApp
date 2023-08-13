@@ -1,4 +1,4 @@
-package com.crushtech.timelyapp.data.repository
+package com.example.chat_bot.Activities.Notification.Activity.Notification_data.repository
 
 import com.example.chat_bot.Activities.Notification.Activity.Notification_data.database.NotificationDatabase
 import com.example.chat_bot.Activities.Notification.Activity.Notification_data.entities.Notifications
