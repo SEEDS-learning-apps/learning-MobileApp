@@ -114,7 +114,7 @@ Discover the powerful technologies that underpin the seamless functionality of t
 
 - **[Jetpack Compose](https://developer.android.com/jetpack/compose)**: Jetpack Compose is a modern UI toolkit for building native Android user interfaces using a declarative and functional approach. It simplifies UI development by enabling you to describe the UI in a more intuitive and concise manner, enhancing productivity and flexibility in creating interactive and dynamic UI components.
 
-- **[ViewPager2](https://developer.android.com/guide/navigation/gesturenav)**: ViewPager2 simplifies the creation of swipeable layouts, enabling you to display fragments or views that users can navigate by swiping left or right.
+- **[ViewPager2](https://developer.android.com/jetpack/androidx/releases/viewpager2)**: ViewPager2 simplifies the creation of swipeable layouts, enabling you to display fragments or views that users can navigate by swiping left or right.
 
 - **[Lottie](https://airbnb.io/lottie/)**: By integrating Json animations, Lottie adds captivating visuals to the app's introduction and elevates user engagement.
 
@@ -228,7 +228,7 @@ The Login Screen serves as the gateway for returning users, allowing them to acc
   <img src="https://user-images.githubusercontent.com/113074664/260271619-cc5f84b8-2201-46a7-9abe-31ffbae63129.png" width="300"height="550">
 </p>
 
-### Main activity
+### Main Activity
 The Main Activity stands as the foundation of the SEEDS app, featuring an intuitively organized tab layout that forms the core of the user experience. Comprising three pivotal screens, this layout ensures a comprehensive learning journey. The first screen houses an interactive chatbot interface, providing dynamic conversations and tailored subject-based activities. Transitioning to the second tab, users delve into the History Tab, a repository of completed activities, offering valuable insights into their learning progress. The third tab reveals the Student Dashboard, a central hub that not only showcases statistics and achievements but also offers access to downloaded materials, flashcards, help resources, settings customization, access code input, profile card view, and a convenient sign-out option. This cohesive design maximizes engagement, fosters deeper comprehension, and elevates the overall user experience.
 
 <div align="center">
@@ -307,7 +307,31 @@ The theme change feature, accessible from the settings menu, empowers users to e
   </table>
 </div>
 
+### Responsive Design for Various Screen Sizes
 
+Indeed, in the SEEDS app, all resources such as images, fonts, and buttons are designed to be responsive and adapt to different screen sizes. This responsive design approach ensures that the app's visual elements maintain their proportions and legibility across a variety of devices, from smaller mobile screens to larger tablet displays. Whether you're using a compact mobile phone or a spacious tablet, the app's resources are programmed to dynamically adjust their sizes and layouts, providing users with an optimized and consistent experience no matter the device they choose to engage with. This attention to screen adaptability contributes to a seamless and enjoyable user interaction regardless of the screen's dimensions.
+<div align="center">
+  <!-- Top Row of Images -->
+  <table>
+    <tr>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260321078-08e41dee-641f-4698-bf13-c3f700f6c1a4.png" width="250"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260321081-caa3fbf6-274b-4830-8be7-e2882a40360e.png" width="450"></td>
+    </tr>
+  </table>
+  
+  <!-- Gap between Rows -->
+  <div style="height: 30px;"></div>
+  
+  <!-- Bottom Row of Images -->
+  <table>
+    <tr>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260321089-e9af7e32-c1bc-4944-a44f-06bc2f53a9b6.png" width="250"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260321100-a21a6fcc-2ae8-4b2f-bc46-8b8e89499db7.png" width="450"></td>
+    </tr>
+  </table>
+</div>
+<br>
+<br>
 
 ## License
 
