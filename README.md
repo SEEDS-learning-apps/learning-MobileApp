@@ -3,12 +3,10 @@
 
 ![Seeds_Logo.png](https://user-images.githubusercontent.com/60668130/193766931-1fdf70f7-1e64-40c7-859a-af73d7c7bd8d.png)
 
-The SEEDS Android app is a cutting-edge educational platform crafted with Kotlin programming language. It's meticulously designed to revolutionize distance learning, offering students an intuitive and engaging learning experience. Formed through a dynamic collaboration between three distinguished institutions - [Universität Siegen](https://www.uni-siegen.de/start/index.html.en?lang=en), [University of Alicante](https://www.ua.es/en/) in Spain, and [Openlabs](https://olathens.gr/) in Athens - SEEDS represents a powerful consortium. This collective effort was nurtured by the support of the Erasmus program of the European Union.
-
-By seamlessly blending technology and education, SEEDS redefines the boundaries of remote learning, fostering a holistic approach that empowers students across diverse geographies.
-
-
-
+ <div align="justify">The SEEDS Android app is a cutting-edge educational platform crafted with Kotlin programming language. It's meticulously designed to revolutionize distance learning, offering students an intuitive and engaging learning experience. Formed through a dynamic collaboration between three distinguished institutions - [Universität Siegen](https://www.uni-siegen.de/start/index.html.en?lang=en), [University of Alicante](https://www.ua.es/en/) in Spain, and [Openlabs](https://olathens.gr/) in Athens - SEEDS represents a powerful consortium. This collective effort was nurtured by the support of the Erasmus program of the European Union.
+<br>
+<br>
+By seamlessly blending technology and education, SEEDS redefines the boundaries of remote learning, fostering a holistic approach that empowers students across diverse geographies.</div>
 
 [![Coded in Kotlin](https://img.shields.io/badge/Coded%20in-Kotlin-blueviolet)](https://kotlinlang.org/) [![Open Source](https://img.shields.io/badge/Open%20Source-Yes-green.svg)](https://opensource.org/) [![License](https://img.shields.io/badge/License-Educational%20Community%20License%202.0-blue.svg)](https://opensource.org/licenses/ECL-2.0)
 
