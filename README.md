@@ -207,10 +207,53 @@ android {
 ### Welcome Screen 
 The Welcome Screen serves as an entry point that distinguishes between new and returning users, providing a tailored introduction for newcomers and a streamlined path to login for those already familiar with the app. This approach ensures a user-centric experience that accommodates both audiences effectively. Additional functionalities include language change options and a clickable text view for accessing SEEDS' information
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/113074664/260269278-7fad3a37-1f81-4c5a-a9bc-9cc2bc146904.png" width="400">
+  <img src="https://user-images.githubusercontent.com/113074664/260270114-8ba312a9-3c57-42a0-b70f-0689ec0e5c48.png" width="300"height="550">
 </p>
 
+### Introduction Screen
+The Introduction Activity exclusively caters to new users, presenting a captivating four-screen sequence. The first three screens feature dynamic Lottie animations, providing insights into the app's features. The fourth screen showcases an informative introduction video. A "Let's Go" button guides users to registration, while a "Skip" button on the first three screens accelerates access to the video, offering a tailored and engaging onboarding experience. Additionally, the Register Screen features a text view that seamlessly navigates users to the Login Screen, and users can conveniently change the interface language within the Register Screen.
+<table>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/113074664/260270120-e3f545d7-41db-47e1-b938-64bc2163be62.png" width="200"></td>
+    <td><img src="https://user-images.githubusercontent.com/113074664/260270124-0cdc4b38-c7ec-4144-bb8c-62b12a890abf.png" width="200"></td>
+    <td><img src="https://user-images.githubusercontent.com/113074664/260270133-afbb3b94-dbf7-4ba7-a499-d8268b0584e4.png" width="200"></td>
+    <td><img src="https://user-images.githubusercontent.com/113074664/260270138-5ff06d24-bd8f-45f4-b4f7-9cc149bc8de2.png" width="200"></td>
+    <td><img src="https://user-images.githubusercontent.com/113074664/260270180-cf3d1554-737a-4eeb-b773-7efffcb99c85.png" width="200"></td>
+  </tr>
+</table>
 
+### Login Screen
+The Login Screen serves as the gateway for returning users, allowing them to access their accounts with ease. By entering their credentials, users can seamlessly connect to their personalized profiles and continue their educational journey. The user-friendly interface prioritizes simplicity and security, ensuring a smooth and efficient login process. The Login Screen features a text view that seamlessly navigates users to the Register Screen if required.
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/113074664/260271619-cc5f84b8-2201-46a7-9abe-31ffbae63129.png" width="300"height="550">
+</p>
+
+### Main activity
+The Main Activity stands as the foundation of the SEEDS app, featuring an intuitively organized tab layout that forms the core of the user experience. Comprising three pivotal screens, this layout ensures a comprehensive learning journey. The first screen houses an interactive chatbot interface, providing dynamic conversations and tailored subject-based activities. Transitioning to the second tab, users delve into the History Tab, a repository of completed activities, offering valuable insights into their learning progress. The third tab reveals the Student Dashboard, a central hub that not only showcases statistics and achievements but also offers access to downloaded materials, flashcards, help resources, settings customization, access code input, profile card view, and a convenient sign-out option. This cohesive design maximizes engagement, fosters deeper comprehension, and elevates the overall user experience.
+
+<div align="center">
+<table>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/113074664/260272242-187badb6-cd2f-43ad-af5a-6adfef5d88fc.png" width="300"></td>
+    <td><img src="https://user-images.githubusercontent.com/113074664/260272250-c1fcd180-6cc1-4a98-92a8-84816e1a4a92.png" width="300"></td>
+    <td><img src="https://user-images.githubusercontent.com/113074664/260272243-c255fc02-b5a7-4aa9-b368-801c87425f2a.png" width="300"></td>
+  </tr>
+</table>
+</div>
+
+### Activities
+The SEEDS app empowers users to actively engage in subject-specific activities that promote learning and comprehension. Through multiple-choice questions (MCQs), true or false questions, matching activities, and open-ended questions, users can explore various topics and test their knowledge. Each activity is thoughtfully designed to align with the chosen subject and topic, fostering a personalized learning experience. This diverse range of activities accommodates different learning styles, enhances critical thinking, and encourages deeper understanding, contributing to a holistic educational journey.
+
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260272942-853eb84f-4728-4dd7-99bc-437d50bb922c.png" width="400"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260272946-430cd390-5687-4679-ab56-4dba2c0aa110.png" width="400"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260272956-c98a1fe2-6122-4a33-b2e4-de7302fee65f.png" width="400"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260272969-97de5a52-4403-492c-8244-b73503b5bbd8.png" width="400"></td>
+    </tr>
+  </table>
+</div>
 
 ## License
 
