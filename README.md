@@ -255,6 +255,24 @@ The SEEDS app empowers users to actively engage in subject-specific activities t
   </table>
 </div>
 
+### Learning Statistics
+The learning progress feature tracks completed activities, quizzes, and lessons, offering insights into users' educational journey. Visual representations and statistics highlight strengths and areas for improvement, empowering learners to customize their approach and stay motivated.
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/113074664/260273592-d2925206-9ec5-441c-b705-413f3602493d.png" width="300"height="550">
+</p>
+
+### Flashcards
+Flashcards are intelligently generated based on the user's completed activities, focusing on specific subjects and topics. flashcards offer flexible navigation, allowing users to either manually swipe through them or use the Next button for easy movement. Additionally, users have the option to retrieve previously viewed flashcards using the previous button. The flashcards display a range of activity information, enhancing learning through efficient recall and review.
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260273599-17831414-1b6f-4a7b-8b73-3b5ad9223a85.png" width="400"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260273602-a0a99be4-f9e1-49ef-984a-8de3103908c7.png" width="400"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260273605-4696249e-b3cf-48da-afae-0ba2706b3214.png" width="400"></td>
+    </tr>
+  </table>
+</div>
+
 ## License
 
 This project is licensed under the [Educational Community License, Version 2.0 (ECL-2.0)](https://opensource.org/licenses/ECL-2.0).
