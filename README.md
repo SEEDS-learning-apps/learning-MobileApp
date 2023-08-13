@@ -23,8 +23,7 @@ By seamlessly blending technology and education, SEEDS redefines the boundaries 
 8. [App Configuration](#app-configuration)
 9. [Screenshots](#screenshots) 
 10. [License](#license)
-11. [Contact](#contact)
-   
+
 ## Project Objectives
 The primary objective of the SEEDS project is to transcend the challenges presented by post-pandemic education. Beyond this, the project aims to amplify the learning experience through meticulous design strategies. By integrating an interactive user interface (UI) and an extensive range of features, the application is meticulously crafted to foster an engaging and dynamic learning process. Rooted in a user-centric approach, the app actively encourages participation and exploration, effectively transforming education into an enriching journey.
 
