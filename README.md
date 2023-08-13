@@ -202,6 +202,15 @@ android {
 }
 
 ```
+## Screenshots
+
+### Welcome Screen 
+The Welcome Screen serves as an entry point that distinguishes between new and returning users, providing a tailored introduction for newcomers and a streamlined path to login for those already familiar with the app. This approach ensures a user-centric experience that accommodates both audiences effectively. Additional functionalities include language change options and a clickable text view for accessing SEEDS' information
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/113074664/260269278-7fad3a37-1f81-4c5a-a9bc-9cc2bc146904.png" width="400">
+</p>
+
+
 
 ## License
 
