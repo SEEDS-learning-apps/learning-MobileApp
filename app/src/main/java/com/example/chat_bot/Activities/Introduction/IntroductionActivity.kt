@@ -33,6 +33,8 @@ class IntroductionActivity : AppCompatActivity() {
     private val DELAY_MS: Long = 5000 // Delay in milliseconds before the next screen is shown
     private val PERIOD_MS: Long = 15000 // Repeat interval in milliseconds
     private var isLastPageReached: Boolean = false
+    private var isAutoScrollingEnabled = true
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(android.R.style.Theme_Light_NoTitleBar_Fullscreen)
@@ -57,20 +59,25 @@ class IntroductionActivity : AppCompatActivity() {
 
     private fun startAutoScroll() {
         timer = Timer()
+        val lastIndex = viewPagerAdapter.count - 1
         timer?.schedule(object : TimerTask() {
             override fun run() {
                 runOnUiThread {
-                    val currentIndex = slideViewPager.currentItem
-                    if (currentIndex == viewPagerAdapter.count - 1) {
-                        // Stop auto-scrolling on the video page
-                        stopAutoScroll()
+                    if (isAutoScrollingEnabled) {
+                        val currentIndex = slideViewPager.currentItem
+                        if (currentIndex == lastIndex) {
+                            // Stop auto-scrolling on the last screen
+                            isAutoScrollingEnabled = false
+                            stopAutoScroll()
+                        }
+                        val nextIndex = (currentIndex + 1) % (lastIndex + 1)
+                        slideViewPager.setCurrentItem(nextIndex, true)
                     }
-                    val nextIndex = if (currentIndex == viewPagerAdapter.count - 1) 0 else currentIndex + 1
-                    slideViewPager.setCurrentItem(nextIndex, true)
                 }
             }
         }, DELAY_MS, PERIOD_MS)
     }
+
 
 
     private fun stopAutoScroll() {
@@ -165,11 +172,23 @@ class IntroductionActivity : AppCompatActivity() {
             currentPage.value = position
 
             if (position == viewPagerAdapter.count - 1) {
+                isAutoScrollingEnabled = false
                 stopAutoScroll()
             }
 
             // Start auto-scrolling again if needed
             if (!isLastPageReached && position == 0) {
+                isAutoScrollingEnabled = true
+                startAutoScroll()
+            }
+
+            if (!isLastPageReached && position == 1) {
+                isAutoScrollingEnabled = true
+                startAutoScroll()
+            }
+
+            if (!isLastPageReached && position == 2) {
+                isAutoScrollingEnabled = true
                 startAutoScroll()
             }
 
