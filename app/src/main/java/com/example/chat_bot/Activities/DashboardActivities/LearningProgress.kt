@@ -9,6 +9,8 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -27,6 +29,8 @@ class LearningProgress : AppCompatActivity() {
     private lateinit var chartView: AnyChartView
     private lateinit var animationView1: LottieAnimationView
     private lateinit var animationView2: LottieAnimationView
+    private lateinit var backbtn: ImageView
+    private lateinit var textView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +40,11 @@ class LearningProgress : AppCompatActivity() {
         chartView = findViewById(R.id.chart)
         chartView.visibility = View.INVISIBLE
 
+        backbtn = findViewById(R.id.Backbutton_Learningprogress)
+        backbtn.visibility = View.INVISIBLE
+
+        textView = findViewById(R.id.learning_progress_text)
+        textView.visibility = View.INVISIBLE
 
         val deletebtn = findViewById<CardView>(R.id.delete_button)
         deletebtn.visibility = View.INVISIBLE
@@ -57,6 +66,9 @@ class LearningProgress : AppCompatActivity() {
 
         val deleteButton = findViewById<CardView>(R.id.delete_button)
 
+        backbtn.setOnClickListener{
+            onBackPressed()
+        }
 
         // Wait for the animations to finish
         animationView2.addAnimatorListener(object : Animator.AnimatorListener {
@@ -90,7 +102,8 @@ class LearningProgress : AppCompatActivity() {
 
                         // Show the chart after the data is retrieved
                         chartView.visibility = View.VISIBLE
-
+                        backbtn.visibility = View.VISIBLE
+                        textView.visibility = View.VISIBLE
                         val delayMillis = 500L
                         Handler().postDelayed({
                             deleteButton.visibility = View.VISIBLE
@@ -202,18 +215,11 @@ class LearningProgress : AppCompatActivity() {
             }
 
             val legend = pie3d.legend()
-            legend.position("centre-bottom")
+            legend.position("centre")
             legend.itemsLayout(LegendLayout.HORIZONTAL)
             legend.align(Align.CENTER)
-            legend.fontSize(10)
-            legend.margin(0, 0, 0, 10)
-
-            val legendTitle = legend.title()
-            legendTitle.enabled(true)
-            legendTitle.text("Learning Statistics")
-            legendTitle.align(Align.TOP)
-            legendTitle.fontSize(25)
-            legendTitle.fontWeight("bold")
+            legend.fontSize(12)
+            legend.margin(45, 0, 0, 0) // Add 50dp top margin, no margin on other sides
 
             chartView.setChart(pie3d)
             chartView.visibility = View.VISIBLE
