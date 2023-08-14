@@ -3,12 +3,14 @@
 
 ![Seeds_Logo.png](https://user-images.githubusercontent.com/60668130/193766931-1fdf70f7-1e64-40c7-859a-af73d7c7bd8d.png)
 
-The SEEDS Android app is a cutting-edge educational platform crafted with Kotlin programming language. It's meticulously designed to revolutionize distance learning, offering students an intuitive and engaging learning experience. Formed through a dynamic collaboration between three distinguished institutions - [Universität Siegen](https://www.uni-siegen.de/start/index.html.en?lang=en), [University of Alicante](https://www.ua.es/en/) in Spain, and [Openlabs](https://olathens.gr/) in Athens - SEEDS represents a powerful consortium. This collective effort was nurtured by the support of the Erasmus program of the European Union.
+<div align="justify"> The SEEDS Android app is a cutting-edge educational platform crafted with Kotlin programming language. It's meticulously designed to revolutionize distance learning, offering students an intuitive and engaging learning experience. By seamlessly blending technology and education, SEEDS redefines the boundaries of remote learning, fostering a holistic approach that empowers students across diverse geographies.</div>
+<br>
+<div align="justify">
+ 
+Formed through a dynamic collaboration between three distinguished institutions -  [Universität Siegen](https://www.uni-siegen.de/start/index.html.en?lang=en), [University of Alicante](https://www.ua.es/en/) in Spain, and [Openlabs](https://olathens.gr/) in Athens, SEEDS represents a powerful consortium. This collective effort was nurtured by the support of the Erasmus program of the European Union.
 
-By seamlessly blending technology and education, SEEDS redefines the boundaries of remote learning, fostering a holistic approach that empowers students across diverse geographies.
-
-
-
+</div>
+<br>
 
 [![Coded in Kotlin](https://img.shields.io/badge/Coded%20in-Kotlin-blueviolet)](https://kotlinlang.org/) [![Open Source](https://img.shields.io/badge/Open%20Source-Yes-green.svg)](https://opensource.org/) [![License](https://img.shields.io/badge/License-Educational%20Community%20License%202.0-blue.svg)](https://opensource.org/licenses/ECL-2.0)
 
@@ -23,13 +25,12 @@ By seamlessly blending technology and education, SEEDS redefines the boundaries 
 8. [App Configuration](#app-configuration)
 9. [Screenshots](#screenshots) 
 10. [License](#license)
-11. [Contact](#contact)
-   
+
 ## Project Objectives
-The primary objective of the SEEDS project is to transcend the challenges presented by post-pandemic education. Beyond this, the project aims to amplify the learning experience through meticulous design strategies. By integrating an interactive user interface (UI) and an extensive range of features, the application is meticulously crafted to foster an engaging and dynamic learning process. Rooted in a user-centric approach, the app actively encourages participation and exploration, effectively transforming education into an enriching journey.
-
-Furthermore, the project caters to the diverse linguistic backgrounds of learners by offering support in four prominent languages: English, German, Spanish, and Greek. This multilingual capability ensures that students from various countries can comfortably engage with the app in their native language, promoting a sense of familiarity and ease while learning. Whether students are immersed in multimedia-rich lessons, participating in interactive quizzes, or interacting with the AI-driven Rasa chatbot, the project prioritizes the creation of meaningful engagements that enhance comprehension.
-
+ <div align="justify">The primary objective of the SEEDS project is to transcend the challenges presented by post-pandemic education. Beyond this, the project aims to amplify the learning experience through meticulous design strategies. By integrating an interactive user interface (UI) and an extensive range of features, the application is meticulously crafted to foster an engaging and dynamic learning process. Rooted in a user-centric approach, the app actively encourages participation and exploration, effectively transforming education into an enriching journey. Furthermore, the project caters to the diverse linguistic backgrounds of learners by offering support in four prominent languages: English, German, Spanish, and Greek. This multilingual capability ensures that students from various countries can comfortably engage with the app in their native language, promoting a sense of familiarity and ease while learning. Whether students are immersed in multimedia-rich lessons, participating in interactive quizzes, or interacting with the AI-driven Rasa chatbot, the project prioritizes the creation of meaningful engagements that enhance comprehension.
+<br>
+<br>
+  
 Through the seamless fusion of educational principles and technological advancements, the SEEDS project aspires to cultivate an environment where learners can excel, thereby shaping the trajectory of accessible and impactful global education.
 
 ## Getting Started
@@ -114,7 +115,7 @@ Discover the powerful technologies that underpin the seamless functionality of t
 
 - **[Jetpack Compose](https://developer.android.com/jetpack/compose)**: Jetpack Compose is a modern UI toolkit for building native Android user interfaces using a declarative and functional approach. It simplifies UI development by enabling you to describe the UI in a more intuitive and concise manner, enhancing productivity and flexibility in creating interactive and dynamic UI components.
 
-- **[ViewPager2](https://developer.android.com/guide/navigation/gesturenav)**: ViewPager2 simplifies the creation of swipeable layouts, enabling you to display fragments or views that users can navigate by swiping left or right.
+- **[ViewPager2](https://developer.android.com/jetpack/androidx/releases/viewpager2)**: ViewPager2 simplifies the creation of swipeable layouts, enabling you to display fragments or views that users can navigate by swiping left or right.
 
 - **[Lottie](https://airbnb.io/lottie/)**: By integrating Json animations, Lottie adds captivating visuals to the app's introduction and elevates user engagement.
 
@@ -147,7 +148,7 @@ The `res` folder is a crucial directory in the SEEDS Android app project, housin
 
 - **Layouts (XML files):** These XML files define the structure and arrangement of UI components, ensuring a cohesive and user-friendly interface.
 
-The resources stored in the `res` folder play a pivotal role in shaping the app's visual identity, interactivity, and overall user experience.
+The resources stored in the `res` folder play a pivotal role in shaping the app's visual identity, interactivity, and overall user experience.</div>
 
 
 ## App Configuration
@@ -202,6 +203,142 @@ android {
 }
 
 ```
+## Screenshots
+
+### Welcome Screen 
+<div align="justify">The Welcome Screen serves as an entry point that distinguishes between new and returning users, providing a tailored introduction for newcomers and a streamlined path to login for those already familiar with the app. This approach ensures a user-centric experience that accommodates both audiences effectively. Additional functionalities include language change options and a clickable text view for accessing SEEDS' information
+<br>
+<br>
+ 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/113074664/260270114-8ba312a9-3c57-42a0-b70f-0689ec0e5c48.png" width="300"height="550">
+</p>
+
+### Introduction Screen
+The Introduction Activity exclusively caters to new users, presenting a captivating four-screen sequence. The first three screens feature dynamic Lottie animations, providing insights into the app's features. The fourth screen showcases an informative introduction video. A "Let's Go" button guides users to registration, while a "Skip" button on the first three screens accelerates access to the video, offering a tailored and engaging onboarding experience. Additionally, the Register Screen features a text view that seamlessly navigates users to the Login Screen, and users can conveniently change the interface language within the Register Screen.
+<table>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/113074664/260270120-e3f545d7-41db-47e1-b938-64bc2163be62.png" width="200"></td>
+    <td><img src="https://user-images.githubusercontent.com/113074664/260270124-0cdc4b38-c7ec-4144-bb8c-62b12a890abf.png" width="200"></td>
+    <td><img src="https://user-images.githubusercontent.com/113074664/260270133-afbb3b94-dbf7-4ba7-a499-d8268b0584e4.png" width="200"></td>
+    <td><img src="https://user-images.githubusercontent.com/113074664/260270138-5ff06d24-bd8f-45f4-b4f7-9cc149bc8de2.png" width="200"></td>
+    <td><img src="https://user-images.githubusercontent.com/113074664/260270180-cf3d1554-737a-4eeb-b773-7efffcb99c85.png" width="200"></td>
+  </tr>
+</table>
+
+### Login Screen
+The Login Screen serves as the gateway for returning users, allowing them to access their accounts with ease. By entering their credentials, users can seamlessly connect to their personalized profiles and continue their educational journey. The user-friendly interface prioritizes simplicity and security, ensuring a smooth and efficient login process. The Login Screen features a text view that seamlessly navigates users to the Register Screen if required.
+<br>
+<br>
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/113074664/260271619-cc5f84b8-2201-46a7-9abe-31ffbae63129.png" width="300"height="550">
+</p>
+
+### Main Activity
+The Main Activity stands as the foundation of the SEEDS app, featuring an intuitively organized tab layout that forms the core of the user experience. Comprising three pivotal screens, this layout ensures a comprehensive learning journey. The first screen houses an interactive chatbot interface, providing dynamic conversations and tailored subject-based activities. Transitioning to the second tab, users delve into the History Tab, a repository of completed activities, offering valuable insights into their learning progress. The third tab reveals the Student Dashboard, a central hub that not only showcases statistics and achievements but also offers access to downloaded materials, flashcards, help resources, settings customization, access code input, profile card view, and a convenient sign-out option. This cohesive design maximizes engagement, fosters deeper comprehension, and elevates the overall user experience.
+
+<div align="center">
+<table>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/113074664/260272242-187badb6-cd2f-43ad-af5a-6adfef5d88fc.png" width="300"></td>
+    <td><img src="https://user-images.githubusercontent.com/113074664/260272250-c1fcd180-6cc1-4a98-92a8-84816e1a4a92.png" width="300"></td>
+    <td><img src="https://user-images.githubusercontent.com/113074664/260272243-c255fc02-b5a7-4aa9-b368-801c87425f2a.png" width="300"></td>
+  </tr>
+</table>
+</div>
+
+### Activities
+The SEEDS app empowers users to actively engage in subject-specific activities that promote learning and comprehension. Through multiple-choice questions (MCQs), true or false questions, matching activities, and open-ended questions, users can explore various topics and test their knowledge. Each activity is thoughtfully designed to align with the chosen subject and topic, fostering a personalized learning experience. This diverse range of activities accommodates different learning styles, enhances critical thinking, and encourages deeper understanding, contributing to a holistic educational journey.
+
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260272942-853eb84f-4728-4dd7-99bc-437d50bb922c.png" width="400"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260272946-430cd390-5687-4679-ab56-4dba2c0aa110.png" width="400"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260272956-c98a1fe2-6122-4a33-b2e4-de7302fee65f.png" width="400"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260272969-97de5a52-4403-492c-8244-b73503b5bbd8.png" width="400"></td>
+    </tr>
+  </table>
+</div>
+
+### Learning Statistics
+The learning progress feature tracks completed activities, quizzes, and lessons, offering insights into users' educational journey. Visual representations and statistics highlight strengths and areas for improvement, empowering learners to customize their approach and stay motivated.
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/113074664/260273592-d2925206-9ec5-441c-b705-413f3602493d.png" width="300"height="550">
+</p>
+
+### Flashcards
+Flashcards are intelligently generated based on the user's completed activities, focusing on specific subjects and topics. flashcards offer flexible navigation, allowing users to either manually swipe through them or use the Next button for easy movement. Additionally, users have the option to retrieve previously viewed flashcards using the previous button. The flashcards display a range of activity information, enhancing learning through efficient recall and review.
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260273599-17831414-1b6f-4a7b-8b73-3b5ad9223a85.png" width="400"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260273602-a0a99be4-f9e1-49ef-984a-8de3103908c7.png" width="400"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260273605-4696249e-b3cf-48da-afae-0ba2706b3214.png" width="400"></td>
+    </tr>
+  </table>
+</div>
+
+### Settings and Help Menus
+The Settings and Help menus in the app provide users with additional control and support. The Settings menu offers a range of customizable options to tailor the app experience to individual preferences. Users can adjust the material and interface language, ensuring content is presented in their preferred language. Notification settings allow users to control how they receive updates and alerts. Additionally, the option to change the app's theme enhances personalization, contributing to a more comfortable and engaging interaction with the app. The Help menu serves as a resource for users seeking assistance or information
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260274080-d3a984cf-9096-4f3f-806f-6a8f09df689d.png" width="400"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260274087-049c3975-2c9f-4204-a189-d9bbe8d936d1.png" width="400"></td>
+    </tr>
+  </table>
+</div>
+
+### Theme change
+The theme change feature, accessible from the settings menu, empowers users to effortlessly switch between light and dark modes. This modification affects the entire app, dynamically altering the visual appearance of every screen to align with the chosen theme. By offering this seamless transition, users can adapt the app's aesthetics to match their preferences and create a cohesive user experience across all interactions. The images below are some examples of how the screens look in different themes.
+<div align="center">
+  <!-- Top Row of Images -->
+  <table>
+    <tr>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260272242-187badb6-cd2f-43ad-af5a-6adfef5d88fc.png" width="250"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260274523-9c07ff6a-81ed-4b7f-b542-1099227c1274.png" width="250"></td>
+    </tr>
+  </table>
+  
+  <!-- Gap between Rows -->
+  <div style="height: 20px;"></div>
+  
+  <!-- Bottom Row of Images -->
+  <table>
+    <tr>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260272243-c255fc02-b5a7-4aa9-b368-801c87425f2a.png" width="250"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260274089-7fdf3382-5384-49ac-b893-c33b7c28364f.png" width="250"></td>
+    </tr>
+  </table>
+</div>
+
+### Responsive Design for Various Screen Sizes
+
+Indeed, in the SEEDS app, all resources such as images, fonts, and buttons are designed to be responsive and adapt to different screen sizes. This responsive design approach ensures that the app's visual elements maintain their proportions and legibility across a variety of devices, from smaller mobile screens to larger tablet displays. Whether you're using a compact mobile phone or a spacious tablet, the app's resources are programmed to dynamically adjust their sizes and layouts, providing users with an optimized and consistent experience no matter the device they choose to engage with. This attention to screen adaptability contributes to a seamless and enjoyable user interaction regardless of the screen's dimensions.</div>
+<div align="center">
+  <!-- Top Row of Images -->
+  <table>
+    <tr>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260321078-08e41dee-641f-4698-bf13-c3f700f6c1a4.png" width="250"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260321081-caa3fbf6-274b-4830-8be7-e2882a40360e.png" width="450"></td>
+    </tr>
+  </table>
+  
+  <!-- Gap between Rows -->
+  <div style="height: 30px;"></div>
+  
+  <!-- Bottom Row of Images -->
+  <table>
+    <tr>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260321089-e9af7e32-c1bc-4944-a44f-06bc2f53a9b6.png" width="250"></td>
+      <td><img src="https://user-images.githubusercontent.com/113074664/260321100-a21a6fcc-2ae8-4b2f-bc46-8b8e89499db7.png" width="450"></td>
+    </tr>
+  </table>
+</div>
+<br>
+<br>
 
 ## License
 
