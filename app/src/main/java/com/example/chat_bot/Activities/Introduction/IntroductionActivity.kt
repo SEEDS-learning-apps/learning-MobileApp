@@ -182,15 +182,6 @@ class IntroductionActivity : AppCompatActivity() {
                 startAutoScroll()
             }
 
-            if (!isLastPageReached && position == 1) {
-                isAutoScrollingEnabled = true
-                startAutoScroll()
-            }
-
-            if (!isLastPageReached && position == 2) {
-                isAutoScrollingEnabled = true
-                startAutoScroll()
-            }
 
             // Update the isLastPageReached flag
             isLastPageReached = position == viewPagerAdapter.count - 1

@@ -73,6 +73,7 @@
     <string name="no_exercises_completed_yet">Δεν έχουν ολοκληρωθεί ακόμη οι ασκήσεις</string>
     <string name="mainpage_ex_heading">Ασκήσεις</string>
     <string name="mainpage_settings_heading">Ρυθμίσεις</string>
+    <string name="mainpage_History_heading">Ιστορία</string>
     <string name="mainpage_Dashboard_heading">Ταμπλό</string>
     <string name="Accountlogin">Σύνδεση Λογαριασμού</string>
     <string name="Grade">Κλάση</string>
@@ -112,6 +113,7 @@
     <string name="notification">Ειδοποίηση</string>
     <string name="frequently_asked_questions">Συχνές ερωτήσεις;</string>
     <string name="previous">Προηγούμενο</string>
+    <string name="e_learning">ΗΛΕΚΤΡΟΝΙΚΉ ΜΆΘΗΣΗ</string>
     <string name="intro_page1">Το SEEDS είναι μια εφαρμογή ηλεκτρονικής μάθησης που σας βοηθά να μαθαίνετε από το σπίτι σας και το περιεχόμενο ενημερώνεται τακτικά από τους καθηγητές.</string>
     <string name="intro_page2">Μπορείτε να συνομιλήσετε με το ενσωματωμένο chatbot μας για να λάβετε τα επιθυμητά θέματα και ασκήσεις</string>
     <string name="learning_statistics1">ΕΚΜΆΘΗΣΗ ΣΤΑΤΙΣΤΙΚΉΣ</string>

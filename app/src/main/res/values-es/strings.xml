@@ -61,6 +61,7 @@
     <string name="invalid_username">No es un nombre de usuario válido</string>
     <string name="action_sign_in_short">Iniciar sesión</string>
     <string name="action_sign_in">Iniciar sesión o registrarse</string>
+    <string name="mainpage_History_heading">Historia</string>
     <string name="mainpage_Dashboard_heading">Salpicadero</string>
     <string name="Accountlogin">Inicio de sesión</string>
     <string name="Grade">Clase</string>
@@ -108,6 +109,7 @@
     <string name="notification">Notificación</string>
     <string name="frequently_asked_questions">¿Preguntas frecuentes?</string>
     <string name="previous">Anterior</string>
+    <string name="e_learning">E-APRENDIZAJE</string>
     <string name="intro_page1">SEEDS es una aplicación de aprendizaje electrónico que te ayuda a aprender desde casa y cuyos contenidos son actualizados regularmente por los profesores.</string>
     <string name="intro_page2">Puedes chatear con nuestro chatbot incorporado para obtener los temas y ejercicios deseados</string>
     <string name="learning_statistics1">ESTADÍSTICAS DE APRENDIZAJE</string>

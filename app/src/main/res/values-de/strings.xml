@@ -61,6 +61,7 @@
     <string name="no_exercises_completed_yet">Noch keine Übungen abgeschlossen</string>
     <string name="mainpage_ex_heading">Aufgaben</string>
     <string name="mainpage_settings_heading">Einstellungen</string>
+    <string name="mainpage_History_heading">Geschichte</string>
     <string name="mainpage_Dashboard_heading">Dashboard</string>
     <string name="Accountlogin">Anmeldung zum Konto</string>
     <string name="Grade">Klasse</string>
@@ -105,6 +106,7 @@
     <string name="notification">Benachrichtigung</string>
     <string name="frequently_asked_questions">Häufig gestellte Fragen?</string>
     <string name="previous">Vorherige</string>
+    <string name="e_learning">E-LERNEN</string>
     <string name="intro_page1">SEEDS ist eine E-Learning-App, mit der Sie von zu Hause aus lernen können und deren Inhalte von den Lehrern regelmäßig aktualisiert werden</string>
     <string name="intro_page2">Sie können mit unserem eingebauten Chatbot chatten, um die gewünschten Themen und Übungen zu erhalten</string>
     <string name="learning_statistics1">LERNSTATISTIK</string>
