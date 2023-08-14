@@ -127,6 +127,7 @@
     <string name="introduction_video">Introduction video</string>
     <string name="intro_video">The Introduction video above displays a demo of functionality of the app</string>
     <string name="chat">Chat</string>
+    <string name="erasmus_declaration">Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Education and Culture Executive Agency (EACEA). Neither the European Union nor EACEA can be held responsible for them.</string>
 
 
     <string-array name="Languages">
