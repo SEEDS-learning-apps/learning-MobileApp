@@ -36,7 +36,7 @@ Through the seamless fusion of educational principles and technological advancem
 ## Getting Started
 Welcome to the SEEDS Android application repository! Whether you're a student eager to enhance your learning experience or a developer interested in contributing, this guide will help you get started. The SEEDS app is designed to revolutionize distance learning, making it more intuitive and interactive. Here's how you can begin your journey with us:
 
-- **Download the App**: To access the SEEDS Android application, you can download the project package from the provided link. This ensures you're getting the official and up-to-date version of the app.
+- **Download the App**: To access the SEEDS Android application, you can [download](https://github.com/SEEDS-learning-apps/learning-MobileApp/releases/tag/v1.0) the project package from the provided link. This ensures you're getting the official and up-to-date version of the app.
 
 - **Choose Your Language**: Once you've downloaded the app, open it and select your preferred language from the available options: English, German, Spanish, or Greek. This selection ensures you engage with the content in a language that suits you best.
 
