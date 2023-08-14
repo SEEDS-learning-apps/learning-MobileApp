@@ -27,10 +27,10 @@ Formed through a dynamic collaboration between three distinguished institutions 
 10. [License](#license)
 
 ## Project Objectives
- <div align="justify">The primary objective of the SEEDS project is to transcend the challenges presented by post-pandemic education. Beyond this, the project aims to amplify the learning experience through meticulous design strategies. By integrating an interactive user interface (UI) and an extensive range of features, the application is meticulously crafted to foster an engaging and dynamic learning process. Rooted in a user-centric approach, the app actively encourages participation and exploration, effectively transforming education into an enriching journey.
-
-Furthermore, the project caters to the diverse linguistic backgrounds of learners by offering support in four prominent languages: English, German, Spanish, and Greek. This multilingual capability ensures that students from various countries can comfortably engage with the app in their native language, promoting a sense of familiarity and ease while learning. Whether students are immersed in multimedia-rich lessons, participating in interactive quizzes, or interacting with the AI-driven Rasa chatbot, the project prioritizes the creation of meaningful engagements that enhance comprehension.
-
+ <div align="justify">The primary objective of the SEEDS project is to transcend the challenges presented by post-pandemic education. Beyond this, the project aims to amplify the learning experience through meticulous design strategies. By integrating an interactive user interface (UI) and an extensive range of features, the application is meticulously crafted to foster an engaging and dynamic learning process. Rooted in a user-centric approach, the app actively encourages participation and exploration, effectively transforming education into an enriching journey. Furthermore, the project caters to the diverse linguistic backgrounds of learners by offering support in four prominent languages: English, German, Spanish, and Greek. This multilingual capability ensures that students from various countries can comfortably engage with the app in their native language, promoting a sense of familiarity and ease while learning. Whether students are immersed in multimedia-rich lessons, participating in interactive quizzes, or interacting with the AI-driven Rasa chatbot, the project prioritizes the creation of meaningful engagements that enhance comprehension.
+<br>
+<br>
+  
 Through the seamless fusion of educational principles and technological advancements, the SEEDS project aspires to cultivate an environment where learners can excel, thereby shaping the trajectory of accessible and impactful global education.
 
 ## Getting Started
@@ -207,6 +207,9 @@ android {
 
 ### Welcome Screen 
 <div align="justify">The Welcome Screen serves as an entry point that distinguishes between new and returning users, providing a tailored introduction for newcomers and a streamlined path to login for those already familiar with the app. This approach ensures a user-centric experience that accommodates both audiences effectively. Additional functionalities include language change options and a clickable text view for accessing SEEDS' information
+<br>
+<br>
+ 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/113074664/260270114-8ba312a9-3c57-42a0-b70f-0689ec0e5c48.png" width="300"height="550">
 </p>
@@ -225,6 +228,9 @@ The Introduction Activity exclusively caters to new users, presenting a captivat
 
 ### Login Screen
 The Login Screen serves as the gateway for returning users, allowing them to access their accounts with ease. By entering their credentials, users can seamlessly connect to their personalized profiles and continue their educational journey. The user-friendly interface prioritizes simplicity and security, ensuring a smooth and efficient login process. The Login Screen features a text view that seamlessly navigates users to the Register Screen if required.
+<br>
+<br>
+
 <p align="center">
   <img src="https://user-images.githubusercontent.com/113074664/260271619-cc5f84b8-2201-46a7-9abe-31ffbae63129.png" width="300"height="550">
 </p>
