@@ -23,6 +23,7 @@
     <string name="lang_drop_down_text">Sprache auswählen</string>
     <string name="flash_cards">Flash-Karten</string>
     <string name="no_flash_cards">Es werden keine Aktivitäten abgeschlossen, um die Karteikarten anzuzeigen. Versuchen Sie, einige Aktivitäten zu vervollständigen</string>
+    <string name="erasmus_declaration">Von der Europäischen Union finanziert. Die geäußerten Ansichten und Meinungen entsprechen jedoch ausschließlich denen des Autors bzw. der Autoren und spiegeln nicht zwingend die der Europäischen Union oder der Europäischen Exekutivagentur für Bildung und Kultur (EACEA) wider. Weder die Europäische Union noch die EACEA können dafür verantwortlich gemacht werden.</string>
     <string name="lang_drop_down_label">Sprache</string>
     <string name="action_sign_in">Anmelden oder registrieren</string>
     <string name="action_sign_in_short">Anmelden</string>

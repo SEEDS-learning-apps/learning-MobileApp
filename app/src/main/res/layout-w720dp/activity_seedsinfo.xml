@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/splash_image2"
         android:layout_width="250dp"
-        android:layout_height="150dp"
+        android:layout_height="200dp"
         android:layout_centerInParent="true"
         android:src="@drawable/seeds_logo"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,7 +32,8 @@
         android:text="@string/seeds_info"
         android:textAllCaps="false"
         android:textColor="?attr/textcolor"
-        android:textSize="16sp"
+        android:textSize="15sp"
+        android:justificationMode="inter_word"
         app:layout_constraintTop_toBottomOf="@+id/splash_image2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -49,7 +50,7 @@
         android:text="Project funding: Erasmus+ Strategic Partnership"
         android:textAllCaps="false"
         android:textColor="?attr/textcolor"
-        android:textSize="16sp"
+        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView2"
@@ -68,7 +69,7 @@
         android:text="Project duration: 2021-2023"
         android:textAllCaps="false"
         android:textColor="?attr/textcolor"
-        android:textSize="16sp"
+        android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -86,14 +87,40 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tint="?attr/textcolor"/>
 
-    <ImageView
-        android:id="@+id/erasmus_image"
-        android:layout_width="250dp"
-        android:layout_height="100dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@drawable/erasmus"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp">
+
+        <ImageView
+            android:id="@+id/erasmus_image"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:src="@drawable/erasmus"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:justificationMode="inter_word"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/erasmus_declaration"
+            android:textColor="?attr/textcolor"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/erasmus_image"
+            tools:layout_editor_absoluteY="832dp" />
+    </LinearLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

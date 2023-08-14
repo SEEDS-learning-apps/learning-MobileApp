@@ -24,6 +24,7 @@
     <string name="lang_drop_down_text">Selecciona idioma</string>
     <string name="flash_cards">Fichas</string>
     <string name="no_flash_cards">No se completa ninguna actividad para mostrar las tarjetas flash. Intenta completar algunas actividades</string>
+    <string name="erasmus_declaration">Financiado por la Unión Europea. Las opiniones y puntos de vista expresados solo comprometen a su(s) autor(es) y no reflejan necesariamente los de la Unión Europea o los de la Agencia Ejecutiva Europea de Educación y Cultura (EACEA). Ni la Unión Europea ni la EACEA pueden ser considerados responsables de ellos.</string>
     <string name="lang_drop_down_label">Idiomas</string>
     <string name="Username">Usuario</string>
     <string name="register_account">Crea una cuenta</string>
