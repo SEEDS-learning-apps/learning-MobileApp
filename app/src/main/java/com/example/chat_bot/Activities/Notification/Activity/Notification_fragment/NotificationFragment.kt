@@ -8,6 +8,7 @@ import android.content.SharedPreferences
 import android.graphics.Canvas
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -18,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.chat_bot.Activities.DashboardActivities.Settings
 import com.example.chat_bot.Activities.Notification.Activity.Notification_fragment.NotificationFragment.Toast.displayFailureToast
 import com.example.chat_bot.Activities.Notification.Activity.Notification_fragment.NotificationFragment.Toast.displaySuccessToast
 import com.example.chat_bot.Activities.activity.CreateNotificationActivity
@@ -58,6 +60,19 @@ class NotificationFragment : Fragment(), KodeinAware {
         //this tells the fragment hey, we've got a menu item
         setHasOptionsMenu(true)
         val view = inflater.inflate(R.layout.notification_fragment, container, false)
+
+        val backButton = view.findViewById<ImageView>(R.id.Backbutton_notification)
+        backButton.setOnClickListener {
+            val intent = Intent(requireContext(), Settings::class.java)
+            startActivity(intent)
+            requireActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+        }
+
+        val addNotificationButton = view.findViewById<ImageView>(R.id.add_notification_btn)
+        addNotificationButton.setOnClickListener {
+            val intent = Intent(requireContext(), CreateNotificationActivity::class.java)
+            startActivityForResult(intent, CREATE_ALARM_REQUEST)
+        }
 
         viewModel = ViewModelProvider(this, factory).get(NotificationViewModel::class.java)
 
@@ -179,22 +194,6 @@ class NotificationFragment : Fragment(), KodeinAware {
 
     }
 
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.main_menu_items, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    @Deprecated("Deprecated in Java")
-    @SuppressLint("InflateParams")
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.create_new_alarm) {
-            val intent = Intent(context, CreateNotificationActivity::class.java)
-            startActivityForResult(intent, CREATE_ALARM_REQUEST)
-
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
 
     override fun onStart() {

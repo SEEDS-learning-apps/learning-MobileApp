@@ -9,6 +9,8 @@ import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.view.KeyEvent
+import android.view.WindowInsets
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.chat_bot.Activities.DashboardActivities.Settings
@@ -32,7 +34,9 @@ class Notification_MainActivity : AppCompatActivity() {
         } else {
             layoutInflater.context.setTheme(R.style.Notification_WhiteMode)
         }
+
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.notification_activity_main)
 
         createNotificationChannel()
