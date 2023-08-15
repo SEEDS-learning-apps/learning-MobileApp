@@ -1,120 +1,141 @@
 <resources>
+
+    //App name
     <string name="app_name">Seeds Chat &amp; Learn</string>
-    <string name="mcq" translatable="false">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
-    <string name="title_activity_login" translatable="false">LoginActivity</string>
-    <string name="prompt_email" translatable="false">Email</string>
-    <string name="prompt_password" translatable="false">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password" translatable="false">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-    <string name="dummy_button" translatable="false">Dummy Button</string>
-    <string name="dummy_content" translatable="false">DUMMY\nCONTENT</string>
-    <string name="title_activity_splash" translatable="false">splash</string>
+
+    //Splash Screen
     <string name="splash_text">Learning is for everyone</string>
-    <string name="splas_web" translatable="false">www.seeds.com</string>
-    <string name="create_password">type any password</string>
-    <string name="Register_btn">Register</string>
-    <string name="username_register">Type any username of your choice</string>
-    <string name="lang_drop_down_label">Languages</string>
+
+    //Welcome Page
+    <string name="what_is_seeds">What is SEEDS?</string>
+    <string name="GET_STARTED">GET STARTED</string>
+    <string name="Already_User">ALREADY USER</string>
+
+    //Register screen
     <string name="lang_drop_down_text">Select language</string>
+    <string name="username_register">Type a username</string>
     <string name="register_account">Create an account?</string>
-    <string name="Setting_Feedback">Feedback</string>
-    <string name="Setting_Contact">Contact us</string>
-    <string name="Setting_Terms_of_use">Terms of use</string>
-    <string name="settings_powerd_by" translatable="false">Powered by seeds</string>
-    <string name="Setting_logout">Sign Out</string>
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="mcq_positive_feedback" translatable="false">Results</string>
-    <string name="mcq_positive_congratulations">Congratulations</string>
-    <string name="loading" translatable="false">Loading...!!</string>
-    <string name="Mcq_Activity" translatable="false">Mcq Activity</string>
-    <string name="activity1_heading" translatable="false"> Match these statements to following answers.</string>
-    <string name="activity1_instructions" translatable="false">"One of the models for intercultural competence (Bennett) can be applied as a simple checklist of four steps, trying to move away from ethnocentrism towards an understanding some of the ways in which other cultures are similar to and different from our own. We emphasize adapting behavior in response to differing cultural contexts and reconciling cultural differences in order to learn or create value from cross-cultural interactions. "</string>
-    <string name="activity1_queHeading" translatable="false">Four steps to intercultural awareness</string>
-    <string name="activity2_heading" translatable="false">Activity 2: What´s the comment about?</string>
-    <string name="activity2_instructions" translatable="false">The adjustment to an unfamiliar situation or culture can be hard. There is some time of uncertainty and, in some cases, anxiety. We need to deal with ambiguity and new norms, ways to communicate/ behave. Some people go through similar phases during that time of adjustment. Can you connect these people´s comment to the description of the stage they´re at?</string>
-    <string name="match_pic_heading" translatable="false">Match the above statements with the pictures</string>
-    <string name="age_drop_down_text">Your age</string>
+    <string name="Register_btn">Register</string>
+    <string name="Grade_register">Grade</string>
     <string name="select_language">Select language</string>
     <string name="select_age">Select age</string>
-    <string name="Login">Login</string>
+
+    //Login page
     <string name="Username">Username</string>
-    <string name="accessCode">Do you have an access code?</string>
-    <string name="accessCode_Dialog_text">Enter access code</string>
-    <string name="accessCodehere" translatable="false">code here</string>
-    <string name="Done">Done</string>
-    <string name="messageEdittext_hint">Type a message...</string>
-    <string name="sendBTN_txt">Send</string>
-    <string name="Next">Next</string>
-    <string name="Setting_changelanguage">Interface language</string>
-    <string name="mainpage_ex_heading">Exercises</string>
-    <string name="mainpage_settings_heading">Settings</string>
     <string name="Accountlogin">Account login</string>
+    <string name="Login">Login</string>
+
+
+    //Description
+    <string name="lets_go">LET\'S GO</string>
+    <string name="skip">Skip</string>
+    <string name="seeds_info">The corona pandemic has highlighted significant educational inequalities, where the shift to digital learning has left vulnerable groups, including people with migration or refugee backgrounds and non-native speakers, even further behind in terms of education. Limited access to digital technologies and a perceived closed education system will hinder their engagement in learning opportunities and societal participation. To address this issue, the SEEDS project proposes a combination of social and digital outreach, utilizing chatbots as a bridge between cultural mediators, social workers, and educational institutions. The project aims to create learning materials that can be accessed and tracked through a mobile device, via the chatbot system. The project promotes participatory action research and networked evaluation to identify appropriate contents and testing scenarios across Europe.
+        Project funding: Erasmus+ Strategic Partnership
+        Project duration: 2021-2023</string>
+    <string name="login_existing_account">Already an User? Login here.</string>
+    <string name="create_account">Create Account</string>
+
+    //Dashboard
+    <string name="Profile">Profile</string>
+    <string name="Learning_progress">Learning Progress</string>
+    <string name="Learning_cards">Learning Cards</string>
+    <string name="Download_materials">Download Materials</string>
+    <string name="Access_code">Access Code</string>
+    <string name="Settings">Settings</string>
+    <string name="Help">Help</string>
+    <string name="Signout">Sign Out</string>
+    <string name="Hello">Hello </string>
+    <string name="close">Close</string>
+    <string name="contact_team_text">You can contact our support team using the mail ID</string>
+    <string name="Setting_Contact_us_dialog_title">Contact team</string>
+    <string name="Dashboard_changelanguage">Interface language</string>
+    <string name="Select_material_language">Select material language</string>
+    <string name="Setting_changeMateriallanguage">Material Language</string>
+    <string name="Grade">Grade</string>
+    <string name="Done">Done</string>
+    <string name="accessCode_Dialog_text">Enter access code</string>
+    <string name="accessCodehere" translatable="false">Code here</string>
+    <string name="age_drop_down_text">Your age</string>
+    <string name="settings_powerd_by" translatable="false">Powered by SEEDS</string>
+    <string name="learning_statistics">Learning Statistics</string>
+    <string name="empty_statistics">No statistical data is available to show try completing some activities</string>
+
+
+    //Home Activity
+    <string name="press_back">Press back again to exit</string>
+    <string name="material_language">Material Language</string>
+    <string name="interface_language">Interface Language</string>
+    <string name="terms_of_use">Terms of use</string>
+    <string name="feedback">Feedback</string>
+    <string name="contact_us">Contact us</string>
+    <string name="seeds_website">https://seeds.wineme.wiwi.uni-siegen.de/</string>
+    <string name="no_exercises_completed_yet">No exercises completed yet</string>
+    <string name="mainpage_History_heading">History</string>
+    <string name="mainpage_Dashboard_heading">Dashboard</string>
+    <string name="messageEdittext_hint">Type a message...</string>
+
+    //Quiz Activities
+    <string name="mcq_positive_feedback" translatable="false">Results</string>
+    <string name="mcq_positive_congratulations">Congratulations</string>
+    <string name="Choose_an_answer">Choose an answer</string>
+    <string name="True">True</string>
+    <string name="False">False</string>
+    <string name="openEnded">Open Ended</string>
+    <string name="Returntochat">Return to chat</string>
+    <string name="Download">Download</string>
+    <string name="no_downloads_available">No downloads available!!</string>
+    <string name="True_false">True false</string>
     <string name="mcqfeedbacktitletext" translatable="false">Feedback</string>
     <string name="loremipsum" translatable="false">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</string>
     <string name="ok">Ok</string>
-    <string name="True_false">True false</string>
-    <string name="Grade">Grade</string>
-    <string name="AccountRegister">Account Register</string>
-    <string name="Returntochat">Return to chat</string>
-    <string name="Exercises">Exercises</string>
-    <string name="Download">Download</string>
-    <string name="no_downloads_available">No downloads available!!</string>
-    <string name="openEnded">Open Ended</string>
-    <string name="Select_material_language">Select material language</string>
-    <string name="Setting_changeMateriallanguage">Material Language</string>
-    <string name="Downloaded_Materials">Downloaded Materials</string>
-    <string name="MyProfile">My profile</string>
-    <string name="Already_have_an_account">Already have an account?</string>
-    <string name="True">True</string>
-    <string name="False">False</string>
+    <string name="Next">Next</string>
+    <string name="mcq" translatable="false">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
+    <string name="Mcq_Activity" translatable="false">Mcq Activity</string>
+    <string name="activity1_heading" translatable="false"> Match these statements to following answers.</string>
+    <string name="activity1_instructions" translatable="false">"One of the models for intercultural competence (Bennett) can be applied as a simple checklist of four steps, trying to move away from ethnocentrism towards an understanding some of the ways in which other cultures are similar to and different from our own. We emphasize adapting behavior in response to differing cultural contexts and reconciling cultural differences in order to learn or create value from cross-cultural interactions. "</string>
+
+    <string name="activity2_heading" translatable="false">Activity 2: What´s the comment about?</string>
+    <string name="activity2_instructions" translatable="false">The adjustment to an unfamiliar situation or culture can be hard. There is some time of uncertainty and, in some cases, anxiety. We need to deal with ambiguity and new norms, ways to communicate/ behave. Some people go through similar phases during that time of adjustment. Can you connect these people´s comment to the description of the stage they´re at?</string>
+    <string name="match_pic_heading" translatable="false">Match the above statements with the pictures</string>
+    <string name="Setting_Feedback">Feedback</string>
+
+
+    //Notification
+    <string name="demo_time">9:00PM</string>
+    <string name="demo_date">Monday</string>
+    <string name="Notification">Notification</string>
+    <string name="empty_rec_text">No notifications created yet\n\nClick on the + icon at the top right corner\nto create a new Notification</string>
+    <string name="dark_mode">Dark Mode</string>
+
+    //Language
+    <string name="Languages">Languages</string>
     <string name="German">German</string>
     <string name="Spanish">Spanish</string>
     <string name="English">English</string>
     <string name="Greek">Greek</string>
-    <string name="Choose_an_answer">Choose an answer</string>
-    <string name="your_score">Your score:</string>
-    <string name="Setting_Contact_us_dialog_title">Contact team</string>
-    <string name="close">close</string>
-    <string name="contact_team_text">You can contact us using our email: seeds.members@listserv.dfn.de</string>
+    <string name="flash_cards">Flash Cards</string>
+    <string name="no_flash_cards">No activities are completed to display flash cards. Try completing some activities</string>
+    <string name="notification">Notification</string>
+    <string name="frequently_asked_questions">Frequently asked questions?</string>
+    <string name="previous">Previous</string>
+    <string name="e_learning">E-LEARNING</string>
+    <string name="intro_page1">SEEDS is an E learning app which helps you to learn from your home and contents updated by the teachers regularly</string>
+    <string name="chatbot">CHATBOT</string>
+    <string name="intro_page2">You can chat with our inbuilt chatbot to get desired subjects and exercises</string>
+    <string name="learning_statistics1">LEARNING STATISTICS</string>
+    <string name="intro_page3">User statistics is available in the student dashboard which display the overall percentage of the subjects already completed by the student</string>
+    <string name="introduction_video">Introduction video</string>
+    <string name="intro_video">The Introduction video above displays a demo of functionality of the app</string>
+    <string name="chat">Chat</string>
+    <string name="erasmus_declaration">Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Education and Culture Executive Agency (EACEA). Neither the European Union nor EACEA can be held responsible for them.</string>
 
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string-array name="Languages">
-        <item>German</item>
-        <item>Spanish</item>
-        <item>Greek</item>
+        <item>Deutsch</item>
+        <item>Español</item>
+        <item>Ελληνικά</item>
         <item>English</item>
     </string-array>
 
-    <string-array name="Countries">
-        <item>Germany</item>
-        <item>Great Britain</item>
-        <item>Spain</item>
-        <item>Greece</item>
-    </string-array>
-
-    <string-array name="ageGroup">
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-        <item>15</item>
-    </string-array>
-
-    <string-array name="grades">
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-
-    </string-array>
 
 </resources>

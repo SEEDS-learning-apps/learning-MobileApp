@@ -5,51 +5,49 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.chat_bot.Activities.Login
-import com.example.chat_bot.Activities.QuizActivity
 import com.example.chat_bot.Room.Coverters.ButtonConverter
 import com.example.chat_bot.Room.Coverters.MaterialListConverter
 import com.example.chat_bot.Room.Dao.SeedsDao
-import com.example.chat_bot.data.Message
+import com.example.chat_bot.Room.Entities.Alarms
+import com.example.chat_bot.Room.Entities.SubjectCount
+import com.example.chat_bot.data.QuestItem
 import com.example.chat_bot.data.R_Message
 import com.example.chat_bot.data.User
-import com.example.chat_bot.data.tryy.DowloadedQuiz
-import com.example.chat_bot.data.tryy.QuestItem
-import kotlinx.coroutines.CoroutineScope
+
 
 @Database(
     entities = [
         User::class,
-        R_Message:: class,
-        QuestItem::class
+        R_Message::class,
+        QuestItem::class,
+        Alarms::class,
+        SubjectCount::class
     ],
-    version = 1,
+    version = 3,
     exportSchema = false
 )
-
-@TypeConverters(value = arrayOf(ButtonConverter::class, MaterialListConverter::class))
-
-abstract class SeedsDatabase: RoomDatabase() {
+@TypeConverters(value = [ButtonConverter::class, MaterialListConverter::class])
+abstract class SeedsDatabase : RoomDatabase() {
 
     abstract val seedsDao: SeedsDao
 
-    companion object{
+    companion object {
+        @Volatile
+        private var INSTANCE: SeedsDatabase? = null
 
-        @Volatile //prevents race conditions -> any changes made here are visible to all threads
-        private var INSTANCE: SeedsDatabase?= null
-
-        fun getInstance(context: Context): SeedsDatabase{
-            // synchronised block helps in the way that no other thread can access this block or to say database
-            synchronized(this) {
-                return INSTANCE ?: Room.databaseBuilder(
+        fun getInstance(context: Context): SeedsDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
                     context.applicationContext,
                     SeedsDatabase::class.java,
                     "seeds_db"
-                ).build().also {
-                    INSTANCE = it
-                }
+                )
+                    .fallbackToDestructiveMigration() // Set destructive migration
+                    .build()
+                INSTANCE = instance
+                instance
             }
         }
-
     }
 }
+

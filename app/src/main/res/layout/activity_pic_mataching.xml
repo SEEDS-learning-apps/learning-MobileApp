@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/scroll"
-    tools:context=".Activities.acivity.Pic_mataching">
+    android:id="@+id/scroll">
 
     <RelativeLayout
         android:layout_width="match_parent"

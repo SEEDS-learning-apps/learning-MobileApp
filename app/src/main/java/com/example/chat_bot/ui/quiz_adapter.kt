@@ -5,32 +5,27 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.chat_bot.Activities.HomePage.ChatFragment
-import com.example.chat_bot.Activities.HomePage.ExerciseFragment
-import com.example.chat_bot.Activities.HomePage.HomeActivity
+import com.example.chat_bot.Activities.HomePage.HistoryFragment
+import com.example.chat_bot.Activities.HomePage.MainActivity
 import com.example.chat_bot.R
-import com.example.chat_bot.data.Exercise
-import com.example.chat_bot.data.OpenEnded
-import com.example.chat_bot.data.tryy.AllQuestion
+import com.example.chat_bot.data.*
 import com.example.chat_bot.databinding.*
-import com.example.chat_bot.networking.Retrofit.Seeds_api.api.SEEDSViewModel
 import com.example.chat_bot.utils.SessionManager
 import com.example.chat_bot.utils.Time
 
 class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callbackinter):
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    //    private var op1 = 2131362127
-//    private var op2 = 2131362129
-//    private var op3 = 2131362128
-//    private var op4 = 2131362126
     var idx: Int = 0
     private  var iterator: Int = 0
     private  var current_pos: Int = 1
@@ -40,17 +35,31 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
     private var correct_answers: Int = 0
     private var haveInto: Boolean = false
     var max: Int = 0
-    lateinit var az: ArrayList <AllQuestion>
+    lateinit var QuizArray: ArrayList<AllQuestion>
     var quiz = mutableListOf<AllQuestion>()
     var exerciseList: ArrayList<Exercise> = ArrayList()
+    var openEndedList: ArrayList<OpenEnded> = ArrayList()
     lateinit var session: SessionManager
     lateinit var topicName: String
-    val adapter = ExerciseHistoryAdapter(ExerciseFragment())
-    private lateinit var binding: FragmentExerciseBinding
+    lateinit var subjectName: String
+    private var question: String? = null
+    private var answer: String? = null
+    val adapter = ExerciseHistoryAdapter(HistoryFragment())
     var ansList: MutableList<String> = arrayListOf()
     private lateinit var message: String
     var Selected_ansList: MutableList<String> = arrayListOf()
-    lateinit var viewModel: SEEDSViewModel
+    private var questionType: String? = null
+
+    // for matching activity
+    private var statment1: String? = null
+    private var answer1: String? = null
+    private var statment2: String? = null
+    private var answer2: String? = null
+    private var statment3: String? = null
+    private var answer3: String? = null
+    private var statment4: String? = null
+    private var answer4: String? = null
+
 
     companion object {
         const val VIEW_TYPE_ONE = 1
@@ -67,14 +76,12 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
             val mcq = quiz[position]
 
             haveInto = true
-          //  Toast.makeText(context, (haveInto == true).toString(), Toast.LENGTH_SHORT).show()
 
             holder.binding.introTXT.text = mcq.introduction
 
             val url = mcq.file
-//            if (session.isOnline(context))
-//            {
-                if (mcq.file.isNotEmpty() && mcq.file.isNotBlank())
+
+            if (mcq.file.isNotEmpty() && mcq.file.isNotBlank())
                 {
                     holder.binding.imageView.visibility = View.VISIBLE
                     Glide.with(context).load(url).into(holder.binding.imageView)
@@ -86,11 +93,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                     holder.binding.introURL.text = mcq.link
                     holder.binding.introURL.setOnClickListener {  }
                 }
-            //}
-
-          //  topicName = "topic_name"
-
-            holder.binding.introNXT.setOnClickListener {
+               holder.binding.introNXT.setOnClickListener {
 
                 newIntro(holder, position)
 
@@ -105,11 +108,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         current_pos++
         iterator++
 
-        Log.d("loggg", current_pos.toString())
-        Log.d("loggg", iterator.toString())
-
-
-            setQuiz(iterator, current_pos, az)
+            setQuiz(iterator, current_pos, QuizArray)
     }
 
     private inner class McqViewHolder(val binding: McqItemBinding) :
@@ -117,178 +116,153 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
         lateinit var radio: RadioButton
         lateinit var rbGroup: RadioGroup
-        fun bind(position: Int, holder: McqViewHolder) {
+        private var selectedPosition = RecyclerView.NO_POSITION
+
+        fun bind(position: Int) {
             val mcq = quiz[position]
 
+            binding.mcqSubmit.setBackgroundColor(
+                ContextCompat.getColor(context, R.color.Activity_next_btn)
+            )
+            binding.mcqStatememntTV.text = mcq.mcqs
+            binding.mcqOptOne.text = mcq.option1
+            binding.mcqOptTwo.text = mcq.option2
+            binding.mcqOptThree.text = mcq.option3
+            binding.mcqOptFour.text = mcq.option4
+            binding.mcqPosFeedbackTv.text = mcq.posFeedback
+            binding.mcqNegFeedbackTv.text = mcq.negFeedback
 
 
-            holder.binding.mcqStatememntTV.text = mcq.mcqs
-            holder.binding.mcqOptOne.text = mcq.option1
-            holder.binding.mcqOptTwo.text = mcq.option2
-            holder.binding.mcqOptThree.text = mcq.option3
-            holder.binding.mcqOptFour.text = mcq.option4
-            holder.binding.mcqPosFeedbackTv.text = mcq.posFeedback
-            holder.binding.mcqNegFeedbackTv.text = mcq.negFeedback
 
+            clearChecks()
 
-            clearChecks(holder)
-
-            val url = mcq.file
-
-            if (mcq.file.isNotEmpty() && mcq.file.isNotBlank())
-            {
-                holder.binding.imageView.visibility = View.VISIBLE
-                Glide.with(context).load(mcq.file).into(holder.binding.imageView)
+            if (mcq.file.isNotEmpty() && mcq.file.isNotBlank()) {
+                binding.imageView.visibility = View.VISIBLE
+                Glide.with(context).load(mcq.file).into(binding.imageView)
             }
 
+            binding.mcqSubmit.isEnabled = false
 
-            //   Log.d("urlll", url.toString())
-
-
-
-            holder.binding.mcqSubmit.isEnabled = false
-
-            if (haveInto == true)
-            {
-                max = az.size -1
+            if (haveInto == true) {
+                max = QuizArray.size - 1
                 current_poss = current_pos - 1
-                holder.binding.tvProgress.text = "$current_poss/$max"
-                holder.binding.progressBar.progress = current_poss
+                binding.tvProgress.text = "$current_poss/$max"
+                binding.progressBar.progress = current_poss
+            } else {
+                max = QuizArray.size
+                binding.tvProgress.text = "$current_pos/$max"
+                binding.progressBar.progress = current_pos
             }
-            else
-            {
-                max = az.size
-                holder.binding.tvProgress.text = "$current_pos/$max"
-                holder.binding.progressBar.progress = current_pos
-            }
-            holder.binding.progressBar.max = max
+            binding.progressBar.max = max
 
-
-//            topicName = session.get_topic()
-
-             rbGroup = holder.binding.mcqRG
-
-
-            if (rbGroup.checkedRadioButtonId == -1) {
-
-
-              //  Toast.makeText(context, "please select your answer", Toast.LENGTH_SHORT).show()
-                holder.binding.mcqSubmit.isEnabled = false
-
-            }
-
-
-
+            rbGroup = binding.mcqRG
 
             rbGroup.setOnCheckedChangeListener { group, checkedId ->
-                holder.binding.mcqSubmit.isEnabled = true
-                selectedId = rbGroup.checkedRadioButtonId
-                 radio = group.findViewById(checkedId)
+                binding.mcqSubmit.isEnabled = true
+                selectedId = checkedId
+                radio = group.findViewById(selectedId)
                 idx = rbGroup.indexOfChild(radio)
-                rbGroup.getChildAt(idx)
 
-
-                Log.e("selectedtext", radio.text.toString())
-                Log.d("selectedtext", rbGroup.getChildAt(idx).toString())
-                Log.d("selectedtext", radio.toString())
-                Log.d("selectedtext", selectedId.toString())
+                Log.i("selectedtext", radio.text.toString())
+                Log.i("selectedtext", radio.toString())
+                Log.i("selectedtext", selectedId.toString())
+                Log.i("mcq question", mcq.mcqs)
+                Log.i("mcq answer", mcq.answer)
 
                 radioTXT = radio.text.toString()
 
+                val backgroundColor = if (selectedId == -1) {
+                    ContextCompat.getColor(context, R.color.Activity_next_btn)
+                } else {
+                    // Use a darker color for selected state
+                    ContextCompat.getColor(context, R.color.colorPrimaryblue)
+                }
+                binding.mcqSubmit.setBackgroundColor(backgroundColor)
 
-                //  Toast.makeText(context, radioTXT, Toast.LENGTH_SHORT).show()
+                // Update the selected position when an option is selected
+                selectedPosition = adapterPosition
             }
 
-
-
-            holder.binding.mcqSubmit.setOnClickListener {
-
-//                selectedId = rbGroup.checkedRadioButtonId
-//                radio = group.findViewById(checkedId)
-//                idx = rbGroup.indexOfChild(radio)
-//                rbGroup.getChildAt(idx)
-//                rbGroup.clearCheck()
-
+            binding.mcqSubmit.setOnClickListener {
                 if (mcq.answer == "option1" && idx == 0) {
                     correct_answers++
-                    holder.binding.mcqNegFeedbackTv.visibility = View.GONE
-                    holder.binding.mcqPosFeedbackTv.visibility = View.VISIBLE
+                    binding.mcqNegFeedbackTv.visibility = View.GONE
+                    binding.mcqPosFeedbackTv.visibility = View.VISIBLE
+                    clearChecks()
                 } else if (mcq.answer == "option2" && idx == 1) {
                     correct_answers++
-                    holder.binding.mcqNegFeedbackTv.visibility = View.GONE
-                    holder.binding.mcqPosFeedbackTv.visibility = View.VISIBLE
+                    binding.mcqNegFeedbackTv.visibility = View.GONE
+                    binding.mcqPosFeedbackTv.visibility = View.VISIBLE
                 } else if (mcq.answer == "option3" && idx == 2) {
                     correct_answers++
-                    holder.binding.mcqNegFeedbackTv.visibility = View.GONE
-                    holder.binding.mcqPosFeedbackTv.visibility = View.VISIBLE
+                    binding.mcqNegFeedbackTv.visibility = View.GONE
+                    binding.mcqPosFeedbackTv.visibility = View.VISIBLE
                 } else if (mcq.answer == "option4" && idx == 3) {
                     correct_answers++
-                    holder.binding.mcqNegFeedbackTv.visibility = View.GONE
-                    holder.binding.mcqPosFeedbackTv.visibility = View.VISIBLE
+                    binding.mcqNegFeedbackTv.visibility = View.GONE
+                    binding.mcqPosFeedbackTv.visibility = View.VISIBLE
                 } else {
-                    holder.binding.mcqNegFeedbackTv.visibility = View.VISIBLE
-                    holder.binding.mcqPosFeedbackTv.visibility = View.GONE
+                    binding.mcqNegFeedbackTv.visibility = View.VISIBLE
+                    binding.mcqPosFeedbackTv.visibility = View.GONE
                 }
 
-                holder.binding.mcqFeedbackCard.visibility = View.VISIBLE
-                holder.binding.mcqSubmit.visibility = View.GONE
-                holder.binding.feebackSubmit.visibility = View.VISIBLE
+                binding.mcqFeedbackCard.visibility = View.VISIBLE
+                binding.mcqSubmit.visibility = View.GONE
+                binding.feebackSubmit.visibility = View.VISIBLE
 
+                binding.feebackSubmit.setOnClickListener {
+                    new(this@McqViewHolder, position)
 
-                holder.binding.feebackSubmit.setOnClickListener {
-                    new(holder, position)
-
-                    //notifyDataSetChanged()
-                    holder.binding.mcqFeedbackCard.visibility = View.GONE
-                    holder.binding.feebackSubmit.visibility = View.GONE
-                    holder.binding.mcqSubmit.visibility = View.VISIBLE
-                    holder.binding.mcqNegFeedbackTv.visibility = View.GONE
-                    holder.binding.mcqPosFeedbackTv.visibility = View.GONE
+                    binding.mcqFeedbackCard.visibility = View.GONE
+                    binding.feebackSubmit.visibility = View.GONE
+                    binding.mcqSubmit.visibility = View.VISIBLE
+                    binding.mcqNegFeedbackTv.visibility = View.GONE
+                    binding.mcqPosFeedbackTv.visibility = View.GONE
+                    clearChecks()
                 }
-
             }
+
+            // Check if the current position matches the selected position and set the radio button as checked
+            if (adapterPosition == selectedPosition) {
+                rbGroup.check(selectedId)
+            }
+        }
+
+        private fun clearChecks() {
+            binding.mcqOptOne.isChecked = false
+            binding.mcqOptTwo.isChecked = false
+            binding.mcqOptThree.isChecked = false
+            binding.mcqOptFour.isChecked = false
         }
     }
 
-    private fun clearChecks(holder: quiz_adapter.McqViewHolder) {
-
-        holder.binding.mcqOptOne.isChecked = false
-        holder.binding.mcqOptTwo.isChecked = false
-        holder.binding.mcqOptThree.isChecked = false
-        holder.binding.mcqOptFour.isChecked = false
-    }
 
     private fun new(holder: McqViewHolder, position: Int)
     {
         if (haveInto == true)
         {
-            max = az.size -1
+            max = QuizArray.size -1
             current_poss = current_pos - 1
             holder.binding.tvProgress.text = "$current_poss/$max"
             holder.binding.progressBar.progress = current_poss
         }
         else
         {
-            max = az.size
+            max = QuizArray.size
             holder.binding.tvProgress.text = "$current_pos/$max"
             holder.binding.progressBar.progress = current_pos
         }
-
-
 
         current_pos++
         iterator++
         var rbGroup: RadioGroup = holder.binding.mcqRG
         holder.binding.progressBar.max = max
 
-
-
         Log.d("loggg", current_pos.toString())
         Log.d("loggg", iterator.toString())
 
         if (rbGroup.checkedRadioButtonId == -1) {
 
-            // Toast.makeText(context, "please select your answer", Toast.LENGTH_SHORT).show()
             holder.binding.mcqSubmit.isEnabled = false
             rbGroup.clearCheck()
 
@@ -296,53 +270,22 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         else
             holder.binding.mcqSubmit.isEnabled = true
 
-
-
-        if(current_pos <= az!!.size)
+        if(current_pos <= QuizArray!!.size)
         {
-            setQuiz(iterator, current_pos, az)
-
+            setQuiz(iterator, current_pos, QuizArray)
 
         }
         else
         {
-            positive_results_alert(az)
-
+            positive_results_alert(position, QuizArray)
 
         }
-//        else{//Toast.makeText(context, "quiz khtm", Toast.LENGTH_SHORT).show()
-//            //fire_alert()
-//
-//            if (haveTFS)
-//            {
-////                    val intent = Intent(context,TruefalseActivity::class.java)
-////                    intent.putExtra("filterd_trufalses", filterd_trufalses)
-////                    context.startActivity(intent)
-////                    (context as Activity).finish()
-//
-//                val intent = Intent(context, TruefalseActivity::class.java).apply {
-//
-//                    // putExtra("filtered_topics", filterd_topics)
-//                    putExtra("filterd_trufalses", filterd_trufalses)
-//                    putExtra("scores", correct_answers)
-//                    putExtra("total_mcqs", az.size)
-//                }
-//                context.startActivity(intent)
-//
-//            }
-//            else{
-//                positive_results_alert(az)
-//            }
-//
-//        }
 
         when {
-            current_pos == az!!.size -> {
+            current_pos == QuizArray!!.size -> {
                 holder.binding.mcqSubmit.text = "Finish"
-                //   Toast.makeText(context, "quiz done", Toast.LENGTH_SHORT).show()
 
             }
-
         }
     }
 
@@ -350,25 +293,26 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int, holder: TFViewHolder) {
             val tf = quiz[position]
-
+            holder.binding.tfSubmit.setBackgroundColor(ContextCompat.getColor(context, R.color.Activity_next_btn))
             var ans  = tf.answer
+
+            Log.i("True or False question", tf.question)
+            Log.i("True or False answer", tf.answer)
 
             if (haveInto == true)
             {
-                max = az.size -1
+                max = QuizArray.size -1
                 current_poss = current_pos - 1
                 holder.binding.tvProgress.text = "$current_poss/$max"
                 holder.binding.progressBar.progress = current_poss
             }
             else
             {
-                max = az.size
+                max = QuizArray.size
                 holder.binding.tvProgress.text = "$current_pos/$max"
                 holder.binding.progressBar.progress = current_pos
             }
-
-            val url = tf.file
-
+            
             if (tf.file.isNotEmpty() && tf.file.isNotBlank())
             {
                 holder.binding.imageView.visibility = View.VISIBLE
@@ -376,38 +320,32 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
             }
 
             holder.binding.tfStatememntTV.text = tf.question
-//            holder.binding.tfOptOne.text = "True"
-//            holder.binding.tfOptTwo.text = "False"
-
 
             holder.binding.progressBar.max = max
 
-
             holder.binding.tfSubmit.isEnabled = false
-
-
-
-
-
-            //Log.d("tf", ans)
-            //Toast.makeText(context, ans, Toast.LENGTH_SHORT).show()
 
             var rbGroup: RadioGroup = holder.binding.mcqRG
 
             if (rbGroup.checkedRadioButtonId == -1) {
-
-                Toast.makeText(context, "please select your answer", Toast.LENGTH_SHORT).show()
                 holder.binding.tfSubmit.isEnabled = false
             }
 
             rbGroup.setOnCheckedChangeListener { group, checkedId ->
                 holder.binding.tfSubmit.visibility = View.VISIBLE
                 holder.binding.tfSubmit.isEnabled = true
-                var selectedId = rbGroup.checkedRadioButtonId
-                var radio: RadioButton = group.findViewById(checkedId)
-                Log.e("selectedtext", radio.text.toString())
-                radioTXT= radio.text.toString()
-               // Toast.makeText(context, radioTXT, Toast.LENGTH_SHORT).show()
+
+                val selectedId = rbGroup.checkedRadioButtonId
+                val radio: RadioButton = group.findViewById(checkedId)
+                Log.i("selectedtext", radio.text.toString())
+                radioTXT = radio.text.toString()
+
+                val backgroundColor = if (selectedId == -1) {
+                    ContextCompat.getColor(context, R.color.Activity_next_btn)
+                } else {
+                    ContextCompat.getColor(context, R.color.colorPrimaryblue)
+                }
+                holder.binding.tfSubmit.setBackgroundColor(backgroundColor)
             }
 
             holder.binding.tfSubmit.setOnClickListener{
@@ -424,6 +362,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                             holder.binding.tfPosFeedbackTv.text = tf.posFeedback
                             holder.binding.tfNegFeedbackTv.visibility = View.GONE
                             holder.binding.tfPosFeedbackTv.visibility = View.VISIBLE
+
                     }
                     else {
                         holder.binding.tfNegFeedbackTv.text = tf.negFeedback
@@ -452,55 +391,37 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                     }
                 }
 
-//                if (radioTXT.lowercase() == ans){
-//                    correct_answers++
-//
-//                    holder.binding.tfPosFeedbackTv.text = tf.posFeedback
-//                    holder.binding.tfNegFeedbackTv.visibility = View.GONE
-//                    holder.binding.tfPosFeedbackTv.visibility = View.VISIBLE
-//
-//                    //Toast.makeText(context, "Right answer", Toast.LENGTH_SHORT).show()
-//                }
-//                else if (radioTXT.lowercase() != ans)
-//                {
-//                    holder.binding.tfNegFeedbackTv.text = tf.negFeedback
-//                    holder.binding.tfNegFeedbackTv.visibility = View.VISIBLE
-//                    holder.binding.tfPosFeedbackTv.visibility = View.GONE
-//                }
-
                 holder.binding.tfFeedbackCard.visibility = View.VISIBLE
                 holder.binding.tfSubmit.visibility = View.GONE
                 holder.binding.feebackSubmit.visibility = View.VISIBLE
-
 
                 holder.binding.feebackSubmit.setOnClickListener {
                 new_trf(holder, position)
                 holder.binding.tfFeedbackCard.visibility = View.GONE
                 holder.binding.feebackSubmit.visibility = View.GONE
                 holder.binding.tfSubmit.visibility = View.VISIBLE
+                    holder.binding.tfOptOne.isChecked = false
+                    holder.binding.tfOptTwo.isChecked = false
 
             }
 
             }
-
-
 
         }
     }
-
 
     private fun new_trf(holder: TFViewHolder, position: Int)
     {
         if (haveInto == true)
         {
-            max = az.size -1
+            max = QuizArray.size -1
             current_poss = current_pos - 1
             holder.binding.tvProgress.text = "$current_poss/$max"
             holder.binding.progressBar.progress = current_poss
         }
         else
         {
-            max = az.size
+            max = QuizArray.size
             holder.binding.tvProgress.text = "$current_pos/$max"
             holder.binding.progressBar.progress = current_pos
         }
@@ -510,39 +431,27 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         var rbGroup: RadioGroup = holder.binding.mcqRG
         holder.binding.progressBar.max = max
 
-
-
-        Log.d("loggg", current_pos.toString())
-        Log.d("loggg", iterator.toString())
-
         if (rbGroup.checkedRadioButtonId == -1) {
 
             Toast.makeText(context, "please select your answer", Toast.LENGTH_SHORT).show()
             holder.binding.tfSubmit.isEnabled = false
-
         }
         else
             holder.binding.tfSubmit.isEnabled = true
 
-
-
-        if(current_pos <= az!!.size)
+        if(current_pos <= QuizArray!!.size)
         {
-            setQuiz(iterator, current_pos, az)
-
+            setQuiz(iterator, current_pos, QuizArray)
 
         }
-        else{//Toast.makeText(context, "quiz khtm", Toast.LENGTH_SHORT).show()
-            //fire_alert()
-            positive_results_alert(az)
+        else{
+            positive_results_alert(position, QuizArray)
         }
 
         when {
-            current_pos == az!!.size -> {
+            current_pos == QuizArray!!.size -> {
 
                 holder.binding.tfSubmit.text = "Finish"
-                //   Toast.makeText(context, "quiz done", Toast.LENGTH_SHORT).show()
-
             }
 
         }
@@ -554,14 +463,14 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         fun bind(position: Int, holder: MatchViewHolder) {
             val matchingActivity = quiz[position]
 
-
+            binding.matchingSubmit.setBackgroundColor(
+                ContextCompat.getColor(context, R.color.Activity_next_btn)
+            )
 
             if (ansList.size>0)
             {
                 ansList.clear()
             }
-
-
 
             if (matchingActivity.answer5.isNotEmpty() || matchingActivity.answer5.isNotBlank())
             {
@@ -573,13 +482,8 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
                 if (ansList.size == 5)
                 {
-                    holder.binding.activyText.text = matchingActivity.question
-//                    holder.binding.ans1TXT.text = matchingActivity.answer1
-//                    holder.binding.ans2TXT.text = matchingActivity.answer2
-//                    holder.binding.ans3TXT.text = matchingActivity.answer3
-//                    holder.binding.ans4TXT.text = matchingActivity.answer4
-//                    holder.binding.ans5TXT.text = matchingActivity.answer5
 
+                    holder.binding.activyText.text = matchingActivity.question
                     holder.binding.st1TXT.text = matchingActivity.statement1
                     holder.binding.st2TXT.text = matchingActivity.statement2
                     holder.binding.st3TXT.text = matchingActivity.statement3
@@ -600,18 +504,10 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
                 if(ansList.size == 4)
                 {  holder.binding.activyText.text = matchingActivity.question
-//                    holder.binding.ans1TXT.text = matchingActivity.answer1
-//                    holder.binding.ans2TXT.text = matchingActivity.answer2
-//                    holder.binding.ans3TXT.text = matchingActivity.answer3
-//                    holder.binding.ans4TXT.text = matchingActivity.answer4
-
                     holder.binding.st1TXT.text = matchingActivity.statement1
                     holder.binding.st2TXT.text = matchingActivity.statement2
                     holder.binding.st3TXT.text = matchingActivity.statement3
                     holder.binding.st4TXT.text = matchingActivity.statement4
-
-
-                   // holder.binding.ans5.visibility = View.GONE
                     holder.binding.st5.visibility = View.GONE
                 }
             }
@@ -627,17 +523,10 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                 {
 
                     holder.binding.activyText.text = matchingActivity.question
-//                    holder.binding.ans1TXT.text = matchingActivity.answer1
-//                    holder.binding.ans2TXT.text = matchingActivity.answer2
-//                    holder.binding.ans3TXT.text = matchingActivity.answer3
-
                     holder.binding.st1TXT.text = matchingActivity.statement1
                     holder.binding.st2TXT.text = matchingActivity.statement2
                     holder.binding.st3TXT.text = matchingActivity.statement3
-
-//                    holder.binding.ans4.visibility = View.GONE
                     holder.binding.st4.visibility = View.GONE
-//                    holder.binding.ans5.visibility = View.GONE
                     holder.binding.st5.visibility = View.GONE
 
                 }
@@ -651,20 +540,14 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
                  if(ansList.size == 2)
                  {
-                    holder.binding.activyText.text = matchingActivity.question
-//                    holder.binding.ans1TXT.text = matchingActivity.answer1
-//                    holder.binding.ans2TXT.text = matchingActivity.answer2
 
+                    holder.binding.activyText.text = matchingActivity.question
                     holder.binding.st1TXT.text = matchingActivity.statement1
                     holder.binding.st2TXT.text = matchingActivity.statement2
-
-
-//                    holder.binding.ans3.visibility = View.GONE
                     holder.binding.st3.visibility = View.GONE
-//                    holder.binding.ans4.visibility = View.GONE
                     holder.binding.st4.visibility = View.GONE
-//                    holder.binding.ans5.visibility = View.GONE
                     holder.binding.st5.visibility = View.GONE
+
                  }
             }
 
@@ -677,44 +560,33 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                 if (ansList.size == 1)
                 {
                     holder.binding.activyText.text = matchingActivity.question
-//                    holder.binding.ans1TXT.text = matchingActivity.answer1
-
                     holder.binding.st1TXT.text = matchingActivity.statement1
-
-//                    holder.binding.ans2.visibility = View.GONE
                     holder.binding.st2.visibility = View.GONE
-//                    holder.binding.ans3.visibility = View.GONE
                     holder.binding.st3.visibility = View.GONE
-//                    holder.binding.ans4.visibility = View.GONE
                     holder.binding.st4.visibility = View.GONE
-//                    holder.binding.ans5.visibility = View.GONE
                     holder.binding.st5.visibility = View.GONE
                 }
             }
 
              if (matchingActivity.file.isNotBlank() && matchingActivity.file.isNotEmpty())
             {
-                val url = matchingActivity.file
-
                 holder.binding.imageView.visibility = View.VISIBLE
                 Glide.with(context).load(matchingActivity.file).into(holder.binding.imageView)
             }
 
-
-            // holder.binding.mcqOptFour.text = mcq.mcq_op4
             holder.binding.matchingPosFeedbackTv.text = matchingActivity.posFeedback
             holder.binding.matchingNegFeedbackTv.text = matchingActivity.negFeedback
 
             if (haveInto == true)
             {
-                max = az.size -1
+                max = QuizArray.size -1
                 current_poss = current_pos - 1
                 holder.binding.tvProgress.text = "$current_poss/$max"
                 holder.binding.progressBar.progress = current_poss
             }
             else
             {
-                max = az.size
+                max = QuizArray.size
                 holder.binding.tvProgress.text = "$current_pos/$max"
                 holder.binding.progressBar.progress = current_pos
             }
@@ -722,120 +594,31 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
             holder.binding.progressBar.max = max
             holder.binding.matchingSubmit.isEnabled = false
 
-
             setAnsSpinner(ansList, binding)
-
-
 
             holder.binding.matchingSubmit.setOnClickListener {
 
-                Log.d("janaa", ansList.toString())
-                Log.d("janaa", Selected_ansList.toString())
                 Selected_ansList
                 if (ansList == Selected_ansList)
                 {
                     correct_answers++
                     holder.binding.matchingNegFeedbackTv.visibility = View.GONE
                     holder.binding.matchingPosFeedbackTv.visibility = View.VISIBLE
-                    Toast.makeText(context, "very well", Toast.LENGTH_SHORT).show()
                 }
 
                 else if (ansList != Selected_ansList)
                 {
                     holder.binding.matchingNegFeedbackTv.visibility = View.VISIBLE
                     holder.binding.matchingPosFeedbackTv.visibility = View.GONE
-                    Toast.makeText(context, "sorry", Toast.LENGTH_SHORT).show()
                 }
 
                 holder.binding.matchingFeedbackCard.visibility = View.VISIBLE
                 holder.binding.matchingSubmit.visibility = View.GONE
                 holder.binding.feebackSubmit.visibility = View.VISIBLE
 
-
                 holder.binding.feebackSubmit.setOnClickListener { newMatching(holder, position)   }
 
-
             }
-
-
-
-            // holder.binding.tvProgress.text = "$current_pos/$max"
-            //holder.binding.progressBar.progress = current_pos
-            // holder.binding.progressBar.max = max
-
-            // topicName = mcq.topic_name
-
-
-
-
-
-//
-//            var rbGroup: RadioGroup = holder.binding.mcqRG
-//
-//            if (rbGroup.checkedRadioButtonId == -1) {
-//
-//
-//                // Toast.makeText(context, "please select your answer", Toast.LENGTH_SHORT).show()
-//                holder.binding.mcqSubmit.isEnabled = false
-//                rbGroup.clearCheck()
-//
-//
-//            }
-
-
-//            rbGroup.setOnCheckedChangeListener { group, checkedId ->
-//                holder.binding.mcqSubmit.isEnabled = true
-//                selectedId = rbGroup.checkedRadioButtonId
-//                var radio: RadioButton = group.findViewById(checkedId)
-//                idx = rbGroup.indexOfChild(radio)
-//                rbGroup.getChildAt(idx)
-//
-//
-//
-//                Log.e("selectedtext", radio.text.toString())
-//                radioTXT = radio.text.toString()
-//
-//                //  Toast.makeText(context, radioTXT, Toast.LENGTH_SHORT).show()
-//            }
-
-//            holder.binding.mcqSubmit.setOnClickListener {
-//
-//                if (mcq.mcq_ans == "option1" && idx == 0) {
-//                    correct_answers++
-//                    holder.binding.mcqNegFeedbackTv.visibility = View.GONE
-//                    holder.binding.mcqPosFeedbackTv.visibility = View.VISIBLE
-//                } else if (mcq.mcq_ans == "option2" && idx == 1) {
-//                    correct_answers++
-//                    holder.binding.mcqNegFeedbackTv.visibility = View.GONE
-//                    holder.binding.mcqPosFeedbackTv.visibility = View.VISIBLE
-//                } else if (mcq.mcq_ans == "option3" && idx == 2) {
-//                    correct_answers++
-//                    holder.binding.mcqNegFeedbackTv.visibility = View.GONE
-//                    holder.binding.mcqPosFeedbackTv.visibility = View.VISIBLE
-//                } else if (mcq.mcq_ans == "option4" && idx == 3) {
-//                    correct_answers++
-//                    holder.binding.mcqNegFeedbackTv.visibility = View.GONE
-//                    holder.binding.mcqPosFeedbackTv.visibility = View.VISIBLE
-//                } else {
-//                    holder.binding.mcqNegFeedbackTv.visibility = View.VISIBLE
-//                    holder.binding.mcqPosFeedbackTv.visibility = View.GONE
-//                }
-//
-//                holder.binding.mcqFeedbackCard.visibility = View.VISIBLE
-//                holder.binding.mcqSubmit.visibility = View.GONE
-//                holder.binding.feebackSubmit.visibility = View.VISIBLE
-//
-//
-//                holder.binding.feebackSubmit.setOnClickListener {
-//                    new(holder, position)
-//
-//                    //notifyDataSetChanged()
-//                    holder.binding.mcqFeedbackCard.visibility = View.GONE
-//                    holder.binding.feebackSubmit.visibility = View.GONE
-//                    holder.binding.mcqSubmit.visibility = View.VISIBLE
-//                    holder.binding.mcqNegFeedbackTv.visibility = View.GONE
-//                    holder.binding.mcqPosFeedbackTv.visibility = View.GONE
-//                }
 
         }
 
@@ -852,13 +635,7 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
             var s_Ans4: String
             var s_Ans5: String
 
-
-
             ansList.toSet().toList()
-
-
-
-            Log.d("wawa", ansList.size.toString())
 
             if (ans1_spinner != null) {
                 val adapter = ArrayAdapter(context, R.layout.ans_dropdwn, ansList)
@@ -866,29 +643,24 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
 
                 adapter.notifyDataSetChanged()
 
-
                 ans1_spinner.onItemClickListener =
                     AdapterView.OnItemClickListener { parent, view, position, id ->
 
                         s_Ans1 = ans1_spinner.text.toString()
                         Selected_ansList.addAll(listOf(s_Ans1))
-                        Log.d("wawa", "Selected ${Selected_ansList.size}")
+                        Log.d("Select answer", "Selected ${Selected_ansList.size}")
 
                         if (ansList.size== Selected_ansList.size)
                         {
                             binding.matchingSubmit.isEnabled = true
+                            binding.matchingSubmit.setBackgroundColor(
+                                ContextCompat.getColor(context, R.color.colorPrimaryblue))
                         }
-                        Toast.makeText(context, ans1_spinner.text, Toast.LENGTH_SHORT).show()
 
-//                Toast.makeText(this@Register,
-//                    it[position].toString(),
-//                    Toast.LENGTH_SHORT).show()
-                        //  user_age = it[position]
                         adapter.notifyDataSetChanged()
-                        //age_setter(age.get(position))
-
 
                     }
+
             }
 
             if (ans2_spinner != null) {
@@ -906,23 +678,22 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                         if (ansList.size== Selected_ansList.size)
                         {
                             binding.matchingSubmit.isEnabled = true
-                        }
-                        Log.d("wawa", "Selected ${Selected_ansList.size}")
-//                Toast.makeText(this@Register,
-//                    it[position].toString(),
-//                    Toast.LENGTH_SHORT).show()
-                        //  user_age = it[position]
-                        adapter.notifyDataSetChanged()
-                        //age_setter(age.get(position))
+                            binding.matchingSubmit.setBackgroundColor(
+                                ContextCompat.getColor(context, R.color.colorPrimaryblue)
+                            )
 
+                        }
+
+                        adapter.notifyDataSetChanged()
 
                     }
+
             }
+
             if (ans3_spinner != null) {
                 val adapter = ArrayAdapter(context, R.layout.ans_dropdwn, ansList)
                 ans3_spinner.setAdapter(adapter)
                 adapter.notifyDataSetChanged()
-
 
                 ans3_spinner.onItemClickListener =
                     AdapterView.OnItemClickListener { parent, view, position, id ->
@@ -933,23 +704,20 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                         if (ansList.size== Selected_ansList.size)
                         {
                             binding.matchingSubmit.isEnabled = true
+                            binding.matchingSubmit.setBackgroundColor(
+                                ContextCompat.getColor(context, R.color.colorPrimaryblue)
+                            )
                         }
-                        Log.d("wawa", "Selected ${Selected_ansList.size}")
-//                Toast.makeText(this@Register,
-//                    it[position].toString(),
-//                    Toast.LENGTH_SHORT).show()
-                        //  user_age = it[position]
-                        adapter.notifyDataSetChanged()
-                        //age_setter(age.get(position))
 
+                        adapter.notifyDataSetChanged()
 
                     }
             }
+
             if (ans4_spinner != null) {
                 val adapter = ArrayAdapter(context, R.layout.ans_dropdwn, ansList)
                 ans4_spinner.setAdapter(adapter)
                 adapter.notifyDataSetChanged()
-
 
                 ans4_spinner.onItemClickListener =
                     AdapterView.OnItemClickListener { parent, view, position, id ->
@@ -960,20 +728,21 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                         if (ansList.size== Selected_ansList.size)
                         {
                             binding.matchingSubmit.isEnabled = true
+                            binding.matchingSubmit.setBackgroundColor(
+                                ContextCompat.getColor(context, R.color.colorPrimaryblue)
+                            )
                         }
-                        Log.d("wawa", "Selected ${Selected_ansList.size}")
-                        adapter.notifyDataSetChanged()
-                        //age_setter(age.get(position))
 
+                        adapter.notifyDataSetChanged()
 
                     }
+
             }
 
             if (ans5_spinner != null) {
                 val adapter = ArrayAdapter(context, R.layout.ans_dropdwn, ansList)
                 ans5_spinner.setAdapter(adapter)
                 adapter.notifyDataSetChanged()
-
 
                 ans5_spinner.onItemClickListener =
                     AdapterView.OnItemClickListener { parent, view, position, id ->
@@ -984,20 +753,18 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                         if (ansList.size== Selected_ansList.size)
                         {
                             binding.matchingSubmit.isEnabled = true
+                            binding.matchingSubmit.setBackgroundColor(
+                                ContextCompat.getColor(context, R.color.colorPrimaryblue)
+                            )
                         }
-                        Log.d("wawa", "Selected ${Selected_ansList.size}")
 
                         adapter.notifyDataSetChanged()
-                        //age_setter(age.get(position))
-
 
                     }
             }
 
-
         }
     }
-
 
     private fun newMatching(holder: MatchViewHolder, position: Int)
     {
@@ -1005,163 +772,133 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         iterator++
         if (haveInto == true)
         {
-            max = az.size -1
+            max = QuizArray.size -1
             current_poss = current_pos - 1
             holder.binding.tvProgress.text = "$current_poss/$max"
             holder.binding.progressBar.progress = current_poss
         }
         else
         {
-            max = az.size
+            max = QuizArray.size
             holder.binding.tvProgress.text = "$current_pos/$max"
             holder.binding.progressBar.progress = current_pos
         }
-//        var rbGroup: RadioGroup = holder.binding.mcqRG
+
         holder.binding.progressBar.max = max
 
 
-//
-//        Log.d("loggg", current_pos.toString())
-//        Log.d("loggg", iterator.toString())
-//
-//        if (rbGroup.checkedRadioButtonId == -1) {
-//
-//            // Toast.makeText(context, "please select your answer", Toast.LENGTH_SHORT).show()
-//            holder.binding.mcqSubmit.isEnabled = false
-//            rbGroup.clearCheck()
-//
-//        }
-//        else
-//            holder.binding.mcqSubmit.isEnabled = true
 
-
-
-        if(current_pos <= az!!.size)
+        if(current_pos <= QuizArray!!.size)
         {
-            setQuiz(iterator, current_pos, az)
-
+            setQuiz(iterator, current_pos, QuizArray)
 
         }
         else
         {
-            positive_results_alert(az)
-
+            positive_results_alert(position, QuizArray)
 
         }
-//        else{//Toast.makeText(context, "quiz khtm", Toast.LENGTH_SHORT).show()
-//            //fire_alert()
-//
-//            if (haveTFS)
-//            {
-////                    val intent = Intent(context,TruefalseActivity::class.java)
-////                    intent.putExtra("filterd_trufalses", filterd_trufalses)
-////                    context.startActivity(intent)
-////                    (context as Activity).finish()
-//
-//                val intent = Intent(context, TruefalseActivity::class.java).apply {
-//
-//                    // putExtra("filtered_topics", filterd_topics)
-//                    putExtra("filterd_trufalses", filterd_trufalses)
-//                    putExtra("scores", correct_answers)
-//                    putExtra("total_mcqs", az.size)
-//                }
-//                context.startActivity(intent)
-//
-//            }
-//            else{
-//                positive_results_alert(az)
-//            }
-//
-//        }
 
         when {
-            current_pos == az!!.size -> {
+            current_pos == QuizArray!!.size -> {
                 holder.binding.matchingSubmit.text = "Finish"
-                   Toast.makeText(context, "quiz done", Toast.LENGTH_SHORT).show()
 
             }
 
         }
     }
-
 
     private inner class OpenEndedViewHolder(val binding: ActivityOpenEndedBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int, holder: OpenEndedViewHolder) {
             val matchingActivity = quiz[position]
 
-
-
             holder.binding.opStatememntTV.text = matchingActivity.question
-
 
             if (haveInto == true)
             {
-                max = az.size -1
+                max = QuizArray.size -1
                 current_poss = current_pos - 1
                 holder.binding.tvProgress.text = "$current_poss/$max"
                 holder.binding.progressBar.progress = current_poss
             }
             else
             {
-                max = az.size
+                max = QuizArray.size
                 holder.binding.tvProgress.text = "$current_pos/$max"
                 holder.binding.progressBar.progress = current_pos
             }
 
             holder.binding.progressBar.max = max
 
+            holder.binding.opAnsV.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+                override fun afterTextChanged(s: Editable?) {
+                    // Enable the submit button if at least one character or number is entered
+                    holder.binding.btnopenEndedsubmit.isEnabled = !s.isNullOrEmpty()
+
+                    // Set the background color based on the enabled state
+                    if (holder.binding.btnopenEndedsubmit.isEnabled) {
+                        holder.binding.btnopenEndedsubmit.setBackgroundResource(R.color.colorPrimaryblue)
+                    } else {
+                        holder.binding.btnopenEndedsubmit.setBackgroundResource(R.color.grey)
+                    }
+                }
+            })
 
             holder.binding.btnopenEndedsubmit.setOnClickListener {
-                val answer = holder.binding.opAnsV.text.toString()
-                newOpenEnded(holder, position)
+                if (holder.binding.btnopenEndedsubmit.isEnabled) {
+                    val answer = holder.binding.opAnsV.text.toString()
 
-                Log.d("answers", answer)
-                postSubmission(matchingActivity, answer)
+                    newOpenEnded(holder, position)
+
+                    Log.d("answers", answer)
+                    postSubmission(position, matchingActivity, answer)
+                }
             }
-
         }
-
-
     }
 
-    private fun postSubmission(matchingActivity: AllQuestion, answer: String) {
 
+    private fun postSubmission(position: Int, matchingActivity: AllQuestion, openendedAnswer: String) {
         val user = session.getUserDetails()
         var teacherID = matchingActivity.userId
         val username = user.get("name")
-        val answer = answer
+        answer = openendedAnswer
         val timeStamp = Time.timeStamp().toString()
         val questionid = matchingActivity._id
 
-        val openEnded = OpenEnded(questionid, timeStamp, answer, username.toString(), teacherID)
+        openEndedList.add(OpenEnded(questionid, timeStamp, answer!!, username.toString(), teacherID))
 
-        Log.d("openz", openEnded.toString())
-        Log.d("openz", answer)
 
-        jkt.submitAnswerCallback(openEnded)
 
+        Log.d("opend ended answer", answer!!)
     }
 
 
     private fun newOpenEnded(holder: OpenEndedViewHolder, position: Int)
     {
-
-//        var rbGroup: RadioGroup = holder.binding.mcqRG
         current_pos++
         iterator++
+
+        if (quiz[position].q_type == 5) {
+            answer = holder.binding.opAnsV.text.toString()
+        }
 
         holder.binding.opAnsV.text.clear()
         if (haveInto == true)
         {
-            max = az.size -1
+            max = QuizArray.size -1
             current_poss = current_pos - 1
             holder.binding.tvProgress.text = "$current_poss/$max"
             holder.binding.progressBar.progress = current_poss
         }
         else
         {
-            max = az.size
+            max = QuizArray.size
             holder.binding.tvProgress.text = "$current_pos/$max"
             holder.binding.progressBar.progress = current_pos
         }
@@ -1169,73 +906,28 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         holder.binding.progressBar.max = max
 
 
-//
-//        Log.d("loggg", current_pos.toString())
-//        Log.d("loggg", iterator.toString())
-//
-//        if (rbGroup.checkedRadioButtonId == -1) {
-//
-//            // Toast.makeText(context, "please select your answer", Toast.LENGTH_SHORT).show()
-//            holder.binding.mcqSubmit.isEnabled = false
-//            rbGroup.clearCheck()
-//
-//        }
-//        else
-//            holder.binding.mcqSubmit.isEnabled = true
-
-
-
-        if(current_pos <= az!!.size)
+        if(current_pos <= QuizArray!!.size)
         {
-            setQuiz(iterator, current_pos, az)
-
+            setQuiz(iterator, current_pos, QuizArray)
 
         }
         else
         {
-            positive_results_alert(az)
-
+            positive_results_alert(position, QuizArray)
 
         }
-//        else{//Toast.makeText(context, "quiz khtm", Toast.LENGTH_SHORT).show()
-//            //fire_alert()
-//
-//            if (haveTFS)
-//            {
-////                    val intent = Intent(context,TruefalseActivity::class.java)
-////                    intent.putExtra("filterd_trufalses", filterd_trufalses)
-////                    context.startActivity(intent)
-////                    (context as Activity).finish()
-//
-//                val intent = Intent(context, TruefalseActivity::class.java).apply {
-//
-//                    // putExtra("filtered_topics", filterd_topics)
-//                    putExtra("filterd_trufalses", filterd_trufalses)
-//                    putExtra("scores", correct_answers)
-//                    putExtra("total_mcqs", az.size)
-//                }
-//                context.startActivity(intent)
-//
-//            }
-//            else{
-//                positive_results_alert(az)
-//            }
-//
-//        }
 
         when {
-            current_pos == az!!.size -> {
-                //holder.binding.mcqSubmit.text = "Finish"
-                //   Toast.makeText(context, "quiz done", Toast.LENGTH_SHORT).show()
+            current_pos == QuizArray!!.size -> {
 
             }
 
         }
+
     }
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+
         session = SessionManager(this.context)
 
         return if (viewType == VIEW_TYPE_TWO) {
@@ -1245,7 +937,6 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                     parent,
                     false
                 )
-
             )
         }
 
@@ -1285,17 +976,14 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
                     LayoutInflater.from(parent.context),
                     parent,
                     false
-                )
-            )
+                ))
     }
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         if (quiz[position].q_type == VIEW_TYPE_TWO) {
-
-            (holder as McqViewHolder).bind(position, holder)
-            // Toast.makeText(context, "mcq coming", Toast.LENGTH_SHORT).show()
+            (holder as McqViewHolder).bind(position)
         }
         else if (quiz[position].q_type == VIEW_TYPE_THREE)
         {
@@ -1305,15 +993,12 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
         {
             (holder as MatchViewHolder).bind(position, holder)
         }
-
         else if (quiz[position].q_type == VIEW_TYPE_FIVE)
         {
             (holder as OpenEndedViewHolder).bind(position, holder)
         }
-
         else {
             (holder as IntroViewHolder).bind(position, holder)
-            // Toast.makeText(context, "tf coming", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -1322,41 +1007,71 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
     }
 
     override fun getItemViewType(position: Int): Int {
-        Log.d("loggg", quiz[position].q_type.toString())
-        return quiz[position].q_type
+        Log.d("get quiz item", quiz[position].q_type.toString())
 
+        this.question = quiz[position].question
+
+        if (quiz[position].q_type == 2) {
+            question = quiz[position].mcqs
+        }
+
+        this.answer = quiz[position].answer
+        this.questionType = quiz[position].q_type.toString()
+
+        if (quiz[position].q_type == 4) {
+            statment1 = quiz[position].statement1
+            statment2 = quiz[position].statement2
+            statment3 = quiz[position].statement3
+            statment4 = quiz[position].statement4
+            answer1 = quiz[position].answer1
+            answer2 = quiz[position].answer2
+            answer3 = quiz[position].answer3
+            answer4 = quiz[position].answer4
+        }
+
+        if (quiz[position].q_type == 2) {
+            val option1 = "option1"
+            val option2 = "option2"
+            val option3 = "option3"
+            val option4 = "option4"
+
+            when (quiz[position].answer) {
+                option1 -> answer = quiz[position].option1
+                option2 -> answer = quiz[position].option2
+                option3 -> answer = quiz[position].option3
+                option4 -> answer = quiz[position].option4
+            }
+        }
+
+        return quiz[position].q_type
     }
+
 
     fun setQuizList(az: ArrayList<AllQuestion>, topicName: String) {
         setQuiz(iterator, current_pos, az)
-        this.az = az
+        this.QuizArray = az
         this.topicName = topicName
+
     }
 
     private fun setQuiz(iterator: Int, currentPos: Int, quizlists: ArrayList<AllQuestion>) {
+
         quiz = quizlists.subList(iterator,currentPos).toMutableList() as ArrayList<AllQuestion>
 
-        Log.d("loggg", quiz.toString())
+        Log.d("Set quiz", quiz.toString())
 
 
-        //onBindViewHolder()
-        //Toast.makeText(context, "Set quiz called", Toast.LENGTH_SHORT).show()
         notifyDataSetChanged()
 
     }
 
     @SuppressLint("NotifyDataSetChanged", "SetTextI18n")
-    fun positive_results_alert(az: ArrayList<AllQuestion>)
+    fun positive_results_alert(position: Int, az: ArrayList<AllQuestion>)
     {
         val builder = AlertDialog.Builder(context, R.style.CustomAlertDialog)
             .create()
         val view = LayoutInflater.from(context).inflate(R.layout.positive_feedback,null)
         val Score = view.findViewById<TextView>(R.id.Results_score_tv)
-
-        //This callback to Rasa will tell student is done with quiz
-
-
-        //topicName
 
         if (haveInto== true)
         {
@@ -1366,97 +1081,100 @@ class quiz_adapter (private val context: Context, val jkt: quiz_adapter.Callback
             size -=1
             Score.text = "You got"+" "+ correct_answers.toString() +" "+ "out of" +" " + size
 
-            var totalScore = size.toString()
-            var obtainedScore = correct_answers.toString()
-
-            session.saveTOtalScore(size.toString())
+            session.saveTotalScore(size.toString())
             session.saveObtainedScore(correct_answers.toString())
-
-
-
-
-//            val chatFragment: ChatFragment = ChatFragment()
-//
-//            val message: String =
-//                "/activity_done{\\\"score1\\\":\\\"$correct_answers\\\": \\\"score2\\\":\\\"$size\\\"}"
-//            chatFragment.sendMessagee(message, display = false)
-            //sendMessagee(user_id, message, display = false)
-
-
         }
         else
         {
             Score.text = "You got"+" "+ correct_answers.toString() +" "+ "out of" +" " + az.size
 
             session.saveObtainedScore(correct_answers.toString())
-            session.saveTOtalScore(az.size.toString())
-
-            val chatFragment = ChatFragment()
-
-
+            session.saveTotalScore(az.size.toString())
 
             message =
                 "done is"
-          //  chatFragment.sendMessagee(message, display = false)
-           // chatFragment.jugnu(message)
         }
 
-
-        saveScores(correct_answers, az.size)
+        Log.d("rag - all question, ", az.toString()) // AllQuestions [AllQuestion]
+        saveScores(position,correct_answers, az.size)
         val  button = view.findViewById<Button>(R.id.Results_return_to_chat)
         builder.setView(view)
         button.setOnClickListener {
 
-
-           // jkt.quizDoneCallback(true)
             builder.dismiss()
 
-            val intent = Intent(context, HomeActivity::class.java)
+            val intent = Intent(context, MainActivity::class.java)
              intent.putExtra("Total score",  message)
             intent.putExtra("Obtained", correct_answers)
             context.startActivity(intent)
             (context as Activity).finish()
+            Log.i("Results btn clicked", intent.toString())
 
         }
         builder.setCanceledOnTouchOutside(false)
         builder.show()
         session.quizDone("done")
-       // jkt.quizDonez()
         adapter.notifyDataSetChanged()
-
-
 
         if (!builder.isShowing)
         {
             Toast.makeText(context, "no builder", Toast.LENGTH_SHORT).show()
         }
-
     }
 
+    private fun getAnswer(question: AllQuestion): String {
+        return if (question.q_type == 2) when(question.answer) {
+            "option1" -> question.option1
+            "option2" -> question.option2
+            "option3" -> question.option3
+            "option4" -> question.option4
+            else -> "Not Found"
+        } else question.answer
+    }
 
-    private fun saveScores(correctAnswers: Int, totalQues: Int) {
-        //  if (!exerciseList.isEmpty())
-        // {
+    private fun saveScores(position: Int, correctAnswers: Int, totalQues: Int) {
         exerciseList = session.readListFromPref(this.context) as ArrayList<Exercise>
-        // }
-        val timeStamp = Time.timeStamp()
 
-       // topicName = session.get_topic()
-        exerciseList.add(Exercise(topicName, correctAnswers.toString(), totalQues.toString(), timeStamp))
-        // binding.exRv.adapter = adapter
+        val timeStamp = Time.timeStamp()
+        this.subjectName = session.get_subject()
+
+        val questions: MutableList<Question> = mutableListOf()
+        for ( item in QuizArray ) {
+            questions.add(
+                Question(
+                    if (item.q_type == 2) item.mcqs else item.question, getAnswer(item),
+                    item.statement1, item.answer1, item.statement2, item.answer2,
+                    item.statement3, item.answer3, item.statement4, item.answer4,
+                    item.statement5,item.answer5,item.link, item.file
+                )
+            )
+        }
+
+        val iterator = exerciseList.iterator()
+        while (iterator.hasNext()) {
+            val item = iterator.next()
+            if (item.subjectName == subjectName && item.topicName == topicName) {
+                iterator.remove()
+            }
+        }
+
+        exerciseList.add(
+            Exercise(questionType,max,subjectName,topicName, correctAnswers.toString(), totalQues.toString(), timeStamp, questions)
+        )
 
         session.writeListInPref(this.context,exerciseList)
 
-        Log.d("veg", exerciseList.size.toString())
+        Log.d("Save score", exerciseList.size.toString())
+        question?.let { Log.d("question of all type", it) }
+        answer?.let { Log.d("answer of all type", it) }
+        Log.d("Quiz maximum size", max.toString())
     }
 
     interface Callbackinter {
+
         fun submitAnswerCallback(openEnded: OpenEnded)
-
-
         fun quizDonez()
+
     }
-
-
 
 }

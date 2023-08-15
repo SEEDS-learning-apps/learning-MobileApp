@@ -5,87 +5,87 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activities.acivity.downloadQuizActivity">
-    <com.google.android.material.appbar.AppBarLayout
+    tools:context=".Activities.DashboardActivities.downloadQuizActivity"
+    android:background="?attr/backgroundcolor">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="2dp"
-        android:id="@+id/toolsss"
-        android:layout_alignParentTop="true">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/myToolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:title="@string/Downloaded_Materials"
-                android:background="?attr/colorPrimary"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/Backbutton_downloadmaterials"
+            android:layout_width="61dp"
+            android:layout_height="36dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/back"
+            app:tint="?attr/textcolor"/>
 
-<!--            <Button-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:layout_marginEnd="8dp"-->
-<!--                android:layout_marginBottom="8dp"-->
-<!--                android:backgroundTint="@color/white"-->
-<!--                android:padding="5dp"-->
-<!--                android:text="@string/Download"-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/Download_materials"
+            android:textColor="?attr/textcolor"
+            android:textSize="23dp"
+            android:textStyle="bold" />
 
-<!--                android:id="@+id/dwnQuiz"-->
-<!--                android:textColor="@color/black"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/myToolbar"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </com.google.android.material.appbar.AppBarLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        android:padding="15dp"
-        android:layout_below="@+id/toolsss">
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:padding="15dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/dwnQuiz_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:visibility="gone"
-        tools:listitem="@layout/download_item">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dwnQuiz_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/download_item"
+            android:layout_marginTop="45dp">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        </androidx.recyclerview.widget.RecyclerView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:id="@+id/no_downloads"
-        android:orientation="vertical">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:src="@drawable/download" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/seed_light_blue"
-        android:fontFamily="@font/roboto"
-        android:layout_gravity="center"
-        android:text="@string/no_downloads_available"/>
+        <LinearLayout
+            android:id="@+id/no_downloads"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/download"
+                app:tint="?attr/textcolor"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/roboto"
+                android:text="@string/no_downloads_available"
+                android:textColor="@color/seed_light_blue"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

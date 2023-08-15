@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
@@ -8,23 +6,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rltv">
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:id="@+id/sender_linear">
+        android:id="@+id/sender_linear"
+        android:gravity="right"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="2dp">
+
+
         <TextView
             android:id="@+id/tv_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="4dp"
             android:background="@drawable/send_bubble"
-            android:backgroundTint="@color/seed_light_blue"
             android:padding="14dp"
             android:textAppearance="@style/messageStyle"
             android:text="This is a sample message that will appear"
@@ -41,17 +44,18 @@
             android:padding="3dp"
             android:text="05:apr:2022"
             android:textColor="@color/white"
-            android:textSize="11sp" />
+            android:textSize="10sp" />
 
 
-        android:textSize="14sp" />
+
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:id="@+id/bot_linear">
+        android:id="@+id/bot_linear"
+        android:layout_marginTop="2dp">
 
         <TextView
             android:id="@+id/tv_bot_message"
@@ -60,16 +64,15 @@
             android:layout_below="@+id/bot_msg_time"
             android:layout_alignParentStart="true"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="4dp"
-            android:background="@drawable/receive_bubble"
-            android:backgroundTint="#a5a5a5"
-            android:padding="18dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="4dp"
+            android:background="@drawable/receive_bubble"
+            android:padding="18dp"
             android:text="This is a sample message that will appear"
             android:textAppearance="@style/messageStyle"
             android:textColor="@android:color/white"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:visibility="visible" />
 
         <TextView
@@ -82,22 +85,20 @@
             android:padding="3dp"
             android:text="05:apr:2022"
             android:textColor="@color/white"
-            android:textSize="11sp" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/tv_bot_message">
+            android:textSize="10sp" />
+
+
 
         <LinearLayout
             android:id="@+id/suggestion_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:orientation="vertical"
             android:gravity="center"
+            android:orientation="vertical"
             android:visibility="gone">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/suggesstion_btn1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -107,12 +108,12 @@
                 android:text=""
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/suggesstion_btn2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/suggesstion_btn2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -122,13 +123,13 @@
                 android:text=""
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/suggesstion_btn3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/suggesstion_btn1"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/suggesstion_btn3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -138,12 +139,12 @@
                 android:text=""
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/suggesstion_btn4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/suggesstion_btn1" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/suggesstion_btn4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -153,27 +154,27 @@
                 android:text=""
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/suggesstion_btn3"
                 app:layout_constraintTop_toBottomOf="@+id/suggesstion_btn2" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/suggesstion_btn5"
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/rounded_corner"
                 android:padding="15dp"
                 android:text=""
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/suggesstion_btn4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/suggesstion_btn3" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/suggesstion_btn6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -183,26 +184,27 @@
                 android:text="@string/Next"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/suggesstion_btn3"
                 app:layout_constraintTop_toBottomOf="@+id/suggesstion_btn4" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/suggesstion_btnNXT"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/rounded_corner"
                 android:padding="15dp"
-                android:layout_marginTop="10dp"
                 android:text="@string/Next"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/suggesstion_btn5" />
-            <Button
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/suggesstion_btnStop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -217,9 +219,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/suggesstion_btnNXT" />
 
-        </LinearLayout>
-        </RelativeLayout>
 
+        </LinearLayout>
     </RelativeLayout>
 
 </RelativeLayout>
+
+

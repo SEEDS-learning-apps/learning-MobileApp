@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:paddingRight="20dp"
     android:paddingLeft="20dp"
     android:paddingBottom="20dp"
-    android:background="@color/seed_light_blue"
-    android:layout_height="wrap_content">
+    android:background="@drawable/custom_button_tab"
+    android:layout_height="wrap_content"
+    android:theme="@style/PauseDialog">
 
 
     <TextView
@@ -19,34 +19,37 @@
         android:text="@string/accessCode_Dialog_text"
         android:textSize="20sp"
         android:padding="20dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_marginTop="25sp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:endIconMode="clear_text"
-        app:hintTextColor="@color/white"
+        app:hintTextColor="@color/black"
         >
     <EditText
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/code_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/accessCodehere"
         android:textSize="16sp"
-        android:textColorHint="@color/white"
-        android:padding="20dp"
-        android:textColor="@color/white" />
+        android:textColorHint="@color/editTextHint"
+        android:padding="30dp"
+        android:textColor="@color/black"
+        android:focusableInTouchMode="true" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/code_return_to_chat"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:text="@string/Done"
         android:textSize="16sp"
-        android:backgroundTint="@color/seed_dark_blue"
-        android:textColor="@color/score_color" />
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_close"
+        android:textColor="@color/background" />
 
 
 

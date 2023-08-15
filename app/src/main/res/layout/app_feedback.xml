@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:paddingRight="20dp"
+    android:paddingLeft="20dp"
+    android:paddingBottom="20dp"
+    android:background="@color/background"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Setting_Feedback"
+        android:textSize="20sp"
+        android:padding="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="25sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Tell us what you like about the app or what should we improve"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black" />
+
+
+    <EditText
+        android:id="@+id/Text_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="20dp"
+        android:hint="Your feedback is valuable to us!"
+        android:textColorHint="#8B8A8A"
+        android:lines="5"
+        android:background="@drawable/editext_background"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:padding="5dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/feedback_laterbtn"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="30dp"
+            android:backgroundTint="@color/seed_dark_blue"
+            android:text="Later"
+            android:textColor="@color/score_color"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/feedback_submitbtn"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="10dp"
+            android:autoLink="email"
+            android:backgroundTint="@color/seed_dark_blue"
+            android:text="Submit"
+            android:textColor="@color/score_color"
+            android:textSize="16sp" />
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+</LinearLayout>

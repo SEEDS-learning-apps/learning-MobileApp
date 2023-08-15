@@ -1,7 +1,9 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <solid
-        android:color="@color/seed_light_blue"/>
+    <gradient  android:angle="45" android:startColor="?attr/chat_button_background_start"
+
+        android:endColor="?attr/chat_button_background_end"
+        android:type="linear"/>
     <corners
         android:radius="7dp"/>
 

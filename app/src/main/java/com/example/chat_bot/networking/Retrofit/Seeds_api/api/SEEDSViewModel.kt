@@ -1,13 +1,12 @@
 package com.example.chat_bot.networking.Retrofit.Seeds_api.api
 
-import McqsListss
-import Quest
+import McqsList
+import com.example.chat_bot.Lists.Quest
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.chat_bot.Lists.*
-import com.example.chat_bot.Room.Entities.Data
 import com.example.chat_bot.Room.Entities.OnlineUserData
 import com.example.chat_bot.data.*
 
@@ -20,10 +19,9 @@ import retrofit2.Response
 
 class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : ViewModel() {
 
-    val mcqList = MutableLiveData<McqsListss>()
-   // val matchList = MutableLiveData<Matchpairs>()
+    val mcqList = MutableLiveData<McqsList>()
     val topicListss = MutableLiveData<TopicsList>()
-    val gradeList = MutableLiveData<gradesList>()
+    val gradeList = MutableLiveData<gradeList>()
     val agegrouplist = MutableLiveData<AgegroupList>()
     val subjectList = MutableLiveData<SubjectList>()
     val tfList = MutableLiveData<trufalses>()
@@ -33,25 +31,6 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
     val myresponse: MutableLiveData<Response<LoginData>> = MutableLiveData()
     val op_response: MutableLiveData<Response<openEndedResponse>> = MutableLiveData()
 
-
-     fun getAllMcqs() {
-
-         viewModelScope.launch {
-             val response = repository.getAllMcqs()
-             response.enqueue(object : Callback<McqsListss> {
-                 override fun onResponse(call: Call<McqsListss>, response: Response<McqsListss>) {
-                     if (response?.body() != null)
-                     {mcqList.postValue(response.body())}
-
-                 }
-                 override fun onFailure(call: Call<McqsListss>, t: Throwable) {
-                     errorMessage.postValue(t.message.toString())
-
-                 }
-             })
-         }
-
-    }
      fun getQuiz(topidID: String) {
 
         viewModelScope.launch {
@@ -70,7 +49,6 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
                 }
             })
         }
-
     }
 
     fun getUserDatabyName(username: String) {
@@ -86,9 +64,7 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
                     {
                         errorMessage.postValue(response.code().toString())
 
-
                     }
-
 
                 }
 
@@ -102,37 +78,15 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
 
     }
 
-
-
-//    fun getAllMatchingPairs() {
-//
-//        viewModelScope.launch {
-//            val response = repository.getAllmatchpairs()
-//            response.enqueue(object : Callback<Matchpairs> {
-//                override fun onResponse(call: Call<Matchpairs>, response: Response<Matchpairs>) {
-//                    if (response?.body() != null)
-//                    {matchList.postValue(response.body())}
-//
-//                }
-//                override fun onFailure(call: Call<Matchpairs>, t: Throwable) {
-//                    errorMessage.postValue(t.message.toString())
-//
-//                }
-//            })
-//        }
-//
-//    }
-
      fun getAllGrades() {
-
          GlobalScope.launch (Dispatchers.IO){
         val response = repository.getAllGrades()
-        response.enqueue(object : Callback<gradesList> {
-            override fun onResponse(call: Call<gradesList>, response: Response<gradesList>) {
+        response.enqueue(object : Callback<gradeList> {
+            override fun onResponse(call: Call<gradeList>, response: Response<gradeList>) {
                 if (response?.body() != null)
                 {gradeList.postValue(response.body())}
             }
-            override fun onFailure(call: Call<gradesList>, t: Throwable) {
+            override fun onFailure(call: Call<gradeList>, t: Throwable) {
                 errorMessage.postValue(t.message.toString())
             }
         })
@@ -166,15 +120,7 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
              {
                  errorMessage.postValue(response.toString())
              }
-//             response.enqueue(object : Callback<TopicsList> {
-//                 override fun onResponse(call: Call<TopicsList>, response: Response<TopicsList>) {
-//                     if (response?.body() != null)
-//                     {topicListss.postValue(response.body())}
-//                 }
-//                 override fun onFailure(call: Call<TopicsList>, t: Throwable) {
-//                     errorMessage.postValue(t.cause.toString())
-//                 }
-//             })
+
          }
 
     }
@@ -195,27 +141,7 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
 
     }
 
-     fun getAllTF() {
-        val response = repository.getAllTF()
-        response.enqueue(object : Callback<trufalses> {
-            override fun onResponse(call: Call<trufalses>, response: Response<trufalses>) {
-                if (response?.body() != null)
-                {
-                    response.body().toString()
-
-
-                    tfList.postValue(response.body())
-
-
-
-                }
-            }
-            override fun onFailure(call: Call<trufalses>, t: Throwable) {
-                errorMessage.postValue(t.cause.toString())
-            }
-        })
-    }
-    fun create_user(user: Userz)
+    fun create_user(user: Userinfo)
     {
         viewModelScope.launch {
             val response : Response<LoginData> = repository.createUser(user)
@@ -223,7 +149,7 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
         }
     }
 
-    fun submitOpenEnded(openEnded: OpenEnded)
+    fun submitOpenEnded(openEnded: com.example.chat_bot.data.OpenEnded)
     {
         viewModelScope.launch {
             val response : Response<openEndedResponse> = repository.submitOpenEnded(
@@ -233,80 +159,5 @@ class SEEDSViewModel constructor(private val repository: SEEDSRepository)  : Vie
     }
 
 
-
-//    fun create_user(user: User)
-//    {
-//        viewModelScope.launch {
-//            val response : Call<LoginData> = repository.createUser(user)
-//            response.enqueue(object : Callback<LoginData> {
-//                override fun onResponse(call: Call<LoginData>, response: Response<LoginData>) {
-//                    if (response?.body() != null)
-//                    {
-//                        response.body().toString()
-//
-//
-//                        userList.postValue(response.body())
-//
-//
-//
-//                    }
-//                }
-//                override fun onFailure(call: Call<LoginData>, t: Throwable) {
-//                    errorMessage.postValue(t.cause.toString())
-//                }
-//            })
-//
-//        }
-//    }
-
-    fun login_user(user: Userz)
-    {
-        viewModelScope.launch {
-            val response : Response<LoginData> = repository.loginUser(user)
-            myresponse.value = response
-        }
-    }
-//    fun login_user(user: User)
-//    {
-//        viewModelScope.launch {
-//            val response : Call<LoginData> = repository.loginUser(user)
-//            response.enqueue(object : Callback<LoginData> {
-//                override fun onResponse(call: Call<LoginData>, response: Response<LoginData>) {
-//                    if (response?.body() != null)
-//                    {
-//                        response.body().toString()
-//
-//                        userList.postValue(response.body())
-//
-//
-//
-//                    }
-//                }
-//                override fun onFailure(call: Call<LoginData>, t: Throwable) {
-//                    errorMessage.postValue(t.cause.toString())
-//                }
-//            })
-//        }
-//    }
-
-//    fun login_user(user: User)
-//    {
-//        viewModelScope.launch {
-//            val response : Call<LoginData> = repository.getUser(user)
-//            response.enqueue(object : Callback<LoginData> {
-//                override fun onResponse(call: Call<LoginData>, response: Response<LoginData>) {
-//                    if (response?.body() != null)
-//                    {
-//                        response.body().toString()
-//                        userList.postValue(response.body())
-//
-//                    }
-//                }
-//                override fun onFailure(call: Call<LoginData>, t: Throwable) {
-//                    errorMessage.postValue(t.cause.toString())
-//                }
-//            })
-//        }
-//    }
 }
 

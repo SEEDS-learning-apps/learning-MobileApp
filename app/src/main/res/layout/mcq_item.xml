@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:fillViewport="true"
-    >
-
+    android:fillViewport="true">
 
     <LinearLayout
         android:id="@+id/mainlinear"
@@ -31,6 +29,7 @@
                 android:padding="15dp"
                 android:text="@string/mcq"
                 android:textSize="16sp"
+                android:textColor="?attr/textcolor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -51,7 +50,8 @@
                     android:layout_weight="1"
                     android:indeterminate="false"
                     android:minHeight="50dp"
-                    android:progress="0" />
+                    android:progress="0"
+                    android:backgroundTint="@color/progressBarColor" />
 
                 <TextView
                     android:id="@+id/tv_progress"
@@ -59,11 +59,12 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="15dp"
-                    android:textColorHint="#7A8089"
+                    android:textColor="?attr/textcolor"
                     android:textSize="14sp"
                     tools:text="0/10" />
 
             </LinearLayout>
+
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="0dp"
@@ -91,6 +92,7 @@
                     android:layout_marginTop="16dp"
                     android:checked="false"
                     android:text="Option 1"
+                    android:textColor="?attr/textcolor"
                     android:focusable="false"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -104,6 +106,7 @@
                     android:layout_marginTop="16dp"
                     android:checked="false"
                     android:text="Option 2"
+                    android:textColor="?attr/textcolor"
                     android:textSize="16sp"
                     app:layout_constraintTop_toBottomOf="@+id/mcq_optOne" />
 
@@ -115,9 +118,9 @@
                     android:layout_marginTop="16dp"
                     android:checked="false"
                     android:text="Option 3"
+                    android:textColor="?attr/textcolor"
                     android:textSize="16sp"
                     app:layout_constraintTop_toBottomOf="@+id/mcq_optTwo" />
-
 
                 <RadioButton
                     android:id="@+id/mcq_optFour"
@@ -127,8 +130,10 @@
                     android:layout_marginTop="16dp"
                     android:checked="false"
                     android:text="Option 4"
+                    android:textColor="?attr/textcolor"
                     android:textSize="16sp"
                     app:layout_constraintTop_toBottomOf="@+id/mcq_optThree" />
+
             </RadioGroup>
 
             <Button

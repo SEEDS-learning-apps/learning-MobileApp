@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?attr/backgroundcolor">
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_view1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="false"
+            app:lottie_rawRes="@raw/loading"
+            android:layout_gravity="center"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_view2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="false"
+            app:lottie_rawRes="@raw/word"
+            android:layout_gravity="center"
+            app:lottie_colorFilter="?attr/textcolor"/>
+
+    </LinearLayout>
+
+
+    <com.anychart.AnyChartView
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+       >
+
+        <ImageView
+            android:id="@+id/Backbutton_Learningprogress"
+            android:layout_width="61dp"
+            android:layout_height="36dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:src="@drawable/back"
+            app:tint="?attr/textcolor"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/learning_progress_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="@string/Learning_progress"
+            android:textColor="?attr/textcolor"
+            android:textSize="23dp" />
+
+    </RelativeLayout>
+    <!-- Delete Button -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/delete_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:cardCornerRadius="30dp"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:alpha="0.8"
+        android:clickable="true"
+        android:focusable="true"
+        android:contentDescription="Delete"
+        android:onClick="onDeleteButtonClick">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/dashboard_cardview_background"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/profile_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/exercise_delete_btn" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</FrameLayout>

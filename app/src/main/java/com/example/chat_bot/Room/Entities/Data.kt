@@ -12,6 +12,7 @@ data class Data(
     val dev_id: String,
     val grade: String,
     val language: String,
+
     @PrimaryKey(autoGenerate = false)
     val name: String
 )

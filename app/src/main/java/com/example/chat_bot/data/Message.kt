@@ -14,6 +14,5 @@ data class Message(
     var topic: String,
     @TypeConverters(ButtonConverter::class)
     var buttons: List<com.example.chat_bot.Rasa.rasaMsg.Button>,
-
     val username: String,
     )

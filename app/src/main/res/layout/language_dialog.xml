@@ -8,7 +8,7 @@
     android:paddingRight="20dp"
     android:paddingLeft="20dp"
     android:paddingBottom="20dp"
-    android:background="@color/seed_light_blue"
+    android:background="@drawable/custom_button_tab"
     android:layout_height="wrap_content">
 
 
@@ -16,7 +16,7 @@
         android:id="@+id/mcqResults_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Setting_changelanguage"
+        android:text="@string/Dashboard_changelanguage"
         android:textSize="20sp"
         android:padding="20dp"
         android:textColor="@color/white"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:textColorHint="@color/white"
         android:text="@string/German"
-        android:backgroundTint="@color/seed_dark_blue"
+        android:backgroundTint="@color/dialog_button_colour"
         android:textColor="@color/white" />
 
     <Button
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:textColorHint="@color/white"
         android:text="@string/Spanish"
-        android:backgroundTint="@color/seed_dark_blue"
+        android:backgroundTint="@color/dialog_button_colour"
         android:textColor="@color/white" />
 
     <Button
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:textColorHint="@color/white"
         android:text="@string/English"
-        android:backgroundTint="@color/seed_dark_blue"
+        android:backgroundTint="@color/dialog_button_colour"
         android:textColor="@color/white" />
 
     <Button
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:textColorHint="@color/white"
         android:text="@string/Greek"
-        android:backgroundTint="@color/seed_dark_blue"
+        android:backgroundTint="@color/dialog_button_colour"
         android:textColor="@color/white" />
 
 
@@ -65,8 +65,8 @@
         android:layout_height="wrap_content"
         android:text="@string/Done"
         android:textSize="16sp"
-        android:backgroundTint="@color/seed_dark_blue"
-        android:textColor="@color/score_color" />
+        android:backgroundTint="@color/dialog_button_colour"
+        android:textColor="@color/white" />
 
 
 

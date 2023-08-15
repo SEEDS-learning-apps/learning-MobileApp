@@ -1,31 +1,40 @@
 package com.example.chat_bot.ui
+
+
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chat_bot.Activities.HomePage.ExerciseFragment
+import com.example.chat_bot.Activities.HomePage.HistoryFragment
 import com.example.chat_bot.data.Exercise
-import com.example.chat_bot.databinding.ExerciseItemBinding
+import com.example.chat_bot.databinding.HistoryItemBinding
+import com.example.chat_bot.utils.SessionManager
 
 
-
-class ExerciseHistoryAdapter(val context: ExerciseFragment):  RecyclerView.Adapter<ExerciseHistoryAdapter.exViewholder>(){
+class ExerciseHistoryAdapter(val context: HistoryFragment):  RecyclerView.Adapter<ExerciseHistoryAdapter.exViewholder>(){
 
     var exerciseList: ArrayList<Exercise> = ArrayList()
+    lateinit var session: SessionManager
 
+    inner class exViewholder(val binding: HistoryItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    inner class exViewholder(val binding: ExerciseItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
-            itemView.setOnClickListener{
-                exerciseList.removeAt(absoluteAdapterPosition)
-                notifyItemRemoved(absoluteAdapterPosition)
+            binding.deleteButton.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    exerciseList.removeAt(position)
+                    notifyItemRemoved(position)
+                    session.removeListInPref(exerciseList)
+                    context.onExerciseDeleted()
+                }
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseHistoryAdapter.exViewholder {
+        session = SessionManager(parent.context)
         return exViewholder(
-            ExerciseItemBinding.inflate(
+            HistoryItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -53,5 +62,17 @@ class ExerciseHistoryAdapter(val context: ExerciseFragment):  RecyclerView.Adapt
 
         Log.d("loggg", exerciseList.toString())
         notifyDataSetChanged()
+        checkEmptyState()
+
     }
+
+    private fun checkEmptyState() {
+        val isEmpty = exerciseList.isEmpty()
+        context.manageViews(!isEmpty)
+    }
+
+    interface ExerciseDeleteListener {
+        fun onExerciseDeleted()
+    }
+
 }

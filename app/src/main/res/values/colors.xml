@@ -1,28 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#1436df</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
-    <color name="colorPrimary">#1979BE</color>
-    <color name="colorPrimaryDark">#202C53</color>
-    <color name="colorAccent">#f0f2f7</color>
+    <color name="colorPrimaryblue">#1979BE</color>
     <color name="editTextHint">#a5a5a5</color>
-    <color name="editTextColor">#ccdceb</color>
+    <color name="grey">#a5a5a5</color>
 
     <color name="light_blue_600">#FF039BE5</color>
     <color name="light_blue_900">#FF01579B</color>
-    <color name="light_blue_A200">#FF40C4FF</color>
-    <color name="light_blue_A400">#FF00B0FF</color>
-    <color name="black_overlay">#66000000</color>
     <color name="seed_light_blue">#1979BE</color>
     <color name="seed_dark_blue">#202C53</color>
-    <color name="seed_light">#004a9f</color>
 
     <color name="score_color">#FFD6D2D2</color>
-    <color name="settings_background">#003938</color>
+
+    <!--    Introduction screen-->
+    <color name="inactive">#C4C4C4</color>
+    <color name="active">#50C2C9</color>
+    <color name="background">#F0F4F3</color>
+    <color name="buttontext">#50C2C9</color>
+    <color name="profile">#FECBF9FF</color>
+    <color name="type_a_message_colour">#212121</color>
+    <color name="dialog_button_colour">#354B92</color>
+    <color name="red">#E71515</color>
+
+    <!--    Actvity-->
+
+    <color name="Activity_next_btn">#B2B2B2</color>
+    <color name="progressBarColor">#2068AB</color>
 
 
+    <!--   light theme Buttons-->
+    <color name="Button_start_light">#37adfd</color>
+    <color name="Button_end_light">#2ce5fd</color>
+    <color name="chat_Button_start_light">#096DD1</color>
+    <color name="chat_Button_end_light">#36BBF9</color>
+    <color name="chat_Background_image_light">#447E99</color>
+    <color name="chat_background_start_light">#E4F0FF</color>
+    <color name="chat_background_middle_light">#F6F6F8</color>
+    <color name="chat_background_end_light">#F6F7F7</color>
+    <color name="history_background_light">#EDEEEE</color>
+    <color name="custom_Button_start_light">#2AF598</color>
+    <color name="custom_Button_end_light">#009EFD</color>
+    <color name="mild_black">#1F1F1F</color>
+    <color name="background_mild_black">#8AB7C2</color>
+    <color name="user_chat_start_light">#3B7DA9</color>
+    <color name="user_chat_end_light">#285064</color>
+    <color name="bot_chat_start_light">#6A6A6B</color>
+    <color name="bot_chat_end_light">#414142</color>
+    <color name="Dashboard_cardviewBackground_light" >#A7E2F0</color>
+    <color name="Dashboard_backgroundcolor_start_light" >#E0EDF4</color>
+    <color name="Dashboard_backgroundcolor_end_light" >#4193BB</color>
+    <color name="Dashboard_backgroundcurve_start_light">#67A8D5</color>
+    <color name="Dashboard_backgroundcurve_middle_light">#C8D5D7</color>
+    <color name="Dashboard_backgroundcurve_end_light">#EEF5F6</color>
+    <color name="flashcard_background_end_light">#AABDCC</color>
+    <color name="Dashboard_backgroundpicture_light">#48A3BA</color>
+    <color name="Dashboard_Cardviewbackground_start_light">#E6E9E8</color>
+    <color name="Dashboard_Cardviewbackground_end_light">#5B97B8</color>
+    <color name="Dashboard_profilecardview_start_light">#E6E9E8</color>
+    <color name="Dashboard_profilecardview_end_light">#5B97B8</color>
+    <color name="flashcard_light">#124F9D</color>
+
+
+    <!--   Dark theme Buttons-->
+    <color name="Button_start_dark">#99C4E3</color>
+    <color name="Button_end_dark">#4882B1</color>
+    <color name="chat_Button_start_dark">#7EB7E1</color>
+    <color name="chat_Button_end_dark">#377DB6</color>
+    <color name="chat_Background_image_dark">#758B91</color>
+    <color name="chat_background_start_dark">#0F1522</color>
+    <color name="chat_background_middle_dark">#343434</color>
+    <color name="chat_background_end_dark">#0E0E0E</color>
+    <color name="history_background_dark">#1F1F1F</color>
+    <color name="custom_Button_start_dark">#3BF6A0</color>
+    <color name="custom_Button_end_dark">#4882B1</color>
+    <color name="background_black">#000000</color>
+    <color name="user_chat_start_dark">#3B7DA9</color>
+    <color name="user_chat_end_dark">#5794B1</color>
+    <color name="bot_chat_start_dark">#858585</color>
+    <color name="bot_chat_end_dark">#545455</color>
+    <color name="Dashboard_cardviewBackground_dark" >#262934</color>
+    <color name="Dashboard_backgroundcolor_start_dark" >#1F1F20</color>
+    <color name="Dashboard_backgroundcolor_end_dark" >#303030</color>
+    <color name="Dashboard_backgroundcurve_start_dark">#0F1522</color>
+    <color name="Dashboard_backgroundcurve_middle_dark">#343434</color>
+    <color name="Dashboard_backgroundcurve_end_dark">#0E0E0E</color>
+    <color name="Dashboard_backgroundpicture_dark">#79797A</color>
+    <color name="Dashboard_Cardviewbackground_start_dark">#577185</color>
+    <color name="Dashboard_Cardviewbackground_end_dark">#081426</color>
+    <color name="Dashboard_profilecardview_start_dark">#577185</color>
+    <color name="Dashboard_profilecardview_end_dark">#0B2133</color>
+    <color name="flashcard_dark">#323333</color>
 </resources>
