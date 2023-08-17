@@ -17,14 +17,15 @@ Formed through a dynamic collaboration between three distinguished institutions 
 ## Table of contents
 1. [Project Objectives](#project-objectives)
 2. [Getting Started](#getting-started)
-3. [Features](#features)
-4. [App Architecture](#app-architecture)
-5. [Libraries and Framework](#libraries-and-framework) 
-6. [Comprehensive Data Storage Approach in the SEEDS Android App](#comprehensive-data-storage-approach-in-the-seeds-android-app)
-7. [Resources](#resources)
-8. [App Configuration](#app-configuration)
-9. [Screenshots](#screenshots) 
-10. [License](#license)
+3. [Integration with Backend and Chatbot API](#integration-with-backend-and-chatbot-api)
+4. [Features](#features)
+5. [App Architecture](#app-architecture)
+6. [Libraries and Framework](#libraries-and-framework) 
+7. [Comprehensive Data Storage Approach in the SEEDS Android App](#comprehensive-data-storage-approach-in-the-seeds-android-app)
+8. [Resources](#resources)
+9. [App Configuration](#app-configuration)
+10. [Screenshots](#screenshots) 
+11. [License](#license)
 
 ## Project Objectives
  <div align="justify">The primary objective of the SEEDS project is to transcend the challenges presented by post-pandemic education. Beyond this, the project aims to amplify the learning experience through meticulous design strategies. By integrating an interactive user interface (UI) and an extensive range of features, the application is meticulously crafted to foster an engaging and dynamic learning process. Rooted in a user-centric approach, the app actively encourages participation and exploration, effectively transforming education into an enriching journey. Furthermore, the project caters to the diverse linguistic backgrounds of learners by offering support in four prominent languages: English, German, Spanish, and Greek. This multilingual capability ensures that students from various countries can comfortably engage with the app in their native language, promoting a sense of familiarity and ease while learning. Whether students are immersed in multimedia-rich lessons, participating in interactive quizzes, or interacting with the AI-driven Rasa chatbot, the project prioritizes the creation of meaningful engagements that enhance comprehension.
@@ -45,6 +46,12 @@ Welcome to the SEEDS Android application repository! Whether you're a student ea
 - **Access Learning Materials**: Depending on your internet connection, you can access the app's learning materials in different modes. When online, you can engage with the Rasa chatbot, delve into multimedia-enriched lessons, and explore interactive quizzes. In offline mode, you can still access previously downloaded learning materials and utilize the offline chatbot for a seamless experience.
 
 - **Unlock Private Content**: If your teachers have shared private content, you can access it by using the Access Code they provide. This ensures you receive personalized educational content that aligns with your learning goals.
+
+## Integration with Backend and Chatbot API
+The SEEDS Android application is seamlessly integrated with a robust backend system that efficiently stores and manages user data on the web. This backend infrastructure plays a pivotal role in ensuring a seamless and responsive experience for users. In addition, the app leverages a sophisticated chatbot API that adds an intelligent conversational layer to the learning process, enhancing user engagement and personalization. This API is also complemented by a Telegram interface, providing users with multiple avenues to interact with the app's dynamic chatbot. To explore the technical underpinnings of these components, you can visit the following GitHub repositories:
+- [SEEDS Backend Repository](https://github.com/SEEDS-learning-apps/content-creation-WebApp-Backend)
+- [Chatbot API Repository](https://github.com/SEEDS-learning-apps/learning-Chatbot)
+- [Telegram API Interface Repository](https://github.com/SEEDS-learning-apps/learning-Telegram-Chatbot)
 
 ## Features
 Discover the diverse and innovative features that define the SEEDS Android application:

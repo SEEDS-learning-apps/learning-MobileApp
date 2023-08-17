@@ -24,6 +24,75 @@
     <string name="flash_cards">Flash-Karten</string>
     <string name="no_flash_cards">Es werden keine Aktivitäten abgeschlossen, um die Karteikarten anzuzeigen. Versuchen Sie, einige Aktivitäten zu vervollständigen</string>
     <string name="erasmus_declaration">Von der Europäischen Union finanziert. Die geäußerten Ansichten und Meinungen entsprechen jedoch ausschließlich denen des Autors bzw. der Autoren und spiegeln nicht zwingend die der Europäischen Union oder der Europäischen Exekutivagentur für Bildung und Kultur (EACEA) wider. Weder die Europäische Union noch die EACEA können dafür verantwortlich gemacht werden.</string>
+    <string name="termsofuse">
+    Wir nehmen den Datenschutz ernst und verpflichten uns,
+    den Schutz und die Sicherheit Ihrer Daten zu gewährleisten.\n\n
+
+    Diese Datenschutzerklärung beschreibt, wie Ihre Daten erhoben,
+    verwendet und gespeichert werden, wenn Sie unsere mobile Anwendung
+    für das Forschungsprojekt nutzen.\n\n
+
+    1. Datenerhebung und -verwendung: Wir erheben minimale Daten, um ein Benutzerprofil zu erstellen,
+    einschließlich des von Ihnen gewählten Benutzernamens und Passworts
+    sowie Ihrer Geräte-ID. Diese Informationen werden ausschließlich zur
+    Erstellung Ihres Benutzerprofils innerhalb der Anwendung verwendet und
+    sind nicht mit personenbezogenen Daten verknüpft. Wir sammeln keine
+    persönlichen Daten wie Name, Adresse, Kontaktdaten oder andere sensible
+    Informationen.\n\n
+
+    2. Datenspeicherung und -verwaltung: Alle erfassten Daten werden von unserem Projektteam auf Servern in Deutschland
+    sicher gespeichert und verwaltet. Wir ergreifen strenge Maßnahmen, um Ihre Daten
+    vor unbefugtem Zugriff, Verwendung oder Offenlegung zu schützen.\n\n
+
+    3. Forschungszwecke: Die von der Anwendung gesammelten Nutzungsdaten werden ausschließlich für
+    Forschungszwecke im Zusammenhang mit dem Projekt verwendet. Diese Daten werden
+    analysiert, um Erkenntnisse über die Funktionalität der Anwendung, das Nutzerverhalten
+    und die Gesamtleistung zu gewinnen.\n\n
+
+    4. Aufbewahrung der Daten: Wir werden die gesammelten Daten für einen Zeitraum von einem Jahr nach Beendigung
+    des Projekts aufbewahren. Nach Ablauf dieses Zeitraums werden alle Daten sicher gelöscht,
+    so dass sie nicht mehr zugänglich oder nachvollziehbar sind.\n\n
+
+    5. Weitergabe von Daten: Wir geben keine Nutzerdaten an Dritte weiter, es sei denn, wir sind gesetzlich dazu
+    verpflichtet oder haben Ihre ausdrückliche Zustimmung. Nur unser Projektteam hat Zugriff
+    auf die Daten, und wir halten uns an strenge Vertraulichkeitsprotokolle.\n\n
+
+    6. Einverständnis: Durch die Nutzung unserer mobilen Anwendung erklären Sie sich mit der Erfassung und Nutzung
+    der in dieser Erklärung beschriebenen begrenzten Daten einverstanden. Ihre Teilnahme an dem
+    Forschungsprojekt ist vollkommen freiwillig, und Sie können Ihre Zustimmung jederzeit widerrufen,
+    indem Sie die Nutzung der Anwendung einstellen.\n\n
+
+    7. Datensicherheit: Wir setzen branchenübliche Sicherheitsmaßnahmen ein, um Ihre Daten vor unbefugtem Zugriff, Verlust,
+    Veränderung oder Offenlegung zu schützen. Bitte beachten Sie jedoch, dass keine Methode der Datenübertragung
+    über das Internet oder der elektronischen Speicherung völlig sicher ist, und obwohl wir uns bemühen, Ihre Daten
+    zu schützen, können wir deren absolute Sicherheit nicht garantieren.\n\n
+
+    Wenn Sie Bedenken oder Fragen zum Datenschutz oder zu dieser Erklärung haben, wenden Sie sich bitte an unser
+    Projektteam unter seeds.members@listserv.dfn.de.\n\n
+
+    Diese Datenschutzerklärung kann sich ändern, und alle Aktualisierungen werden den Nutzern über die mobile
+    Anwendung oder unsere Projektwebsite mitgeteilt. Wir empfehlen Ihnen, diese Erklärung regelmäßig zu lesen,
+    um sich über den Umgang mit Ihren Daten zu informieren.
+
+</string>
+
+
+    <string name="faq_question1">Was ist SEEDS?</string>
+    <string name="faq_question2">Wer finanziert das SEEDS-Projekt?</string>
+    <string name="faq_question3">Wie lautet die Website des Projekts?</string>
+    <string name="faq_question4">Wie kann ich das Team kontaktieren?</string>
+    <string name="faq_question5">Wer sind die Projektpartner?</string>
+    <string name="faq_question6">Läuft das Projekt noch oder ist es abgeschlossen?</string>
+    <string name="faq_question7">Sind die Ergebnisse des Projekts offen zugänglich?</string>
+    <string name="faq_question8">Wo kann ich die Ergebnisse des Projekts finden?</string>
+    <string name="faq_answer1">SEEDS ist ein Projekt, das eine Kombination aus sozialer und digitaler Öffentlichkeitsarbeit vorschlägt und Chatbots als Brücke zwischen Kulturvermittlern, Sozialarbeitern und Bildungseinrichtungen einsetzt. Das Projekt zielt darauf ab, ein Ökosystem zu schaffen, in dem Lernmaterialien von Pädagogen über eine Webanwendung erstellt werden und dann von den Lernenden über ein mobiles Gerät über das Chatbot-System abgerufen und verfolgt werden können.</string>
+    <string name="faq_answer2">SEEDS wird finanziert durch: Strategische Partnerschaft Erasmus+</string>
+    <string name="faq_answer3">Sie können uns besuchen unter: https://seeds.wineme.wiwi.uni-siegen.de</string>
+    <string name="faq_answer4">Sie können uns über unsere E-Mail kontaktieren: seeds.members@listserv.dfn.de</string>
+    <string name="faq_answer5">SEEDS ist eine Zusammenarbeit von 4 Partnern: 1) Universität Siegen, Institut für Wissensbasierte Systeme und Wissensmanagement. 2) Universität Siegen, Lehrstuhl für Wirtschaftsinformatik und Neue Medien. 3) Universität von Alicante. 4) Open Lab Athen</string>
+    <string name="faq_answer6">Die Laufzeit des Projekts beträgt zwei Jahre, von März 2021 bis Februar 202.</string>
+    <string name="faq_answer7">Alle Ergebnisse des SEEDS-Projekts sind frei zugänglich und auf der Projektwebsite und in den Repositories verfügbar.</string>
+    <string name="faq_answer8">Die Ergebnisse des Projekts und die Links zu den Repositorien finden Sie auf der Projekt-Website</string>
     <string name="lang_drop_down_label">Sprache</string>
     <string name="action_sign_in">Anmelden oder registrieren</string>
     <string name="action_sign_in_short">Anmelden</string>
@@ -113,4 +182,5 @@
     <string name="intro_page3">Die Benutzerstatistiken sind im Dashboard des Schülers verfügbar und zeigen den Gesamtprozentsatz der vom Schüler bereits abgeschlossenen Fächer an.</string>
     <string name="introduction_video">Einführungsvideo</string>
     <string name="intro_video">Das Einführungsvideo oben zeigt eine Demo der Funktionalität der App</string>
+    <string name="privacy_policy_statement_terms_of_use">Erklärung zum Datenschutz/Nutzungsbedingungen</string>
 </resources>

@@ -113,6 +113,9 @@
     <string name="Spanish">Spanish</string>
     <string name="English">English</string>
     <string name="Greek">Greek</string>
+
+
+
     <string name="flash_cards">Flash Cards</string>
     <string name="no_flash_cards">No activities are completed to display flash cards. Try completing some activities</string>
     <string name="notification">Notification</string>
@@ -128,6 +131,25 @@
     <string name="intro_video">The Introduction video above displays a demo of functionality of the app</string>
     <string name="chat">Chat</string>
     <string name="erasmus_declaration">Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Education and Culture Executive Agency (EACEA). Neither the European Union nor EACEA can be held responsible for them.</string>
+    <string name="termsofuse">We take data privacy seriously and are committed to ensuring the protection and security of your information. This data privacy statement outlines how your data is collected, used, and stored when you use our mobile application for the research project.\n\n1. Data Collection and Usage: We collect minimal data to create a user profile, including your selected username and password, as well as your device ID. This information is solely used to establish your user profile within the application and is not linked to any personally identifiable information. We do not collect any personal data such as name, address, contact details, or any other sensitive information.\n\n2. Data Storage and Management: All collected data is securely stored and managed by our project team on servers located in Germany. We maintain strict measures to safeguard your data from unauthorized access, use, or disclosure.\n\n3. Research Purposes: The usage data collected from the application is used solely for research purposes related to the project. This data will be analyzed to gain insights into the application\'s functionality, user behavior, and overall performance.\n\n4. Data Retention: We will retain the collected data for a period of one year after the project\'s completion. After this period, all data will be securely deleted, ensuring that it is no longer accessible or traceable.\n\n5. Data Sharing: We do not share any user data with third parties, except as required by law or with your explicit consent. Our project team is the only entity with access to the data, and we adhere to strict confidentiality protocols.\n\n6. Consent: By using our mobile application, you consent to the collection and usage of the limited data described in this statement. Your participation in the research project is entirely voluntary, and you may withdraw your consent at any time by discontinuing the use of the application.\n\n7. Data Security: We employ industry-standard security measures to protect your data from unauthorized access, loss, alteration, or disclosure. However, please be aware that no method of data transmission over the internet or electronic storage is entirely secure, and while we strive to protect your data, we cannot guarantee its absolute security.\n\nFor any concerns or inquiries related to data privacy or this statement, please contact our project team at seeds.members@listserv.dfn.de.\n\nThis data privacy statement is subject to change, and any updates will be communicated to users through the mobile application or our project website. We recommend checking this statement periodically to stay informed about how your data is handled.</string>
+    <string name="privacy_policy_statement_terms_of_use">Privacy Policy Statement / Terms of Use</string>
+    <string name="FAQ">What is SEEDS?\n\nSEEDS is a project that proposes a combination of social and digital outreach, utilizing chatbots as a bridge between cultural mediators, social workers, and educational institutions. The project aims to create an eco-system, where learning materials are created by educators through a web application, and then accessed and tracked by learners through a mobile device, via the chatbot system.\n\nWho is funding SEEDS project?\n\nSEEDS is funded by: Erasmus+ Strategic Partnership\n\nWhat is the project\'s website?\n\nYou can visit us on: https://seeds.wineme.wiwi.uni-siegen.de\n\nHow can I contact the team?\n\nYou can contact us using our email: seeds.members@listserv.dfn.de\n\nWho are the project partners?\n\nSEEDS is a collaboration among 4 partners: 1) University of Siegen, Institute of Knowledge Based Systems and Knowledge Management. 2)University of Siegen, Chair of Information Systems and New Media. 3) University of Alicante. 4) Open Lab Athens\n\nIs the project still running or finished?\n\nThe project\'s duration is two years, between Mar. 2021- Feb. 2023.\n\nAre the outcomes of the project openly accessible?\n\nAll SEEDS project results are open-access and available on the project\'s website and repositories.\n\nWhere can I find the results of the project?\n\nYou can find the project\'s results and repository links on the project\'s website.</string>
+    <string name="faq_question1">What is SEEDS?</string>
+    <string name="faq_question2">Who is funding SEEDS project?</string>
+    <string name="faq_question3">What is the project\'s website?</string>
+    <string name="faq_question4">How can I contact the team?</string>
+    <string name="faq_question5">Who are the project partners?</string>
+    <string name="faq_question6">Is the project still running or finished?</string>
+    <string name="faq_question7">Are the outcomes of the project openly accessible?</string>
+    <string name="faq_question8">Where can I find the results of the project?</string>
+    <string name="faq_answer1">SEEDS is a project that proposes a combination of social and digital outreach, utilizing chatbots as a bridge between cultural mediators, social workers, and educational institutions. The project aims to create an eco-system, where learning materials are created by educators through a web application, and then accessed and tracked by learners through a mobile device, via the chatbot system.</string>
+    <string name="faq_answer2">SEEDS is funded by: Erasmus+ Strategic Partnership</string>
+    <string name="faq_answer3">You can visit us on: https://seeds.wineme.wiwi.uni-siegen.de</string>
+    <string name="faq_answer4">You can contact us using our email: seeds.members@listserv.dfn.de</string>
+    <string name="faq_answer5">SEEDS is a collaboration among 4 partners: 1) University of Siegen, Institute of Knowledge Based Systems and Knowledge Management. 2)University of Siegen, Chair of Information Systems and New Media. 3) University of Alicante. 4) Open Lab Athens</string>
+    <string name="faq_answer6">The project\'s duration is two years, between Mar. 2021- Feb. 202</string>
+    <string name="faq_answer7">All SEEDS project results are open-access and available on the project\'s website and repositories.</string>
+    <string name="faq_answer8">You can find the project\'s results and repository links on the project\'s website</string>
 
 
     <string-array name="Languages">

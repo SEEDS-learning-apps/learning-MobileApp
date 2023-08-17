@@ -14,7 +14,7 @@ import android.view.KeyEvent
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.chat_bot.Activities.DashboardActivities.Settings
+import com.example.chat_bot.Activities.DashboardActivities.Settings.Settings
 import com.example.chat_bot.Activities.Notification.Activity.Notification_receiver.NotificationReciever
 import com.example.chat_bot.R
 import com.example.chat_bot.databinding.AlarmManagerBinding
