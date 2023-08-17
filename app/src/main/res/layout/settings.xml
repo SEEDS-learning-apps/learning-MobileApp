@@ -95,7 +95,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/interface_language_dialog"
+        android:id="@+id/interface_language"
         android:layout_width="380dp"
         android:layout_height="50dp"
         android:background="@drawable/settings_button"
@@ -107,7 +107,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Material_language_dropdown">
 
         <RelativeLayout
-            android:id="@+id/interface_language"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
@@ -150,7 +150,7 @@
         android:paddingRight="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/interface_language_dialog">
+        app:layout_constraintTop_toBottomOf="@+id/interface_language">
 
         <RelativeLayout
             android:id="@+id/notification"

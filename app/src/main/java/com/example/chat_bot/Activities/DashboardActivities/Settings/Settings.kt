@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.chat_bot.Activities.HomePage.MainActivity
@@ -52,8 +53,7 @@ class Settings : AppCompatActivity() {
             overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right)
         }
 
-        val interfacelanguage = findViewById<View>(R.id.interface_language)
-
+        val interfacelanguage = findViewById<LinearLayout>(R.id.interface_language)
             interfacelanguage.setOnClickListener{
                 alertbox_language()
         }

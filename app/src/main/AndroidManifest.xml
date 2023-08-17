@@ -73,7 +73,11 @@
             android:noHistory="true" />
         <activity
             android:name=".Activities.DashboardActivities.Help.Help"
-            android:exported="false" /> <!-- Introduction Screen -->
+            android:exported="false" />
+        <activity
+            android:name=".Activities.DashboardActivities.Help.FAQ"
+            android:exported="false" />
+        <!-- Introduction Screen -->
         <activity
             android:name=".Activities.Introduction.IntroductionActivity"
             android:exported="false"

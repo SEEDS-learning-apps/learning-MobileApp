@@ -77,6 +77,22 @@
 </string>
 
 
+    <string name="faq_question1">Was ist SEEDS?</string>
+    <string name="faq_question2">Wer finanziert das SEEDS-Projekt?</string>
+    <string name="faq_question3">Wie lautet die Website des Projekts?</string>
+    <string name="faq_question4">Wie kann ich das Team kontaktieren?</string>
+    <string name="faq_question5">Wer sind die Projektpartner?</string>
+    <string name="faq_question6">Läuft das Projekt noch oder ist es abgeschlossen?</string>
+    <string name="faq_question7">Sind die Ergebnisse des Projekts offen zugänglich?</string>
+    <string name="faq_question8">Wo kann ich die Ergebnisse des Projekts finden?</string>
+    <string name="faq_answer1">SEEDS ist ein Projekt, das eine Kombination aus sozialer und digitaler Öffentlichkeitsarbeit vorschlägt und Chatbots als Brücke zwischen Kulturvermittlern, Sozialarbeitern und Bildungseinrichtungen einsetzt. Das Projekt zielt darauf ab, ein Ökosystem zu schaffen, in dem Lernmaterialien von Pädagogen über eine Webanwendung erstellt werden und dann von den Lernenden über ein mobiles Gerät über das Chatbot-System abgerufen und verfolgt werden können.</string>
+    <string name="faq_answer2">SEEDS wird finanziert durch: Strategische Partnerschaft Erasmus+</string>
+    <string name="faq_answer3">Sie können uns besuchen unter: https://seeds.wineme.wiwi.uni-siegen.de</string>
+    <string name="faq_answer4">Sie können uns über unsere E-Mail kontaktieren: seeds.members@listserv.dfn.de</string>
+    <string name="faq_answer5">SEEDS ist eine Zusammenarbeit von 4 Partnern: 1) Universität Siegen, Institut für Wissensbasierte Systeme und Wissensmanagement. 2) Universität Siegen, Lehrstuhl für Wirtschaftsinformatik und Neue Medien. 3) Universität von Alicante. 4) Open Lab Athen</string>
+    <string name="faq_answer6">Die Laufzeit des Projekts beträgt zwei Jahre, von März 2021 bis Februar 202.</string>
+    <string name="faq_answer7">Alle Ergebnisse des SEEDS-Projekts sind frei zugänglich und auf der Projektwebsite und in den Repositories verfügbar.</string>
+    <string name="faq_answer8">Die Ergebnisse des Projekts und die Links zu den Repositorien finden Sie auf der Projekt-Website</string>
     <string name="lang_drop_down_label">Sprache</string>
     <string name="action_sign_in">Anmelden oder registrieren</string>
     <string name="action_sign_in_short">Anmelden</string>

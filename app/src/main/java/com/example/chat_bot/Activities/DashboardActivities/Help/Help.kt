@@ -3,7 +3,6 @@ package com.example.chat_bot.Activities.DashboardActivities.Help
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,10 +10,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.example.chat_bot.Activities.HomePage.MainActivity
 import com.example.chat_bot.R
 
@@ -50,6 +51,13 @@ class Help : AppCompatActivity() {
 
         feedback.setOnClickListener{
             openRatingDialog()
+        }
+
+        val faq = findViewById<LinearLayout>(R.id.faq)
+        faq.setOnClickListener{
+            val intent = Intent (this, FAQ::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
 
     }

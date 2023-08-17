@@ -39,6 +39,22 @@
     Esta declaración de privacidad de datos está sujeta a cambios, y cualquier actualización se comunicará a los usuarios a través de la aplicación móvil o del sitio web de nuestro proyecto. Le recomendamos que consulte esta declaración periódicamente para mantenerse informado sobre el tratamiento de sus datos."
 </string>
 
+    <string name="faq_question1">¿Qué es SEEDS?</string>
+    <string name="faq_question2">¿Quién financia el proyecto SEEDS?</string>
+    <string name="faq_question3">¿Cuál es el sitio web del proyecto?</string>
+    <string name="faq_question4">¿Cómo puedo ponerme en contacto con el equipo?</string>
+    <string name="faq_question5">¿Quiénes son los socios del proyecto?</string>
+    <string name="faq_question6">¿El proyecto sigue en marcha o ha finalizado?</string>
+    <string name="faq_question7">¿Se puede acceder abiertamente a los resultados del proyecto?</string>
+    <string name="faq_question8">¿Dónde puedo encontrar los resultados del proyecto?</string>
+    <string name="faq_answer1">SEEDS es un proyecto que propone una combinación de divulgación social y digital, utilizando chatbots como puente entre mediadores culturales, trabajadores sociales e instituciones educativas. El objetivo del proyecto es crear un ecosistema en el que los educadores creen materiales didácticos a través de una aplicación web y, a continuación, los alumnos accedan a ellos y realicen su seguimiento a través de un dispositivo móvil, mediante el sistema de chatbot.</string>
+    <string name="faq_answer2">SEEDS está financiado por Asociación Estratégica Erasmus</string>
+    <string name="faq_answer3">Puede visitarnos en: https://seeds.wineme.wiwi.uni-siegen.de</string>
+    <string name="faq_answer4">Puede ponerse en contacto con nosotros a través de nuestro correo electrónico: seeds.members@listserv.dfn.de</string>
+    <string name="faq_answer5">SEEDS es una colaboración entre 4 socios: 1) Universidad de Siegen, Instituto de Sistemas Basados en el Conocimiento y Gestión del Conocimiento. 2) Universidad de Siegen, Cátedra de Sistemas de Información y Nuevos Medios. 3) Universidad de Alicante. 4) Open Lab Atenas</string>
+    <string name="faq_answer6">La duración del proyecto es de dos años, entre marzo de 2021 y febrero de 202.</string>
+    <string name="faq_answer7">Todos los resultados del proyecto SEEDS son de libre acceso y están disponibles en el sitio web y los repositorios del proyecto.</string>
+    <string name="faq_answer8">Puede consultar los resultados del proyecto y los enlaces a los repositorios en el sitio web del proyecto</string>
     <string name="lang_drop_down_label">Idiomas</string>
     <string name="Username">Usuario</string>
     <string name="register_account">Crea una cuenta</string>

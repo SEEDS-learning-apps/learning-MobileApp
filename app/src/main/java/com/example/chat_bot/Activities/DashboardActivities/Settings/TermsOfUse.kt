@@ -38,7 +38,6 @@ class TermsOfUse : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         val intent = Intent(this, Settings::class.java)
-        intent.putExtra("FRAGMENT_TO_SHOW", 2) // Replace 2 with the index of the desired fragment to show
         startActivity(intent)
         finish()
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)

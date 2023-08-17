@@ -36,16 +36,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="sans-serif"
+                android:gravity="start"
                 android:justificationMode="inter_word"
                 android:paddingStart="50dp"
+                android:paddingTop="20dp"
                 android:paddingEnd="50dp"
                 android:paddingBottom="50dp"
-                android:paddingTop="20dp"
                 android:text="@string/termsofuse"
                 android:textAllCaps="false"
                 android:textColor="?attr/textcolor"
                 android:textSize="13sp"
-                android:gravity="start"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -54,30 +54,20 @@
                 app:layout_constraintVertical_bias="0.0" />
 
 
-            <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:orientation="horizontal"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/termsOfUseText" />
-
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="@string/privacy_policy_statement_terms_of_use"
                 android:textColor="?attr/textcolor"
                 android:textSize="20dp"
+                android:gravity="center"
                 android:textStyle="bold"
-                android:layout_marginTop="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/termsOfUseText"
+                app:layout_constraintStart_toStartOf="@+id/termsOfUseText"
                 app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
