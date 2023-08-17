@@ -17,7 +17,7 @@ Formed through a dynamic collaboration between three distinguished institutions 
 ## Table of contents
 1. [Project Objectives](#project-objectives)
 2. [Getting Started](#getting-started)
-3. [Integration with Backend and Chatbot API](#integration_with_backend_and_chatbot_api)
+3. [Integration with Backend and Chatbot API](#integration-with-backend-and-chatbot-api)
 4. [Features](#features)
 5. [App Architecture](#app-architecture)
 6. [Libraries and Framework](#libraries-and-framework) 
@@ -49,9 +49,9 @@ Welcome to the SEEDS Android application repository! Whether you're a student ea
 
 ## Integration with Backend and Chatbot API
 The SEEDS Android application is seamlessly integrated with a robust backend system that efficiently stores and manages user data on the web. This backend infrastructure plays a pivotal role in ensuring a seamless and responsive experience for users. In addition, the app leverages a sophisticated chatbot API that adds an intelligent conversational layer to the learning process, enhancing user engagement and personalization. This API is also complemented by a Telegram interface, providing users with multiple avenues to interact with the app's dynamic chatbot. To explore the technical underpinnings of these components, you can visit the following GitHub repositories:
-[SEEDS Backend Repository](https://github.com/SEEDS-learning-apps/content-creation-WebApp-Backend)
-[Chatbot API Repository](https://github.com/SEEDS-learning-apps/learning-Chatbot)
-[Telegram API Interface Repository](https://github.com/SEEDS-learning-apps/learning-Telegram-Chatbot)
+- [SEEDS Backend Repository](https://github.com/SEEDS-learning-apps/content-creation-WebApp-Backend)
+- [Chatbot API Repository](https://github.com/SEEDS-learning-apps/learning-Chatbot)
+- [Telegram API Interface Repository](https://github.com/SEEDS-learning-apps/learning-Telegram-Chatbot)
 
 ## Features
 Discover the diverse and innovative features that define the SEEDS Android application:
