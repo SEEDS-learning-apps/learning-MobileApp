@@ -17,6 +17,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.chat_bot.Activities.DashboardActivities.*
+import com.example.chat_bot.Activities.DashboardActivities.Help.Help
+import com.example.chat_bot.Activities.DashboardActivities.Settings.Settings
 import com.example.chat_bot.R
 import com.example.chat_bot.databinding.FragmentDashboardBinding
 import com.example.chat_bot.utils.SessionManager
@@ -98,7 +100,7 @@ class DashboardFragment : Fragment() {
 
         bind.SettingsCardview.setOnClickListener {
             val intent =
-                Intent(this.context, com.example.chat_bot.Activities.DashboardActivities.Settings::class.java)
+                Intent(this.context, Settings::class.java)
             startActivity(intent)
             activity?.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }

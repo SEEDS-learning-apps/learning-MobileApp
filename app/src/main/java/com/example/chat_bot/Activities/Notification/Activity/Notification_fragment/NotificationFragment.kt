@@ -1,6 +1,5 @@
 package com.example.chat_bot.Activities.Notification.Activity.Notification_fragment
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -19,7 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chat_bot.Activities.DashboardActivities.Settings
+import com.example.chat_bot.Activities.DashboardActivities.Settings.Settings
 import com.example.chat_bot.Activities.Notification.Activity.Notification_fragment.NotificationFragment.Toast.displayFailureToast
 import com.example.chat_bot.Activities.Notification.Activity.Notification_fragment.NotificationFragment.Toast.displaySuccessToast
 import com.example.chat_bot.Activities.activity.CreateNotificationActivity

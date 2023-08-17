@@ -20,6 +20,8 @@
         android:theme="@style/WhiteMode"
         android:usesCleartextTraffic="true" >
 
+
+
         <!-- Notification -->
         <activity android:name=".Activities.activity.CreateNotificationActivity" />
         <activity
@@ -39,7 +41,6 @@
         </receiver>
 
         <!-- Dashboard -->
-
         <activity
             android:name=".Activities.DashboardActivities.FlashCardDetail"
             android:exported="true"
@@ -57,16 +58,21 @@
             android:exported="true"
             android:noHistory="true" />
         <activity
-            android:name=".Activities.DashboardActivities.Settings"
+            android:name=".Activities.DashboardActivities.Settings.Settings"
             android:exported="false"
             android:noHistory="true" />
+
+        <activity
+            android:name=".Activities.DashboardActivities.Settings.TermsOfUse"
+            android:exported="false" />
+
         <activity
             android:name=".Activities.DashboardActivities.downloadQuizActivity"
             android:configChanges="orientation|screenSize"
             android:exported="false"
             android:noHistory="true" />
         <activity
-            android:name=".Activities.DashboardActivities.Help"
+            android:name=".Activities.DashboardActivities.Help.Help"
             android:exported="false" /> <!-- Introduction Screen -->
         <activity
             android:name=".Activities.Introduction.IntroductionActivity"
