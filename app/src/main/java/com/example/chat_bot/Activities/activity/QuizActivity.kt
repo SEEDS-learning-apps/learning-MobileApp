@@ -55,6 +55,7 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         val sharedprefs: SharedPreferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE)
         val switchIsTurnedOn = sharedprefs.getBoolean("DARK MODE", false)
         if (switchIsTurnedOn) {
@@ -63,6 +64,7 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
         } else {
             layoutInflater.context.setTheme(R.style.WhiteMode)
         }
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
 

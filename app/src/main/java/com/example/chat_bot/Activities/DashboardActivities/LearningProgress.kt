@@ -185,17 +185,31 @@ class LearningProgress : AppCompatActivity() {
         val filteredCounts = counts.filter { it.second >= 1 }
 
         if (filteredCounts.isNotEmpty()) {
+            val totalCompleted = filteredCounts.sumBy { it.second }
+
             val dataEntries = filteredCounts.map { (subject, count) ->
-                ValueDataEntry(subject, count.toDouble())
+                val percentage = (count.toDouble() / totalCompleted) * 100
+                ValueDataEntry(subject, count).apply {
+                    setValue("percentage", percentage)
+                }
             }
 
+
             val pie3d = AnyChart.pie3d()
+
+
             pie3d.data(dataEntries)
+            pie3d.tooltip()
+                .useHtml(true)
+                .format("Topics Completed: {%value} <br/>Percentage: {%percentage}%")
+
 
             pie3d.labels().position("outside")
             pie3d.labels().format("{%value}")
             pie3d.labels().fontSize(14)
             pie3d.labels().fontWeight("bold")
+
+
 
             val chartBackground = pie3d.background()
             val sharedPrefs: SharedPreferences = getSharedPreferences("pref", Context.MODE_PRIVATE)
@@ -223,10 +237,12 @@ class LearningProgress : AppCompatActivity() {
 
             chartView.setChart(pie3d)
             chartView.visibility = View.VISIBLE
+
         } else {
             chartView.setChart(null)
             chartView.visibility = View.GONE
         }
+
     }
 
 

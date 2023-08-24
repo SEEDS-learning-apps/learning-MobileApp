@@ -76,7 +76,6 @@ class CreateNotificationActivity : AppCompatActivity(), CompoundButton.OnChecked
                 timeTV.text=formattedTime
             }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false).show()
 
-
         }
 
         //our set alarm button from create alarm xml
