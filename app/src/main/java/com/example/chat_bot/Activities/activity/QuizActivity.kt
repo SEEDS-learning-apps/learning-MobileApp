@@ -1,6 +1,5 @@
 package com.example.chat_bot.Activities.activity
 
-
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -32,9 +31,7 @@ import com.example.chat_bot.utils.SessionManager
 import com.example.chat_bot.utils.Time
 import kotlinx.coroutines.*
 
-
 class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
-
     lateinit var session: SessionManager
     private lateinit var binding: ActivityQuizBinding
     lateinit var viewModel: SEEDSViewModel
@@ -52,7 +49,6 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
     var downloadedQuiz: ArrayList<QuestItem> = arrayListOf()
     lateinit var questItem: QuestItem
     var que: ArrayList<QuestItem> = arrayListOf()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -299,6 +295,5 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
     override fun quizDonez() {
 
     }
-
 
 }
