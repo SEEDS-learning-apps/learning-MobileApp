@@ -28,7 +28,6 @@ class WelcomePage : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(android.R.style.Theme_Light_NoTitleBar_Fullscreen)
-
         val sharedprefs: SharedPreferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE)
         val switchIsTurnedOn = sharedprefs.getBoolean("DARK MODE", false)
         if (switchIsTurnedOn) {

@@ -103,7 +103,6 @@ class Settings : AppCompatActivity() {
 
             }
         }
-
     }
 
     private fun alertbox_language() {

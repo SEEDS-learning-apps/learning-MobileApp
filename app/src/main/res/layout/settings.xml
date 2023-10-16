@@ -261,14 +261,14 @@
                 android:id="@+id/changeThemeText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:layout_marginStart="6dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="6dp"
-                android:layout_centerInParent="true"
                 android:gravity="center"
+                android:text="@string/dark_mode"
                 android:textColor="?attr/textcolor"
-                android:textSize="18sp"
-                android:text="@string/dark_mode" />
+                android:textSize="18sp" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/switchTheme"

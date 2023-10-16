@@ -1,6 +1,5 @@
 package com.example.chat_bot.Activities.activity
 
-
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -32,9 +31,7 @@ import com.example.chat_bot.utils.SessionManager
 import com.example.chat_bot.utils.Time
 import kotlinx.coroutines.*
 
-
 class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
-
     lateinit var session: SessionManager
     private lateinit var binding: ActivityQuizBinding
     lateinit var viewModel: SEEDSViewModel
@@ -53,8 +50,8 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
     lateinit var questItem: QuestItem
     var que: ArrayList<QuestItem> = arrayListOf()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
+
         val sharedprefs: SharedPreferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE)
         val switchIsTurnedOn = sharedprefs.getBoolean("DARK MODE", false)
         if (switchIsTurnedOn) {
@@ -63,6 +60,7 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
         } else {
             layoutInflater.context.setTheme(R.style.WhiteMode)
         }
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
 
@@ -297,6 +295,5 @@ class QuizActivity : AppCompatActivity(), quiz_adapter.Callbackinter {
     override fun quizDonez() {
 
     }
-
 
 }
